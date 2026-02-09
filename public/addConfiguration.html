@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel='stylesheet' href='./css/bootstrap.min.css'>
+    <link rel="stylesheet" href="./css/form.css">
+    <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./css/splitter.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/modal.css">
+
+</head>
+
+<body>
+	<header id="splitter-nav-site" class="splitter-nav-site"></header>
+    <form id="actionForm" class="formData" enctype="multipart/form-data" method="POST">
+    <main class="main-view">
+        <div class="splitter-nav-view" id="left-pane">
+        </div>
+            <div class="v-drag" id="separator"></div>
+            <div class="content" id="right-pane">
+                <div class="container">
+                    <div class="header">
+                        <h1 id="title">Configuration</h1>
+                    </div>
+                    
+                    <div class="form-container">
+                        <!-- Step 1: Prélevement -->
+                        <div class="form-step active">
+                            <div class="form-row">                        
+                                <div class="form-group row-1">
+                                    <label for="code">Code ISO</label>
+                                    <input type="text" id="code" name="code" class="form-control" value="FR">
+                                </div>
+                                
+                                <div class="form-group row-1">
+                                    <label for="identifiant">Identifiant </label>
+                                    <input type="text" id="identifiant" name="identifiant" class="form-control" value="BR13551">
+                                </div>                                                          
+                                
+                                <div class="form-group row-2">
+                                    <input type="hidden" id="stockage" name="stockage" class="form-control" value="lol">
+                                    <label for="addCle">Mots clés pour le stockage </label>
+                                    <input type="text" id="addCle" class="form-control">
+                                </div>   
+                            </div>                
+                            
+                            <div class="form-row">
+                                <div class="form-group row-1">
+                                    <textarea id="etiquette" name="etiquette"></textarea>
+                                </div>
+                                <div class="form-group row-1">
+                                    <ul id="list" class="form-control moveable" name="stockage"></ul>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group row-2">
+                                    <button class="btn btn-secondary float-start" id="demo"> <i class="fas fa-beta"></i> Default </button> 
+                                </div>
+                                <div class="form-group row-2">
+                                    <button class="btn btn-primary form-group float-end" type="submit" id="btn-save"> <i class="fas fa-check"></i> Sauvegarder </button>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+
+                
+                
+            </div>
+        </main>
+    </form>
+    <div class="modal-container">
+      <input id="modal-toggle" type="checkbox">
+      <label class="modal-backdrop" id="modal-ouside"></label>  
+      <div id="modal" class="modal-content"> 
+      </div>          
+    </div>  
+</body> 
+
+<script src="./js/constants.js"></script>
+<script src="./js/splitter.js"></script>
+<script src="./js/menu.js"></script>
+<script src="./js/all.js"></script>
+<script src="./js/form.js"></script>
+<script src="./js/codes.js"></script>
+<script src="./js/api.js"></script>
+<script src="./js/helper.js"></script>
+<script src="./js/modal.js"></script>
+<script src="./js/configuration/data.js"></script>
+</html>
