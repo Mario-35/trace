@@ -172,7 +172,7 @@ install_trace() {
     fi
     # create path
     # unzip actual
-    unzip -qq -o $FILEDIST -d ./
+    unzip -qq -o $FILEDIST -d ./trace/
     mv ./dist ./trace
     save_dist
     npm install --omit=dev --prefix ./trace/
