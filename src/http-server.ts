@@ -133,6 +133,11 @@ export default class HttpServer {
       const passeports = await readEchantillons();
       res.status(200).json(passeports)
     })
+    // Get all echantillons
+    this.app.get("/echantillons/:id", async (_req: Request, res: Response) => {
+      const passeports = await readEchantillons(+_req.params.id);
+      res.status(200).json(passeports)
+    })
     
     // Get one echantillon
     this.app.get("/echantillon/:id", async (_req: Request, res: Response) => {

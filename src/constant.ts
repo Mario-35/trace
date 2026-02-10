@@ -9,3 +9,8 @@ export const CORS = {
     methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }
+
+// Content-Security-Policy:
+//   script-src 'nonce-ieoeWczDHkReVBsRBqaal5AFMlBtNjMzgwKvLqi'
+
+// }

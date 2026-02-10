@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+</head>
+<body>
+    <h1>Image Upload and Retrieval</h1>
+    
+    <h2>Upload Image</h2>
+    <form id="uploadForm">
+        <input type="file" name="image" accept=".doc,.docx,.pdf" required>
+        <button type="submit">Upload</button>
+    </form>
+    
+    <h2>Retrieve Image</h2>
+    <input type="number" id="imageId" placeholder="Enter image ID" required>
+    <button id="retrieveButton">Retrieve Image</button>
+<script src="./js/file.js"></script>
+
+</body>
+</html>

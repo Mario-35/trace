@@ -58,8 +58,10 @@ export async function readAlSearch(table: string, search: string) {
       return await sql.unsafe(`SELECT * FROM ${table} WHERE ${tableColumns.map(e => `"${e}" LIKE '%${search}%'`).join(" OR ")}`);
 };
 
-export async function readEchantillons() {
-      return await sql`SELECT id, programme, site, responsable, prelevement, identification, etat FROM echantillons ORDER BY identification`
+export async function readEchantillons(passeport?: number) {
+      return  passeport 
+            ? await sql`SELECT id, programme, site, responsable, prelevement, identification, etat FROM echantillons WHERE passeport = ${ passeport } ORDER BY identification`
+            : await sql`SELECT id, programme, site, responsable, prelevement, identification, etat FROM echantillons ORDER BY identification`
 };
 
 export async function readId(table: string, id: number) {
