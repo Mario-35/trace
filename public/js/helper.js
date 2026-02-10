@@ -3,6 +3,10 @@ head =(title) => {
     if(_DEBUG)  console.log('='.repeat(15) + ' ' + title + ' ' + '='.repeat(15));
 }
 
+log =(title) => {
+    console.log(title);
+}
+
 
 
 const doubleQuotes = (input) => `"${input}"`;
@@ -26,9 +30,9 @@ function toJson(name) {
                 return JSON.parse(document.getElementById(name).value);
             } catch (error) {
     
-               console.log("====================" + name + "=============================");
-               console.log(document.getElementById(name).value);
-               console.log(error);
+               log("====================" + name + "=============================");
+               log(getElement(name).value);
+               log(error);
             }
         }
     }
@@ -97,7 +101,14 @@ function notNull(element) {
             case "date":
                 return (elem.value) ? elem.value.trim().length > 0 : false;
             case "textarea":
-                return (elem.value) ? Object.keys(JSON.parse(elem.value)).length > 0 : false;
+                log ("======================> " + elem.name);
+                // log (Object.keys(JSON.parse(elem.value)).length);
+                try {
+                    log (Object.keys(JSON.parse(elem.value)).length);                    
+                    return (elem.value) ? (Object.keys(JSON.parse(elem.value)).length > 0) : false;
+                } catch (error) {
+                    return false;
+                }
             case "number":
                 return (elem.value) ? +value > 0 : false;        
             default:

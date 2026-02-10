@@ -233,7 +233,8 @@ export default class HttpServer {
       return res.status(404).json({"error": error.detail});
     });
   });
-  
+    
+
     // Get one passeport
     this.app.get("/passeport/:id", async (_req: Request, res: Response) => {
       return await readId("passeports",  +_req.params.id).then((passeport: any) => {

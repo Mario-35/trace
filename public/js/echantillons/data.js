@@ -36,6 +36,7 @@ function refreshCultures() {
     const elem = getElement("message");
     if (pays.value.toUpperCase() !== "FRANCE" || region.value.toUpperCase() !== "BRETAGNE") {
         const test = codeRisqueBettrave(["BTN","BVF"],["16","24"]);
+        getElement("risqueRpg").value = test.niveau || -1 ;
         switch (test.niveau) {
             case 3:
               elem.innerText = "Risque avéré avec " + test.culture;
@@ -90,20 +91,23 @@ function refreshRpg() {
 
 async function refreshPasseportPhytosanitaire() {
     head('refresh Passeport Phytosanitaire');
-    
-    if (+getElement("passeport").value === 0 && getElement("region").value !== _CONFIG.region) 
-        createHTMLbtnCreatePasseport();
-    
-    if (getElement("passeport").value && +getElement("passeport").value > 0) {
-       const temp = await getDatas(window.location.origin + '/passeport/' +getElement("passeport").value);
-       if (temp && temp.id) {
-           getElement("passeport").value= +(temp.id);
-           createHTMLviewPasseport(temp);
-           return
-       } 
-   } 
+    // get passeport id
+    const id = Number(getElement("passeport").value);
+    if (getElement("passeport").value && id > 0) {
+        if (_PASSPORT) 
+            createHTMLviewPasseport(_PASSPORT);
+        else {
+            const temp = await getDatas(window.location.origin + '/passeport/' +id);
+            if (temp && temp.id) {
+                _PASSPORT = temp;
+                getElement("passeport").value= +(temp.id);
+                createHTMLviewPasseport(temp);
+                return
+            } 
 
-   if (notNull("cultures") === false) setDisabled("btn-passeport-create");
+        } 
+    } 
+    createHTMLbtnCreatePasseport();
 }
 
 function refresh() {
@@ -160,7 +164,7 @@ function refresh() {
         </table>` 
             : '';   
     } catch (error) {    
-        console.log(error);
+        log(error);
     } 
 
     if (getElement("etiquette").value) {
@@ -184,11 +188,11 @@ function refresh() {
         .blank(0) // Create space between the barcodes
         .render();
     } 
-    if(_DEBUG === false) {
+    // if(_DEBUG === false) {
         hide("stockage");
         hide("etiquette");
         hide("cultures");
-    }    
+    // }    
 }
 
 function loadEchantillonLine(index) {
@@ -205,7 +209,7 @@ function loadEchantillonLine(index) {
 
 async function start() {
     if (_DEBUG === false) getElement("blockDemo").remove();
-
+    _PASSPORT = undefined;
     // init id
     let id = 0;
     // default sticker

@@ -67,17 +67,17 @@ function validateStep2() {
         // The only way to test if in edit passport and not to be confused with view passport
         if (getElement("region").value !== _CONFIG.region) {
             if (getElement('passeportNom-error')) {
-                if (validateStr('passeportNom') === false) isValid = false;    
-                if (validateStr('passTracabilite') === false) isValid = false;   
+                if (validateStr('passeportNom') === false) isValid = false;
                 getElement('create-error').style.display = 'block';
                 isValid = false;  
             }
 
         }
-    }
-    if (getElement("region").value !== _CONFIG.region && getElement('btn-passeport-create')) {
-        getElement('btn-passeport-create').style.background = 'red';
-        isValid = false; 
+        if (notNull("cultures") === false) isValid = false;   
+        else if (getElement("region").value !== _CONFIG.region && getElement('btn-passeport-create')) {
+                getElement('btn-passeport-create').style.background = 'red';
+                isValid = false; 
+        }
     }
     return isValid;
 };

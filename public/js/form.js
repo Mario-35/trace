@@ -1,5 +1,4 @@
 function loadDatas(values) {
-  console.log(_COLUMNS);
     _COLUMNS.forEach(e => {
         const elem = document.getElementById(e);
         if (elem && values[e]) {            
@@ -23,7 +22,7 @@ function loadDatas(values) {
                     elem.value = isNaN(values[e]) ? values[e] : +values[e];
                     break;
                 default:
-                    console.log(elem.type);
+                    log(elem.type);
                     break;
             }
         }
@@ -149,7 +148,7 @@ const formToJSON = elements => [].reduce.call(elements, (data, element) => {
         data[element.name] = isNaN(element.value) ? max > 0 ? element.value.slice(0, max): element.value: +element.value;
         break
       default:
-        console.log(`${element.name} err =====> ${element.type}`);
+        log(`${element.name} err =====> ${element.type}`);
     }
   }
   return data;

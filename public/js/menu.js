@@ -11,7 +11,7 @@ document.getElementById("left-pane").innerHTML = `
 // Menu droite                
 document.getElementById("splitter-nav-site").innerHTML = `
 <nav role="navigation" class="splitter-nav-left splitter-menu-color">
-    <a href="index.html">Gestion de échantillons</a>
+    <a href="index.html">Gestion des échantillons</a>
 </nav>
     <nav role="navigation" class="splitter-nav-right" id="splitter-nav-right">
     <nav role="navigation" class="splitter-nav-left">
@@ -25,7 +25,7 @@ function createHTMLviewPasseport(values) {
                     "annee": "2019",
                     "nom": "Nom a déterminer",
                     "code": "FR",
-                    "tracabilite": "05",
+                    "tracabilite": "005",
                     "identifiant": "BR13551",
                     "origine": "FR"};
 
@@ -38,7 +38,7 @@ function createHTMLviewPasseport(values) {
                 <div class="title" id="passeportTitle"><p>Passeport phytosanitaire / Phytosanitary passport</p></div>
                 <div class="nom" id="passeportNom">${values.nom}</div>
                 <div class="code" id="passeportCode"><p>${values.code}-${values.identifiant}</p></div>
-                <div class="trace" id="passeportTracabilite"><p>${values.annee}-${values.tracabilite}</p></div>
+                <div class="trace" id="passeportTracabilite"><p>${values.annee}-${String(values.tracabilite).padStart(3, '0')}</p></div>
                 <div class="origine" id="passeportOrigine"><p>${values.origine}</p></div>
             </div> 
         </div>`;
@@ -46,21 +46,20 @@ function createHTMLviewPasseport(values) {
 
 // Button de creation du passeport phytosanitaire
 function createHTMLbtnCreatePasseport() {
-    // Si pas de passeport mais la region est la meme 
-    if (+getElement("passeport").value === 0) {
-        if (getElement("region").value !== _CONFIG.region) 
-        {
+    if (+getElement("passeport").value === 0) {        
+        if (_CONFIG.region == getElement("region").value)
+            {
             getElement("blockPasseport").innerHTML = '';
-        } else {
+        } else if (notNull("cultures")) {
             getElement("blockPasseport").innerHTML = `
             <div class="pass-phyto-container">
                 <div class="btn-group">
                     <button class="btn btn-passeport"  id="btn-passeport-create">
-                        Créer un passeport phytosanitaire <i class="fas fa-passport"></i>
+                        Créer un passeport phytosanitaire${+getElement("risqueRpg").value < 2 ? '' : ' avec test'} pour ${_YEAR}
                     </button>
                 </div> 
             </div>`; 
-            
+
             document.getElementById('btn-passeport-create').addEventListener('click', function() {
                 createHTMLcreatePasseport();
                 removeDisabled("btn-passeport-create");
@@ -78,16 +77,12 @@ function createHTMLcreatePasseport() {
                                           <div class="form-title">
                                               <label>Création d'un passeport phytosanitaire</label>
                                           </div>
-                                          <div class="error-message" id="create-error">Créer le passport avant de poursuivre</div>
+                                          <div class="error-message" id="create-error">Créer le passeport avant de poursuivre</div>
                                       </div>
                                   </div>
 
                                   <div class="form-row border">
-                                      <div class="form-group row-1">
-                                          <label for="passTracabilite">Code de traçabilité</label>
-                                          <input type="text" id="passTracabilite" class="form-control" placeholder="Code de traçabilité">
-                                          <div class="error-message" id="passTracabilite-error">Code de traçabilité obligatoire</div>
-                                      </div>
+
                                       <div class="form-group row-2">
                                           <label for="passeportNom">Nom</label>
                                           <input type="text" id="passeportNom" class="form-control" placeholder="Nom du passseport">
@@ -95,7 +90,7 @@ function createHTMLcreatePasseport() {
                                       </div>
 
                                       <div class="form-group row-3">
-                                          <label for="image">Joindre un fichier</label>
+                                          <label for="image">Joindre un fichier${+getElement("risqueRpg").value < 2 ? '' : ' de test'}</label>
                                           <input class="form-control" type="file" name="image" accept=".doc,.docx,.pdf">
                                       </div>
                                       
@@ -111,7 +106,6 @@ function createHTMLcreatePasseport() {
   document.getElementById('passCreate').addEventListener('click', async function() {
     let isValid = true;   
     if (validateStr('passeportNom') === false) isValid = false;
-    if (validateStr('passTracabilite') === false) isValid = false;
     if (validateDate('prelevement') === false) isValid = false;
     if (isValid === false) return;
       const datas = {
@@ -119,7 +113,7 @@ function createHTMLcreatePasseport() {
           origine: 'FR', 
           identifiant: 'BR13551', 
           annee: getYear(prelevement), 
-          tracabilite:  passTracabilite.value,
+          tracabilite:  "001",
           nom: passeportNom.value
       }
       var input = document.querySelector('input[type="file"]');
@@ -166,7 +160,7 @@ function getElement(name) {
   if (typeof name === "string") {
     element = document.getElementById(name);
     if (element) return element;
-    if(_DEBUG) console.log("erreur element ========> " + name);
+    console.log("erreur element ========> " + name);
   } else return name;
 }
 
@@ -271,7 +265,7 @@ function setVisible(list, visible) {
 
 function addToOption(name, listElements, selected) {
     var select = getElement(name);
-    listElements.forEach(e => {
+    if (select) listElements.forEach(e => {
         var opt = document.createElement('option');
         opt.value = e;
         opt.innerHTML = e;
@@ -307,7 +301,7 @@ function loadValue(elementName, value) {
                 break;
         
             default:
-                console.log(elem.type);
+                log(elem.type);
                 break;
         }
     };

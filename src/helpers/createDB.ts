@@ -5,10 +5,10 @@ import { asyncForEach } from "./asyncForEach";
 
 const queries = [`CREATE TABLE passeports (
                   id int2 GENERATED ALWAYS AS IDENTITY( INCREMENT BY 1 MINVALUE 1 MAXVALUE 32767 START 1 CACHE 1 NO CYCLE) NOT NULL,
-                  annee varchar(4) NOT NULL,
+                  annee int2 NOT NULL,
                   nom varchar(50) NOT NULL UNIQUE,
                   code varchar(2) NOT NULL DEFAULT 'FR',
-                  tracabilite varchar(10) NOT NULL,
+                  tracabilite int2 NOT NULL,
                   identifiant varchar(7) NOT NULL DEFAULT 'BR13551',
                   origine varchar(2) NOT NULL,
                   fichier int2 NULL, 

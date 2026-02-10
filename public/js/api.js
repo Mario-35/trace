@@ -1,17 +1,16 @@
 
 getDatas = async (url) => {
 	try {
-		if (_DEBUG) console.log(url);
+		log(url);
 		const response = await fetch(encodeURI(url), {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
 			},
 		});
-		if (_DEBUG) console.log(response);
 		return await response.json();
 	} catch (error) {
-		if (_DEBUG) console.log(error);
+		log(error);
 		return undefined
 	}
 }
@@ -27,7 +26,7 @@ posttDatas = async (url, datas) => {
 		});
 		return await response.json();		
 	} catch (error) {
-		if (_DEBUG) console.log(error);
+		log(error);
 		return undefined
 	}
 }
