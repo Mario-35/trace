@@ -3,6 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 import multer from "multer";
 import compression from "compression";
+import path from "path";
 import { logger } from "@infra/logger";
 import { getRpg } from "./helpers/getRpg"
 import { addEchantillon, addExcel, addPasseport, addSelection, deleteId, getConfiguration, readAll, readAlSearch, readEchantillons, readId, readIds, searchPasseport, setConfiguration, updateEchantillon, updatePasseport, verifyBody } from "./controller";
@@ -39,7 +40,8 @@ export default class HttpServer {
     this.app.use(cors());
     this.app.use( helmet(HELMET) );
     this.app.use(express.json({limit: '50mb'}));
-    this.app.use(express.static('public'));
+    // this.app.use(express.static('public'));
+    this.app.use(express.static(path.join(__dirname, 'public')));
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(compression());

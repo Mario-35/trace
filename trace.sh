@@ -158,7 +158,7 @@ download_dist() {
 
 
 # Function to install trace
-install() {
+install_trace() {
     # save actual to bak
     if [ -f ./trace ]; then
         # remove bak
@@ -172,11 +172,8 @@ install() {
     fi
     # create path
     # unzip actual
-    echo "Create folder => ."
-    sudo mkdir -p -m 777 ./trace
-    echo "Create folder => ./trace"
-    unzip -qq -o $FILEDIST -d ./trace
-    echo "unzip $FILEDIST => ./trace"
+    unzip -qq -o $FILEDIST -d ./
+    mv ./dist ./trace
     save_dist
     npm install --omit=dev --prefix ./trace/
 }
