@@ -83,14 +83,16 @@ function selectElement(name) {
     const tmp = toJson("etiquette");
     document.getElementById("element").value = tmp[name].key;
     document.getElementById("elementLabel").innerText = name;
-    for (let i = 1; i < 4; i++) document.getElementById("sticker" + i).classList.remove("active");
+    for (let i = 1; i < Object.keys(_CONFIG.sticker).length; i++) document.getElementById("sticker" + i).classList.remove("active");
     ["btn-alignleft", "btn-aligncenter","btn-alignright"].forEach(e => document.getElementById(e).classList.remove("active"));
     document.getElementById('btn-align' + tmp[name].align).classList.add("active");
-    document.getElementById(name).classList.add("active")
+    document.getElementById(name).classList.add("active");
+    document.getElementById("textSize").value = tmp[name].size || "10px";
+    
 };
 
 // buttons de selection des element de l'étiquette
-for (let i = 1; i < 4; i++) 
+for (let i = 1; i < Object.keys(_CONFIG.sticker).length; i++) 
     getElement('sticker' + i).addEventListener('click', function() { selectElement("sticker" + i)});
 
 // Action de changement de la séléction d'un élément d'étiquette
@@ -111,6 +113,14 @@ function changeAlign(align) {
     document.getElementById("etiquette").value = JSON.stringify(tmp);
     document.getElementById(document.getElementById("elementLabel").innerText).align = align;
 };
+
+// Button Alignement gauche
+document.getElementById('textSize').addEventListener('change', function() {
+    const tmp = toJson("etiquette");
+    tmp[document.getElementById("elementLabel").innerText].size = textSize.value;
+    document.getElementById("etiquette").value = JSON.stringify(tmp);
+    document.getElementById(document.getElementById("elementLabel").innerText).style.fontSize = textSize.value;
+});
 
 // Button Alignement gauche
 document.getElementById('btn-alignleft').addEventListener('click', function() {

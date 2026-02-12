@@ -10,10 +10,19 @@ document.addEventListener("DOMContentLoaded", function () {
 		container: "#jsonTable",
 		globalSearch: "#globalSearch",
 		pagination: "#pagination",
+		printUrl: "printEchantillon.html",
 		print: true,
 		edit: true,
 		columns: [
 			{ key: "ID", title: "ID", searchType: false },
+			{
+				key: "eye",
+				title: "+",
+                message: "Ajouter à la série",
+                icon: "bi bi-plus",
+                class: "btn btn-primary btn-sm edit-btn",
+				searchType: "button"
+			},
 			{
 				key: "programme",
 				title: "Programme",

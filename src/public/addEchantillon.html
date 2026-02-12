@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/modal.css">
     <link rel="stylesheet" href="./css/splitter.css">
+    <link rel="stylesheet" href="./css/etiquettes.css">
 
 </head>
 
@@ -56,7 +57,7 @@
                                     <label for="type" class=".label-standard">Type de prélévement</label>
                                     <select class="form-control" id="type" name="type" maxlength="15">
                                         <option selected="selected">---- Aucun ----</option>
-                                        <option >Sols cultivé</option>
+                                        <option >Sol cultivé</option>
                                         <option>Eau</option>
                                     </select>
                                     <div class="error-message" id="type-error">Type de prélévement obligatoire</div>
@@ -256,8 +257,15 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <label>Alignement</label>
                                 <div class="btn-group">
+                                    <label>Format :&nbsp;<br>Texte</label>
+                                    <select id="textSize">
+                                        <option >8px</option>
+                                        <option selected>10px</option>
+                                        <option>12px</option>
+                                        <option>14px</option>
+                                        <option>16px</option>
+                                    </select>                                    
                                     <button class="btn btn-alignleft" id="btn-alignleft"> <i class="fas fa-align-left"></i> </button>
                                     <button class="btn btn-aligncenter" id="btn-aligncenter"> <i class="fas fa-align-center"></i> </button>
                                     <button class="btn btn-alignright" id="btn-alignright"> <i class="fas fa-align-right"></i> </button>
@@ -271,6 +279,10 @@
                                     <div class="sticker1" id="sticker1">element1</div>
                                     <div class="sticker2" id="sticker2">element2</div>
                                     <div class="sticker3" id="sticker3">element3</div>
+                                    <div class="sticker4" id="sticker4">element4</div>
+                                    <div class="sticker5" id="sticker5">element5</div>
+                                    <div class="sticker6" id="sticker6">element6</div>
+                                    <div class="sticker7" id="sticker7">element7</div>
                                 </div>
                             </div>
                             

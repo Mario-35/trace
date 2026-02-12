@@ -188,11 +188,11 @@ function refresh() {
         .blank(0) // Create space between the barcodes
         .render();
     } 
-    // if(_DEBUG === false) {
+    if(_DEBUG === false) {
         hide("stockage");
         hide("etiquette");
         hide("cultures");
-    // }    
+    }    
 }
 
 function loadEchantillonLine(index) {

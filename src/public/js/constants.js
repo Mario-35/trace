@@ -7,6 +7,15 @@ var _DEBUG = true;
 var _PASSPORT = undefined;
 // authorized columns
 const _EXCELCOLS = [ "programme", "echantillon", "site", "responsable", "pays", "region", "pointx", "pointy", "prelevement", "peremption", "libre"];
+
+function createBlankKeySticker(name, value) {
+    return {
+        "key": value || "type",
+        "align": "center",
+        "size": "12px"
+    }
+}
+
 var _CONFIG = {
   "code": 'FR',
   "region": 'Bretagne',
@@ -20,22 +29,14 @@ var _CONFIG = {
   ],
   "identifiant": 'BR13551',
   "sticker" : {
-        "sticker0": {
-            "key": "identification",
-            "align": "center"
-        },
-        "sticker1": {
-            "key": "programme",
-            "align": "center"
-        },
-        "sticker2": {
-            "key": "site",
-            "align": "center"
-        },
-        "sticker3": {
-            "key": "responsable",
-            "align": "center"
-        }
+        "sticker0": createBlankKeySticker("", "identification"),
+        "sticker1": createBlankKeySticker("", "prelevement"),
+        "sticker2": createBlankKeySticker("", "peremption"),
+        "sticker3": createBlankKeySticker("", "programme"),
+        "sticker4": createBlankKeySticker("", "site"),
+        "sticker5": createBlankKeySticker("", "responsable"),
+        "sticker6": createBlankKeySticker("", "pays"),
+        "sticker7": createBlankKeySticker("", "libre")
     },
     "stickerElements": [ "type", "programme", "site", "responsable", "pays", "region", "identification", "prelevement", "peremption", "libre"],
     "etatElements": ["Créer", "Prélevé", "Stocké", "Perdu", "Detruit", "Divisé",], 

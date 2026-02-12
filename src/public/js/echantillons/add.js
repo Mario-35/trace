@@ -63,7 +63,7 @@ function validateStep2() {
         if (validateStr('pointy') === false) isValid = false; 
     }
 
-    if(type.value === "Sols cultivé") {
+    if(type.value === "Sol cultivé") {
         // The only way to test if in edit passport and not to be confused with view passport
         if (getElement("region").value !== _CONFIG.region) {
             if (getElement('passeportNom-error')) {

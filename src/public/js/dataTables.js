@@ -18,6 +18,7 @@ class JsonTable {
 		this.print = options.print || false; // print icon 
 		this.edit = options.edit || false; // edit icon 
 		this.see = options.see || false; // see icon 
+		this.printUrl = options.printUrl || false; // printUrl icon 
 		this.select = options.select || false; // edit icon 
 		this.toastWrapper = options.toastWrapper || ""; // Added toastWrapper
 		this.toastBody = options.toastBody || ""; // Added toastBody
@@ -113,61 +114,70 @@ class JsonTable {
 			const label = document.createElement("label");
 			label.innerHTML = column.title || column.key;
 			th.appendChild(label);
-			if (column.searchType === "select") {
-				const select = document.createElement("select");
-				select.className = "form-control";
-				select.innerHTML = `<option value="">Tous</option>`;
-				const uniqueValues = [...new Set(this.data.map((row) => row[column.key]))];
-				uniqueValues.forEach((value) => {
-					const option = document.createElement("option");
-					option.textContent = value;
-					option.value = value;
-					select.appendChild(option);
-				});
-				select.addEventListener("change", (e) =>
-					this.filterColumn(column.key, e.target.value)
-				);
-				th.appendChild(select);
-			} else if (column.searchType === "excel") {
-				th.setAttribute("style", this.headerAttribute());
-				const select = document.createElement("select");
-				select.className = "form-control";
-				select.classList.add("excel-control");
-				select.innerHTML = `<option value="">Aucun</option>`;
-				_EXCELCOLS.forEach((value) => {
-					const option = document.createElement("option");
-					option.textContent = value;
-					option.value = column.key + "|" +value;
-					select.appendChild(option);
-				});
-				th.appendChild(select);	
-				
-				select.addEventListener("change", (e) => {
-					if (e.target.value)
-					e.target.classList.add("something");
-					else e.target.classList.remove("something");
-					this.filterBlankColumn();
-				}
-			);				
+			switch (column.searchType) {
+				case "button":
+					const buttonEdit = document.createElement("button");
+					buttonEdit.className = "btn btn-success btn-sm";
+					buttonEdit.innerHTML = '<i title="editer toute la selection" class="bi bi-eye" id="seeAll"></i>';
+					th.appendChild(buttonEdit);					
 
-
-			} else if (column.searchType === "boolean") {
-				const select = document.createElement("select");
-				select.className = "form-control";
-				select.innerHTML = `<option value="">Etat</option><option value="true">✔️️</option> <option value="false">❌</option>`;
-				select.addEventListener("change", (e) =>
-					this.filterColumn(column.key, e.target.value)
-				);
-				th.appendChild(select);
-			} else if (column.searchType !== false) {
-				const input = document.createElement("input");
-				input.type = "text";
-				input.className = "form-control";
-				input.placeholder = `${column.key}`;
-				input.addEventListener("input", (e) =>
-					this.filterColumn(column.key, e.target.value)
-				);
-				th.appendChild(input);
+				break;
+				case "select":
+					const selectSelect = document.createElement("select");
+					selectSelect.className = "form-control";
+					selectSelect.innerHTML = `<option value="">Tous</option>`;
+					const uniqueValues = [...new Set(this.data.map((row) => row[column.key]))];
+					uniqueValues.forEach((value) => {
+						const option = document.createElement("option");
+						option.textContent = value;
+						option.value = value;
+						selectSelect.appendChild(option);
+					});
+					selectSelect.addEventListener("change", (e) =>
+						this.filterColumn(column.key, e.target.value)
+					);
+					th.appendChild(selectSelect);					
+					break;
+				case "excel":
+					th.setAttribute("style", this.headerAttribute());
+					const selectExcel = document.createElement("select");
+					selectExcel.className = "form-control";
+					selectExcel.classList.add("excel-control");
+					selectExcel.innerHTML = `<option value="">Aucun</option>`;
+					_EXCELCOLS.forEach((value) => {
+						const option = document.createElement("option");
+						option.textContent = value;
+						option.value = column.key + "|" +value;
+						selectExcel.appendChild(option);
+					});
+					th.appendChild(selectExcel);	
+					
+					selectExcel.addEventListener("change", (e) => {
+						if (e.target.value)
+						e.target.classList.add("something");
+						else e.target.classList.remove("something");
+						this.filterBlankColumn();
+					});
+					break;
+				case "boolean":
+					const selectBoolean = document.createElement("select");
+					selectBoolean.className = "form-control";
+					selectBoolean.innerHTML = `<option value="">Etat</option><option value="true">✔️️</option> <option value="false">❌</option>`;
+					selectBoolean.addEventListener("change", (e) =>
+						this.filterColumn(column.key, e.target.value)
+					);
+					th.appendChild(selectBoolean);					
+					break;				
+				default:
+					const input = document.createElement("input");
+					input.type = "text";
+					input.className = "form-control";
+					input.placeholder = `${column.key}`;
+					input.addEventListener("input", (e) =>
+						this.filterColumn(column.key, e.target.value)
+					);
+					th.appendChild(input);					
+					break;
 			}
 			headerRow.appendChild(th);
 		});
@@ -227,16 +237,17 @@ class JsonTable {
 				if (!["selected"].includes(key)) {
 					const td = document.createElement("td");
 					const tmp = this.columns.find((col) => col.key === key);
-					let content = row[key];
 					if (tmp) {
 						switch (tmp.searchType) {
+							case 'button':
+								td.innerHTML = `<button class="${tmp.class}" data-row="${row.id}"><i title="${tmp.message}" class="${tmp.icon}" id="${row.id}"></i></button>`;
+								break;								
 							case 'date':
 								td.textContent = row[key].split('T')[0] 
 								break;
 							case 'boolean':
 								td.textContent = row[key] === true ? '✔️️' : '❌';
-								break;
-						
+								break;						
 							default:
 								td.textContent = row[key];
 								break;
@@ -249,7 +260,7 @@ class JsonTable {
 			if (this.print === true) 
 				tr.insertAdjacentHTML(
 					"beforeend",
-					`<td><button class="btn btn-primary btn-sm edit-btn"><i title="Imprimer l'étiquette" class="bi bi-printer" id="${row.id}"></i></button></td>`
+					`<td><button class="btn btn-primary btn-sm print-btn"><i title="Imprimer l'étiquette" class="bi bi-printer" id="${row.id}"></i></button></td>`
 				);
 
 			tableBody.appendChild(tr);
@@ -261,7 +272,9 @@ class JsonTable {
 				btn.addEventListener("click", (e) => 
 					open(this.addUrl + "?id=" + e.target.id, self)
 				)
-			); else if (this.select === true) {
+			); 
+
+		if (this.select === true) {
 				document.getElementById("id-select").addEventListener("change", (e) => this.filterSelected(e.target.value ));
 				this.container
 			.querySelectorAll(".select-btn")
@@ -273,7 +286,17 @@ class JsonTable {
 				} 
 				)
 			);
-		} else if (this.see === true) this.container
+		} 
+		
+		if (this.print === true) this.container
+			.querySelectorAll(".print-btn")
+			.forEach((btn) =>
+				btn.addEventListener("click", (e) => 
+					open(this.printUrl + "?id=" + e.target.id, self)
+				)
+			);
+
+		if (this.see === true) this.container
 			.querySelectorAll(".see-btn")
 			.forEach((btn) =>
 				btn.addEventListener("click", (e) => 

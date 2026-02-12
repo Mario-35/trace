@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		jsonUrl: window.location.origin + "/passeports",
 		addUrl: "/addPasseport.html",
 		seeUrl: "/echantillons.html",
+		printUrl: "printPasseport.html",
 		rowsPerPage: 10,
 		container: "#jsonTable",
 		globalSearch: "#globalSearch",
@@ -10,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		print: true,
 		edit: false,
 		see: true,
+
 		columns: [
 			{ key: "ID", title: "ID", searchType: false },
 			{
@@ -30,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			{
 				key: "code",
 				title: "Code",
-				searchType: "select"
+				searchType: "text"
 			},
 		]
 	});
