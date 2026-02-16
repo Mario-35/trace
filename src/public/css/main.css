@@ -48,10 +48,16 @@ body {
    width: 1%;
 }
 
-/* select{ width:200px;
-} */
-
 .DropDownInputOverride { 
-width:170px;
-display:none;
+    width:170px;
+    display:none;
+}
+
+
+.invisible {
+    display: none;
+}
+
+.visible {
+    display: block;
 }

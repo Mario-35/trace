@@ -64,6 +64,7 @@ function validateStep2() {
     }
 
     if(type.value === "Sol cultivé") {
+        if (["edit", "edits", "add"].includes(_MODE)) return isValid;
         // The only way to test if in edit passport and not to be confused with view passport
         if (getElement("region").value !== _CONFIG.region) {
             if (getElement('passeportNom-error')) {
@@ -71,7 +72,8 @@ function validateStep2() {
                 getElement('create-error').style.display = 'block';
                 isValid = false;  
             }
-            if (getElement('btn-passeport-create') && validateFile('image') === false) isValid = false;   
+            // If passeport not exit 
+             if (getElement('btn-passeport-create') && validateFile('image') === false) isValid = false;   
         }
         if (notNull("cultures") === false) isValid = false;   
         else if (getElement("region").value !== _CONFIG.region && getElement('btn-passeport-create')) {

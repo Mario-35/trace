@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
 	const table = new JsonTable({
 		jsonUrl: window.location.origin + "/passeports",
-		addUrl: "/addPasseport.html",
-		seeUrl: "/echantillons.html",
-		printUrl: "printPasseport.html",
+		editUrl: "/addPasseport.html",
+		printUrl: "/passeport/",
 		rowsPerPage: 10,
 		container: "#jsonTable",
 		globalSearch: "#globalSearch",

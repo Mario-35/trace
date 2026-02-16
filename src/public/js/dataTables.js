@@ -4,8 +4,9 @@ class JsonTable {
 	mariol = [];
 	constructor(options) {
 		this.jsonUrl = options.jsonUrl || "";
-		this.addUrl = options.addUrl || "";
-		this.seeUrl = options.seeUrl || "";
+		this.seeUrl  = options.seeUrl || "";
+		this.editUrl = options.editUrl || undefined;
+		this.printUrl = options.printUrl || undefined; // printUrl icon 
 		this.rowsPerPage = options.rowsPerPage || 1000;
 		this.container = document.querySelector(options.container || "#jsonTable");
 		this.globalSearchInput = document.querySelector(
@@ -15,10 +16,7 @@ class JsonTable {
 			options.pagination || "#pagination"
 		);
 		this.columns = options.columns || []; // Array of objects defining column settings
-		this.print = options.print || false; // print icon 
-		this.edit = options.edit || false; // edit icon 
 		this.see = options.see || false; // see icon 
-		this.printUrl = options.printUrl || false; // printUrl icon 
 		this.select = options.select || false; // edit icon 
 		this.toastWrapper = options.toastWrapper || ""; // Added toastWrapper
 		this.toastBody = options.toastBody || ""; // Added toastBody
@@ -32,6 +30,7 @@ class JsonTable {
 
 		this.init();
 	}
+
 
 	async init() {
 		await this.fetchData();
@@ -103,10 +102,8 @@ class JsonTable {
 		const tableHeader = this.container.querySelector("thead");
 		tableHeader.innerHTML = "<tr></tr>";
 		const headerRow = tableHeader.querySelector("tr");
-		if (this.edit === true)
-			headerRow.insertAdjacentHTML("afterbegin", `<th><button class="btn btn-success btn-sm"><i title="editer toute la selection" class="bi bi-pencil-square" id="editAll"></i></button></th>`);
-		if (this.see === true)
-			headerRow.insertAdjacentHTML("afterbegin", `<th><button class="btn btn-success btn-sm"><i title="editer toute la selection" class="bi bi-eye" id="seeAll"></i></button></th>`);
+		if (this.editUrl)
+			headerRow.insertAdjacentHTML("afterbegin", `<th><button class="btn btn-success btn-sm" id="editAll">${svgs("edit")}</button></th>`);
 		if (this.select === true) 
 			headerRow.insertAdjacentHTML("afterbegin", `<th style="${this.headerAttribute()}"><label>Filter</label><select id="id-select" class="form-control excel-control"> <option value="">tout</option> <option value="true">✔️️</option> <option value="false">❌</option> </select></th>`);
 		this.columns.filter(e => e.key.toUpperCase() !== 'ID').forEach((column) => {
@@ -116,10 +113,12 @@ class JsonTable {
 			th.appendChild(label);
 			switch (column.searchType) {
 				case "button":
-					const buttonEdit = document.createElement("button");
-					buttonEdit.className = "btn btn-success btn-sm";
-					buttonEdit.innerHTML = '<i title="editer toute la selection" class="bi bi-eye" id="seeAll"></i>';
-					th.appendChild(buttonEdit);					
+					if (column.header) {
+						const buttonEdit = document.createElement("button");
+						buttonEdit.className = "btn btn-success btn-sm";
+						buttonEdit.innerHTML = '<i title="editer toute la selection" class="bi bi-eye" id="seeAll"></i>';
+						th.appendChild(buttonEdit);					
+					}
 
 				break;
 				case "select":
@@ -181,17 +180,17 @@ class JsonTable {
 			}
 			headerRow.appendChild(th);
 		});
-		if (this.print === true) 
-			headerRow.insertAdjacentHTML("beforeend", `<th><button class="btn btn-success btn-sm"><i title="Imprimer toutes les étiquette" class="bi bi-printer" id="printAll"></i></button></th>`);
+		if (this.printUrl) 
+			headerRow.insertAdjacentHTML("beforeend", `<th><button class="btn btn-success btn-sm" id="printAll">${svgs("printer")}</button></th>`);
 		let elem = getElement("editAll");
 		if (elem) elem.addEventListener("click", async (e) => {
         	const temp = await posttDatas(window.location.origin + '/selection', {ids: this.filteredData.map(e => e.id)});
-			if (temp) open(this.addUrl + "?selection=" + temp[0].id, self);
+			if (temp) open(this.editUrl + "?selection=" + temp[0].id, self); 
 		});		
 		elem = getElement("printAll");
 		if (elem) elem.addEventListener("click", async (e) => {
-        	console.log("############################ Print atiquettes  ############################");
-        	console.log({ids: this.filteredData.map(e => e.id)});
+        	const temp = await posttDatas(window.location.origin + '/selection', {ids: this.filteredData.map(e => e.id)});
+			if (temp) open(window.location.origin + '/print/' + "selection/" + temp[0].id, self);   
 		});		
 	}
 
@@ -219,18 +218,15 @@ class JsonTable {
 
 		rows.slice(start, end).forEach((row) => {
 			const tr = document.createElement("tr");
-			if (this.edit === true)
+			tr.id = row.id;
+			if (this.editUrl)
 			tr.insertAdjacentHTML(
 				"afterbegin",
-				`<td><button class="btn btn-primary btn-sm edit-btn" data-row="${row.id}"><i title="editer la ligne" class="bi bi-pencil-square" id="${row.id}"></i></button></td>`
+				`<td><button class="btn btn-primary btn-sm edit-btn">${svgs("edit")}</button></td>`
 			); else if (this.select === true)
 			tr.insertAdjacentHTML(
 				"afterbegin",
 				`<td><input class="select-btn" type="checkbox" ${String(row.selected) == 'true' ? 'checked' : ''} data-row="${row.id}"></td>`
-			); else if (this.see === true)
-			tr.insertAdjacentHTML(
-				"afterbegin",
-				`<td><button class="btn btn-primary btn-sm see-btn" data-row="${row.id}"><i title="editer la ligne" class="bi bi-eye" id="${row.id}"></i></button></td>`
 			);
 			Object(this.columns.filter(e => e.key.toUpperCase() !== 'ID')).forEach((column) => {	
 				const key = column.key;	;
@@ -240,7 +236,7 @@ class JsonTable {
 					if (tmp) {
 						switch (tmp.searchType) {
 							case 'button':
-								td.innerHTML = `<button class="${tmp.class}" data-row="${row.id}"><i title="${tmp.message}" class="${tmp.icon}" id="${row.id}"></i></button>`;
+								td.innerHTML = `<a href="${tmp.url + row.id}" class="btn btn-primary btn-sm" role="button">${tmp.icon}</a> `;
 								break;								
 							case 'date':
 								td.textContent = row[key].split('T')[0] 
@@ -257,21 +253,19 @@ class JsonTable {
 				}
 			});
 
-			if (this.print === true) 
+			if (this.printUrl) 
 				tr.insertAdjacentHTML(
 					"beforeend",
-					`<td><button class="btn btn-primary btn-sm print-btn"><i title="Imprimer l'étiquette" class="bi bi-printer" id="${row.id}"></i></button></td>`
+					`<td"><button class="btn btn-primary btn-sm print-btn">${svgs("printer")}</button></td>`
 				);
 
 			tableBody.appendChild(tr);
 		});
 		
-		if (this.edit === true) this.container
+		if (this.editUrl) this.container
 			.querySelectorAll(".edit-btn")
 			.forEach((btn) =>
-				btn.addEventListener("click", (e) => 
-					open(this.addUrl + "?id=" + e.target.id, self)
-				)
+				btn.addEventListener("click", (e) => open(this.editUrl + "?id=" + e.target.parentNode.closest('tr').id, self))
 			); 
 
 		if (this.select === true) {
@@ -288,20 +282,11 @@ class JsonTable {
 			);
 		} 
 		
-		if (this.print === true) this.container
+		if (this.printUrl) this.container
 			.querySelectorAll(".print-btn")
 			.forEach((btn) =>
 				btn.addEventListener("click", (e) => 
-					open(this.printUrl + "?id=" + e.target.id, self)
-				)
-			);
-
-		if (this.see === true) this.container
-			.querySelectorAll(".see-btn")
-			.forEach((btn) =>
-				btn.addEventListener("click", (e) => 
-					open(this.seeUrl + "?passeport=" + e.target.id, self)
-				)
+					open(window.location.origin + '/print' + this.printUrl + e.target.parentNode.closest('tr').id, self))
 			);
 	}
 

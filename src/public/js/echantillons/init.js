@@ -5,23 +5,22 @@ if(window.location.href.includes('?passeport='))
 document.addEventListener("DOMContentLoaded", function () {
 	const table = new JsonTable({
 		jsonUrl: window.location.origin + "/echantillons" + `${id > 0 ? '/' + id : ""}`,
-		addUrl: "/addEchantillon.html",
+		editUrl: "/addEchantillon.html",
+		printUrl: "/echantillon/",
 		rowsPerPage: 10,
 		container: "#jsonTable",
 		globalSearch: "#globalSearch",
 		pagination: "#pagination",
-		printUrl: "printEchantillon.html",
-		print: true,
-		edit: true,
 		columns: [
 			{ key: "ID", title: "ID", searchType: false },
 			{
-				key: "eye",
-				title: "+",
+				key: "Add",
+				title: "&nbsp;",
+                header: undefined,
                 message: "Ajouter à la série",
-                icon: "bi bi-plus",
-                class: "btn btn-primary btn-sm edit-btn",
-				searchType: "button"
+                icon: svgs("plus"),
+				searchType: "button",
+                url: "addEchantillon.html?after=",
 			},
 			{
 				key: "programme",
@@ -127,3 +126,8 @@ function handleFileSelect(evt) {
         open("./addEchantillon.html?excel=" + JSON.parse(response)[0].id);
     }); 
 }
+
+
+getElement("ajouter").innerHTML = svgs("dbAdd", "Ajouter");
+getElement("fileonelabel").innerHTML = svgs("download", "Fichier Excel");
+getElement("globalSearchIcon").innerHTML = svgs("search");

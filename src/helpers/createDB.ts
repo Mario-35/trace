@@ -1,5 +1,4 @@
-import { admin, sql } from "../db";
-import { executeSql } from "../db/executeSql";
+import { admin, executeSql } from "../db";
 import { asyncForEach } from "./asyncForEach";
 
 
@@ -20,7 +19,7 @@ const queries = [`CREATE TABLE passeports (
                 programme varchar(25) NOT NULL,
                 site varchar(25) NOT NULL,
                 responsable varchar(25) NOT NULL,
-                identification varchar(16) NOT NULL,
+                identification varchar(16) UNIQUE NOT NULL,
                 parent varchar(16) NOT NULL,
                 libre varchar(30) NULL,
                 prelevement date NOT NULL,

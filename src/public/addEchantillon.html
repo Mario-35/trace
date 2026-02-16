@@ -8,11 +8,12 @@
     <!-- <link rel='stylesheet' href='./css/bootstrap.min.css'> -->
     <link rel="stylesheet" href="./css/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="./css/form.css">
+    <link rel="stylesheet" href="./css/printEchantillon.css">
+    <!-- printEchantillon.css important to be before form -->
+    <link rel="stylesheet" href="./css/form/main.css">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/modal.css">
     <link rel="stylesheet" href="./css/splitter.css">
-    <link rel="stylesheet" href="./css/etiquettes.css">
 
 </head>
 
@@ -96,6 +97,7 @@
                                     <input id="peremption" name="peremption" class="form-control" type="date" />
                                     <div class="error-message" id="peremption-error">Sera fixé a 5 ans</div>
                                 </div>
+
                                 <div class="form-group row-2">
                                     <label for="libre">Infos libre</label>
                                     <input type="text" id="libre" name="libre" class="form-control" maxlength="30" placeholder="Infos libre" />
@@ -129,17 +131,23 @@
                                     <div class="error-message" id="responsable-error">Numéro d'échantillon obligatoire</div>
                                 </div>
                             </div>
-                            <div class="form-row">                       
-                                    <label for="row" id="rowNumber"></label>
-                            </div>
                             <div class="form-row">                     
-                                    <div class="fillFull" id="rowLines" > </div>
+                                <div class="fillFull" id="rowLines" > </div>
                             </div>  
+                            <div class="form-row">                       
+                                <div class="form-group row-1 invisible">
+                                    <label for="row" id="rowNumber"></label>
+                                </div>
+                            </div>
                             
                             <div id="blockDemo" class="form-row">
                                 <div class="form-group row-1">                                
                                     <label for="demos">Données de démonstration</label>
                                     <select class="form-control" id="demos"></select>                
+                                </div>  
+                                <div class="form-group row-1">                                
+<button class="btn" id="testModal"> Modal
+                                </button>            
                                 </div>  
                             </div>  
                             
@@ -274,7 +282,7 @@
                             <div class="form-row">
                                 <div class="sticker">
                                     <div class="sticker0" id="sticker0">
-                                        <svg id="stickerCb"></svg>
+                                        <img width="100%" height="75%" src="./assets/barreCode.png">
                                     </div>
                                     <div class="sticker1" id="sticker1">element1</div>
                                     <div class="sticker2" id="sticker2">element2</div>
@@ -284,6 +292,9 @@
                                     <div class="sticker6" id="sticker6">element6</div>
                                     <div class="sticker7" id="sticker7">element7</div>
                                 </div>
+                            </div>
+                            <div class="form-row">
+                                 <div class="form-group row-1"></div>
                             </div>
                             
                             <div class="btn-group">
@@ -301,6 +312,8 @@
             </div>
         </main> 
     </form>
+    <div id="adam"> 
+    </div>
     <div class="modal-container">
       <input id="modal-toggle" type="checkbox">
       <label class="modal-backdrop" id="modal-ouside"></label>  
@@ -310,17 +323,17 @@
 </body> 
 
 <script src="./js/constants.js"></script>
+<script src="./js/all.js"></script>
 <script src="./js/splitter.js"></script>
 <script src="./js/menu.js"></script>
-<script src="./js/all.js"></script>
 <script src="./js/form.js"></script>
 <script src="./js/codes.js"></script>
 <script src="./js/api.js"></script>
 <script src="./js/helper.js"></script>
 <script src="./js/modal.js"></script>
-<script src="./js/JsBarcode.all.min.js"></script>
 <script src="./js/echantillons/demo.js"></script>
 <script src="./js/echantillons/add.js"></script>
 <script src="./js/echantillons/event.js"></script>    
 <script src="./js/echantillons/data.js"></script>
+<script src="./js/echantillons/specific/solCultive.js"></script>
 </html>

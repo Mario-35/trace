@@ -1,6 +1,6 @@
 .container {
     width: 90%;
-    background: white;
+    background: rgb(219 219 219);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     overflow: hidden;
@@ -158,12 +158,13 @@
 }
 
 .row-1 {
-    flex: 1;
-    
+    flex: 1;    
 }
+
 .row-2 {
     flex: 2; 
 }
+
 .row-3 {
     flex: 2; 
 }
@@ -297,6 +298,7 @@
     opacity: 1;
 }
 
+
 .table-year, .table-stockage {
    border-collapse: collapse;
    width: 100%;
@@ -304,177 +306,64 @@
 
 .table-year th, .table-stockage th {
    background-color: #3d6e9e;
+    text-align: center;
    color: #ddd;
    font-size: 16px;
    width: 25px;
 }
 
 .table-year td, .table-stockage td {
-    border: 1px solid #ddd;
+    border: 1px solid #9b9393;
     font-size: 16px;
     text-align: center;
     color: #333;
     padding: 2px 5px;
 }
 
-/* .table-stockage tr:hover {
-   background: #ddd;
-   color: #000;
-} */
-
 .table-year td:hover {
    background: #ddd;
    color: #000;
 }
 
-.invisible {
-    display: none;
-}
-
-.visible {
-    display: block;
-}
 
 
-.rocker {
-  display: inline-block;
-  position: relative;
-  /*
-  SIZE OF SWITCH
-  ==============
-  All sizes are in em - therefore
-  changing the font-size here
-  will change the size of the switch.
-  See .rocker-small below as example.
-  */
-  font-size: 2em;
-  font-weight: bold;
-  text-align: center;
-  text-transform: uppercase;
-  color: #888;
-  width: 7em;
-  height: 4em;
-  overflow: hidden;
-  border-bottom: 0.5em solid #eee;
-}
 
-.rocker-small {
-  font-size: 0.75em; /* Sizes the switch */
-  margin: 1em;
-}
 
-.rocker::before {
-  content: "";
-  position: absolute;
-  top: 0.5em;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #999;
-  border: 0.5em solid #eee;
-  border-bottom: 0;
-}
 
-.rocker input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
 
-.switch-left,
-.switch-right {
-  cursor: pointer;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 2.5em;
-  width: 3em;
-  transition: 0.2s;
-}
 
-.switch-left {
-  height: 2.4em;
-  width: 2.75em;
-  left: 0.85em;
-  bottom: 0.4em;
-  background-color: #ddd;
-  transform: rotate(15deg) skewX(15deg);
-}
 
-.switch-right {
-  right: 0.5em;
-  bottom: 0;
-  background-color: #bd5757;
-  color: #fff;
-}
 
-.switch-left::before,
-.switch-right::before {
-  content: "";
-  position: absolute;
-  width: 0.4em;
-  height: 2.45em;
-  bottom: -0.45em;
-  background-color: #ccc;
-  transform: skewY(-65deg);
-}
 
-.switch-left::before {
-  left: -0.4em;
-}
 
-.switch-right::before {
-  right: -0.375em;
-  background-color: transparent;
-  transform: skewY(65deg);
-}
 
-input:checked + .switch-left {
-  background-color: #0084d0;
-  color: #fff;
-  bottom: 0px;
-  left: 0.5em;
-  height: 2.5em;
-  width: 3em;
-  transform: rotate(0deg) skewX(0deg);
-}
 
-input:checked + .switch-left::before {
-  background-color: transparent;
-  width: 3.0833em;
-}
 
-input:checked + .switch-left + .switch-right {
-  background-color: #ddd;
-  color: #888;
-  bottom: 0.4em;
-  right: 0.8em;
-  height: 2.4em;
-  width: 2.75em;
-  transform: rotate(-15deg) skewX(-15deg);
-}
 
-input:checked + .switch-left + .switch-right::before {
-  background-color: #ccc;
-}
 
-/* Keyboard Users */
-input:focus + .switch-left {
-  color: #333;
-}
 
-input:checked:focus + .switch-left {
-  color: #fff;
-}
 
-input:focus + .switch-left + .switch-right {
-  color: #fff;
-}
 
-input:checked:focus + .switch-left + .switch-right {
-  color: #333;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .text-danger {
     color: red;;
@@ -488,63 +377,6 @@ input:checked:focus + .switch-left + .switch-right {
 
 
 
-.range-slider.grad {
-  --progress-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2) inset;
-  --progress-flll-shadow: var(--progress-shadow);
-  --fill-color: linear-gradient(to right, LightCyan, var(--primary-color));
-  --thumb-shadow: 0 0 4px rgba(0, 0, 0, 0.3),
-    -3px 9px 9px rgba(255, 255, 255, 0.33) inset,
-    -1px 3px 2px rgba(255, 255, 255, 0.33) inset,
-    0 0 0 99px var(--primary-color) inset;
-}
-.range-slider.grad input:hover {
-  --thumb-transform: scale(1.2);
-}
-.range-slider.grad input:active {
-  --thumb-shadow: inherit;
-  --thumb-transform: scale(1);
-}
-
-.range-slider.flat {
-  --thumb-size: 25px;
-  --track-height: calc(var(--thumb-size) / 3);
-  --progress-shadow: none;
-  --progress-flll-shadow: none;
-  --thumb-shadow: 0 0 0 7px var(--primary-color) inset, 0 0 0 99px white inset;
-  --thumb-shadow-hover: 0 0 0 9px var(--primary-color) inset,
-    0 0 0 99px white inset;
-  --thumb-shadow-active: 0 0 0 13px var(--primary-color) inset;
-}
-
-.range-slider.overlay {
-  --primary-color: #d6e9ff;
-  --track-height: 50px;
-  --thumb-size: var(--track-height);
-  --thumb-color: var(--primary-color);
-  --thumb-shadow: none;
-  --progress-flll-shadow: none;
-  --progress-shadow: none;
-  --progress-background: none;
-  --progress-radius: 0px;
-  --ticks-color: var(--primary-color);
-  --ticks-height: 0;
-  --ticks-thickness: 0;
-  --ticks-gap: 0px;
-  --min-max-font: 700 18px Arial;
-  --min-max-opacity: 1;
-  --show-min-max: none;
-  color: #0366d6;
-}
-.range-slider.overlay input:hover {
-  --thumb-shadow: calc(25px - (50px * var(--is-left-most))) 0 0 -15px #0366d6
-    inset;
-}
-.range-slider.overlay input:active {
-  --thumb-color: inherit;
-}
-.range-slider.overlay .range-slider__values {
-  width: calc(100% - 50% / (var(--max) - var(--min)));
-}
 
 .fillFull {
 display: flex;
@@ -623,34 +455,9 @@ input[type="range"] {
 }
 
 
-
-
-
-[draggable="true"] {
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
+.sticker * {
+  border: 1px solid black;
+  place-content: center;
 }
-
-#list {
-  list-style: none;
-  margin: 0px;
-  
-}
-#list li {
-    list-style-image: none;
-    margin: 10px;
-    border: 1px solid #ccc;
-    padding: 4px;
-    border-radius: 4px;
-    color: #666;
-    cursor: move;
-  }
-#list li:hover {
-      background-color: #eee;
-    }
-
-
 
 

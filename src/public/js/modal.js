@@ -1,30 +1,76 @@
+function showModalOk(title, message, btns, etiquette, passeport, redirect) {
 
-function modalError(title, message) {
-    document.getElementById("modal").innerHTML = `
-    <label class="modal-close" id="closeX">&#x2715;</label>
-    <h2>${title}</h2><hr />
-    <p>${message}</p> 
-    <label class="modal-content-btn" id="close">OK</label>`;
-    document.getElementById('closeX').addEventListener('click', function() {
-        document.getElementById("modal-toggle").classList.remove('active');
-    });
-    document.getElementById('close').addEventListener('click', function() {
-        document.getElementById("modal-toggle").classList.remove('active');
-    });
-    document.getElementById('close').addEventListener('click', function() {
-        document.getElementById("modal-toggle").classList.remove('active');
-    });
-    document.getElementById('modal-ouside').addEventListener('click', function() {
-        document.getElementById("modal-toggle").classList.remove('active');
-    });
-    document.getElementById("modal-toggle").classList.add('active');
-};
+    getElement("adam").innerHTML =` 
+        <article class="modal">
+            <section class="modal__content modal__ok">
+                <h1 class="modal__heading">${title}</h1>
+                <button id="close" class="modal__close">&times;</button>
+                ${etiquette ? '<label> <input type="checkbox" checked> <span>Imprimer les étiquettes</span> </label>' : '' }
+                ${passeport ? '<label> <input type="checkbox" checked> <span>Imprimer les passeports</span> </label>' : '' }
+                <p class="modal__actions">
+                    ${ btns.includes("oui") ? '<button id="cancel" class="modal__action modal__action--negative">Oui</button>' : ''}
+                    ${ btns.includes("non") ? '<button id="accept" class="modal__action modal__action--positive">Non</button>' : ''}
+                    ${ btns.includes("ok")  ? '<button id="accept" class="modal__action modal__action--ok">Ok</button>' : ''}
+                </p>
+            </section>
+        </article>`;
 
-function modalRedirect(title, message, redirect) {    
-    document.getElementById("modal").innerHTML = `
-    <a href="${redirect}"><label class="modal-close">&#x2715;</label></a>
-    <h2>${title}</h2><hr />
-    <p>${message}</p> 
-    <a href="${redirect}"><label class="modal-content-btn">OK</label></a>`;
-    document.getElementById("modal-toggle").classList.add('active');
+    const modal = document.querySelector('.modal');
+
+    getElement("close").addEventListener('click', (e) => {
+        modal.setAttribute("style", "display:none;");
+    });
+
+    if (getElement("cancel"))
+        getElement("cancel").addEventListener('click', (e) => {
+            modal.setAttribute("style", "display:none;");
+        });
+
+    if (getElement("accept"))
+        getElement("accept").addEventListener('click', (e) => {
+            modal.setAttribute("style", "display:none;");
+        });
+
+    if (getElement("ok"))
+        getElement("ok").addEventListener('click', (e) => {
+            open(redirect, self);
+        });
+
+
+}
+
+function showModalError(title, message) {
+
+    getElement("adam").innerHTML =` 
+        <article class="modal">
+        <section class="modal__content modal__error">
+            <h1 class="modal__heading">${title}</h1>
+            <p class="modal__copy">${message}</p>
+            <button id="close" class="modal__close">&times;</button>
+            <p class="modal__actions">
+                <button id="accept" class="modal__action modal__action--ok">Ok</button>
+            </p>
+        </section>
+        </article> `;
+
+        const modal = document.querySelector('.modal');
+
+        getElement("close").addEventListener('click', (e) => {
+            modal.setAttribute("style", "display:none;");
+        });
+
+        if (getElement("cancel"))
+            getElement("cancel").addEventListener('click', (e) => {
+                modal.setAttribute("style", "display:none;");
+            });
+
+        if (getElement("accept"))
+            getElement("accept").addEventListener('click', (e) => {
+                modal.setAttribute("style", "display:none;");
+            });
+
+        if (getElement("ok"))
+            getElement("ok").addEventListener('click', (e) => {
+                open(tredirect, self)
+            });
 }

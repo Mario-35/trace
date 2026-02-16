@@ -35,14 +35,16 @@ document.getElementById('btn-creer').addEventListener('click', async function() 
             body: JSON.stringify(_DATAS),
         }).then(async response => {
             if (response.status === 201) {
-                modalRedirect(operation, "Tout est ok", "./echantillons.html");
+                const data = await response.json();
+                console.log(data);
+                showModalOk("Ajout echantillon", "Tout est ok", ["ok"], true, true, "./printEchantillon.html?selection="+ data.selection);
             } else {
                 const resJson =  await response.json();
-                modalError(operation, resJson.code + " : " + resJson.error);
+                showModalError(operation, resJson.code + " : " + resJson.error);
             }
         }).catch(err => {
-            modalError(operation, err);
-        });                                                                                                                                                                                                                                                  await response.text();
+            showModalError(operation, err);
+        });
     }
 });
 
@@ -102,7 +104,8 @@ document.getElementById('element').addEventListener("change", function() {
     if (document.getElementById("element").value) {
         tmp[name].key = document.getElementById("element").value;
         document.getElementById("etiquette").value = JSON.stringify(tmp);
-        document.getElementById(name).innerText = document.getElementById(document.getElementById("element").value).value;
+        const key = document.getElementById("element").value;
+        document.getElementById(name).innerText = ["prelevement","peremption"].includes(key) ? formatDate(document.getElementById(key).value) : document.getElementById(key).value;
     }
 });
 
@@ -206,3 +209,8 @@ document.getElementById('region').addEventListener('change', function(event) {
   }
 });
 
+
+
+document.getElementById('testModal').addEventListener('click', function() {
+    showModalError("Ajout echantillon", "Why");
+});

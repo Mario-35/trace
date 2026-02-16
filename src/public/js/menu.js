@@ -159,113 +159,6 @@ function createHTMLcreatePasseport() {
   setDisabled("btn-passeport-create");
 }
 
-function getElement(name) {
-  if (typeof name === "string") {
-    element = document.getElementById(name);
-    if (element) return element;
-    console.log("erreur element ========> " + name);
-  } else return name;
-}
-
-function hide(element) {
-    element = getElement(element);
-    if(element) {
-      element.classList.remove("visible");
-      element.classList.add("invisible");
-    }
-}
-
-function show(element) {
-    element = getElement(element);
-    if(element) {
-      element.classList.remove("invisible");
-      element.classList.add("visible");
-    }
-}
-
-function hideParentClass(elementName, className) {
-    const elem = document.getElementById(elementName);
-      if(elem)
-        hide(elem.parentNode.closest('.' + className));
-}
-
-function setReadOnly(names) {
-    if (typeof names === "string") names = [names];
-    names.forEach(name => {
-        const elem = getElement(name);
-        if (elem) {
-            elem.setAttribute("readonly", "");
-            elem.setAttribute("disabled", "");
-        }
-      });
-}
-
-function removeReadOnly(names) {
-    if (typeof names === "string") names = [names];
-    names.forEach(name => {
-        const elem = getElement(name);
-        if (elem) {
-            elem.removeAttribute("readonly");
-            elem.removeAttribute("disabled");
-        }
-      });
-}
-
-function setDisabled(element) {
-    elem = getElement(element);
-    if(elem) 
-        elem.setAttribute("disabled", "");
-}
-function removeDisabled(element) {
-    elem = getElement(element);
-    if(elem) 
-       elem.removeAttribute("disabled");
-}
-
-// function setDisabled(names) {
-//     if (typeof names === "string") names = [names];
-//     names.forEach(name => {
-//         const elem = getElement(name);
-//         if (elem) elem.setAttribute("disabled", "");
-//       });
-// }
-// function removeDisabled(names) {
-//     if (typeof names === "string") names = [names];
-//     names.forEach(name => {
-//         const elem = getElement(name);
-//         if (elem) elem.removeAttribute("disabled");
-//       });
-// }
-
-function multipleHide(names) {
-    if(typeof names === "string") names = [names];
-    names.forEach(name => {
-        const elem = document.getElementById(name);
-        if(elem)
-          hide(elem.parentNode.closest('.form-group'));
-      });
-}
-
-function multipleShow(names) {
-    if (typeof names === "string") names = [names];
-    names.forEach(name => {
-        const elem = document.getElementById(name);
-        if(elem) 
-          show(elem.parentNode.closest('.form-group'));
-      });
-}
-
-function setVisible(list, visible) {
-    list.forEach(name => {
-      const elem = document.getElementById(name);
-      if (name == visible ) 
-        show(elem);
-      else 
-        hide(elem)
-    });
-}
-
-
 function addToOption(name, listElements, selected) {
     var select = getElement(name);
     if (select) listElements.forEach(e => {
@@ -314,4 +207,17 @@ function loadValues(values, columns) {
     columns.forEach(e => {
         if (values[e]) loadValue(e, values[e]);
     });
+}
+
+function setRange() {
+    // Création du range
+    getElement("rowLines").innerHTML = `<input type="range" min="0" value="0" max="${+_STORE.datas.length}" id="row" /> `;
+    // load first line
+    loadEchantillonLine(0);
+    // show number lines
+    showParentClass("rowNumber",'form-group'); 
+    // event of the range
+    getElement('rowLines').addEventListener('change', function() {
+        loadEchantillonLine(row.value);
+    });    
 }

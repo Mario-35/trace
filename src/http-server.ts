@@ -6,10 +6,11 @@ import compression from "compression";
 import path from "path";
 import { logger } from "@infra/logger";
 import { getRpg } from "./helpers/getRpg"
-import { addEchantillon, addExcel, addPasseport, addSelection, deleteId, getConfiguration, readAll, readAlSearch, readEchantillons, readId, readIds, searchPasseport, setConfiguration, updateEchantillon, updatePasseport, verifyBody } from "./controller";
+import { addExcel, addSelection, getConfiguration, readId, readIds, setConfiguration, verifyBody } from "./controller";
 import {  HELMET } from "./constant";
 import { sql } from "./db";
 import { createDB } from "./helpers/createDB";
+import { echantillonsRoutes, pagesRoutes, passeportssRoutes } from "./app";
 
 
 
@@ -28,6 +29,7 @@ export default class HttpServer {
 
   async createApp(): Promise<Express> {
     this.loadMiddlewares();
+    // this.loadPages();
     this.loadRoutes();
     return this.app;
   }
@@ -40,20 +42,23 @@ export default class HttpServer {
     this.app.use(cors());
     this.app.use( helmet(HELMET) );
     this.app.use(express.json({limit: '50mb'}));
-    // this.app.use(express.static('public'));
     this.app.use(express.static(path.join(__dirname, 'public')));
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(compression());
   }
-
+  
   private loadRoutes(): void {
+
+    this.app.use('/', echantillonsRoutes);
+    this.app.use('/', passeportssRoutes);
+    this.app.use('/', pagesRoutes);
+    
     this.app.get("/", async (_req: Request, res: Response) => {
       res.json({
         message: "Serveur actif...",
       })
     })
-
         // Get test
     this.app.get("/init/:password", async (_req: Request, res: Response) => {
       res.status(200).json(createDB(_req.params["password" as keyof object]))
@@ -106,15 +111,16 @@ export default class HttpServer {
       });
     })
     
-    this.app.get("/health", async (_req: Request, res: Response) => {
+    // return the status server
+    this.app.get("/status", async (_req: Request, res: Response) => {
       res.status(200).json({
-        status: "ok",
+        status: "Serveur actif",
         timestamp: new Date().toISOString(),
         uptime: process.uptime()
       })
     })
 
-    // Get all echantillons
+    // Get all rpg
     this.app.get("/rpg", async (_req: Request, res: Response) => {
       const tmp = _req.url.split("?pos=")[1].split(",");
       return await getRpg(tmp[0] ,tmp[1]).then((rpg: any) => {
@@ -122,57 +128,8 @@ export default class HttpServer {
       }).catch (error => {
         return res.status(404).json({"error": error.detail});
       });
-    });     
-
-    // ########################################################
-    // #                     ECHANTILLONS                     #
-    // ########################################################
-
-    // Get all echantillons
-    this.app.get("/echantillons", async (_req: Request, res: Response) => {
-      const passeports = await readEchantillons();
-      res.status(200).json(passeports)
-    })
-    // Get all echantillons
-    this.app.get("/echantillons/:id", async (_req: Request, res: Response) => {
-      const passeports = await readEchantillons(+_req.params.id);
-      res.status(200).json(passeports)
-    })
-    
-    // Get one echantillon
-    this.app.get("/echantillon/:id", async (_req: Request, res: Response) => {
-      return await readId("echantillons",  +_req.params.id).then((echantillon: any) => {
-        return echantillon.length > 0 
-          ? res.status(200).json(echantillon[0])
-          : res.status(404).json({"code":404,"error":"Not Found"});
-      }).catch (error => {
-        return res.status(404).json({"error": error.detail});
-      });
-    })
-
-    // Create one echantillon
-    this.app.post("/echantillon", async (_req: Request, res: Response) => {
-      return await addEchantillon(_req.body).then((echantillon: any) => {
-        return res.status(201).json(echantillon);
-      }).catch (error => {
-        return res.status(error.code === 23505 ? 409 : 404).json({"error": error.detail});
-      });
-    })
-
-    // Update one echantillon
-    this.app.patch("/echantillon/:id", async (_req: Request, res: Response) => {
-      const echantillon = await updateEchantillon(_req.body,  +_req.params.id);
-      res.status(201).json(echantillon)
-    }); 
-
-    // delete one echantillon
-    this.app.delete("/echantillon/:id", async (_req: Request, res: Response) => {
-      return await deleteId("echantillons",  +_req.params.id).then((nothing: any) => {
-        return res.status(203).json();
-      }).catch (error => {
-        return res.status(404).json({"error": error.detail});
-      });
     });
+    
 
 
     // ########################################################
@@ -223,67 +180,6 @@ export default class HttpServer {
       });
     })
 
-    // ########################################################
-    // #                      PASSEPORTS                      #
-    // ########################################################
-
-    // Get all passeports
-    this.app.get("/passeports", async (_req: Request, res: Response) => {
-      if(_req.query.search)
-        return await readAlSearch("passeports", String(_req.query.search)).then((passeport: any) => {
-      return res.status(200).json(passeport);
-    }).catch (error => {
-      return res.status(404).json({"error": error.detail});
-    });  else return await readAll("passeports").then((passeport: any) => {
-      return res.status(200).json(passeport);
-    }).catch (error => {
-      return res.status(404).json({"error": error.detail});
-    });
-  });
-    
-
-    // Get one passeport
-    this.app.get("/passeport/:id", async (_req: Request, res: Response) => {
-      return await readId("passeports",  +_req.params.id).then((passeport: any) => {
-        return passeport.length > 0 
-        ? res.status(200).json(passeport[0])
-        : res.status(404).json({"code":404,"error":"Not Found"});
-      }).catch (error => {
-        return res.status(404).json({"error": error.detail});
-      });
-    });  
-
-    // Create one passeport
-    this.app.post("/passeport", async (_req: Request, res: Response) => {
-      const values = verifyBody(_req.body);
-      if(values) {
-        return await addPasseport(values).then((passeport: any) => {
-          return res.status(201).json(passeport[0]);
-        }).catch (error => {
-          console.log(error);
-          return res.status(error.code === 23505 ? 409 : 404).json({"error": error.detail});
-        });
-      } else res.status(400).json({"code" : 400, "error" : "Bad Request"});
-    });
-
-    // Update one passeport
-    this.app.patch("/passeport/:id", async (_req: Request, res: Response) => {
-      return await updatePasseport(_req.body,  +_req.params.id).then((passeport: any) => {
-        return res.status(201).json(passeport);
-      }).catch (error => {
-        return res.status(404).json({"error": error.detail});
-      });
-    });
-
-    // delete one passeport
-    this.app.delete("/passeport/:id", async (_req: Request, res: Response) => {
-      return await deleteId("passeports",  +_req.params.id).then((nothing: any) => {
-        return res.status(203).json();
-      }).catch (error => {
-        return res.status(404).json({"error": error.detail});
-      });
-    });
-
 
     this.app.use((req: Request, res: Response) => {
       res.status(404).json({
@@ -295,5 +191,6 @@ export default class HttpServer {
       })
     })
   }
+
 }
 

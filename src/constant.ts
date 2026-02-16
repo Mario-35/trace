@@ -2,7 +2,10 @@ export const HELMET = {
         crossOriginEmbedderPolicy: false,
         crossOriginResourcePolicy: false,
         crossOriginOpenerPolicy: false,
+        contentSecurityPolicy: (process.env.NODE_ENV === 'production') ? undefined : false 
       }
+
+
 
 export const CORS = {
     origin: '*',
@@ -14,3 +17,22 @@ export const CORS = {
 //   script-src 'nonce-ieoeWczDHkReVBsRBqaal5AFMlBtNjMzgwKvLqi'
 
 // }
+
+
+export const EConstant = Object.freeze({
+    appName: "Trace",
+    repository: "https://github.com/Mario-35/Trace",
+    branch: "main",
+    columnSeparator: "@|@",
+    doubleQuotedComa: '",\n"',
+    simpleQuotedComa: "',\n'",
+    newline: "\r\n",
+    tab: "\t",
+    return: "\n",
+    host: "127.0.0.1",   
+    pg: "postgres",
+    port: 5432,
+    voidSql: "SELECT 1=1",
+    version: "1.0",
+    date: "15-02-2026",
+})

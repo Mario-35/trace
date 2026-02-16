@@ -4,30 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des étiquettes</title>
-    <link rel="stylesheet" href="./css/splitter.css">
     <link rel="stylesheet" href="./css/printEchantillon.css">
-    <link rel='stylesheet' href='./css/bootstrap.min.css'>
-    <link rel="stylesheet" href="./css/bootstrap-icons.css">
 </head>
 
 <body>
-	<header id="splitter-nav-site" class="splitter-nav-site">&nbsp;</header>
-    <main class="main-view">
-        <div class="splitter-nav-view" id="left-pane">
-        </div>
-            <div class="v-drag" id="separator"></div>
-            <div class="content" id="right-pane">
-
-
-
-            </div>
-        </div>
-    </main>
+    <div class="content" id="content"></div>
 </body> 
+
+<script>"@DATAS@"</script>
 <script src="./js/constants.js"></script>
+<script src="./js/all.js"></script>
 <script src="./js/api.js"></script>
-<script src="./js/splitter.js"></script>
-<script src="./js/menu.js"></script>
-<script src="./js/JsBarcode.all.min.js"></script>
-<script src="./js/echantillons/print.js"></script>   
+<script src="./js/libs/JsBarcode.all.min.js"></script>
+<script src="./js/api/print.js"></script>   
 </html>

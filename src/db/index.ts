@@ -27,3 +27,53 @@ export function admin(password: string) {
         }
     });
 }
+
+export const base = {
+      "passeports" : {
+            "columns": {
+                  "annee": "number" ,
+                  "nom": "text" ,
+                  "code": "text" ,
+                  "tracabilite": "number" ,
+                  "identifiant": "text" ,
+                  "fichier": "text" ,
+                  "origine": "text" ,
+            }
+      } ,
+      "configuration" : {
+            "columns": {
+                  "params": "jsonb" ,
+            }
+      } ,
+      "excels" : {
+            "columns": {
+                  "datas": "jsonb" ,
+            }
+      } ,
+      "echantillons" : {
+            "columns": {
+                  "type": "text" ,
+                  "programme": "text" ,
+                  "site": "text" ,
+                  "responsable": "text" ,
+                  "identification": "text" ,
+                  "parent": "text" ,
+                  "libre": "text" ,
+                  "prelevement": "date",
+                  "peremption": "date",
+                  "pays": "text" ,
+                  "region": "text" ,
+                  "pointx": "text",
+                  "pointy": "text",
+                  "passeport": "number" ,
+                  "cultures": "jsonb",
+                  "etiquette": "jsonb",
+                  "stockage": "jsonb",
+                  "etat": "text"
+            }
+      } 
+}
+
+export {executeSql} from "./executeSql"
+
+

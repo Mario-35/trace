@@ -40,13 +40,15 @@ function toJson(name) {
 
 function validateFile(name) {
     const element = getElement(name);
-    const elementError = getElement(name + '-error');
-    if (!element.value || element.files[0].trim() === "") {
-        elementError.style.display = 'block';
-        return false;
-    } else {
-        elementError.style.display = 'none';
-    }    
+    if(element) {
+        const elementError = getElement(name + '-error');
+        if (!element.value || element.files[0].trim() === "") {
+            elementError.style.display = 'block';
+            return false;
+        } else {
+            elementError.style.display = 'none';
+        }    
+    }
 }
 
 function validateStr(name) {
