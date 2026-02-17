@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tracer des écahntillon</title>
-
-    <!-- <link rel='stylesheet' href='./css/bootstrap.min.css'> -->
-    <link rel="stylesheet" href="./css/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./css/printEchantillon.css">
     <!-- printEchantillon.css important to be before form -->
     <link rel="stylesheet" href="./css/form/main.css">
@@ -58,8 +54,10 @@
                                     <label for="type" class=".label-standard">Type de prélévement</label>
                                     <select class="form-control" id="type" name="type" maxlength="15">
                                         <option selected="selected">---- Aucun ----</option>
-                                        <option >Sol cultivé</option>
+                                        <option>Boues</option>
                                         <option>Eau</option>
+                                        <option>Invertébrés</option>
+                                        <option>Sol cultivé</option>
                                     </select>
                                     <div class="error-message" id="type-error">Type de prélévement obligatoire</div>
                                 </div>
@@ -152,18 +150,19 @@
                             </div>  
                             
                             <div class="btn-group">                        
-                                <button class="btn btn-prev" id="prev-1" disabled>
-                                    <i class="fas fa-arrow-left"></i> Précédent
-                                </button>
-
-                                <button class="btn btn-next" id="next-1">
-                                    Suivant <i class="fas fa-arrow-right"></i>
-                                </button>
+                                <button class="btn btn-prev" id="prev-1" disabled>⬅ Précédent</button>
+                                <button class="btn btn-next" id="next-1">Suivant ➡</button>
                             </div>
                         </div>
                         
                         <!-- Step 2: Localisation -->
                         <div class="form-step" id="form-step-2">
+                            <div class="form-row" id="BOUES">
+                                <label>Boues</label>
+                            </div>
+                            <div class="form-row" id="INVERTÉBRÉS">
+                                <label>Invertébrés</label>
+                            </div>
                             <div class="form-row" id="SOLS">
                                 <label>Sols</label>
                             </div>
@@ -211,17 +210,14 @@
 
                                 <div id="blockPasseport"></div>
                                 <input id="passeport" name="passeport" type="hidden" value="0" />   
-                                <textarea id="cultures" name="cultures"></textarea>
+                                
                             </div>
-
+                            
                             <div class="btn-group">
-                                <button class="btn btn-prev" id="prev-2">
-                                    <i class="fas fa-arrow-left"></i> Précédent
-                                </button>
-                                <button class="btn btn-next" id="next-2">
-                                    Suivant <i class="fas fa-arrow-right"></i>
-                                </button>
+                                <button class="btn btn-prev" id="prev-2">⬅ Précédent</button>
+                                <button class="btn btn-next" id="next-2">Suivant ➡</button>
                             </div>
+                            <textarea id="cultures" name="cultures"></textarea>
                         </div>
                         
                         <!-- Step 3: Stockage -->
@@ -235,21 +231,17 @@
                                     <label for="valeur">Valeur</label>
                                     <input type="text" id="valeur" class="form-control" maxlength="25" placeholder="Valeur">
                                 </div>
-                                <textarea id="stockage" name="stockage"></textarea>
-
+                                
                             </div>
                             <div class="form-row">
                                 <div class="form-group row-1" id="stockageTab">                    
                                 </div>  
                             </div> 
                             <div class="btn-group">
-                                <button class="btn btn-prev" id="prev-2">
-                                    <i class="fas fa-arrow-left"></i> Précédent
-                                </button>
-                                <button class="btn btn-next" id="next-2">
-                                    Suivant <i class="fas fa-arrow-right"></i>
-                                </button>
+                                <button class="btn btn-prev" id="prev-3">⬅ Précédent</button>
+                                <button class="btn btn-next" id="next-3">Suivant ➡</button>
                             </div>                    
+                            <textarea id="stockage" name="stockage"></textarea>
                         </div>
                         
                         <!-- Step 4: Etiquettes -->
@@ -298,12 +290,8 @@
                             </div>
                             
                             <div class="btn-group">
-                                <button class="btn btn-prev" id="prev-4">
-                                    <i class="fas fa-arrow-left"></i> Précédent
-                                </button>
-                                <button class="btn btn-next" id="btn-creer">
-                                    Créer <i class="fas fa-arrow-right"></i>
-                                </button>
+                                <button class="btn btn-prev" id="prev-4">⬅ Précédent</button>
+                                <button class="btn btn-next" id="btn-creer">✔️️ Créer</button>
                             </div>  
                             <textarea id="etiquette" name="etiquette"></textarea>
                         </div>
@@ -312,14 +300,7 @@
             </div>
         </main> 
     </form>
-    <div id="adam"> 
-    </div>
-    <div class="modal-container">
-      <input id="modal-toggle" type="checkbox">
-      <label class="modal-backdrop" id="modal-ouside"></label>  
-      <div id="modal" class="modal-content"> 
-      </div>          
-    </div>  
+    <div id="modal"></div>  
 </body> 
 
 <script src="./js/constants.js"></script>

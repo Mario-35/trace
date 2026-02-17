@@ -2,12 +2,26 @@ import { Router } from "express"
 import { Index } from "../../html/class/main";
 import { Print } from "../../html/class/print";
 import { readId, readIds } from "../../controller";
-
+import { List } from "../../html/class/list";
 export const pagesRoutes = Router();
 
 // Get all echantillons
 pagesRoutes.get("/index", async (req, res) => {
     const html = new Index();
+    res.send(html.toString())
+});
+
+pagesRoutes.get("/sites.html", async (req, res) => {
+    const html = new List("Site");
+    res.send(html.toString())
+});
+
+pagesRoutes.get("/passeports.html", async (req, res) => {
+    const html = new List("Passeport");
+    res.send(html.toString())
+});
+pagesRoutes.get("/echantillons.html", async (req, res) => {
+    const html = new List("Echantillon", true);
     res.send(html.toString())
 });
 
@@ -44,4 +58,5 @@ pagesRoutes.get("/print/:type/:id", async (req, res) => {
     };
 
 });
+
 

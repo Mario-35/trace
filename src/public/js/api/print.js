@@ -35,9 +35,7 @@ function createPasseport(element, values) {
     <div class="nom" id="passeportNom"><p><b>A</b> Sol</p></div>
     <div class="code" id="passeportCode"><p><b>B</b> ${values.code}-${values.identifiant}</p></div>
     <div class="trace" id="passeportTracabilite"><p><b>C</b> ${values.annee}-${String(values.tracabilite).padStart(4, '0')}</p></div>
-    <div class="origine" id="passeportOrigine"><p><b>D</b> ${values.origine}</p></div>
-    
-    `;
+    <div class="origine" id="passeportOrigine"><p><b>D</b> ${values.origine}</p></div>`;
     element.appendChild(etiquette);
 };
 

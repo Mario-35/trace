@@ -4,7 +4,7 @@ document.getElementById("left-pane").innerHTML = `
     <ul>
         <li><a href="./echantillons.html">Echantillons</a></li>
         <li><a href="./passeports.html">Passeports</a></li>
-        <li><a href="./printEchantillon.html">Etiquettes</a></li>
+        <li><a href="./sites.html">Sites</a></li>
         <li><a href="./addConfiguration.html">Configuration</a></li>
     </ul>
 </nav>`;

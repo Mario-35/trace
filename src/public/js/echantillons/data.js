@@ -1,6 +1,7 @@
 // create identification with date time (without seconds) and echantillon number
-function createIdentification() {
-    return `${ new Date(getElement("prelevement").value || new Date()).toLocaleDateString()}${new Date().toLocaleTimeString()}`.replace(/\D/g, "").slice(0,12) + (getElement("echantillon").value || getElement("numero").value).padStart(4, '0');
+function createIdentification(nb) {
+    console.log((getElement("echantillon").value || getElement("numero").value));
+    return `${ new Date(getElement("prelevement").value || new Date()).toLocaleDateString()}${new Date().toLocaleTimeString()}`.replace(/\D/g, "").slice(0,12) + (nb || getElement("echantillon").value || getElement("numero").value).padStart(4, '0');
 }
 
 function refreshType() {
@@ -13,12 +14,13 @@ function refreshType() {
     }
     const key = getElement("type").value.replace(/\s/g, '').toUpperCase();
     setVisible(names, key);
+
+    
     switch (key) {
         case "SOLCULTIVÉ":
             refreshsolcultive();
             break;
         default:
-            console.log(key);
             return;
     }
 }
@@ -92,7 +94,7 @@ function loadEchantillonLine(index) {
     } else {
         Object.keys(_STORE.columns).forEach(column => {
             loadValue(column, _STORE.datas[index][_STORE.columns[column]]);
-            getElement("identification").value = createIdentification();
+            getElement("identification").value = createIdentification(index);
         });
     }
     getElement("rowNumber").innerText = 'Ligne : ' + index + ' sur ' + _STORE.datas.length ; 
@@ -106,6 +108,8 @@ async function start() {
     let id = 0;
     // default sticker
     getElement("etiquette").value = JSON.stringify(_CONFIG.sticker);   
+    getElement("stockage").value = JSON.stringify({});   
+    getElement("cultures").value = JSON.stringify({});   
     // init select for sticker
     addToOption(getElement('element'), _CONFIG.stickerElements);     
     addToOption(getElement('cle'), _CONFIG.stockageElements);   
@@ -153,15 +157,29 @@ async function start() {
         // get datas from API
         _STORE =  await getDatas(window.location.origin + "/excel/" + id);
         if(_STORE["datas"]) {
-            multipleShow(["echantillon","etat"]);
+           showParentClass("etat",'form-group'); 
             // get the column selected in excel page
+            let isEchantillon = false;
             Object.keys(_STORE.columns).forEach(column => {
                 const elem = getElement(column);
                 // If a column echantillon is found we use excel numerotation not automatic numerotation
-                if (column === "echantillon") getElement("numero").readOnly = true;
+                if (column === "echantillon") {
+                    getElement("numero").readOnly = true;
+                    showParentClass("echantillon",'form-group'); 
+
+                    isEchantillon = true;
+                }
                 // set column readonly
                 elem.readOnly = true;
             });
+            if (isEchantillon == false) {
+                showParentClass("numero",'form-group'); 
+                showParentClass("nombre",'form-group'); 
+                setReadOnly("nombre");
+                nombre.value = _STORE["datas"].length;
+                echantillon.value = null;
+
+            }
             // get the range lines
             setRange();
             getElement("title").innerText = "Ajout depuis un fichier excel";

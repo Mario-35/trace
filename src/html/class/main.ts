@@ -33,7 +33,6 @@ export class Index extends CoreHtmlView {
         this.replacer('"@DATAS@"', 'console.log("15-02-2026")');
         this.replaceFile("css/splitter.css");
         this.replaceFile("css/bootstrap.css");
-        this.replaceFile("css/bootstrap-icons.css");
         this.replaceFile("js/constants.js");        
         this.replaceFile("js/splitter.js");        
         this.replaceFile("js/menu.js");        

@@ -14,6 +14,21 @@ getDatas = async (url) => {
 	}
 }
 
+getHtml = async (url) => {
+	try {
+		const response = await fetch(encodeURI(url), {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+		return await response.text();
+	} catch (error) {
+		log(error);
+		return undefined
+	}
+}
+
 posttDatas = async (url, datas) => {
 	try {
 		const response = await fetch(encodeURI(url), {

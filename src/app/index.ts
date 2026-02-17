@@ -1,3 +1,4 @@
 export {echantillonsRoutes} from "./echantillons/echantillonsRoutes";
-export {passeportssRoutes} from "./passeports/passeportsRoutes";
+export {passeportsRoutes} from "./passeports/passeportsRoutes";
+export {sitesRoutes} from "./sites/sitesRoutes";
 export {pagesRoutes} from "./pages/pagesRoutes";

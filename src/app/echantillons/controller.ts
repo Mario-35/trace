@@ -11,7 +11,7 @@ export async function addEchantillon(values: any) {
       const queries:string[] = [];
       let tmpCode: string | undefined = undefined;
       // Create list of columns
-      const tableColumns = Object.keys(base.echantillons.columns);
+      const tableColumns = Object.keys(base.echantillons.columns).filter(e => values[e as keyof object] !== undefined );
       // Create list insert into
       const insertInto = tableColumns.map(e => `"${e}"`);
       // If excel instert
@@ -21,7 +21,7 @@ export async function addEchantillon(values: any) {
             // Create list of excel columns
             const excelCols = excelFile[0]["datas" as keyof object]["columns"];
             // lopp excel lines
-            Object.values(excelFile[0]["datas" as keyof object]["datas"]).forEach((tmp: any) => {
+            Object.values(excelFile[0]["datas" as keyof object]["datas"]).forEach((tmp: any, index: number) => {
                   // clone line
                   const tempVal = JSON.parse(JSON.stringify(values));
                   // modify the lines with excel values
@@ -31,7 +31,7 @@ export async function addEchantillon(values: any) {
                   });
                   // create identification
                   if (tempVal["identification"] )
-                        tempVal["identification"] = values["identification" as keyof object].slice(0,12) + String(+tmp[excelCols["echantillon" as keyof object]]).padStart(4, '0');
+                        tempVal["identification"] = values["identification" as keyof object].slice(0,12) + String(+tmp[excelCols["echantillon" as keyof object]] ||  index + 1).padStart(4, '0');
 
                   if (!tmpCode)  tmpCode =  values["identification" as keyof object].slice(0,12);
 

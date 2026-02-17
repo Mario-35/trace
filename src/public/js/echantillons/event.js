@@ -15,12 +15,13 @@ document.getElementById('btn-creer').addEventListener('click', async function() 
         }).then(async response => {
             if (response.status === 201) {
                 modalRedirect(operation, "Modification réussie", "./echantillons.html");
+                showModalOk(operation, "Tout est ok", ["ok"], true, true, "./printEchantillon.html?id="+ id);
             } else {
                 const resJson =  await response.json();
-                modalError(operation, resJson.code + " : " + resJson.error);
+                showModalError(operation, resJson);
             }
         }).catch(err => {
-            modalError(operation, err);
+            showModalError(operation, err);
         });
     } else {
         const operation = "Ajout d'un échantillon";
@@ -36,8 +37,7 @@ document.getElementById('btn-creer').addEventListener('click', async function() 
         }).then(async response => {
             if (response.status === 201) {
                 const data = await response.json();
-                console.log(data);
-                showModalOk("Ajout echantillon", "Tout est ok", ["ok"], true, true, "./printEchantillon.html?selection="+ data.selection);
+                showModalOk(operation, "Tout est ok", ["ok"], true, true, "./printEchantillon.html?selection="+ data.selection);
             } else {
                 const resJson =  await response.json();
                 showModalError(operation, resJson.code + " : " + resJson.error);
@@ -167,11 +167,11 @@ document.getElementById("type").addEventListener("change", function() {
 });
 document.getElementById("pointx").addEventListener("change", function() {
     document.getElementById("cultures").value= null;
-    refreshRpg();
+    // refreshRpg();
 });
 
 document.getElementById("pointy").addEventListener("change", function() {
-    refreshRpg();
+    // refreshRpg();
 });
 
 function changedpt() {
@@ -190,7 +190,7 @@ function changedpt() {
             elem.title = dpt[0];
         }
     }
-    refreshRpg();
+    // refreshRpg();
 }
 
 // change region value
@@ -208,8 +208,6 @@ document.getElementById('region').addEventListener('change', function(event) {
     changedpt();
   }
 });
-
-
 
 document.getElementById('testModal').addEventListener('click', function() {
     showModalError("Ajout echantillon", "Why");

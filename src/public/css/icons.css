@@ -1,36 +1,52 @@
-/*!
- * Bootstrap Icons v1.11.3 (https://icons.getbootstrap.com/)
- * Copyright 2019-2024 The Bootstrap Authors
- * Licensed under MIT (https://github.com/twbs/icons/blob/main/LICENSE)
- */
-
-@font-face {
-  font-display: block;
-  font-family: "bootstrap-icons";
-  src: url("./fonts/bootstrap-icons.woff2?dd67030699838ea613ee6dbda90effa6") format("woff2"),
-url("./fonts/bootstrap-icons.woff?dd67030699838ea613ee6dbda90effa6") format("woff");
+.icon_plus:before {
+	color: white;
+	content:'\2795\FE0E';
+  font-size: 16px;
 }
 
-.bi::before,
-[class^="bi-"]::before,
-[class*=" bi-"]::before {
-  display: inline-block;
-  font-family: bootstrap-icons !important;
-  font-style: normal;
-  font-weight: normal !important;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  vertical-align: -.125em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.icon_after:before {
+	color: white;
+	content:'\2344\FE0E';
+ 	font-size: 16px;
 }
 
+.icon_print:before {
+	color: white;
+	content:'\1f5b6\FE0E';
+  	font-size: 16px;
+}
 
-.bi-database-add::before { content: "\f8af"; }
-.bi-search::before { content: "\f52a"; }
-.bi-pencil-square::before { content: "\f4ca"; }
-.bi-eye::before { content: "\f341"; }
-.bi-printer::before { content: "\f501"; }
-/* .bi-plus::before { content: "\f4fe"; } */
-.bi-plus::before { content: "\f64d"; }
+.icon_edit:before {
+	color: white;
+	content:'\2385\FE0E';
+  	font-size: 16px;
+}
+
+.icon_left:before {
+	color: white;
+	content:'\2190\FE0E';
+  	font-size: 16px;
+}
+
+.icon_up:before {
+	color: white;
+	content:'\2191\FE0E';
+  	font-size: 16px;
+}
+.icon_right:before {
+	color: white;
+	content:'\2192\FE0E';
+  	font-size: 16px;
+}
+
+.icon_bottom::before {
+	color: white;
+	content:'\2193\FE0E';
+  	font-size: 16px;
+}
+
+.icon_download::before{
+	color: white;
+	content:'\21d5\FE0E';
+  	font-size: 16px;
+}

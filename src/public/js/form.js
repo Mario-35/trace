@@ -132,7 +132,9 @@ const formToJSON = elements => [].reduce.call(elements, (data, element) => {
         data[element.name] = element.checked;
         break
       case 'textarea':
-        data[element.name] = element.value || null;
+        console.log("============textarea===============")
+        console.log(element)
+        data[element.name] = element.value || {};
         break
       case 'number':
         data[element.name] = +element.value;
@@ -166,6 +168,8 @@ const handleFormSubmit = event => {
   _DATAS = formToJSON(form.elements); 
   // ...this is where we’d actually do something with the form data...
   if (!_DATAS["etat"]) _DATAS["etat"] = "Créer";
+
+  console.log(_DATAS)
 };
 
 

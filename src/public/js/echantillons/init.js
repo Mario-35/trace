@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				title: "&nbsp;",
                 header: undefined,
                 message: "Ajouter à la série",
-                icon: svgs("plus"),
+                icon: "icon_after",
 				searchType: "button",
                 url: "addEchantillon.html?after=",
 			},
@@ -96,7 +96,7 @@ class ExcelToJSON {
 if (document.getElementById("fileone")) {
 
     fileone.addEventListener("change", function(e) {
-        document.getElementById('blockAjouter').innerHTML = `<a class="btn btn-success" id="ajouterExcel" target="_self"><i class="bi bi-database-add"></i> Ajouter</a>`;
+        document.getElementById('blockAjouter').innerHTML = `<a class="btn btn-success icon_plus" id="ajouterExcel" target="_self"> Ajouter</a>`;
         var fileName = "";
         try {
             if (this.files && this.files.length > 1)
@@ -110,7 +110,8 @@ if (document.getElementById("fileone")) {
                 fileonelabel.innerHTML = labelVal;
             }
         } catch (err) {
-            notifyError("Error", err);
+            console.log(err);
+            // notifyError("Error", err);
         }
     });
 
@@ -126,8 +127,3 @@ function handleFileSelect(evt) {
         open("./addEchantillon.html?excel=" + JSON.parse(response)[0].id);
     }); 
 }
-
-
-getElement("ajouter").innerHTML = svgs("dbAdd", "Ajouter");
-getElement("fileonelabel").innerHTML = svgs("download", "Fichier Excel");
-getElement("globalSearchIcon").innerHTML = svgs("search");

@@ -9,7 +9,9 @@
   right: 0;
   left: 0;
   bottom: 0;
+	z-index: 1001;
 }
+
 .modal__content {
   height: 250px;
   min-width: 300px;

@@ -79,6 +79,22 @@ class JsonTable {
 		}
 	}
 
+	async postDatas(url, datas) {
+		try {
+			const response = await fetch(encodeURI(url), {
+				method: 'POST',
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(datas),
+			});
+			return await response.json();		
+		} catch (error) {
+			log(error);
+			return undefined
+		}
+	}
+
 	renderTable(which = "all") {
 		if (which == "all") {
 			this.renderHeader();
@@ -103,7 +119,7 @@ class JsonTable {
 		tableHeader.innerHTML = "<tr></tr>";
 		const headerRow = tableHeader.querySelector("tr");
 		if (this.editUrl)
-			headerRow.insertAdjacentHTML("afterbegin", `<th><button class="btn btn-success btn-sm" id="editAll">${svgs("edit")}</button></th>`);
+			headerRow.insertAdjacentHTML("afterbegin", `<th><button class="btn btn-success icon_edit btn-sm" id="editAll"></button></th>`);
 		if (this.select === true) 
 			headerRow.insertAdjacentHTML("afterbegin", `<th style="${this.headerAttribute()}"><label>Filter</label><select id="id-select" class="form-control excel-control"> <option value="">tout</option> <option value="true">✔️️</option> <option value="false">❌</option> </select></th>`);
 		this.columns.filter(e => e.key.toUpperCase() !== 'ID').forEach((column) => {
@@ -181,15 +197,15 @@ class JsonTable {
 			headerRow.appendChild(th);
 		});
 		if (this.printUrl) 
-			headerRow.insertAdjacentHTML("beforeend", `<th><button class="btn btn-success btn-sm" id="printAll">${svgs("printer")}</button></th>`);
+			headerRow.insertAdjacentHTML("beforeend", `<th><button class="btn btn-success icon_print btn-sm" id="printAll"></button></th>`);
 		let elem = getElement("editAll");
 		if (elem) elem.addEventListener("click", async (e) => {
-        	const temp = await posttDatas(window.location.origin + '/selection', {ids: this.filteredData.map(e => e.id)});
+        	const temp = await this.postDatas(window.location.origin + '/selection', {ids: this.filteredData.map(e => e.id)});
 			if (temp) open(this.editUrl + "?selection=" + temp[0].id, self); 
 		});		
 		elem = getElement("printAll");
 		if (elem) elem.addEventListener("click", async (e) => {
-        	const temp = await posttDatas(window.location.origin + '/selection', {ids: this.filteredData.map(e => e.id)});
+        	const temp = await this.postDatas(window.location.origin + '/selection', {ids: this.filteredData.map(e => e.id)});
 			if (temp) open(window.location.origin + '/print/' + "selection/" + temp[0].id, self);   
 		});		
 	}
@@ -222,7 +238,7 @@ class JsonTable {
 			if (this.editUrl)
 			tr.insertAdjacentHTML(
 				"afterbegin",
-				`<td><button class="btn btn-primary btn-sm edit-btn">${svgs("edit")}</button></td>`
+				`<td><button class="btn btn-primary btn-sm icon_edit edit-btn"></button></td>`
 			); else if (this.select === true)
 			tr.insertAdjacentHTML(
 				"afterbegin",
@@ -236,7 +252,7 @@ class JsonTable {
 					if (tmp) {
 						switch (tmp.searchType) {
 							case 'button':
-								td.innerHTML = `<a href="${tmp.url + row.id}" class="btn btn-primary btn-sm" role="button">${tmp.icon}</a> `;
+								td.innerHTML = `<a href="${tmp.url + row.id}" class="btn btn-primary btn-sm ${tmp.icon}" role="button"></a> `;
 								break;								
 							case 'date':
 								td.textContent = row[key].split('T')[0] 
@@ -256,7 +272,7 @@ class JsonTable {
 			if (this.printUrl) 
 				tr.insertAdjacentHTML(
 					"beforeend",
-					`<td"><button class="btn btn-primary btn-sm print-btn">${svgs("printer")}</button></td>`
+					`<td"><button class="btn btn-primary btn-sm icon_print print-btn"></button></td>`
 				);
 
 			tableBody.appendChild(tr);

@@ -1,6 +1,11 @@
 function showModalOk(title, message, btns, etiquette, passeport, redirect) {
-
-    getElement("adam").innerHTML =` 
+    console.log(`title : ${title}`);
+    console.log(`message : ${message}`);
+    console.log(`btns : ${btns}`);
+    console.log(`etiquette : ${etiquette}`);
+    console.log(`passeport : ${passeport}`);
+    console.log(`redirect : ${redirect}`);
+    getElement("modal").innerHTML =` 
         <article class="modal">
             <section class="modal__content modal__ok">
                 <h1 class="modal__heading">${title}</h1>
@@ -10,7 +15,7 @@ function showModalOk(title, message, btns, etiquette, passeport, redirect) {
                 <p class="modal__actions">
                     ${ btns.includes("oui") ? '<button id="cancel" class="modal__action modal__action--negative">Oui</button>' : ''}
                     ${ btns.includes("non") ? '<button id="accept" class="modal__action modal__action--positive">Non</button>' : ''}
-                    ${ btns.includes("ok")  ? '<button id="accept" class="modal__action modal__action--ok">Ok</button>' : ''}
+                    ${ btns.includes("ok")  ? '<button id="ok" class="modal__action modal__action--ok">Ok</button>' : ''}
                 </p>
             </section>
         </article>`;
@@ -33,22 +38,22 @@ function showModalOk(title, message, btns, etiquette, passeport, redirect) {
 
     if (getElement("ok"))
         getElement("ok").addEventListener('click', (e) => {
-            open(redirect, self);
+            modal.setAttribute("style", "display:none;");
+            if(redirect) open(redirect, self);
         });
 
 
 }
 
-function showModalError(title, message) {
-
-    getElement("adam").innerHTML =` 
+function showModalError(title, message, redirect) {
+    getElement("modal").innerHTML =` 
         <article class="modal">
         <section class="modal__content modal__error">
             <h1 class="modal__heading">${title}</h1>
             <p class="modal__copy">${message}</p>
             <button id="close" class="modal__close">&times;</button>
             <p class="modal__actions">
-                <button id="accept" class="modal__action modal__action--ok">Ok</button>
+                <button id="ok" class="modal__action modal__action--ok">Ok</button>
             </p>
         </section>
         </article> `;
@@ -58,19 +63,9 @@ function showModalError(title, message) {
         getElement("close").addEventListener('click', (e) => {
             modal.setAttribute("style", "display:none;");
         });
-
-        if (getElement("cancel"))
-            getElement("cancel").addEventListener('click', (e) => {
-                modal.setAttribute("style", "display:none;");
-            });
-
-        if (getElement("accept"))
-            getElement("accept").addEventListener('click', (e) => {
-                modal.setAttribute("style", "display:none;");
-            });
-
-        if (getElement("ok"))
-            getElement("ok").addEventListener('click', (e) => {
-                open(tredirect, self)
-            });
+        
+        getElement("ok").addEventListener('click', (e) => {
+            modal.setAttribute("style", "display:none;");
+            if(redirect) open(redirect, self);
+        });
 }

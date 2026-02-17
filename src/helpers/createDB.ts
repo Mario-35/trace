@@ -15,13 +15,13 @@ const queries = [`CREATE TABLE passeports (
                 );`,
                 `CREATE TABLE echantillons (
                 id int2 GENERATED ALWAYS AS IDENTITY( INCREMENT BY 1 MINVALUE 1 MAXVALUE 32767 START 1 CACHE 1 NO CYCLE) NOT NULL,
-                type varchar(15) NOT NULL, 
+                type varchar(25) NOT NULL, 
                 programme varchar(25) NOT NULL,
                 site varchar(25) NOT NULL,
                 responsable varchar(25) NOT NULL,
                 identification varchar(16) UNIQUE NOT NULL,
-                parent varchar(16) NOT NULL,
-                libre varchar(30) NULL,
+                parent varchar(16) NULL,
+                libre varchar(50) NULL,
                 prelevement date NOT NULL,
                 peremption date NOT NULL,
                 pays varchar(25) NOT NULL,
@@ -34,6 +34,15 @@ const queries = [`CREATE TABLE passeports (
                 etiquette  jsonb NULL,
                 etat varchar(10) NOT NULL, 
                 CONSTRAINT echantillons_pkey PRIMARY KEY (id)
+              )`,
+                `CREATE TABLE sites (
+                id int2 GENERATED ALWAYS AS IDENTITY( INCREMENT BY 1 MINVALUE 1 MAXVALUE 32767 START 1 CACHE 1 NO CYCLE) NOT NULL,
+                nom varchar(50) UNIQUE NOT NULL, 
+                pays varchar(25) NOT NULL,
+                region varchar(30) NOT NULL,
+                pointx varchar(15) NOT NULL,
+                pointy varchar(15) NOT NULL,
+                CONSTRAINT sites_pkey PRIMARY KEY (id)
               )`,
               `CREATE TABLE excels ( id int2 GENERATED ALWAYS AS IDENTITY( INCREMENT BY 1 MINVALUE 1 MAXVALUE 32767 START 1 CACHE 1 NO CYCLE) NOT NULL, datas jsonb NULL )`,
               `CREATE TABLE selections ( id int2 GENERATED ALWAYS AS IDENTITY( INCREMENT BY 1 MINVALUE 1 MAXVALUE 32767 START 1 CACHE 1 NO CYCLE) NOT NULL, ids integer[] )`,

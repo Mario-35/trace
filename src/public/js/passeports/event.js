@@ -1,4 +1,4 @@
-document.getElementById('btn-creer').addEventListener('click', async function() {
+getElement('btn-creer').addEventListener('click', async function() {
     head(" btn-creer");
     const operation = "Ajout d'un passeport";
     if(validatePasseport() === true) {
@@ -34,7 +34,7 @@ document.getElementById('btn-creer').addEventListener('click', async function() 
     }
 });
 
-document.getElementById('demo').addEventListener('click', function() {
+getElement('demo').addEventListener('click', function() {
     document.getElementById("nom").value = 'Parcelle de chez moi 2026';
     document.getElementById("annee").value  = '2026';
     document.getElementById("tracabilite").value = '16';

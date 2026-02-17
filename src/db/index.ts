@@ -71,6 +71,15 @@ export const base = {
                   "stockage": "jsonb",
                   "etat": "text"
             }
+      },
+      "sites" : {
+            "columns": {
+                  "nom": "text" ,
+                  "pays": "text" ,
+                  "region": "text" ,
+                  "pointx": "text",
+                  "pointy": "text",
+            }
       } 
 }
 

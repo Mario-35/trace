@@ -3,10 +3,8 @@
 function validatePasseport() {
     if (validateStr('annee') === false) return false;
     if (validateStr('nom') === false) return false;
-    // if (validateStr('numero') === false) return false;
     if (validateStr('tracabilite') === false) return false;
-    if (validateStr('origine') === false) return false; 
-
+    if (validateStr('origine') === false) return false;
     return true;
 }
 
@@ -23,33 +21,33 @@ function addSpecialOptions(name, listElements) {
 };
 
 addSpecialOptions("origine", {
-"Autriche" : "AT",
-"Belgique" : "BE",
-"Bulgarie" : "BG",
-"Croatie" : "HR",
-"Chypre" : "CY",
-"Tchéquie" : "CZ",
-"Danemark" : "DK",
-"Estonie" : "EE",
-"Finlande" : "FI",
-"France" : "FR",
-"Allemagne" : "DE",
-"Grèce" : "GR",
-"Hongrie" : "HU",
-"Irlande" : "IE",
-"Italie" : "IT",
-"Lettonie" : "LV",
-"Lituanie" : "LT",
-"Luxembourg" : "LU",
-"Malte" : "MT",
-"Pays" : "as",
-"Pologne" : "PL",
-"Portugal" : "PT",
-"Roumanie" : "RO",
-"Slovaquie" : "SK",
-"Slovénie" : "SI",
-"Espagne" : "ES",
-"Suède" : "SE",
+    "Autriche" : "AT",
+    "Belgique" : "BE",
+    "Bulgarie" : "BG",
+    "Croatie" : "HR",
+    "Chypre" : "CY",
+    "Tchéquie" : "CZ",
+    "Danemark" : "DK",
+    "Estonie" : "EE",
+    "Finlande" : "FI",
+    "France" : "FR",
+    "Allemagne" : "DE",
+    "Grèce" : "GR",
+    "Hongrie" : "HU",
+    "Irlande" : "IE",
+    "Italie" : "IT",
+    "Lettonie" : "LV",
+    "Lituanie" : "LT",
+    "Luxembourg" : "LU",
+    "Malte" : "MT",
+    "Pays" : "as",
+    "Pologne" : "PL",
+    "Portugal" : "PT",
+    "Roumanie" : "RO",
+    "Slovaquie" : "SK",
+    "Slovénie" : "SI",
+    "Espagne" : "ES",
+    "Suède" : "SE",
 });
 
 

@@ -10,7 +10,7 @@ import { addExcel, addSelection, getConfiguration, readId, readIds, setConfigura
 import {  HELMET } from "./constant";
 import { sql } from "./db";
 import { createDB } from "./helpers/createDB";
-import { echantillonsRoutes, pagesRoutes, passeportssRoutes } from "./app";
+import { echantillonsRoutes, pagesRoutes, passeportsRoutes, sitesRoutes } from "./app";
 
 
 
@@ -51,7 +51,8 @@ export default class HttpServer {
   private loadRoutes(): void {
 
     this.app.use('/', echantillonsRoutes);
-    this.app.use('/', passeportssRoutes);
+    this.app.use('/', passeportsRoutes);
+    this.app.use('/', sitesRoutes);
     this.app.use('/', pagesRoutes);
     
     this.app.get("/", async (_req: Request, res: Response) => {

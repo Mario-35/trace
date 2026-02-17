@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passeport phytosanitaires</title>
+    <link rel="stylesheet" href="./css/form/main.css">
+    <link rel="stylesheet" href="./css/splitter.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./leaflet/leaflet.css">
+
+</head>
+
+<body>
+	<header id="splitter-nav-site" class="splitter-nav-site"></header>
+    <form id="actionForm" class="formData" enctype="multipart/form-data" method="POST">
+    <main class="main-view">
+        <div class="splitter-nav-view" id="left-pane">
+        </div>
+            <div class="v-drag" id="separator"></div>
+            <div class="content" id="right-pane">
+                <div class="container">
+                    <div class="header">
+                        <h1 id="title">Ajout d'un site</h1>
+                    </div>
+                    
+                    <div class="form-container">
+                        <!-- Step 1: Prélevement -->
+                        <div class="form-step active">
+                                <div class="form-row">
+                                    <div class="form-group row-1">
+                                        <label for="nom">Nom</label>
+                                        <input type="text" id="nom" name="nom" class="form-control" maxlength="25" placeholder="nom">
+                                        <div class="error-message" id="nom-error">Indiquer le nom du site</div>
+                                        <label for="pays">Pays</label>
+                                        <input type="text" id="pays" name="pays" class="form-control" maxlength="25" placeholder="Pays">
+                                        <div class="error-message" id="pays-error">Indiquer le pays</div>
+                                        <label for="region">Région</label>
+                                        <input type="text" id="region" name="region" class="form-control" maxlength="30" placeholder="Region">
+                                        <div class="error-message" id="region-error">Indiquer la région</div>
+                                        <label for="pointx">Longitude en degré décimal</label>
+                                        <input type="text" id="pointx" name="pointx" class="form-control" maxlength="15" placeholder="Point X" value="50.4277570">
+                                        <div class="error-message" id="pointx-error">Indiquer la longitude au format WGS84</div>
+                                        <label for="pointy">Latitude en degré décimal</label>
+                                        <input type="text" id="pointy" name="pointy" class="form-control" maxlength="15" placeholder="Point Y" value="3.2214257">
+                                        <div class="error-message" id="pointy-error">Indiquer la latitude au format WGS84</div>
+                                    </div>
+                                    <div class="form-group row-1">
+                                        <div id="map" style="width: 600px; height: 400px;"></div>
+                                    </div>                                    
+                                </div>
+
+
+                            <div class="btn-group">
+                                <button class="btn btn-warning form-group float-start" id="btn-annuler">❌ Annuler</button>
+                                <button class="btn btn-primary form-group float-end" type="submit" id="btn-creer">✔️️ Créer</button>
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+
+                
+                
+            </div>
+        </main>
+    </form>
+    <div class="modal-container">
+      <input id="modal-toggle" type="checkbox">
+      <label class="modal-backdrop" id="modal-ouside"></label>  
+      <div id="modal" class="modal-content"> 
+      </div>          
+    </div>  
+</body> 
+
+<script src="./js/constants.js"></script>
+<script src="./js/all.js"></script>
+<script src="./js/splitter.js"></script>
+<script src="./js/menu.js"></script>
+<script src="./js/form.js"></script>
+<script src="./js/codes.js"></script>
+<script src="./js/api.js"></script>
+<script src="./js/helper.js"></script>
+<script src="./js/modal.js"></script>
+<script src="./leaflet/leaflet.js"></script>
+<script src="./js/sites/add.js"></script>
+<script src="./js/sites/event.js"></script>    
+<script src="./js/sites/data.js"></script>
+</html>
