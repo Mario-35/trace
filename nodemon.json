@@ -4,6 +4,7 @@
     "ignore": [
         "*.spec.ts",
         "sql/*",
+        "src/public/*",
         "node_modules"
     ],
     "env": {

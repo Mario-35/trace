@@ -1,5 +1,5 @@
 let id = 0;
-if(window.location.href.includes('?passeport=')) 
+if (window.location.href.includes('?passeport=')) 
         id = +window.location.href.split('?passeport=')[1] || 0;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		globalSearch: "#globalSearch",
 		pagination: "#pagination",
 		columns: [
-			{ key: "ID", title: "ID", searchType: false },
 			{
 				key: "Add",
 				title: "&nbsp;",
@@ -22,36 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				searchType: "button",
                 url: "addEchantillon.html?after=",
 			},
-			{
-				key: "programme",
-				title: "Programme",
-				searchType: "select"
-			},
-			{
-				key: "site",
-				title: "Site",
-				searchType: "text"
-			},
-			{
-				key: "responsable",
-				title: "Pesponsable",
-				searchType: "text"
-			},
-			{
-				key: "prelevement",
-				title: "Prélévement",
-				searchType: "date"
-			},
-			{
-				key: "identification",
-				title: "Identification",
-				searchType: "text"
-			},
-			{
-				key: "etat",
-				title: "Etat",
-				searchType: "select"
-			}
+			... structure 
 		]
 	});
 });
@@ -89,8 +59,6 @@ class ExcelToJSON {
         reader.onerror = (ex) => console.log(ex);
         reader.readAsBinaryString(file);
     }
-
-
 }
 
 if (document.getElementById("fileone")) {
@@ -111,7 +79,6 @@ if (document.getElementById("fileone")) {
             }
         } catch (err) {
             console.log(err);
-            // notifyError("Error", err);
         }
     });
 

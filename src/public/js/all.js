@@ -12,6 +12,11 @@ function getElement(name) {
   } else return name;
 }
 
+function changeTitle(title) {
+  getElement("formTitle").innerText = title;
+  document.title = title;
+}
+
 function hide(element) {
     element = getElement(element);
     if(element) {
@@ -67,10 +72,21 @@ function setDisabled(element) {
     if(elem) 
         elem.setAttribute("disabled", "");
 }
+
 function removeDisabled(element) {
     elem = getElement(element);
     if(elem) 
        elem.removeAttribute("disabled");
+}
+
+function multiSetDisabled(names) {
+    if(typeof names === "string") names = [names];
+    names.forEach(name => setDisabled(name));
+}
+
+function multiRemoveDisabled(names) {
+    if(typeof names === "string") names = [names];
+    names.forEach(name => removeDisabled(name));
 }
 
 function multipleHide(names) {

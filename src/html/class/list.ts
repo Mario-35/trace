@@ -7,6 +7,8 @@
  */
 
 import { EConstant } from "../../constant";
+import { getColumns } from "../../db";
+import { dataBase } from "../../db/base";
 import { CoreHtmlView } from "./core";
 
 export class List extends CoreHtmlView {
@@ -17,13 +19,23 @@ export class List extends CoreHtmlView {
     
     createIndexHtmlString(name: String, excel?: boolean) {
         // Split files for better search and replace
+		const plural = name.toLocaleLowerCase() + 's'
+		const listCols:any = [];
+		const src = dataBase[plural as keyof object].columns;
+		Object.keys(src).filter((e: any) => src[e].list === true).forEach(e => {
+			listCols.push({
+				key: e,
+				title: src[e].title,
+				searchType: src[e].searchType || "text"
+			});
+		});
         this._HTMLResult =`
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des ${name.toLocaleLowerCase()}s</title>
+    <title>Gestion des ${plural}s</title>
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/icons.css">
     ${excel ? '<link rel="stylesheet" href="./css/import.css">' : ''}
@@ -77,12 +89,14 @@ export class List extends CoreHtmlView {
         </div>
     </main>
 </body> 
+<script>const structure = ${JSON.stringify(listCols)}</script>
+<script src="./js/configuration.js"></script>
 <script src="./js/constants.js"></script>
 <script src="./js/all.js"></script>
-<script src="./js/splitter.js"></script>
-<script src="./js/menu.js"></script>  
+<script src="./js/common/splitter.js"></script>
+<script src="./js/common/menu.js"></script>  
 <script src="./js/dataTables.js"></script>
-<script src="./js/${name.toLocaleLowerCase()}s/init.js"></script>    
+<script src="./js/${plural}/list.js"></script>    
 ${excel ? '<script src="./js/libs/xlsx.full.min.js"></script>' : ''}
 </html>
 `.split(EConstant.newline)

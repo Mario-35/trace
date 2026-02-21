@@ -1,10 +1,4 @@
 function showModalOk(title, message, btns, etiquette, passeport, redirect) {
-    console.log(`title : ${title}`);
-    console.log(`message : ${message}`);
-    console.log(`btns : ${btns}`);
-    console.log(`etiquette : ${etiquette}`);
-    console.log(`passeport : ${passeport}`);
-    console.log(`redirect : ${redirect}`);
     getElement("modal").innerHTML =` 
         <article class="modal">
             <section class="modal__content modal__ok">

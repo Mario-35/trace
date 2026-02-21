@@ -12,7 +12,7 @@ document.getElementById("left-pane").innerHTML = `
 // Menu droite                
 document.getElementById("splitter-nav-site").innerHTML = `
 <nav role="navigation" class="splitter-nav-left splitter-menu-color">
-    <a href="index.html">Gestion des échantillons</a>
+    <a href="index.html"><div id="animeText" class="animeText"></div></a>    
 </nav>
     <nav role="navigation" class="splitter-nav-right" id="splitter-nav-right">
     <nav role="navigation" class="splitter-nav-left">
@@ -33,7 +33,7 @@ function createHTMLviewPasseport(values) {
     getElement("passeport").value = values.id;
 
     getElement("blockPasseport").innerHTML = `
-        <div class="pass-phyto-container">
+        <div class="container-center">
             <div class="pass-phyto border">
                 <div class="flag" id="passeportFlag"><img class ="flag-eu" src="./assets/flag-eu.png"></div>
                 <div class="title" id="passeportTitle" align="right"><p>Passeport phytosanitaire - ZP / Plant passport - PZ<br
@@ -49,12 +49,12 @@ function createHTMLviewPasseport(values) {
 // Button de creation du passeport phytosanitaire
 function createHTMLbtnCreatePasseport() {
     if (+getElement("passeport").value === 0) {        
-        if (_CONFIG.region == getElement("region").value)
+        if (_CONFIGURATION.region == getElement("region").value)
             {
             getElement("blockPasseport").innerHTML = '';
         } else if (notNull("cultures")) {
             getElement("blockPasseport").innerHTML = `
-            <div class="pass-phyto-container">
+            <div class="container-center">
                 <div class="btn-group">
                     <button class="btn btn-passeport"  id="btn-passeport-create">
                         Créer un passeport phytosanitaire${+getElement("risqueRpg").value < 2 ? '' : ' avec test'} pour ${_YEAR}
@@ -146,10 +146,10 @@ function createHTMLcreatePasseport() {
             refresh();
           } else {
               const resJson =  await response.json();
-              modalError(operation, resJson.code + " : " + resJson.error);
+              showModalError(operation, resJson.code + " : " + resJson.error);
           }
       }).catch(err => {
-          modalError(operation, err); 
+          showModalError(operation, err); 
       });
       refresh();
 
@@ -221,3 +221,84 @@ function setRange() {
         loadEchantillonLine(row.value);
     });    
 }
+
+class TextScramble {
+  constructor(el) {
+    this.el = el
+    this.chars = '!<>-_\\/[]{}—=+*^?#________'
+    this.update = this.update.bind(this)
+  }
+  setText(newText) {
+    const oldText = this.el.innerText
+    const length = Math.max(oldText.length, newText.length)
+    const promise = new Promise((resolve) => this.resolve = resolve)
+    this.queue = []
+    for (let i = 0; i < length; i++) {
+      const from = oldText[i] || ''
+      const to = newText[i] || ''
+      const start = Math.floor(Math.random() * 40)
+      const end = start + Math.floor(Math.random() * 40)
+      this.queue.push({ from, to, start, end })
+    }
+    cancelAnimationFrame(this.frameRequest)
+    this.frame = 0
+    this.update()
+    return promise
+  }
+  update() {
+    let output = ''
+    let complete = 0
+    for (let i = 0, n = this.queue.length; i < n; i++) {
+      let { from, to, start, end, char } = this.queue[i]
+      if (this.frame >= end) {
+        complete++
+        output += to
+      } else if (this.frame >= start) {
+        if (!char || Math.random() < 0.28) {
+          char = this.randomChar()
+          this.queue[i].char = char
+        }
+        output += `<span class="dud">${char}</span>`
+      } else {
+        output += from
+      }
+    }
+    this.el.innerHTML = output
+    if (complete === this.queue.length) {
+      this.resolve()
+    } else {
+      this.frameRequest = requestAnimationFrame(this.update)
+      this.frame++
+    }
+  }
+  randomChar() {
+    return this.chars[Math.floor(Math.random() * this.chars.length)]
+  }
+}
+
+
+function start() {
+    const fx = new TextScramble(document.getElementById('animeText'));
+    const phrases = [
+    'Gestion,',
+    'Des échantillons',
+    'Traçabilité des echantillons',
+    'Impression des étiquettes',
+    'Gestion des passeports phyto-sanitaires',
+    'Utilisation des codes barres',
+    'Un outil dévellopé par ADAM Mario',
+    'Pour l\'UMR SAS de rennes en 2026',
+    ]
+
+    let counter = 0
+    const next = () => {
+    fx.setText(phrases[counter]).then(() => {
+        setTimeout(next, 800)
+    })
+    counter = (counter + 1) % phrases.length
+    }
+
+    next();
+}
+
+start();

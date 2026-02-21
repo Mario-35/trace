@@ -1,12 +1,13 @@
 
 // Form validation functions
 function validateSite() {
-    if (validateStr('nom') === false) return false;
-    if (validateStr('pays') === false) return false;
-    if (validateStr('region') === false) return false;
-    if (validateStr('pointx') === false) return false;
-    if (validateStr('pointy') === false) return false;
-    return true;
+    let isValid = true;   
+    if (validateStr('nom') === false) isValid = false;
+    if (validateStr('pays') === false) isValid = false;
+    if (validateStr('region') === false) isValid = false;
+    if (validateStr('pointx') === false) isValid = false;
+    if (validateStr('pointy') === false) isValid = false;
+    return isValid;
 }
 
 

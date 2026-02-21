@@ -5,6 +5,7 @@ import { readId, readIds } from "../../controller";
 import { List } from "../../html/class/list";
 export const pagesRoutes = Router();
 
+let config: any | undefined = undefined;
 // Get all echantillons
 pagesRoutes.get("/index", async (req, res) => {
     const html = new Index();
@@ -25,8 +26,22 @@ pagesRoutes.get("/echantillons.html", async (req, res) => {
     res.send(html.toString())
 });
 
+pagesRoutes.get("/print/:type", async (req, res) => {
+        switch (req.params.type ) {
+            case 'echantillon':
+                const html = new Print("echantillon", [config] );
+                return res.set('Content-Type', 'text/html').send(html.toString());
+                // } else return res.status(404).json({"error": "no config"});
+        }
+});
+
 pagesRoutes.get("/print/:type/:id", async (req, res) => {
     switch (req.params.type ) {
+        case 'config':
+            if (config) {
+                const html = new Print("echantillon", config);
+                return res.set('Content-Type', 'text/html').send(html.toString());
+            } else return res.status(404).json({"error": "no config"});
         case 'echantillon':
             return await readId("echantillons",  +req.params.id).then((echantillon: any) => {
                 const html = new Print("echantillon", echantillon);
@@ -47,7 +62,6 @@ pagesRoutes.get("/print/:type/:id", async (req, res) => {
             });   
         case 'passeport':
             return await readId("passeports",  +req.params.id).then((passeport: any) => {
-                console.log(passeport);
                 const html = new Print("passeport", passeport);
                 res.set('Content-Type', 'text/html').send(html.toString())
             }).catch (error => {
@@ -59,4 +73,7 @@ pagesRoutes.get("/print/:type/:id", async (req, res) => {
 
 });
 
-
+pagesRoutes.post("/SaveConfig", async (req, res)  => {
+    config = req.body;
+    res.status(201).send();
+});

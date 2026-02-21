@@ -34,8 +34,8 @@ export class Index extends CoreHtmlView {
         this.replaceFile("css/splitter.css");
         this.replaceFile("css/bootstrap.css");
         this.replaceFile("js/constants.js");        
-        this.replaceFile("js/splitter.js");        
-        this.replaceFile("js/menu.js");        
+        this.replaceFile("js/common/splitter.js");        
+        this.replaceFile("js/common/menu.js");        
     }
 
     toString() {

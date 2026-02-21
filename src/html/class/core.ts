@@ -47,7 +47,6 @@ const operations: any = [];
 }) 
 
 operations.forEach((operation: any) => {
-    console.log(path.resolve(__dirname, "../../public/", operation.file));
     this.replaceInReturnResult(operation.search, `<style>${this.addFileMario(path.resolve(__dirname, "../../public/", operation.file))}</style>`);
 
 })

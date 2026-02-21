@@ -1,5 +1,8 @@
 import { logger } from "@infra/logger";
 import HttpServer from "./http-server";
+import fs from "fs";
+import path from "path";
+import { writeConfig } from "@app/configuration/controller";
 
 enum ExitStatus {
   Failure = 1,
@@ -11,6 +14,8 @@ async function main() {
     const httpServer = new HttpServer();
     const port = 3000;
     const exitSignals: NodeJS.Signals[] = ["SIGINT", "SIGTERM", "SIGQUIT"];
+    // if (!fs.existsSync(path.resolve(__dirname, "../../public/js", "configuration.js"))) writeConfig(); 
+    
     
     exitSignals.map((sig) =>
       process.on(sig, async () => {
@@ -27,7 +32,7 @@ async function main() {
 
     const app = await httpServer.createApp();
 
-    app.listen(port, () => logger.info(`Execution sur le port ${port}`));
+    app.listen(port, () => logger.info(`Serveur actif sur le port ${port}`));
   } catch (error) {
     logger.error(`Arret du serveur avec l'erreur : ${error}`);
     process.exit(ExitStatus.Failure);

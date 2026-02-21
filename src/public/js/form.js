@@ -35,7 +35,7 @@ function loadDatas(values) {
  * @return {Bool}             true if the element is an input, false if not
  */
 const isValidElement = element => {
-  return element.name && element.value;
+  return element.name;
 };
 
 /**
@@ -127,13 +127,11 @@ const formToJSON = elements => [].reduce.call(elements, (data, element) => {
      if (isMultiSelect(element)) 
       data[element.name] = getSelectValues(element);
 
-    else switch (element.type) {
+    else if (element.type) switch (element.type) {
       case 'checkbox':
         data[element.name] = element.checked;
         break
       case 'textarea':
-        console.log("============textarea===============")
-        console.log(element)
         data[element.name] = element.value || {};
         break
       case 'number':
@@ -151,6 +149,8 @@ const formToJSON = elements => [].reduce.call(elements, (data, element) => {
         break
       default:
         log(`${element.name} err =====> ${element.type}`);
+    } else {
+      console.log("[[[[[[[[[[[[[[[[[[[")
     }
   }
   return data;
@@ -183,4 +183,6 @@ form.action = window.location.origin + "/" + window.location.href.split('/add')[
 // form.action = window.location.origin + `/echantillon`;
 form.addEventListener('submit', handleFormSubmit);
 
-_COLUMNS = formToColumns(form.elements);   
+_COLUMNS = formToColumns(form.elements); 
+// important
+document.getElementById("formTitle").innerText  = document.title;

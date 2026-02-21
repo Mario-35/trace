@@ -58,7 +58,7 @@ function validateStep2() {
     let isValid = true;   
     if (validateStr('region') === false) isValid = false;
     if (validateStr('pays') === false) isValid = false;
-    if (getElement("region").value !== _CONFIG.region) {
+    if (getElement("region").value !== _CONFIGURATION.region) {
         if (validateStr('pointx') === false) isValid = false;
         if (validateStr('pointy') === false) isValid = false; 
     }
@@ -66,7 +66,7 @@ function validateStep2() {
     if(type.value === "Sol cultivé") {
         if (["edit", "edits", "add"].includes(_MODE)) return isValid;
         // The only way to test if in edit passport and not to be confused with view passport
-        if (getElement("region").value !== _CONFIG.region) {
+        if (getElement("region").value !== _CONFIGURATION.region) {
             if (getElement('passeportNom-error')) {
                 if (validateStr('passeportNom') === false) isValid = false;
                 getElement('create-error').style.display = 'block';
@@ -76,7 +76,7 @@ function validateStep2() {
              if (getElement('btn-passeport-create') && validateFile('image') === false) isValid = false;   
         }
         if (notNull("cultures") === false) isValid = false;   
-        else if (getElement("region").value !== _CONFIG.region && getElement('btn-passeport-create')) {
+        else if (getElement("region").value !== _CONFIGURATION.region && getElement('btn-passeport-create')) {
                 getElement('btn-passeport-create').style.background = 'red';
                 isValid = false; 
         }

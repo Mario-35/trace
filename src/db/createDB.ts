@@ -1,0 +1,51 @@
+import { admin, createDetaultDatas, executeSql } from ".";
+import { dataBase } from "./base";
+import { asyncForEach } from "../helpers/asyncForEach";
+
+
+export async function createDB(adminPass: string): Promise<Record<string, string>> {
+  const result: Record<string, string> = {};
+  const create = await admin(adminPass).unsafe("SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE pid <> pg_backend_pid() AND datname = 'trace';").then(async res => {
+    return await admin(adminPass).unsafe("DROP DATABASE trace").then(async res => {
+      result["DROP DATABASE"] = "Ok";
+      return await admin(adminPass).unsafe("CREATE DATABASE trace").then(async res => {
+        result["CREATE DATABASE"] = "Ok";
+        return true;
+      }).catch(error => {
+         result["CREATE DATABASE"] = "Error";
+        return false;
+      }); 
+    }).catch(error => {
+      result["DROP DATABASE"] = "Error";
+      return false;
+    }); 
+  });
+
+  if (create === false) return result;
+
+  const query:string[] = [];
+  Object.keys(dataBase).forEach(tableName => {
+    const cols:string[] = [];
+    Object.keys(dataBase[tableName].columns).forEach((columnName: string) => {
+      cols.push(columnName + " " + dataBase[tableName as keyof object].columns[columnName as keyof object]["create" as keyof object]);  
+    });
+    dataBase[tableName as keyof object].constraints.forEach(e => cols.push(e)); 
+    query.push(`CREATE TABLE ${tableName} (${cols.join()})${ tableName === "echantillons" ? ' PARTITION BY LIST(type)':''};`);
+  });
+  
+  await executeSql(query).then(async res => {
+    result["CREATE Tables"] = "Ok";
+    await createDetaultDatas();
+    result["CREATE Default datas"] = "Ok";
+  }).catch(error => {
+    result["CREATE Tables"] = "Error";
+  });
+
+  await asyncForEach(["Boues", "Eau", "Invertébrés", "Sol cultivé"], async (name) => {
+    await executeSql(`CREATE TABLE IF NOT EXISTS "echantillon_${name.replaceAll(" ","").toLowerCase()}" PARTITION OF echantillons FOR VALUES IN ('${name}');`).then(() => {
+      result["CREATE TABLE partitionned " + name] = "Ok";
+    })
+  });
+  
+  return result; 
+}

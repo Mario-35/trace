@@ -1,4 +1,6 @@
 import postgres from "postgres";
+import { dataBase } from "./base";
+import { executeSql } from "./executeSql";
 
 export const sql = postgres('postgres://postgres:mario29@localhost:5432/trace', {
     host                 : 'localhost',   // Postgres ip address[s] or domain name[s]
@@ -23,66 +25,21 @@ export function admin(password: string) {
         debug: true,
         max: 2000,
         connection: {
-            application_name: `Echantillons`
+            application_name: `Trace`
         }
     });
 }
 
-export const base = {
-      "passeports" : {
-            "columns": {
-                  "annee": "number" ,
-                  "nom": "text" ,
-                  "code": "text" ,
-                  "tracabilite": "number" ,
-                  "identifiant": "text" ,
-                  "fichier": "text" ,
-                  "origine": "text" ,
-            }
-      } ,
-      "configuration" : {
-            "columns": {
-                  "params": "jsonb" ,
-            }
-      } ,
-      "excels" : {
-            "columns": {
-                  "datas": "jsonb" ,
-            }
-      } ,
-      "echantillons" : {
-            "columns": {
-                  "type": "text" ,
-                  "programme": "text" ,
-                  "site": "text" ,
-                  "responsable": "text" ,
-                  "identification": "text" ,
-                  "parent": "text" ,
-                  "libre": "text" ,
-                  "prelevement": "date",
-                  "peremption": "date",
-                  "pays": "text" ,
-                  "region": "text" ,
-                  "pointx": "text",
-                  "pointy": "text",
-                  "passeport": "number" ,
-                  "cultures": "jsonb",
-                  "etiquette": "jsonb",
-                  "stockage": "jsonb",
-                  "etat": "text"
-            }
-      },
-      "sites" : {
-            "columns": {
-                  "nom": "text" ,
-                  "pays": "text" ,
-                  "region": "text" ,
-                  "pointx": "text",
-                  "pointy": "text",
-            }
-      } 
+export const getColumns = (tableName: string) => Object.keys(dataBase[tableName].columns).filter(e => e != "id");
+
+export function addPartiton(name: string) {
+    executeSql(`CREATE TABLE IF NOT EXISTS "echantillon_${name.toLowerCase()}" PARTITION OF echantillons FOR VALUES IN ('${name}');`);
 }
 
 export {executeSql} from "./executeSql"
+export {executeSqlValues} from "./executeSqlValues"
+export {createDB} from "./createDB"
+export {createDetaultDatas} from "./createDetaultDatas"
+export {createPgValues} from "./createPgValues"
 
 

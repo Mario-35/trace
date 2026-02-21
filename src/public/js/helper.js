@@ -27,9 +27,8 @@ function toJson(name) {
         if (element && element.value) {
             try {
                 return JSON.parse(document.getElementById(name).value);
-            } catch (error) {
-    
-               log("====================" + name + "=============================");
+            } catch (error) {    
+               log("======= ERROR =============" + name + "=============================");
                log(getElement(name).value);
                log(error);
             }
@@ -119,16 +118,16 @@ function notNull(element) {
         switch (elem.type) {
             case "date":
                 return (elem.value) ? elem.value.trim().length > 0 : false;
-            case "textarea":
-                try {                 
-                    return (elem.value) ? (Object.keys(JSON.parse(elem.value)).length > 0) : false;
-                } catch (error) {
-                    return false;
-                }
-            case "number":
-                return (elem.value) ? +value > 0 : false;        
-            default:
-                return (elem.value) ? true : false;
+                case "textarea":
+                    try {                 
+                        return (elem.value) ? (Object.keys(JSON.parse(elem.value)).length > 0) : false;
+                    } catch (error) {
+                        return false;
+                    }
+                    case "number":
+                        return (elem.value) ? +value > 0 : false;        
+                        default:
+                            return (elem.value) ? true : false;
         }
     };
     return false;

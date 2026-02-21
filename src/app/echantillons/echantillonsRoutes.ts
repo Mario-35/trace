@@ -22,11 +22,11 @@ echantillonsRoutes.get("/echantillons/:id", async (req, res) => {
 // Get one echantillon
 echantillonsRoutes.get("/echantillon/:id", async (req, res) => {
     return await readId("echantillons",  +req.params.id).then((echantillon: any) => {
-    return echantillon.length > 0 
-        ? res.status(200).json(echantillon[0])
-        : res.status(404).json({"code":404,"error":"Not Found"});
+        return echantillon.length > 0 
+            ? res.status(200).json(echantillon[0])
+            : res.status(404).json({"code":404,"error":"Not Found"});
     }).catch (error => {
-    return res.status(404).json({"error": error.detail});
+        return res.status(404).json({"error": error.detail});
     });
 })
 

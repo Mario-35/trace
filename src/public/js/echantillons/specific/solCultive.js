@@ -22,7 +22,7 @@ codeRisqueBettrave = (risques, possibles) => {
     return { niveau: -1};  
 }
 
-function refreshCultures() {
+function refreshCultures() {    
     head('refresh Cultures');
     if(getElement("cultures").value  ) {
         const datas = toJson("cultures");
@@ -32,7 +32,7 @@ function refreshCultures() {
 
         const lastYear = Object.keys(datas).filter(e => datas[e] !== 'NOT').map(e => +e).reverse()[0];
         const elem = getElement("message");
-        if (pays.value.toUpperCase() !== _CONFIG.pays.toUpperCase() || region.value.toUpperCase() !== _CONFIG.region.toUpperCase()) {
+        if (pays.value.toUpperCase() !== _CONFIGURATION.pays.toUpperCase() || region.value.toUpperCase() !== _CONFIGURATION.region.toUpperCase()) {
             const test = codeRisqueBettrave(["BTN","BVF"],["16","24"]);
             getElement("risqueRpg").value = test.niveau || -1 ;
             switch (test.niveau) {
@@ -67,7 +67,7 @@ function refreshsolcultive() {
     head('refreshsolcultivé');
     const elemRpg = getElement("btnApiRpg");
 
-    if (getElement("region").value === _CONFIG.region) 
+    if (getElement("region").value === _CONFIGURATION.region) 
         hide(getElement("blockRpg"));
     
     if (getElement("pointx").value && getElement("pointy").value) 

@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tracer des écahntillon</title>
-    <link rel="stylesheet" href="./css/printEchantillon.css">
-    <!-- printEchantillon.css important to be before form -->
+    <title>Ajout d'échantillon(s)</title>
+    <link rel="stylesheet" href="./css/print.css">
+    <link rel="stylesheet" href="./css/echantillon.css">
+    <link rel="stylesheet" href="./css/passeport.css">
     <link rel="stylesheet" href="./css/form/main.css">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/modal.css">
@@ -23,7 +24,7 @@
             <div class="content" id="right-pane">
                 <div class="container">
                     <div class="header">
-                        <h1 id="title">Ajout d'échantillon(s)</h1>
+                        <h1 id="formTitle"></h1>
                     </div>
                     <!-- Steps Headers-->            
                     <div class="progress-bar">
@@ -74,6 +75,11 @@
                                     <label for="site">Site du prélévement</label>
                                     <input type="text" id="site" name="site" class="form-control" maxlength="25" placeholder="Site de prelevement" />                           
                                     <div class="error-message" id="site-error">Nom du site de prelevement obligatoire</div>
+                                </div>
+                                <div class="form-group row-2">
+                                    <label for="condition">Condition de prélévement</label>
+                                    <input type="text" id="condition" name="condition" class="form-control" maxlength="25" placeholder="Condition de prelevement" />                           
+                                    <div class="error-message" id="condition-error">Condition de prelevement obligatoire</div>
                                 </div>
                                 
                                 <div class="form-group row-2">
@@ -142,11 +148,7 @@
                                 <div class="form-group row-1">                                
                                     <label for="demos">Données de démonstration</label>
                                     <select class="form-control" id="demos"></select>                
-                                </div>  
-                                <div class="form-group row-1">                                
-<button class="btn" id="testModal"> Modal
-                                </button>            
-                                </div>  
+                                </div> 
                             </div>  
                             
                             <div class="btn-group">                        
@@ -171,8 +173,7 @@
                             </div>
 
                             <div id="SOLSCULTIVÉ">
-                                <input id="risqueRpg" name="risqueRpg" type="hidden" value="-1" />   
-
+                                <input id="risqueRpg" name="risqueRpg" type="hidden" value="-1" />
                                 <div class="form-row">
                                     <div class="form-group row-1">
                                         <label for="pays">Pays</label>
@@ -208,7 +209,16 @@
                                     </div>
                                 </div>
 
-                                <div id="blockPasseport"></div>
+                                
+
+                            <div class="form-row">
+                                <div class="form-group row-3">
+                                    <div id="blockPasseport"></div>
+                                </div>
+                                <div class="form-group row-1">
+                                </div>                            
+                            </div> 
+
                                 <input id="passeport" name="passeport" type="hidden" value="0" />   
                                 
                             </div>
@@ -246,7 +256,7 @@
                         
                         <!-- Step 4: Etiquettes -->
                         <div class="form-step" id="form-step-4">                        
-                            <div class="form-row">
+                            <!-- <div class="form-row">
                                 <div class="form-group row-1">
                                     <label for="element" id="elementLabel">Element</label>
                                     <select id="element" class="form-control" > </select>
@@ -276,7 +286,9 @@
                                     <div class="sticker0" id="sticker0">
                                         <img width="100%" height="75%" src="./assets/barreCode.png">
                                     </div>
+                                    <div class="sticker01">Prélevement</div>
                                     <div class="sticker1" id="sticker1">element1</div>
+                                    <div class="sticker02">Pélevement</div>
                                     <div class="sticker2" id="sticker2">element2</div>
                                     <div class="sticker3" id="sticker3">element3</div>
                                     <div class="sticker4" id="sticker4">element4</div>
@@ -287,8 +299,45 @@
                             </div>
                             <div class="form-row">
                                  <div class="form-group row-1"></div>
-                            </div>
-                            
+                            </div> -->
+   
+                            <div class="form-row">
+                                <div class="form-group row-2">
+                                    <label for="element" id="elementLabel">Element</label>
+                                    <select id="element" class="form-control"> </select>
+                                </div>
+                                <div class="form-group row-3">
+                                    <label for="texte">Texte Libre</label>
+                                    <input type="text" id="texte" class="form-control" maxlength="50" placeholder="Texte Libre">
+                                </div>
+                                <div class="form-group row-1">
+                                    <label>Taille</label>
+                                    <select id="textSize" class="form-control">
+                                        <option >8px</option>
+                                        <option selected>10px</option>
+                                        <option>12px</option>
+                                        <option>14px</option>
+                                        <option>16px</option>
+                                    </select> 
+                                </div>                                   
+                                <div class="form-group row-1">                                    
+                                    <label>Alignement</label>
+                                    <select id="textAlign" class="form-control">
+                                        <option value="left">Gauche</option>
+                                        <option value="center" selected>Centre</option>
+                                        <option value="right">Droite</option>
+                                    </select> 
+                                </div>                         
+                            </div>                            
+                            <div class="form-row">
+                                <div class="form-group row-1">
+                                    <button class="btn btn-test" id="testPrintEtiquette">Imprimer</button>
+                                </div>                            
+                                <div class="form-group row-3">
+                                    <div id="gabaritEtiquette"></div>
+                                </div>
+                            </div>  
+
                             <div class="btn-group">
                                 <button class="btn btn-prev" id="prev-4">⬅ Précédent</button>
                                 <button class="btn btn-next" id="btn-creer">✔️️ Créer</button>
@@ -303,18 +352,22 @@
     <div id="modal"></div>  
 </body> 
 
-<script src="./js/constants.js"></script>
-<script src="./js/all.js"></script>
-<script src="./js/splitter.js"></script>
-<script src="./js/menu.js"></script>
-<script src="./js/form.js"></script>
-<script src="./js/codes.js"></script>
-<script src="./js/api.js"></script>
-<script src="./js/helper.js"></script>
-<script src="./js/modal.js"></script>
-<script src="./js/echantillons/demo.js"></script>
-<script src="./js/echantillons/add.js"></script>
-<script src="./js/echantillons/event.js"></script>    
-<script src="./js/echantillons/data.js"></script>
-<script src="./js/echantillons/specific/solCultive.js"></script>
+    <!-- awlays first -->
+    <script src="./js/configuration.js"></script>
+    <script src="./js/constants.js"></script>
+    <script src="./js/all.js"></script>
+    <script src="./js/common/splitter.js"></script>
+    <script src="./js/common/menu.js"></script>
+    <script src="./js/form.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/helper.js"></script>
+    <script src="./js/common/modal.js"></script>
+    <script src="./js/echantillons/demo.js"></script>
+    <script src="./js/libs/JsBarcode.all.min.js"></script>
+    <script src="./js/api/print.js"></script>
+    <script src="./js/echantillons/add.js"></script>
+    <script src="./js/echantillons/event.js"></script>    
+    <script src="./js/echantillons/controller.js"></script>
+    <script src="./js/stickers/controller.js"></script>
+    <script src="./js/echantillons/specific/solCultive.js"></script>
 </html>

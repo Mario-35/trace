@@ -1,5 +1,6 @@
 import { readId } from "../../controller";
-import { base, executeSql, sql } from "../../db";
+import { executeSql, getColumns, sql } from "../../db";
+import { dataBase } from "../../db/base";
 
 export async function readEchantillons(passeport?: number) {
       return  passeport 
@@ -11,7 +12,7 @@ export async function addEchantillon(values: any) {
       const queries:string[] = [];
       let tmpCode: string | undefined = undefined;
       // Create list of columns
-      const tableColumns = Object.keys(base.echantillons.columns).filter(e => values[e as keyof object] !== undefined );
+      const tableColumns = Object.keys(dataBase.echantillons.columns).filter(e => values[e as keyof object] !== undefined );
       // Create list insert into
       const insertInto = tableColumns.map(e => `"${e}"`);
       // If excel instert
@@ -60,22 +61,16 @@ export async function addEchantillon(values: any) {
             });            
             executeSql(queries);
             // executeSql(queries);
-            console.log(codesIdentification);
             const mai = `INSERT INTO selections (ids) SELECT ARRAY_AGG(id) FROM echantillons WHERE identification IN ('${ codesIdentification.join("','") }') RETURNING id`;
-            console.log(mai);
-
             const ret = await sql.unsafe(mai);
-            console.log(ret);
             return {selection : ret[0].id};
-            // addSelection(ret);
-            // return {identification : ret};
       }
       executeSql(queries);
       return {identification : tmpCode};
 };
 
 export async function updateEchantillon(values: any, id: number) {
-      const cols = Object.keys(base.echantillons.columns);
+      const cols = getColumns("echantillons");
       const datas = cols.filter(e => values[e]);
       return await executeSql(`UPDATE echantillons SET ${datas.map(e => `"${e}" = '${values[e]}'`).join()} WHERE id = ${ id }`)
       .then(async res => {

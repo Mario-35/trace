@@ -4,90 +4,219 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configuration</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel='stylesheet' href='./css/bootstrap.min.css'>
-    <link rel="stylesheet" href="./css/form/main.css">
     <link rel="stylesheet" href="./css/form/configuration.css">
-    <link rel="stylesheet" href="./css/modal.css">
-    <link rel="stylesheet" href="./css/splitter.css">
+    <link rel="stylesheet" href="./css/form/main.css">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/modal.css">
-
+    <link rel="stylesheet" href="./css/splitter.css">
 </head>
 
 <body>
 	<header id="splitter-nav-site" class="splitter-nav-site"></header>
     <form id="actionForm" class="formData" enctype="multipart/form-data" method="POST">
-    <main class="main-view">
-        <div class="splitter-nav-view" id="left-pane">
-        </div>
+        <main class="main-view">
+            <div class="splitter-nav-view" id="left-pane">
+            </div>
             <div class="v-drag" id="separator"></div>
             <div class="content" id="right-pane">
                 <div class="container">
                     <div class="header">
-                        <h1 id="title">Configuration</h1>
+                        <h1 id="formTitle"></h1>
+                    </div>
+                    <!-- Steps Headers-->            
+                    <div class="progress-bar">
+                        <div class="progress-bar-line" id="progress-line"></div>
+                        <div class="step completed" id="step-1">
+                            <span>1</span>
+                            <span class="step-label">Général</span>
+                        </div>
+                        <div class="step active" id="step-2">
+                            <span>2</span>
+                            <span class="step-label">Stockage</span>
+                        </div>
+                        <div class="step" id="step-3">
+                            <span>3</span>
+                            <span class="step-label">Etats</span>
+                        </div>
+                        <div class="step" id="step-4">
+                            <span>4</span>
+                            <span class="step-label">Etiquettes</span>
+                        </div>
                     </div>
                     
                     <div class="form-container">
-                        <!-- Step 1: Prélevement -->
-                        <div class="form-step active">
-                            <div class="form-row">                        
+                        <!-- Step 1: Général -->
+                        <div class="form-step active" id="form-step-1">
+                            <div class="form-row">
+                                <div class="form-group row-1">
+                                    <label for="site">Nom de l'unité</label>
+                                    <input type="text" id="site" name="site" class="form-control" maxlength="25" placeholder="Nom de l'unité" />                           
+                                    <div class="error-message" id="site-error">Nom de l'unité obligatoire</div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group row-1">
+                                    <label for="pays">Pays</label>
+                                    <input type="text" id="pays" name="pays" class="form-control" maxlength="25" placeholder="Pays">
+                                    <div class="error-message" id="pays-error">Indiquer le pays</div>
+                                </div>
+                                
+                                <div class="form-group row-1">
+                                    <label for="region">Région</label>
+                                    <input type="text" id="region" name="region" class="form-control" maxlength="30" placeholder="Region">
+                                    <div class="error-message" id="region-error">Indiquer la région</div>
+                                </div>
+                                <div class="form-group row-1">
+                                    <label for="pointx">Longitude en degré décimal</label>
+                                    <input type="text" id="pointx" name="pointx" class="form-control" maxlength="15" placeholder="Point X">
+                                    <div class="error-message" id="pointx-error">Indiquer la longitude au format WGS84</div>
+                                </div>
+                                <div class="form-group row-1">
+                                    <label for="pointy">Latitude en degré décimal</label>
+                                    <input type="text" id="pointy" name="pointy" class="form-control" maxlength="15" placeholder="Point Y">
+                                    <div class="error-message" id="pointy-error">Indiquer la latitude au format WGS84</div>
+                                </div>
+                            </div>                            
+                             <div class="form-row">
+                                 <label for="code">Passeport Phytosanitaire</label>
+                                </div>
+                                 <div class="form-row">
                                 <div class="form-group row-1">
                                     <label for="code">Code ISO</label>
-                                    <input type="text" id="code" name="code" class="form-control" value="FR">
+                                    <input type="text" id="code" name="code" class="form-control">
                                 </div>
                                 
                                 <div class="form-group row-1">
                                     <label for="identifiant">Identifiant </label>
-                                    <input type="text" id="identifiant" name="identifiant" class="form-control" value="BR13551">
-                                </div>                                                          
-                                
-                                <div class="form-group row-2">
-                                    <input type="hidden" id="stockage" name="stockage" class="form-control" value="lol">
-                                    <label for="addCle">Mots clés pour le stockage </label>
-                                    <input type="text" id="addCle" class="form-control">
-                                </div>   
-                            </div>                
-                            
-                            <div class="form-row">
-                                <div class="form-group row-1">
-                                    <textarea id="etiquette" name="etiquette"></textarea>
-                                </div>
-                                <div class="form-group row-1">
-                                    <ul id="list" class="form-control moveable" name="stockage"></ul>
-                                </div>
+                                    <input type="text" id="identifiant" name="identifiant" class="form-control">
+                                </div>                                     
                             </div>
 
+                            
+                            <div class="btn-group">                        
+                                <button class="btn btn-prev" id="prev-1" disabled>⬅ Précédent</button>
+                                <button class="btn btn-next" id="next-1">Suivant ➡</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Stockage -->
+                        <div class="form-step" id="form-step-2">
                             <div class="form-row">
                                 <div class="form-group row-2">
-                                    <button class="btn btn-secondary float-start" id="demo"> <i class="fas fa-beta"></i> Default </button> 
-                                </div>
+                                    <input type="hidden" id="stockages" name="stockages" class="form-control">
+                                    <label for="addCleStockage">Mots clés pour le stockage </label>
+                                    <input type="text" id="addCleStockage" class="form-control">
+                                </div>                                   
                                 <div class="form-group row-2">
-                                    <button class="btn btn-primary form-group float-end" type="submit" id="btn-save"> <i class="fas fa-check"></i> Sauvegarder </button>
+                                    <ul id="listStockages"></ul>
                                 </div>
+                            </div> 
+
+                            <div class="btn-group">
+                                <button class="btn btn-prev" id="prev-2">⬅ Précédent</button>
+                                <button class="btn btn-next" id="next-2">Suivant ➡</button>
                             </div>
-                        </div>                
+                        </div>
+                        
+                        <!-- Step 3: Etats -->
+                        <div class="form-step" id="form-step-3">  
+                            <div class="form-row">
+                                <div class="form-group row-2">
+                                    <input type="hidden" id="etats" name="etats" class="form-control">
+                                    <label for="addCleEtat">Mots clés pour le stockage </label>
+                                    <input type="text" id="addCleEtat" class="form-control">
+                                </div>                                   
+                                <div class="form-group row-2">
+                                    <ul id="listEtats"></ul>
+                                </div>
+                            </div> 
+
+                            <div class="btn-group">
+                                <button class="btn btn-prev" id="prev-3">⬅ Précédent</button>
+                                <button class="btn btn-next" id="next-3">Suivant ➡</button>
+                            </div>                            
+                        </div>
+                        
+                        <!-- Step 4: Etiquettes -->
+                        <div class="form-step" id="form-step-4">    
+                            <div class="form-row">
+                                <div class="form-group row-2">
+                                    <label for="element" id="elementLabel">Element</label>
+                                    <select id="element" class="form-control"> </select>
+                                </div>
+                                <div class="form-group row-3">
+                                    <label for="texte">Texte Libre</label>
+                                    <input type="text" id="texte" class="form-control" maxlength="50" placeholder="Texte Libre">
+                                </div>
+                                <div class="form-group row-1">
+                                    <label>Taille</label>
+                                    <select id="textSize" class="form-control">
+                                        <option >8px</option>
+                                        <option selected>10px</option>
+                                        <option>12px</option>
+                                        <option>14px</option>
+                                        <option>16px</option>
+                                    </select> 
+                                </div>                                   
+                                <div class="form-group row-1">                                    
+                                    <label>Alignement</label>
+                                    <select id="textAlign" class="form-control">
+                                        <option value="left">Gauche</option>
+                                        <option value="center" selected>Centre</option>
+                                        <option value="right">Droite</option>
+                                    </select> 
+                                </div>                         
+                            </div>                            
+                            <div class="form-row">
+                                <div class="form-group row-1">
+                                    <button class="btn btn-test" id="testPrint">Imprimer</button>
+                                </div>                            
+                                <div class="form-group row-3">
+                                    <div id="gabaritEtiquette"></div>
+                                </div>
+
+                            </div>                            
+
+                            <div class="btn-group">
+                                <button class="btn btn-prev" id="prev-4">⬅ Précédent</button>
+                                <button class="btn btn-next" id="btn-creer">✔️️ Modifier</button>
+                            </div>  
+                            <textarea id="etiquette" name="etiquette"></textarea>                                                
+                        </div>
                     </div>
                 </div>
             </div>
-        </main>
+        </main> 
     </form>
-    <div class="modal-container">
-      <input id="modal-toggle" type="checkbox">
-      <label class="modal-backdrop" id="modal-ouside"></label>  
-      <div id="modal" class="modal-content"> 
-      </div>          
-    </div>  
+    <div id="modal"></div>  
 </body> 
 
-<script src="./js/constants.js"></script>
-<script src="./js/splitter.js"></script>
-<script src="./js/menu.js"></script>
-<script src="./js/all.js"></script>
-<script src="./js/form.js"></script>
-<script src="./js/codes.js"></script>
-<script src="./js/api.js"></script>
-<script src="./js/helper.js"></script>
-<script src="./js/modal.js"></script>
-<script src="./js/configuration/data.js"></script>
+<!-- awlays first -->
+<script src="./js/configuration.js"></script>
+<script> const exemples = {
+        "type":"Sol",
+        "programme":"Programme concerné",
+        "site":"Nom du site",
+        "responsable":"ADAM Mario",
+        "pays":"France",
+        "region":"Bretagne",
+        "identification":"1902202617320002",
+        "prelevement":"01-01-2026",
+        "peremption":"01-01-2031",
+        "libre":"Texte libre limité à 50 caractères"
+    }</script>
+    <script src="./js/constants.js"></script>
+    <script src="./js/all.js"></script>
+    <script src="./js/common/splitter.js"></script>
+    <script src="./js/common/menu.js"></script>
+    <script src="./js/form.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/helper.js"></script>
+    <script src="./js/common/modal.js"></script>
+    <script src="./js/libs/JsBarcode.all.min.js"></script>
+    <script src="./js/api/print.js"></script>
+    <script src="./js/configurations/add.js"></script>
+    <script src="./js/configurations/event.js"></script>  
+    <script src="./js/stickers/controller.js"></script>
+    <script src="./js/configurations/controller.js"></script>
 </html>

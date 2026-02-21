@@ -6,11 +6,11 @@ import compression from "compression";
 import path from "path";
 import { logger } from "@infra/logger";
 import { getRpg } from "./helpers/getRpg"
-import { addExcel, addSelection, getConfiguration, readId, readIds, setConfiguration, verifyBody } from "./controller";
+import { verifyBody } from "./controller";
 import {  HELMET } from "./constant";
-import { sql } from "./db";
-import { createDB } from "./helpers/createDB";
-import { echantillonsRoutes, pagesRoutes, passeportsRoutes, sitesRoutes } from "./app";
+import { createDB, createDetaultDatas, executeSql, executeSqlValues, sql } from "./db";;
+import { echantillonsRoutes, excelsRoutes, pagesRoutes, passeportsRoutes, selectionsRoutes, sitesRoutes } from "./app";
+import { configRoutes } from "@app/configuration/configRoutes";
 
 
 
@@ -24,12 +24,11 @@ export default class HttpServer {
   constructor() {
     this.app = express();
     this.storage = multer.memoryStorage();
-    this.upload = multer({ storage: this.storage });    
+    this.upload = multer({ storage: this.storage }); 
   }
 
   async createApp(): Promise<Express> {
     this.loadMiddlewares();
-    // this.loadPages();
     this.loadRoutes();
     return this.app;
   }
@@ -40,7 +39,7 @@ export default class HttpServer {
 
   private loadMiddlewares(): void {
     this.app.use(cors());
-    this.app.use( helmet(HELMET) );
+    this.app.use(helmet(HELMET) );
     this.app.use(express.json({limit: '50mb'}));
     this.app.use(express.static(path.join(__dirname, 'public')));
     this.app.use(express.json());
@@ -50,10 +49,13 @@ export default class HttpServer {
   
   private loadRoutes(): void {
 
+    this.app.use('/', configRoutes);
     this.app.use('/', echantillonsRoutes);
     this.app.use('/', passeportsRoutes);
     this.app.use('/', sitesRoutes);
     this.app.use('/', pagesRoutes);
+    this.app.use('/', excelsRoutes);
+    this.app.use('/', selectionsRoutes);
     
     this.app.get("/", async (_req: Request, res: Response) => {
       res.json({
@@ -62,8 +64,7 @@ export default class HttpServer {
     })
         // Get test
     this.app.get("/init/:password", async (_req: Request, res: Response) => {
-      res.status(200).json(createDB(_req.params["password" as keyof object]))
-      
+      res.status(200).json(await createDB(_req.params["password" as keyof object]));
     })
 
     // ########################################################
@@ -93,24 +94,6 @@ export default class HttpServer {
         return res.status(404).json({"error": error.detail});
       });
     })
-
-    this.app.get("/excel/:id", async (_req: Request, res: Response) => {
-      return await readId("excels",  +_req.params.id).then((excel: any) => {
-        return excel.length > 0 
-          ? res.status(200).json(excel[0].datas)
-          : res.status(404).json({"code":404,"message":"Not Found"});
-      }).catch (error => {
-        return res.status(404).json({"error": error.detail});
-      });
-    })
-    
-    this.app.post("/excel", async (_req: Request, res: Response) => {
-      return await addExcel(_req.body).then((excel: any) => {
-        return res.status(201).json(excel);
-      }).catch (error => {
-        return res.status(error.code === 23505 ? 409 : 404).json({"error": error.detail});
-      });
-    })
     
     // return the status server
     this.app.get("/status", async (_req: Request, res: Response) => {
@@ -123,65 +106,19 @@ export default class HttpServer {
 
     // Get all rpg
     this.app.get("/rpg", async (_req: Request, res: Response) => {
+      // const codes: string[] = ["NOT"];
       const tmp = _req.url.split("?pos=")[1].split(",");
-      return await getRpg(tmp[0] ,tmp[1]).then((rpg: any) => {
-        return res.status(200).json(rpg);
-      }).catch (error => {
-        return res.status(404).json({"error": error.detail});
-      });
-    });
-    
-
-
-    // ########################################################
-    // #                    CONFIGURATION                     #
-    // ########################################################
-   this.app.post("/configuration", async (_req: Request, res: Response) => {
-      const values = verifyBody(_req.body);
-      if(values) {
-        return await setConfiguration(values).then((configuration: any) => {
-          return res.status(201).json(configuration);
-        }).catch (error => {
-          return res.status(error.code === 23505 ? 409 : 404).json({"error": error.detail});
-        });
-      } else res.status(400).json({"code":400,"error":"Bad Request"});
-    })
-
-    this.app.get("/configuration", async (_req: Request, res: Response) => {
-      return await getConfiguration().then((configuration: any) => {
-        return res.status(200).json(configuration[0].params);
-      }).catch (error => {
-        return res.status(404).json({"error": error.detail});
-      });
-    });  
-
-    // ########################################################
-    // #                      selection                       #
-    // ########################################################
-
-    // Get selection
-    this.app.get("/selection/:id", async (_req: Request, res: Response) => {
-      return await readId("selections",  +_req.params.id).then(async (selection: any) => {
-        return await readIds("echantillons", selection[0].ids).then(async (all: any) => {
-          return res.status(200).json(all);
-        }).catch (error => {
-          return res.status(404).json({"error": error.detail});
+      return await getRpg(tmp[0] ,tmp[1]).then(async (rpg: any) => {
+        const codes = await executeSqlValues(`SELECT CONCAT('"', code, '" : "',valeur, '"') FROM rpg WHERE code IN ('${Array.from(new Set(Object.values(rpg).map(item => item))).join("','")}')`);
+        return res.status(200).json({
+          values : rpg,
+          codes : codes,
         });
       }).catch (error => {
         return res.status(404).json({"error": error.detail});
       });
     });
     
-    // Create one selection
-    this.app.post("/selection", async (_req: Request, res: Response) => {
-      return await addSelection(_req.body.ids).then((selection: any) => {
-        return res.status(201).json(selection);
-      }).catch (error => {
-        return res.status(error.code === 23505 ? 409 : 404).json({"error": error.detail});
-      });
-    })
-
-
     this.app.use((req: Request, res: Response) => {
       res.status(404).json({
         error: {

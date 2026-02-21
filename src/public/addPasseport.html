@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Passeport phytosanitaires</title>
+    <title>Ajout d'un passeport</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel='stylesheet' href='./css/bootstrap.min.css'>
     <link rel="stylesheet" href="./css/form/main.css">
@@ -24,9 +24,8 @@
             <div class="content" id="right-pane">
                 <div class="container">
                     <div class="header">
-                        <h1 id="title">Ajout d'un passeport</h1>
-                    </div>
-                    
+                        <h1 id="formTitle"></h1>
+                    </div>                    
                     <div class="form-container">
                         <!-- Step 1: Prélevement -->
                         <div class="form-step active">
@@ -90,16 +89,17 @@
     <div id="modal"></div>
 </body> 
 
+<!-- awlays first -->
+<script src="./js/configuration.js"></script>
 <script src="./js/constants.js"></script>
 <script src="./js/all.js"></script>
-<script src="./js/splitter.js"></script>
-<script src="./js/menu.js"></script>
+<script src="./js/common/splitter.js"></script>
+<script src="./js/common/menu.js"></script>
 <script src="./js/form.js"></script>
-<script src="./js/codes.js"></script>
 <script src="./js/api.js"></script>
 <script src="./js/helper.js"></script>
-<script src="./js/modal.js"></script>
+<script src="./js/common/modal.js"></script>
 <script src="./js/passeports/add.js"></script>
 <script src="./js/passeports/event.js"></script>    
-<script src="./js/passeports/data.js"></script>
+<script src="./js/passeports/controller.js"></script>
 </html>

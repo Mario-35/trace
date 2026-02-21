@@ -1,6 +1,5 @@
 // create identification with date time (without seconds) and echantillon number
 function createIdentification(nb) {
-    console.log((getElement("echantillon").value || getElement("numero").value));
     return `${ new Date(getElement("prelevement").value || new Date()).toLocaleDateString()}${new Date().toLocaleTimeString()}`.replace(/\D/g, "").slice(0,12) + (nb || getElement("echantillon").value || getElement("numero").value).padStart(4, '0');
 }
 
@@ -106,15 +105,15 @@ async function start() {
     _MODE = "none";
     // init id
     let id = 0;
-    // default sticker
-    getElement("etiquette").value = JSON.stringify(_CONFIG.sticker);   
+    // get default sticker config 
+    getElement("etiquette").value = JSON.stringify(_CONFIGURATION.etiquette);   
     getElement("stockage").value = JSON.stringify({});   
     getElement("cultures").value = JSON.stringify({});   
     // init select for sticker
-    addToOption(getElement('element'), _CONFIG.stickerElements);     
-    addToOption(getElement('cle'), _CONFIG.stockageElements);   
+    addToOption(getElement('element'), Object.keys("exemples"));     
+    addToOption(getElement('cle'), _CONFIGURATION.stockages);   
     addToOption(getElement('demos'), Object.keys(_DEMOS));   
-    addToOption(getElement('etat'), _CONFIG.etatElements, "Créer");        
+    addToOption(getElement('etat'), _CONFIGURATION.etats, "Créer");        
     // if id in params get the id 
     if(isKeyInUrl('id'))
         id = getNumberFromUrl("id") ;
@@ -132,7 +131,7 @@ async function start() {
         getElement("btnApiRpg").innerText = "MAJ données du RPG";
         setReadOnly([ "type", "prelevement", "pays", "region", "pointx", "pointy"]);
         hideParentClass( "btnApiRpg", "row-1");
-        getElement("title").innerText = "Modification d'un échantillon";
+        changeTitle("Modification d'un échantillon");
         _MODE = "edit";
         
     } else if (isKeyInUrl('selection')) { // Selection Edits mode
@@ -149,7 +148,7 @@ async function start() {
         // get the range lines
         setRange();
         // Change title
-        getElement("title").innerText = "Modification de plusieurs échantillons";
+        changeTitle("Modification de plusieurs échantillons");
         // Set the mode
         _MODE = "edits";
     } else if (isKeyInUrl('excel')) {  // Excel mode
@@ -182,7 +181,7 @@ async function start() {
             }
             // get the range lines
             setRange();
-            getElement("title").innerText = "Ajout depuis un fichier excel";
+            changeTitle("Ajout depuis un fichier excel");
             _MODE = "news";
         }
         
@@ -203,7 +202,7 @@ async function start() {
         multipleShow(["numero",  "nombre"]); 
         getElement("etat").value = 'Créer';
         getElement("numero").value = temp;
-        getElement("title").innerText = "Ajout d'échantillon(s)";
+        changeTitle("Ajout d'échantillon(s)");
         _MODE = "add";
     } else { //  // Default add mode
         multipleHide(["echantillon",  "etat"]); 
@@ -211,6 +210,7 @@ async function start() {
         getElement("etat").value = 'Créer';
         _MODE = "new";
     }
+
     if (_MODE === "none") log("Error _MODE)")
     refresh();
 }

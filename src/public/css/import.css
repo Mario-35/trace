@@ -16,7 +16,6 @@
 	font-size: 1rem;
     background-color: var(--background-color);
     border: 1px solid var(--btn-gray-border);
-    /* border-radius: 4px; */
 }
 
 .no-js .inputfile+label {

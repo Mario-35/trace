@@ -52,7 +52,6 @@ async function start() {
     
     if (id > 0) {
         const datas = await getDatas(window.location.origin + "/site/" + id);
-        console.log(datas);
         loadDatas(datas);
         loadDatas(_COLUMNS);
         document.getElementById("title").innerText = "Modification d'un site";

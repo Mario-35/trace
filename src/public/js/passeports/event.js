@@ -23,13 +23,13 @@ getElement('btn-creer').addEventListener('click', async function() {
             body: JSON.stringify(_DATAS),
         }).then(async response => {
             if (response.status === 201) {
-                modalRedirect(operation, "Tout est ok", "./passeports.html");
+                showModalOk(operation, "Tout est ok", ["ok"], false, false, "./passeports.html");
             } else {
                 const resJson =  await response.json();
-                modalError(operation, resJson.code + " : " + resJson.error);
+                showModalError(operation, resJson.code + " : " + resJson.error);
             }
         }).catch(err => {
-            modalError(operation, err);
+             showModalError(operation, err);
         });
     }
 });
