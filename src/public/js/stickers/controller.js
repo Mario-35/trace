@@ -2,6 +2,7 @@
 function selectElement(name) {
     const tmp = toJson("etiquette")[name];
     getElement("element").value = tmp.key;
+    getElement("texte").value = tmp.value || "";
     getElement("elementLabel").innerText = name;
     getElement("textAlign").value = tmp.align || "center";  
     getElement("textSize").value = tmp.size || "10px";   
@@ -23,7 +24,7 @@ function start() {
       event.preventDefault();
       if (document.title === "Configuration") {
           changeValueInJson("etiquette", [getElement("elementLabel").innerText, "key"], getElement("element").value);
-          getElement(getElement("elementLabel").innerText).innerText = exemples[getElement("element").value];
+          getElement(getElement("elementLabel").innerText).innerText = _CONFIGURATION.stickerElements[getElement("element").value];
       }
   });
 
@@ -55,20 +56,21 @@ function start() {
       getElement("etiquette").value = JSON.stringify(tmp);
   });
 
-  getElement("testPrint").addEventListener("click", async function(event) {
-      event.preventDefault();
-      await fetch(window.location.origin + `/SaveConfig`, {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json",
-          },
-          body: JSON.stringify(getTemplateSticker()),
-      }).then(async response => {
-          if (response.status === 201) {
-              open(window.location.origin + '/print/' + "echantillon", self);   
-          }
-      });
-  });
+  if (getElement("testPrintEtiquette"))
+    getElement("testPrintEtiquette").addEventListener("click", async function(event) {
+        event.preventDefault();
+        await fetch(window.location.origin + `/SaveConfig`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(getTemplateSticker()),
+        }).then(async response => {
+            if (response.status === 201) {
+                open(window.location.origin + '/print/' + "echantillon", self);   
+            }
+        });
+    });
 }
 
 start();

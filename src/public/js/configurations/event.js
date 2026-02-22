@@ -1,7 +1,6 @@
 getElement('btn-creer').addEventListener('click', function() {
     head('btn-save');
     _DATAS = formDatas();
-    const operation = "Configuration";
     fetch(window.location.origin + `/configuration`, {
         method: "POST",
         headers: {
@@ -10,12 +9,28 @@ getElement('btn-creer').addEventListener('click', function() {
         body: JSON.stringify(_DATAS),
     }).then(async response => {
         if (response.status === 201) {
-            showModalOk(operation, "Tout est ok", ["ok"], false, false, "./addConfiguration.html");
+            showModalOk("Configuration modifié", "./index.html");
         } else {
             const resJson =  await response.json();
-            showModalError(operation, resJson.code + " : " + resJson.error);
+            showModalError(resJson.code + " : " + resJson.error);
         }
     }).catch(err => {
-        showModalError(operation, err);
+        showModalError(err);
     });
 });
+
+getElement("excelSelect").addEventListener('mousedown', function(event) {
+    event.preventDefault();
+    const pipo = getElement("excelSelect");
+    var originalScrollTop = getElement("excelSelect").scrollTop;
+    console.log(event.target.getAttribute('selected'));
+    if (event.target.getAttribute('selected') === null)
+        event.target.setAttribute("selected", true);
+    else event.target.removeAttribute("selected");
+    getElement("excelSelect").focus();
+    setTimeout(function() {
+        getElement("excelSelect").scrollTop = originalScrollTop;
+    }, 0);
+    return false;
+});
+

@@ -111,7 +111,10 @@ function start() {
   // get default sticker config 
   getElement("etiquette").value = JSON.stringify(_CONFIGURATION.etiquette);
   // set all selectable elements
-  addToOption(getElement('element'), Object.keys(exemples));
+  
+  getElement('excelSelect').innerHTML =  excelColumns.map(e => `<option title="${e}">${e}</option>`);
+  addToOption(getElement('element'), Object.keys(_CONFIGURATION.stickerElements));
+  
 }   
 
 start();

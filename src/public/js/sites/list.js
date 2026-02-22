@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		jsonUrl: window.location.origin + "/sites",
 		editUrl: "/addSite.html",
 		printUrl: undefined,
-		rowsPerPage: 10,
 		container: "#jsonTable",
 		globalSearch: "#globalSearch",
 		pagination: "#pagination",

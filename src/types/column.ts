@@ -4,4 +4,6 @@ export interface Icolumn {
     create: String;
     searchType?: String;
     list : boolean;
+    excel? : boolean;
+    etiquette? : String;
 }

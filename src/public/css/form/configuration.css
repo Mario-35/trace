@@ -14,18 +14,19 @@
 
 #listEtats li, 
 #listStockages li {
+  background-color: var(--gray);
   list-style-image: none;
   margin: 10px;
   border: 1px solid #ccc;
   padding: 4px;
   border-radius: 4px;
-  color: #666;
+  color: #FFF;
   cursor: move;
 }
 
 #listEtats li:hover,
 #listStockages li:hover {
-  background-color: #eee;
+  background-color: var(--dark);
 }
 
 .map-frame {
@@ -38,7 +39,6 @@
   height: 100%;
     width: 100%;
 }
-
 
 .sticker {
   width: 100%;

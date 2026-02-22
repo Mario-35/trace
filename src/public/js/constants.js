@@ -7,8 +7,6 @@ var _DEBUG = true;
 var _PASSPORT = undefined;
 var _MODE = "new" | "add" | "edit" | "edits" | "none";
 var rpgReferences = {};
-// authorized columns
-const _EXCELCOLS = [ "programme", "echantillon", "site", "responsable", "pays", "region", "pointx", "pointy", "prelevement", "peremption", "libre"];
 
 // test if key in url
 isKeyInUrl= (keyName) => window.location.href.includes(`?${keyName}=`) || window.location.href.includes(`&${keyName}=`);
@@ -33,19 +31,10 @@ function createBlankKeySticker(name, value) {
 }
 
 function getTemplateSticker() {
-  return {
-    etiquette : getElement("etiquette").value ? JSON.parse(getElement("etiquette").value) : _CONFIGURATION.etiquette,
-    "type":"Sol",
-    "programme":"Programme concerné",
-    "site":"Nom du site",
-    "responsable":"ADAM Mario",
-    "pays":"France",
-    "region":"Bretagne",
-    "identification":"1902202617320002",
-    "prelevement":"01-01-2026",
-    "peremption":"01-01-2031",
-    "libre":"Texte libre limité à 50 caractères"
-  };
+    return {
+        etiquette : getElement("etiquette").value ? JSON.parse(getElement("etiquette").value) : _CONFIGURATION.etiquette,
+        ... _CONFIGURATION.stickerElements
+    }
 }
 
 function changeValueInJson(name, key, value) {
@@ -56,6 +45,7 @@ function changeValueInJson(name, key, value) {
         tmp[key[0]][key[1]] = value;
     getElement(name).value = JSON.stringify(tmp);
 };
+
 
 
 

@@ -58,6 +58,8 @@ function validateStep2() {
 
 function validateStep4() {};
 
+function validateStep5() {};
+
 // Event Listeners
 nextButtons.forEach((button, index) => {
     button.addEventListener('click', () => {

@@ -24,9 +24,9 @@ codeRisqueBettrave = (risques, possibles) => {
 
 function refreshCultures() {    
     head('refresh Cultures');
-    if(getElement("cultures").value  ) {
+    if (getElement("cultures").value && Object.keys(cultures.value).length > 0 ) {
         const datas = toJson("cultures");
-        getElement("rpgTab").innerHTML = getElement("cultures").value  
+        getElement("rpgTab").innerHTML = cultures.value  
             ? `<table class="table table-year"> <thead> <tr> ${Object.keys(datas).map((e) => `<th>&nbsp;${e}&nbsp;</th>`).join("")} </tr> </thead> <tbody> <tr> ${Object.values(datas).map((e) => `<td title="${rpgReferences[e]}">${e}</td>`).join("")} </tr> </tbody> <tfooter><tr><td colspan="${Object.keys(datas).length}" center><div class="messageRpg"> <p class="text-primary" id="message"></p> </div></td></tr></tfooter> </table>` 
             : '';
 

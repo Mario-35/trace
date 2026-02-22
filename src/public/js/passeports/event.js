@@ -1,6 +1,5 @@
 getElement('btn-creer').addEventListener('click', async function() {
     head(" btn-creer");
-    const operation = "Ajout d'un passeport";
     if(validatePasseport() === true) {
 
         _DATAS = JSON.stringify(formToJSON(document.getElementsByClassName('formData')[0].elements));
@@ -23,13 +22,13 @@ getElement('btn-creer').addEventListener('click', async function() {
             body: JSON.stringify(_DATAS),
         }).then(async response => {
             if (response.status === 201) {
-                showModalOk(operation, "Tout est ok", ["ok"], false, false, "./passeports.html");
+                showModalOk("Opération réussie", "./passeports.html");
             } else {
                 const resJson =  await response.json();
-                showModalError(operation, resJson.code + " : " + resJson.error);
+                showModalError(resJson.code + " : " + resJson.error);
             }
         }).catch(err => {
-             showModalError(operation, err);
+             showModalError(err);
         });
     }
 });

@@ -3,6 +3,8 @@ import { Index } from "../../html/class/main";
 import { Print } from "../../html/class/print";
 import { readId, readIds } from "../../controller";
 import { List } from "../../html/class/list";
+import { Configuration } from "../../html/class/configuration";
+import { executeSql } from "../../db";
 export const pagesRoutes = Router();
 
 let config: any | undefined = undefined;
@@ -21,6 +23,7 @@ pagesRoutes.get("/passeports.html", async (req, res) => {
     const html = new List("Passeport");
     res.send(html.toString())
 });
+
 pagesRoutes.get("/echantillons.html", async (req, res) => {
     const html = new List("Echantillon", true);
     res.send(html.toString())
@@ -67,6 +70,17 @@ pagesRoutes.get("/print/:type/:id", async (req, res) => {
             }).catch (error => {
                 return res.status(404).json({"error": error.detail});
             });               
+        case 'identification':   
+            return await executeSql(`SELECT * FROM echantillons WHERE identification LIKE '${req.params.id.slice(0,12)}%'`).then(async (all: any) => {
+                console.log(all)
+                    const html = new Print("echantillon", all);
+                    res.set('Content-Type', 'text/html').send(html.toString())
+            }).catch (error => {
+                return res.status(404).json({"error": error.detail});
+            }); 
+        case 'echantillonPasseport':
+            console.log("ici todo")
+
         default:
             break;
     };
@@ -76,4 +90,9 @@ pagesRoutes.get("/print/:type/:id", async (req, res) => {
 pagesRoutes.post("/SaveConfig", async (req, res)  => {
     config = req.body;
     res.status(201).send();
+});
+
+pagesRoutes.get("/configuration.html", async (req, res) => {
+    const html = new Configuration();
+    res.send(html.toString())
 });

@@ -6,12 +6,9 @@ log =(title) => {
     console.log(title);
 }
 
-
-
 const doubleQuotes = (input) => `"${input}"`;
 const simpleQuotes = (input) => `'${input}'`;
 const getYear = (input) => input.value.split('-')[0];
-
 
 function addToJson(name, key, value) {
     const tmp = toJson(name);

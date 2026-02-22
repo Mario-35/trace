@@ -4,7 +4,6 @@ getElement('btn-creer').addEventListener('click', async function() {
     
     _DATAS = formToJSON(document.getElementsByClassName('formData')[0].elements); 
     if(window.location.href.includes('?id=')) {
-        const operation = "Modification d'un échantillon";
         const id = window.location.href.split('?id=')[1];
         fetch(window.location.origin + `/echantillon/` + id, {
             method: "PATCH",
@@ -14,16 +13,15 @@ getElement('btn-creer').addEventListener('click', async function() {
             body: JSON.stringify(formDatas()),
         }).then(async response => {
             if (response.status === 201) {
-                showModalOk(operation, "Tout est ok", ["ok"], true, true, window.location.origin + '/print/' + "echantillon/" + id);
+                showModalPrint(id, getElement("passeport").value);
             } else {
                 const resJson =  await response.json();
-                showModalError(operation, resJson);
+                showModalError(resJson);
             }
         }).catch(err => {
-            showModalError(operation, err);
+            showModalError(err);
         });
     } else {
-        const operation = "Ajout d'un échantillon";
         if (window.location.href.includes('?excel=')) 
             _DATAS["excel"] = +window.location.href.split('?excel=')[1] || 0;
         
@@ -36,13 +34,16 @@ getElement('btn-creer').addEventListener('click', async function() {
         }).then(async response => {
             if (response.status === 201) {
                 const data = await response.json();
-                showModalOk(operation, "Tout est ok", ["ok"], true, true, window.location.origin + '/print/' + "selection/" + data.selection);
+                console.log(data);
+                if (data.identification )
+                    showModalPrint(data.identification, getElement("passeport").value, true);
+                else showModalError("Aucun retour reçu");
             } else {
                 const resJson =  await response.json();
-                showModalError(operation, resJson.code + " : " + resJson.error);
+                showModalError(resJson.code + " : " + resJson.error);
             }
         }).catch(err => {
-            showModalError(operation, err);
+            showModalError(err);
         });
     }
 });
@@ -87,48 +88,14 @@ getElement('demos').addEventListener('change', function() {
 });
 
 getElement("type").addEventListener("change", function() {
-    getElement("cultures").value= null;
+    getElement("cultures").value= JSON.stringify({});
     refreshType();
 });
 getElement("pointx").addEventListener("change", function() {
-    getElement("cultures").value= null;
-    // refreshRpg();
+    getElement("cultures").value= JSON.stringify({});
 });
 
 getElement("pointy").addEventListener("change", function() {
-    // refreshRpg();
+    getElement("cultures").value= JSON.stringify({});
 });
 
-function changedpt() {
-    // get HTML element
-    const elem = getElement('region');
-    // get value
-    const val = elem.value;
-    // 2 or 5 char length and numbers
-    if ((val.length === 5 || val.length === 2)&& !isNaN(val)) {
-        // get the first two digits to search in departement list
-        let dpt= departement[val.slice(0,2)];
-        // set values
-        if (dpt) {
-            dpt = dpt.split("|");
-            elem.value = dpt[1];
-            elem.title = dpt[0];
-        }
-    }
-}
-
-// change region value
-getElement('region').addEventListener('keydown', function(event) {
-    // if return and france
-  if(event.keyCode == 13 && getElement('pays').value.toUpperCase() ==="FRANCE") {
-    changedpt();
-  }
-});
-
-// change region value
-getElement('region').addEventListener('change', function(event) {
-    // if return and france
-  if(getElement('pays').value.toUpperCase() ==="FRANCE") {
-    changedpt();
-  }
-});

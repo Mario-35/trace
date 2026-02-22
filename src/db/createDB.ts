@@ -15,9 +15,14 @@ export async function createDB(adminPass: string): Promise<Record<string, string
          result["CREATE DATABASE"] = "Error";
         return false;
       }); 
-    }).catch(error => {
-      result["DROP DATABASE"] = "Error";
-      return false;
+    }).catch(async error => {
+      return await admin(adminPass).unsafe("CREATE DATABASE trace").then(async res => {
+        result["CREATE DATABASE"] = "Ok";
+        return true;
+      }).catch(error => {
+         result["CREATE DATABASE"] = "Error";
+        return false;
+      }); 
     }); 
   });
 

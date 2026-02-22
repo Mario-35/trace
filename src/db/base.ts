@@ -137,85 +137,110 @@ export const dataBase: Idb = {
                 type: "text",
                 title: "Type de prélévement",
                 create: "varchar(25) NOT NULL",
-                list : false
+                list : false,
+                etiquette: "Sol"
               },
               "programme": {
                 type: "text",
                 title: "Nom du programme",
                 create: "varchar(25) NOT NULL",
-                list: true
+                list: true,
+                excel: true,
+                etiquette: "Programme concerné"
               },
               "condition": {
                 type: "text",
                 title: "Condition de prélévement",
                 create: "varchar(50) NOT NULL",
-                list: false
+                list: false,
+                excel: true,
+                etiquette: "Etanol"
               },
               "site": {
                 type: "text",
                 title: "Site de prélévement",
                 create: "varchar(25) NOT NULL",
-                list: true
+                list: true,
+                excel: true,
+                etiquette: "Nom du site",
               },
               "responsable": {
                 type: "text",
                 title: "Résponsable",
                 create: "varchar(25) NOT NULL",
-                list: true
+                list: true,
+                excel: true,
+                etiquette: "ADAM Mario"
               },
               "identification": {
                 type: "text",
                 title: "Pdentification",
                 create: "varchar(16) NOT NULL",
-                list: true
+                list: true,
+                etiquette: "1902202617320002"
               },
               "parent": {
                 type: "text",
                 title: "Echantillon parent",
                 create: "varchar(16) NULL",
-                list: false
+                list: false,
+                etiquette: "1902202617320001"
               },
               "libre": {
                 type: "text",
                 title: "Texte libre",
                 create: "varchar(50) NULL",
-                list: false
+                list: false,
+                excel: true,
+                etiquette: "Texte libre limité à 50 caractères"
               },
               "prelevement": {
                 type: "date",
                 title: "Date de prélévement",
                 create: "date NOT NULL",
-                list: false
+                list: false,
+                excel: true,
+                etiquette: "01-01-2026"
               },
               "peremption": {
                 type: "date",
                 title: "Date de péremption",
                 create: "date NOT NULL",
-                list: false
+                list: false,
+                excel: true,
+                etiquette:"01-01-2031"
               },
               "pays": {
                 type: "text",
                 title: "Pays",
                 create: "varchar(25) NOT NULL",
-                list: false
+                list: false,
+                excel: true,
+                etiquette: "France"
               },
               "region": {
                 type: "text",
                 title: "Région",
                 create: "varchar(30) NOT NULL",
-                list: false
+                list: false,
+                excel: true,
+                etiquette: "Bretagne"
               },
               "pointx": {
                 type: "text",
                 title: "Point X",
                 create: "varchar(15) NOT NULL",
-                list: false
+                list: false,
+                excel: true,
+                etiquette: "2.549023"
               },
               "pointy": {
                 type: "text",
                 title: "Point Y",
                 create: "varchar(15) NOT NULL",
-                list: false
+                list: false,
+                excel: true,
+                etiquette: "49.9967718"
               },
               "passeport": {
                 type: "number",
@@ -245,7 +270,8 @@ export const dataBase: Idb = {
                 type: "text",
                 title: "Etat du prélévement",
                 create: "varchar(10) NOT NULL", 
-                list: true
+                list: true,
+                etiquette: "Créer"
               },
           },
               
@@ -263,23 +289,6 @@ export const dataBase: Idb = {
             type: "text",
             title: "Valeur",
             create: "varchar(150) NOT NULL",
-            list: false
-        },
-      },              
-      "constraints" : []
-    },
-    "departement" : {
-      "columns": {
-        "code": {
-          type: "text" ,
-          title: "Code",
-          create: "varchar(3) UNIQUE NOT NULL",
-          list : false
-        },
-        "valeur": {
-            type: "text",
-            title: "Valeur",
-            create: "varchar(50) NOT NULL",
             list: false
         },
       },              

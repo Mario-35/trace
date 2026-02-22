@@ -110,7 +110,8 @@ async function start() {
     getElement("stockage").value = JSON.stringify({});   
     getElement("cultures").value = JSON.stringify({});   
     // init select for sticker
-    addToOption(getElement('element'), Object.keys("exemples"));     
+    addToOption(getElement('element'), Object.keys(_CONFIGURATION.stickerElements));  
+       
     addToOption(getElement('cle'), _CONFIGURATION.stockages);   
     addToOption(getElement('demos'), Object.keys(_DEMOS));   
     addToOption(getElement('etat'), _CONFIGURATION.etats, "Créer");        
@@ -123,6 +124,11 @@ async function start() {
         document.getElementsByTagName("id").value = +id;
         // get echantillon with the API
         const datas = await getDatas(window.location.origin + "/echantillon/" + id);
+        if (datas.codes) {
+            rpgReferences = JSON.parse(`{${datas.codes.join()}}`);
+            delete datas.codes;
+        }
+
         // load datas
         loadDatas(datas);
         //  change somes

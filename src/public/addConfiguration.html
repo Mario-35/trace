@@ -40,6 +40,10 @@
                         </div>
                         <div class="step" id="step-4">
                             <span>4</span>
+                            <span class="step-label">Listes</span>
+                        </div>
+                        <div class="step" id="step-5">
+                            <span>5</span>
                             <span class="step-label">Etiquettes</span>
                         </div>
                     </div>
@@ -123,7 +127,7 @@
                             <div class="form-row">
                                 <div class="form-group row-2">
                                     <input type="hidden" id="etats" name="etats" class="form-control">
-                                    <label for="addCleEtat">Mots clés pour le stockage </label>
+                                    <label for="addCleEtat">Mots clés pour lee différent états </label>
                                     <input type="text" id="addCleEtat" class="form-control">
                                 </div>                                   
                                 <div class="form-group row-2">
@@ -136,9 +140,27 @@
                                 <button class="btn btn-next" id="next-3">Suivant ➡</button>
                             </div>                            
                         </div>
+
+                        <!-- Step 4: Listes -->
+                        <div class="form-step" id="form-step-4">  
+                            <div class="form-row">
+                                <div class="row-2">
+                                    <label for="excelSelect" id="excelSelectLabel">Element impotable depuis excel</label>
+                                    <select multiple name="excelSelect" id="excelSelect" class="form-control"></select>
+                                </div>                                   
+                                <div class="form-group row-2">
+                                    
+                                </div>
+                            </div> 
+
+                            <div class="btn-group">
+                                <button class="btn btn-prev" id="prev-4">⬅ Précédent</button>
+                                <button class="btn btn-next" id="next-4">Suivant ➡</button>
+                            </div>                            
+                        </div>
                         
-                        <!-- Step 4: Etiquettes -->
-                        <div class="form-step" id="form-step-4">    
+                        <!-- Step 5: Etiquettes -->
+                        <div class="form-step" id="form-step-5">    
                             <div class="form-row">
                                 <div class="form-group row-2">
                                     <label for="element" id="elementLabel">Element</label>
@@ -169,7 +191,7 @@
                             </div>                            
                             <div class="form-row">
                                 <div class="form-group row-1">
-                                    <button class="btn btn-test" id="testPrint">Imprimer</button>
+                                    <button class="btn btn-test" id="testPrintEtiquette">Imprimer</button>
                                 </div>                            
                                 <div class="form-group row-3">
                                     <div id="gabaritEtiquette"></div>
@@ -178,7 +200,7 @@
                             </div>                            
 
                             <div class="btn-group">
-                                <button class="btn btn-prev" id="prev-4">⬅ Précédent</button>
+                                <button class="btn btn-prev" id="prev-5">⬅ Précédent</button>
                                 <button class="btn btn-next" id="btn-creer">✔️️ Modifier</button>
                             </div>  
                             <textarea id="etiquette" name="etiquette"></textarea>                                                
@@ -190,21 +212,9 @@
     </form>
     <div id="modal"></div>  
 </body> 
-
+<script>"@DATAS@"</script>
 <!-- awlays first -->
-<script src="./js/configuration.js"></script>
-<script> const exemples = {
-        "type":"Sol",
-        "programme":"Programme concerné",
-        "site":"Nom du site",
-        "responsable":"ADAM Mario",
-        "pays":"France",
-        "region":"Bretagne",
-        "identification":"1902202617320002",
-        "prelevement":"01-01-2026",
-        "peremption":"01-01-2031",
-        "libre":"Texte libre limité à 50 caractères"
-    }</script>
+    <script src="./js/configuration.js"></script>
     <script src="./js/constants.js"></script>
     <script src="./js/all.js"></script>
     <script src="./js/common/splitter.js"></script>
@@ -215,6 +225,7 @@
     <script src="./js/common/modal.js"></script>
     <script src="./js/libs/JsBarcode.all.min.js"></script>
     <script src="./js/api/print.js"></script>
+    <script src="./js/common/regions.js"></script>    
     <script src="./js/configurations/add.js"></script>
     <script src="./js/configurations/event.js"></script>  
     <script src="./js/stickers/controller.js"></script>

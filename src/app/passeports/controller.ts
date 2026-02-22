@@ -1,6 +1,5 @@
 
 import { createPgValues, executeSql, getColumns, sql } from "../../db";
-import { dataBase } from "../../db/base";
 import { escapeSimpleQuotes } from "../../helpers/escapeSimpleQuotes";
 
 export async function addPasseport(values: any) {

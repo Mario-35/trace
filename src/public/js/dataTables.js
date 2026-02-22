@@ -7,7 +7,8 @@ class JsonTable {
 		this.seeUrl  = options.seeUrl || "";
 		this.editUrl = options.editUrl || undefined;
 		this.printUrl = options.printUrl || undefined; // printUrl icon 
-		this.rowsPerPage = options.rowsPerPage || 1000;
+		this.perPageSelect = [25, 50, 100, 500, 1000];
+		this.rowsPerPage = this.perPageSelect[0];
 		this.container = document.querySelector(options.container || "#jsonTable");
 		this.globalSearchInput = document.querySelector(
 			options.globalSearch || "#globalSearch"
@@ -95,15 +96,39 @@ class JsonTable {
 		}
 	}
 
+        // Per Page Select
+    createPerPageSelect() {
+            perPageSelect.innerHTML = "";
+            var select = document.createElement("select");
+			select.className ="form-control";
+			[25, 50, 100, 500, 1000].forEach(val => {
+				var opt = document.createElement('option');
+				opt.value = val;
+				opt.innerHTML = val;
+				if (val === this.currentPage)
+					opt.setAttribute("selected", "selected");
+				select.appendChild(opt);
+			});
+			
+			perPageSelect.appendChild(select);
+
+			select.addEventListener("change", (e) => {
+				this.rowsPerPage = e.target.value;
+				this.renderTable();
+			});
+}
+
 	renderTable(which = "all") {
 		if (which == "all") {
 			this.renderHeader();
 			this.renderRows();
+			this.createPerPageSelect();
 			this.renderPagination();
 		} else {
 			this.renderRows();
 			this.renderPagination();
 		}
+		infos.innerHTML = `${this.filteredData.length} sur ${this.data.length} total`
 	}
 
 	headerAttribute() {
@@ -159,7 +184,7 @@ class JsonTable {
 					selectExcel.className = "form-control";
 					selectExcel.classList.add("excel-control");
 					selectExcel.innerHTML = `<option value="">Aucun</option>`;
-					_EXCELCOLS.forEach((value) => {
+					Object.keys(_CONFIGURATION.stickerElements).forEach((value) => {
 						const option = document.createElement("option");
 						option.textContent = value;
 						option.value = column.key + "|" +value;

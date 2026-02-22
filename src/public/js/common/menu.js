@@ -5,7 +5,7 @@ document.getElementById("left-pane").innerHTML = `
         <li><a href="./echantillons.html">Echantillons</a></li>
         <li><a href="./passeports.html">Passeports</a></li>
         <li><a href="./sites.html">Sites</a></li>
-        <li><a href="./addConfiguration.html">Configuration</a></li>
+        <li><a href="./configuration.html">Configuration</a></li>
     </ul>
 </nav>`;
 
@@ -130,8 +130,7 @@ function createHTMLcreatePasseport() {
           const res = await addFile.json();
           datas["fichier"] = res.id;
       } else datas["fichier"] = 0;
-
-      const operation = "Création d'un passeport";      
+           
       await fetch(window.location.origin + `/passeport`, {
           method: "POST",
           headers: {
@@ -146,10 +145,10 @@ function createHTMLcreatePasseport() {
             refresh();
           } else {
               const resJson =  await response.json();
-              showModalError(operation, resJson.code + " : " + resJson.error);
+              showModalError(resJson.code + " : " + resJson.error);
           }
       }).catch(err => {
-          showModalError(operation, err); 
+          showModalError(err); 
       });
       refresh();
 
@@ -280,14 +279,16 @@ class TextScramble {
 function start() {
     const fx = new TextScramble(document.getElementById('animeText'));
     const phrases = [
-    'Gestion,',
-    'Des échantillons',
+    'Gestion Des échantillons',
     'Traçabilité des echantillons',
     'Impression des étiquettes',
     'Gestion des passeports phyto-sanitaires',
     'Utilisation des codes barres',
     'Un outil dévellopé par ADAM Mario',
     'Pour l\'UMR SAS de rennes en 2026',
+    'Arreter de lire ce stupide message allez travailler',
+    'Arreter de lire ce stupide message',
+    'allez travailler',
     ]
 
     let counter = 0

@@ -5,11 +5,9 @@ import multer from "multer";
 import compression from "compression";
 import path from "path";
 import { logger } from "@infra/logger";
-import { getRpg } from "./helpers/getRpg"
-import { verifyBody } from "./controller";
 import {  HELMET } from "./constant";
 import { createDB, createDetaultDatas, executeSql, executeSqlValues, sql } from "./db";;
-import { echantillonsRoutes, excelsRoutes, pagesRoutes, passeportsRoutes, selectionsRoutes, sitesRoutes } from "./app";
+import { echantillonsRoutes, excelsRoutes, pagesRoutes, passeportsRoutes, selectionsRoutes, sitesRoutes, rpgsRoutes } from "./app";
 import { configRoutes } from "@app/configuration/configRoutes";
 
 
@@ -55,8 +53,8 @@ export default class HttpServer {
     this.app.use('/', sitesRoutes);
     this.app.use('/', pagesRoutes);
     this.app.use('/', excelsRoutes);
-    this.app.use('/', selectionsRoutes);
-    
+    this.app.use('/', selectionsRoutes);    
+    this.app.use('/', rpgsRoutes);    
     this.app.get("/", async (_req: Request, res: Response) => {
       res.json({
         message: "Serveur actif...",
@@ -104,20 +102,7 @@ export default class HttpServer {
       })
     })
 
-    // Get all rpg
-    this.app.get("/rpg", async (_req: Request, res: Response) => {
-      // const codes: string[] = ["NOT"];
-      const tmp = _req.url.split("?pos=")[1].split(",");
-      return await getRpg(tmp[0] ,tmp[1]).then(async (rpg: any) => {
-        const codes = await executeSqlValues(`SELECT CONCAT('"', code, '" : "',valeur, '"') FROM rpg WHERE code IN ('${Array.from(new Set(Object.values(rpg).map(item => item))).join("','")}')`);
-        return res.status(200).json({
-          values : rpg,
-          codes : codes,
-        });
-      }).catch (error => {
-        return res.status(404).json({"error": error.detail});
-      });
-    });
+
     
     this.app.use((req: Request, res: Response) => {
       res.status(404).json({

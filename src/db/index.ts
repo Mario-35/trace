@@ -36,6 +36,18 @@ export function addPartiton(name: string) {
     executeSql(`CREATE TABLE IF NOT EXISTS "echantillon_${name.toLowerCase()}" PARTITION OF echantillons FOR VALUES IN ('${name}');`);
 }
 
+export async function isDbExists(): Promise<boolean> {
+      return  await sql
+            .unsafe(`select 1+1 AS result`)
+            .then((res: object) => {
+                  return true;
+            })
+            .catch((err: Error) => {
+                  console.log(err);
+                  return false;
+            });
+}
+
 export {executeSql} from "./executeSql"
 export {executeSqlValues} from "./executeSqlValues"
 export {createDB} from "./createDB"

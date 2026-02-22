@@ -179,7 +179,8 @@ const handleFormSubmit = event => {
 * `submit` event.
 */
 const form = document.getElementsByClassName('formData')[0];
-form.action = window.location.origin + "/" + window.location.href.split('/add')[1].split(".")[0].toLowerCase();
+form.action = window.location.href.includes("/add") ? window.location.origin + "/" + window.location.href.split('/add')[1].split(".")[0].toLowerCase() : window.location.href;
+
 // form.action = window.location.origin + `/echantillon`;
 form.addEventListener('submit', handleFormSubmit);
 

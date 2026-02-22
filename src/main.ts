@@ -3,6 +3,7 @@ import HttpServer from "./http-server";
 import fs from "fs";
 import path from "path";
 import { writeConfig } from "@app/configuration/controller";
+import { isDbExists } from "./db";
 
 enum ExitStatus {
   Failure = 1,
@@ -14,9 +15,7 @@ async function main() {
     const httpServer = new HttpServer();
     const port = 3000;
     const exitSignals: NodeJS.Signals[] = ["SIGINT", "SIGTERM", "SIGQUIT"];
-    // if (!fs.existsSync(path.resolve(__dirname, "../../public/js", "configuration.js"))) writeConfig(); 
-    
-    
+    if (!fs.existsSync(path.resolve(__dirname, "./public/js", "configuration.js")) && await isDbExists() === true) writeConfig(); 
     exitSignals.map((sig) =>
       process.on(sig, async () => {
         try {

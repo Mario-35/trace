@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		jsonUrl: window.location.origin + "/echantillons" + `${id > 0 ? '/' + id : ""}`,
 		editUrl: "/addEchantillon.html",
 		printUrl: "/echantillon/",
-		rowsPerPage: 10,
 		container: "#jsonTable",
 		globalSearch: "#globalSearch",
 		pagination: "#pagination",
@@ -42,7 +41,6 @@ class ExcelToJSON {
                     this.table = new JsonTable({
                         jsonUrl: "",
                         addUrl: "/addExcelEchantillon.html",
-                        rowsPerPage: 10,
                         container: "#jsonTable",
                         globalSearch: "#globalSearch",
                         pagination: "#pagination",

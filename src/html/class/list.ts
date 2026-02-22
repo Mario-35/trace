@@ -72,6 +72,10 @@ export class List extends CoreHtmlView {
 							<input id="globalSearch" type="text" class="form-control" placeholder="Recherche dans tous les champs">
 						</div>
 					</div>
+					<div class="col-3">
+						<div id="perPageSelect" class="input-group">
+						</div>
+					</div>
 				</div>
 				<div class="table-responsive">
 					<table id="jsonTable" class="table">
@@ -81,6 +85,7 @@ export class List extends CoreHtmlView {
 					</table>
 				</div>
 				<div class="card-footer">
+					<div class="dataTable-info" id="infos"></div>
 					<nav>
 						<ul id="pagination" class="pagination justify-content-end"></ul>
 					</nav>

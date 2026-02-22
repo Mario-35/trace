@@ -1,6 +1,6 @@
 import { logger } from "@infra/logger";
 
-let _geo:any | undefined = undefined;
+let _geo: any | undefined = undefined;
 
 async function getRpgDatas(annee: number, x: string, y: string) {
     let url = 'https://apicarto.ign.fr/api/rpg/v';

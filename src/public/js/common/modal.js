@@ -1,15 +1,12 @@
-function showModalOk(title, message, btns, etiquette, passeport, redirect) {
+function showModalOk( message, redirectOk) {
     getElement("modal").innerHTML =` 
         <article class="modal">
             <section class="modal__content modal__ok">
-                <h1 class="modal__heading">${title}</h1>
+                <h1 class="modal__heading">${document.title }</h1>
+                <p class="modal__copy">${message}</p>
                 <button id="close" class="modal__close">&times;</button>
-                ${etiquette ? '<label> <input type="checkbox" checked> <span>Imprimer les étiquettes</span> </label>' : '' }
-                ${passeport ? '<label> <input type="checkbox" checked> <span>Imprimer les passeports</span> </label>' : '' }
                 <p class="modal__actions">
-                    ${ btns.includes("oui") ? '<button id="cancel" class="modal__action modal__action--negative">Oui</button>' : ''}
-                    ${ btns.includes("non") ? '<button id="accept" class="modal__action modal__action--positive">Non</button>' : ''}
-                    ${ btns.includes("ok")  ? '<button id="ok" class="modal__action modal__action--ok">Ok</button>' : ''}
+                    <button id="ok" class="modal__action modal__action--ok">Ok</button>
                 </p>
             </section>
         </article>`;
@@ -20,30 +17,17 @@ function showModalOk(title, message, btns, etiquette, passeport, redirect) {
         modal.setAttribute("style", "display:none;");
     });
 
-    if (getElement("cancel"))
-        getElement("cancel").addEventListener('click', (e) => {
-            modal.setAttribute("style", "display:none;");
-        });
-
-    if (getElement("accept"))
-        getElement("accept").addEventListener('click', (e) => {
-            modal.setAttribute("style", "display:none;");
-        });
-
-    if (getElement("ok"))
-        getElement("ok").addEventListener('click', (e) => {
-            modal.setAttribute("style", "display:none;");
-            if(redirect) open(redirect, self);
-        });
-
-
+    getElement("ok").addEventListener('click', (e) => {
+        modal.setAttribute("style", "display:none;");
+        if (redirectOk) open(redirectOk, self);
+    });
 }
 
-function showModalError(title, message, redirect) {
+function showModalError( message) {
     getElement("modal").innerHTML =` 
         <article class="modal">
         <section class="modal__content modal__error">
-            <h1 class="modal__heading">${title}</h1>
+            <h1 class="modal__heading">${document.title }</h1>
             <p class="modal__copy">${message}</p>
             <button id="close" class="modal__close">&times;</button>
             <p class="modal__actions">
@@ -60,6 +44,51 @@ function showModalError(title, message, redirect) {
         
         getElement("ok").addEventListener('click', (e) => {
             modal.setAttribute("style", "display:none;");
-            if(redirect) open(redirect, self);
         });
+}
+
+function showModalPrint(idEchantillon, idPasseport, identification) {
+    identification = identification || false;
+    console.log(`idEchantillon : ${idEchantillon}   idPasseport : ${idPasseport}`)
+    getElement("modal").innerHTML =` 
+        <article class="modal">
+            <section class="modal__content modal__ok">
+                <h1 class="modal__heading">${document.title }</h1>
+                <button id="close" class="modal__close">&times;</button>
+                ${idPasseport > 0 ? '<label> <input type="checkbox" id ="printPasseports" checked> <span>Imprimer les passeports</span> </label>' : ''}                
+                <label> <input type="checkbox" id ="printEtiquettes" checked> <span>Imprimer les étiquettes</span> </label>
+                <p class="modal__actions">
+                    <button id="cancel" class="modal__action modal__action--negative">Non</button>
+                    <button id="accept" class="modal__action modal__action--positive">Oui</button>
+                </p>
+            </section>
+        </article>`;
+
+    const modal = document.querySelector('.modal');
+
+    getElement("close").addEventListener('click', (e) => {
+        modal.setAttribute("style", "display:none;");
+        open(redirectClose, self);
+    });
+    
+    getElement("cancel").addEventListener('click', (e) => {
+        modal.setAttribute("style", "display:none;");
+        open(redirectClose, self);
+    });
+    
+    getElement("accept").addEventListener('click', (e) => {
+        modal.setAttribute("style", "display:none;");
+        let redirect = "/index.html";
+        if (getElement("printPasseports") && getElement("printPasseports").checked && getElement("printPasseports").checked) {
+           redirect = `${window.location.origin}/print/echantillonPasseport/${idEchantillon}`;        
+        }
+        if (getElement("printEtiquettes").checked) {
+           redirect = `${window.location.origin}/print/${identification === true ? 'identification' : "echantillon"}/${idEchantillon}`;
+        }
+        if (getElement("printPasseports") && getElement("printPasseports").checked) {
+            redirect = `${window.location.origin}/print/passeport/${idPasseport}`;
+        }
+
+        open(redirect, self);
+    });
 }

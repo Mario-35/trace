@@ -179,8 +179,7 @@
                                         <label for="pays">Pays</label>
                                         <input type="text" id="pays" name="pays" class="form-control" maxlength="25" placeholder="Pays">
                                         <div class="error-message" id="pays-error">Indiquer le pays</div>
-                                    </div>
-                                    
+                                    </div>                                    
                                     <div class="form-group row-1">
                                         <label for="region">Région</label>
                                         <input type="text" id="region" name="region" class="form-control" maxlength="30" placeholder="Region">
@@ -207,27 +206,24 @@
                                         <div class="form-group row-1" id="rpgTab">                    
                                         </div>  
                                     </div>
-                                </div>
+                                </div>                                
 
-                                
-
-                            <div class="form-row">
-                                <div class="form-group row-3">
-                                    <div id="blockPasseport"></div>
-                                </div>
-                                <div class="form-group row-1">
-                                </div>                            
-                            </div> 
+                                <div class="form-row">
+                                    <div class="form-group row-3">
+                                        <div id="blockPasseport"></div>
+                                    </div>
+                                    <div class="form-group row-1">
+                                    </div>                            
+                                </div> 
 
                                 <input id="passeport" name="passeport" type="hidden" value="0" />   
-                                
                             </div>
                             
                             <div class="btn-group">
                                 <button class="btn btn-prev" id="prev-2">⬅ Précédent</button>
                                 <button class="btn btn-next" id="next-2">Suivant ➡</button>
                             </div>
-                            <textarea id="cultures" name="cultures"></textarea>
+                            <textarea id="cultures" class="form-control" name="cultures"></textarea>
                         </div>
                         
                         <!-- Step 3: Stockage -->
@@ -251,7 +247,7 @@
                                 <button class="btn btn-prev" id="prev-3">⬅ Précédent</button>
                                 <button class="btn btn-next" id="next-3">Suivant ➡</button>
                             </div>                    
-                            <textarea id="stockage" name="stockage"></textarea>
+                            <textarea id="stockage" class="form-control" name="stockage"></textarea>
                         </div>
                         
                         <!-- Step 4: Etiquettes -->
@@ -342,7 +338,7 @@
                                 <button class="btn btn-prev" id="prev-4">⬅ Précédent</button>
                                 <button class="btn btn-next" id="btn-creer">✔️️ Créer</button>
                             </div>  
-                            <textarea id="etiquette" name="etiquette"></textarea>
+                            <textarea id="etiquette" class="form-control" name="etiquette"></textarea>
                         </div>
                     </div>
                 </div>
@@ -365,6 +361,7 @@
     <script src="./js/echantillons/demo.js"></script>
     <script src="./js/libs/JsBarcode.all.min.js"></script>
     <script src="./js/api/print.js"></script>
+    <script src="./js/common/regions.js"></script>    
     <script src="./js/echantillons/add.js"></script>
     <script src="./js/echantillons/event.js"></script>    
     <script src="./js/echantillons/controller.js"></script>
