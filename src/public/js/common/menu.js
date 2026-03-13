@@ -6,6 +6,7 @@ document.getElementById("left-pane").innerHTML = `
         <li><a href="./selections.html">Séléctions</a></li>
         <li><a href="./passeports.html">Passeports</a></li>
         <li><a href="./sites.html">Sites</a></li>
+        <li><a href="./evenements.html">Evenements</a></li>
         <li><a href="./api.html">Api</a></li>
         <li><a href="./configuration.html">Configuration</a></li>
     </ul>

@@ -176,7 +176,7 @@ export const dataBase: Idb = {
         "site": {
           type: "text",
           title: "Site de prélèvement",
-          create: "varchar(25) NOT NULL",
+          create: "varchar(50) NOT NULL",
           list: true,
           excel: true,
           etiquette: "Nom du site",
@@ -419,7 +419,60 @@ export const dataBase: Idb = {
         },
             
       "constraints" : []
-  }
+  },
+  "evenements" : {
+    save: true,
+    "columns": {
+      "id": {
+          type: "index" ,
+          title: "Index",
+          create: "int8 GENERATED ALWAYS AS IDENTITY( INCREMENT BY 1 MINVALUE 1 MAXVALUE 9223372036854775807 START 1 CACHE 1 NO CYCLE) NOT NULL",
+          list : false
+        },
+        "date": {
+          type: "timestamp",
+          title: "Date de création",
+          create: "timestamp without time zone",
+          list: false,
+          excel: false,
+        },
+        "identification": {
+          type: "text",
+          title: "Pdentification",
+          create: "varchar(16) NOT NULL",
+          list: true,
+          etiquette: "1902202617320002"
+        },
+        "qui": {
+          type: "text",
+          title: "Résponsable",
+          create: "varchar(25) NOT NULL",
+          list: true,
+          excel: true,
+          etiquette: "ADAM Mario"
+        },
+        "operation": {
+          type: "text",
+          title: "Pdentification",
+          create: "varchar(255) NOT NULL",
+          list: true,
+        },
+        "stockage": {
+          type: "json",
+          title: "Stockage initial",
+          create: "jsonb NULL",
+          list: false
+        },
+        "etat": {
+          type: "text",
+          title: "Etat initialt",
+          create: "varchar(10) NOT NULL", 
+          list: true,
+          etiquette: "Créer"
+        },
+    },
+    "constraints" : []
+  },    
 }
 
 

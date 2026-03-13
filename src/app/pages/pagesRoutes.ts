@@ -25,6 +25,13 @@ pagesRoutes.get("/echantillon-add.html", async (req, res) => {
     });
 });
 
+pagesRoutes.get("/evenement-add.html", async (req, res) => {
+    readConfig().then(config => {
+        const html = new Add("evenement", config);
+        res.send(html.toString());
+    });
+});
+
 pagesRoutes.get("/site-add.html", async (req, res) => {
     readConfig().then(config => {
         const html = new Add("site", config);
@@ -39,6 +46,11 @@ pagesRoutes.get("/selections.html", async (req, res) => {
 
 pagesRoutes.get("/sites.html", async (req, res) => {
     const html = new List("Site");
+    res.send(html.toString())
+});
+
+pagesRoutes.get("/evenements.html", async (req, res) => {
+    const html = new List("Evenement");
     res.send(html.toString())
 });
 

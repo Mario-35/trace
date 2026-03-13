@@ -337,28 +337,12 @@
             "longitude": "1.48303"
         },
         {
-            "id": 43,
-            "nom": "ARTHON [1170]",
-            "pays": "France",
-            "region": "region",
-            "latitude": "46.69021",
-            "longitude": "1.69447"
-        },
-        {
             "id": 44,
             "nom": "CHATEAU-GARNIER [1288]",
             "pays": "France",
             "region": "Nouvelle-Aquitaine",
             "latitude": "46.23730",
             "longitude": "0.45651"
-        },
-        {
-            "id": 45,
-            "nom": "MONTAIGUT-LE-BLANC [1335]",
-            "pays": "France",
-            "region": "region",
-            "latitude": "46.11434",
-            "longitude": "1.70240"
         },
         {
             "id": 46,
@@ -436,7 +420,7 @@
             "id": 55,
             "nom": "SISTERON [1898]",
             "pays": "France",
-            "region": "Provence-Alpes-Côte d''Azur",
+            "region": "Provence-Alpes-Côte d'Azur",
             "latitude": "44.18702",
             "longitude": "5.92473"
         },
@@ -500,7 +484,7 @@
             "id": 63,
             "nom": "ROQUEBRUNE-SUR-ARGENS [2133]",
             "pays": "France",
-            "region": "Provence-Alpes-Côte d''Azur",
+            "region": "Provence-Alpes-Côte d'Azur",
             "latitude": "43.43963",
             "longitude": "6.66375"
         },
@@ -583,6 +567,22 @@
             "region": "Nouvelle-Aquitaine",
             "latitude": "45.846574110331",
             "longitude": "-1.155195236206"
+        },
+        {
+            "id": 45,
+            "nom": "MONTAIGUT-LE-BLANC [1335]",
+            "pays": "France",
+            "region": "Auvergne-Rhône-Alpes",
+            "latitude": "46.11434",
+            "longitude": "1.70240"
+        },
+        {
+            "id": 43,
+            "nom": "ARTHON [1170]",
+            "pays": "France",
+            "region": "Centre-Val de Loire",
+            "latitude": "46.69021",
+            "longitude": "1.69447"
         }
     ]
 }

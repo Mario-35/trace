@@ -124,7 +124,7 @@ function createHTMLcreatePasseport() {
           nom: passeportNom.value
       }
       var input = document.querySelector('input[type="file"]');
-      if (input.files[0]) {
+      if (input && input.files && input.files[0]) {
           const formData = new FormData();
           formData.append('image', input.files[0]);
           const addFile = await fetch(window.location.origin + `/upload`, {

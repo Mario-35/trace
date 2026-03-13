@@ -11,20 +11,10 @@
             "longitude": "-1.656744048248",
             "identifiant": "BR13551",
             "stockages": [
-                "Batiment",
-                "Etage",
-                "Piece",
-                "Meuble",
-                "Etagere",
-                "Caisse"
+                "Batiment,Etage,Piece,Meuble,Etagere,Caisse"
             ],
             "etats": [
-                "Créer",
-                "Prélevé",
-                "Stocké",
-                "Perdu",
-                "Detruit",
-                "Importé"
+                "Créer,Prélevé,Stocké,Perdu,Detruit,Importé"
             ],
             "etiquette": {
                 "sticker0": {

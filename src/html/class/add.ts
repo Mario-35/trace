@@ -26,6 +26,9 @@ export class Add extends CoreHtmlView {
 			case "site":
 				this.createAddSiteHtmlString(name);
 				break;
+			case "evenement":
+				this.createAddEvenementHtmlString(name);
+				break;
 		}
     }
 
@@ -118,6 +121,14 @@ export class Add extends CoreHtmlView {
 				${options.error ? this.inputError(options) : ''}
 			</div>`;
 	}
+	inputDateTime(options: IHTMLOptions) {
+		return `
+			<div class="form-group row-${options.size || 1}${options.invisible ? ' invisible' : ''}">
+				${this.inputlabel(options)}
+				<input type="time" step="1" id="${options.name}" name="${options.name}" class="form-control"   ${options.canedit ? `canedit="${options.canedit}"` : '' } ${options.readonly ? 'readonly' : ''} />                           
+				${options.error ? this.inputError(options) : ''}
+			</div>`;
+	}
 
 	inputBtn(options: IHTMLOptions, btnTypeAndClass: string, btnLabel: string) {
 		return `<div class="form-group row-${options.size || 1}${options.invisible ? ' invisible' : ''}">
@@ -133,6 +144,148 @@ export class Add extends CoreHtmlView {
 		return `<textarea id="${name}" name="${name}" class="form-control ${invisible ? 'invisible' : ''}"></textarea>`;	
 	}
 	
+    createAddEvenementHtmlString(name: String) {
+
+
+
+        this._HTMLResult =`
+			<!DOCTYPE html>
+			<html lang="fr">
+			<head>
+				<meta charset="UTF-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Ajout d'échantillon(s)</title>
+				${this.addCss([ "./css/print.css", "./css/echantillon.css", "./css/passeport.css", "./css/form/main.css", "./css/main.css", "./css/modal.css", "./css/editingList.css", "./css/splitter.css"])}				
+			</head>
+
+			<body>
+				<header id="splitter-nav-site" class="splitter-nav-site"></header>
+				<form id="actionForm" class="formData" enctype="multipart/form-data" method="POST">
+					${this.inputHidden("ctx")}
+					<main class="main-view">
+						<div class="splitter-nav-view" id="left-pane">
+						</div>
+						<div class="v-drag" id="separator"></div>
+						<div class="content" id="right-pane">
+							<div class="container">
+								<div class="header">
+									<h1 id="formTitle"></h1>
+								</div>
+								<!-- Steps Headers-->            
+                    
+								<div class="form-container">
+
+
+									<div class="form-row">
+										${this.inputDate({
+											size: 2,
+											name: "date",
+											tooltip: "Date au format JJ/MM/AAAA",
+											label: "Date de l'opération",
+											error: true,
+										})}
+
+										${this.inputDateTime({
+											size: 2,
+											name: "time",
+											tooltip: "Date au format HH/MM/SS",
+											label: "Heure de l'opération",
+											error: true,
+										})}										
+										
+										${this.inputFormGroupText({
+											max: 16,
+											size: 2,
+											name: "identification",
+											tooltip: "Identification (Généré automatiquement)",
+											label: "Identification",
+											error: true,
+											readonly: true,
+											canedit: "never",
+										})}
+										
+										${this.inputSelect({
+											size: 2,
+											max: 10,
+											name: "etat",
+											tooltip: "Etat du prélévement",
+											label: "Etat du prélévement",
+											placeholder: "label",
+											canedit: "true",
+										})}
+
+									</div>
+
+									<div class="form-row">
+										${this.inputFormGroupText({
+											size: 2,
+											max: 75,
+											name: "libre",
+											tooltip: "Infos libre sélectionnable lors de l'impression des étiquettes",
+											label: "Infos libre",
+											canedit: "true"
+										})}                              
+									</div>              
+
+
+                            <div class="form-row container-center">
+                                <input type="hidden" id="stockage" name="stockage" class="form-control">
+                                <div id="stockageList" class="liste"></div>
+                            </div> 
+
+
+
+                            <div class="form-row">
+                                <div class="form-group row-1">
+                                    <div id="stockageTab"></div>  
+                                </div> 
+                            </div> 
+							
+                            <div class="btn-group">
+                                <button class="btn btn-warning form-group float-start" id="btn-annuler">❌ Annuler</button>
+                                <button class="btn btn-primary form-group float-end" type="submit" id="btn-creer">✔️️ Créer</button>
+                            </div>
+							${this.inputHidden("saveetat")}
+							${this.inputTextArea("savestockage", true)}
+                        </div>
+
+						
+                    </div>
+                </div>
+            </div>
+        </main> 
+    </form>
+    <div id="modal"></div>  
+</body> 
+
+    <!-- awlays first -->
+    <script src="./js/configuration.js"></script>
+    <script src="./js/constants.js"></script>
+    <script src="./js/all.js"></script>
+    <script src="./js/common/splitter.js"></script>
+    <script src="./js/common/menu.js"></script>
+    <script src="./js/form.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/api/rpg.js"></script>
+    <script src="./js/helper.js"></script>
+    <script src="./js/common/modal.js"></script>   
+    <script src="./js/common/editingList.js"></script>
+    <script src="./js/evenements/add.js"></script>
+    <script src="./js/evenements/event.js"></script>    
+    <script src="./js/evenements/controller.js"></script>
+</html>
+`.split(EConstant.newline)
+            .map((e: string) => e.trim())
+            .filter((e) => e.trim() != "");   
+
+
+
+
+
+
+
+	}
+
     createAddSiteHtmlString(name: String) {
         // Split files for better search and replace
 		const plural = name.toLocaleLowerCase() + 's'
@@ -158,7 +311,7 @@ export class Add extends CoreHtmlView {
 <body>
 	<header id="splitter-nav-site" class="splitter-nav-site"></header>
     <form id="actionForm" class="formData" enctype="multipart/form-data" method="POST">
-        <input type="hidden" id="ctx" name="ctx" value="0" />
+       ${this.inputHidden("ctx")}
     <main class="main-view">
         <div class="splitter-nav-view" id="left-pane">
         </div>

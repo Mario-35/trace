@@ -1,5 +1,5 @@
 
-import { createPgValues, executeSql, getColumns, sql } from "../../db";
+import { createPgColumns, createPgValues, executeSql, getColumns, sql } from "../../db";
 import { escapeSimpleQuotes } from "../../helpers/escapeSimpleQuotes";
 
 export async function addPasseport(values: any) {
@@ -7,8 +7,11 @@ export async function addPasseport(values: any) {
       return executeSql(`SELECT max(tracabilite) FROM passeports WHERE annee = '${values["annee"]}'`).then(async res => {
             const tmp:string = res[0 as keyof object]["max" as keyof object];
             values["tracabilite" as keyof object] = isNaN(+tmp) ? 1 : +tmp + 1;
+            // values["fichier"] = +values["fichier"] || 0;
             // const datas = cols.filter(e => values[e]).map(e => isNaN(values[e]) ? escapeSimpleQuotes(values[e]) : values[e]);  
-            return await executeSql(`INSERT INTO passeports (${cols.map(e => `"${e}"`).join()}) VALUES (${createPgValues("passeports", values)}) RETURNING id`);
+            // return await executeSql(`INSERT INTO passeports (${cols.map(e => `"${e}"`).join()}) VALUES (${createPgValues("passeports", values)}) RETURNING id`);
+            return await executeSql(`INSERT INTO passeports (${createPgColumns("passeports", values)}) VALUES (${createPgValues("passeports", values)}) RETURNING id`);
+            
       });
 };
 

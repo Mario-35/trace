@@ -177,3 +177,4 @@ function showModalEditingList(titleKey, titleValue, element, callback) {
         });
     }
 }
+

@@ -14,7 +14,7 @@ background-color: #cceff8;
 }
 .context-menu .context-menu-options {
   list-style: none;
-  padding: 10px 0;
+  padding: 0 0 0 0;
   z-index: 1;
 }
 .context-menu .context-menu-options .context-menu-option {

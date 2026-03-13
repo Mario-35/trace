@@ -1,18 +1,30 @@
 class editingList {	
 	constructor(element, message, placeholder, values) {
+		this.key = values.hasOwnProperty('keys');
+		console.log(`key : ${this.key}`)
 		this.name = element.id.replace('List', '');
 		this.valuesElement = document.getElementById(this.name);
 		values = values || this.valuesElement.value;
 		this.placeholder = placeholder;
+		this.selected = undefined;
 		element.innerHTML = `
 		<label for="addCleEtat">${message} </label>
 			<div class="listbox-area">
-			<controls>
-				<input id="txt${this.name}" class="txtTodo" placeholder="${placeholder}" />
-				<button id="btnAdd${this.name}" class="btnAdd">Add</button>
-			</controls>
+			${this.key ? `<div class="grid">`: '' }
+				<controls>
+					${this.key ? `
+					<select name="cle" id="cle">
+						<option value="">-- Choisir une clé --</option>
+						${values.keys.map(e => `<option>${e}</option>`)}
+					</select>
+					<input id="txt${this.name}" class="txtKey" placeholder="${placeholder}" />
+					`: `<input id="txt${this.name}" class="txtTodo" placeholder="${placeholder}" />`}
+					<button id="btnAdd${this.name}" class="btnAdd">Ajouter</button>
+				</controls>
+			${this.key ? `</div>`: '' }
 			<ul id="ul${this.name}" class="ulListes"></ul>
-		</div>`;
+		</div>
+		`;
 		this.ulItem = document.getElementById(`ul${this.name}`);
 		this.valuesElement.value = values;
 		this.init();
@@ -38,6 +50,10 @@ class editingList {
 		};
 	}
 
+	cleanItem(input) {
+		return input.split(",").join("").split(":").join("")
+	}
+	
 	addItem() {
 		const elem = document.getElementById(`txt${this.name}`);
 		if (!elem.value) { // if empty
@@ -47,7 +63,10 @@ class editingList {
 			}, 3000);
 			return;
 		}
-		elem.value.split(',').filter(e => e !== "").reverse().forEach(e => {
+		if (this.key) {
+			delete this.newItem(cle.value)
+			this.ulItem.prepend(this.newItem(cle.value + " : " + this.cleanItem(elem.value)));
+		} else elem.value.split(',').filter(e => e !== "").reverse().forEach(e => {
 			this.ulItem.prepend(this.newItem(e.trim()));
 		})
 		elem.value = "";
@@ -66,7 +85,11 @@ class editingList {
 	}
 
 	loadDatas() {
-		this.valuesElement.value.split(',').filter(e => e.trim() != "").forEach((a) =>
+	head("loadDatas");
+		if (this.key) {
+			console.log(this.valuesElement)
+
+		} else this.valuesElement.value.split(',').filter(e => e.trim() != "").forEach((a) =>
 			this.ulItem.appendChild(this.newItem(a))
 		);
 	}
@@ -76,6 +99,12 @@ class editingList {
 
 		// Add a custom attribute to the element to indicate that it is a drag-drop item
 		item.setAttribute("drag-drop-item", "");
+
+		item.onclick = (e) => {
+			const val = e.target.textContent.split(" : ");
+			cle.value = val[0];
+			getElement(`txt${this.name}`).value = val[1];
+		};
 
 		item.ondragstart = (e) => {
 			window.draggedItem = e.target;
