@@ -1,25 +1,32 @@
+/**
+ * Echantillons controller
+ *
+ * @copyright 2020-present Inrae
+ * @author mario.adam@inrae.fr
+ *
+ */
+
 import { readId } from "../../controller";
-import { createPgUpdates, createPgValues, executeSql, getColumns, sql } from "../../db";
+import { createPgUpdates, createPgValues, executeSql, sql } from "../../db";
 import { dataBase } from "../../db/base";
 
-export async function readEchantillons(passeport?: number) {
-      return  passeport 
-            ? await sql`SELECT * FROM echantillons WHERE passeport = ${ passeport } ORDER BY creation DESC`
-            : await sql`SELECT * FROM echantillons ORDER BY creation DESC`
-};
-
 export async function addEchantillon(values: any) {
+      // store all queries
       const queries:string[] = [];
+      // store analyzes case nombreOuAnalyses is true
       let analyzes:string[] = [];
+      // store identification for return request
       let tmpCode: string | undefined = undefined;
       // Create list of columns
       const tableColumns = Object.keys(dataBase.echantillons.columns).filter(e => values[e as keyof object]);
       // Create list insert into
       const insertInto = tableColumns;
+      // Get the start number
+      const start = +values["numero" as keyof object];            
       // If excel instert
       if (values["excel" as keyof object]) {
             // get the excel file saved
-            const excelFile = await readId("excels",  +values["excel" as keyof object]);
+            const excelFile = await sql`SELECT * FROM ${ sql("excels") } WHERE id = ${ +values["excel" as keyof object] }`;
             // Create list of excel columns
             const excelCols = excelFile[0]["datas" as keyof object]["columns"];
             // lopp excel lines
@@ -33,7 +40,7 @@ export async function addEchantillon(values: any) {
                   });
                   // create identification
                   if (tempVal["identification"] )
-                        tempVal["identification"] = values["identification" as keyof object].slice(0,12) + String(+tmp[excelCols["echantillon" as keyof object]] ||  index + 1).padStart(4, '0');
+                        tempVal["identification"] = values["identification" as keyof object].slice(0,12) + String(+tmp[excelCols["echantillon" as keyof object]] ||  index + start).padStart(4, '0');
 
                   if (!tmpCode)  tmpCode =  values["identification" as keyof object].slice(0,12);
 
@@ -43,12 +50,11 @@ export async function addEchantillon(values: any) {
       } else {           
             // Get the nb of lines to insert
             let nb= +values["nombre" as keyof object];
+            // loop on analyses
             if (!values["nombreOuAnalyses" as keyof object]) {
                   analyzes = values["analyses" as keyof object].split(",");
                   nb = analyzes.length;
             }
-            // Get the start number
-            const start= +values["numero" as keyof object];
             // create start string for identification
             tmpCode =  values["identification" as keyof object].slice(0,12);
             // create identification codes
@@ -62,8 +68,11 @@ export async function addEchantillon(values: any) {
                         values["analyses"] = analyzes[i];
                   queries.push(`INSERT INTO echantillons (${insertInto.join()}) VALUES (${createPgValues("echantillons", values)})`);
             });
+
+            // execute all queries
             return new Promise(async function (resolve, reject) {
                   return executeSql(queries).then(async () => {
+                        // create selection return (usefull for print stickers)
                         const selectionId = await sql.unsafe(`INSERT INTO selections (ids) SELECT ARRAY_AGG(id) FROM echantillons WHERE identification IN ('${ codesIdentification.join("','") }') RETURNING id`);
                         resolve({selection : selectionId[0].id});
                   }).catch (error => {
@@ -72,12 +81,13 @@ export async function addEchantillon(values: any) {
             });
 
       }
+      // execute all queries
       return new Promise(async function (resolve, reject) {
             return await executeSql(queries)
             .then(async () => {
                   resolve({identification : tmpCode});
             }).catch (error => {
-                  console.log(error);
+                  console.error(error);
                   reject(error);
             });
       });
@@ -90,12 +100,9 @@ export async function updateEchantillon(values: any, id: number) {
                   const ret = await sql`SELECT * FROM echantillons WHERE id = ${ id }`
                   resolve(ret);
             }).catch (error => {
-                  console.log(error);
+                  console.error(error);
                   reject(error);
             });
       });
 };
 
-export async function readEchantillonFromIdentification(identification: string) {
-      return await executeSql(`SELECT id, programme, site, responsable, prelevement, identification, etat FROM echantillons WHERE identification = '${ identification }'`);
-};

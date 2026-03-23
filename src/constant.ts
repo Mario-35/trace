@@ -1,3 +1,13 @@
+/**
+ * Constants
+ *
+ * @copyright 2020-present Inrae
+ * @author mario.adam@inrae.fr
+ *
+ */
+
+import { readConfig } from "@app/configuration/controller";
+
 export const HELMET = {
         crossOriginEmbedderPolicy: false,
         crossOriginResourcePolicy: false,
@@ -37,4 +47,15 @@ export const EConstant = Object.freeze({
     voidSql: "SELECT 1=1",
     version: "1.0",
     date: "15-02-2026",
-})
+});
+
+export let _CONFIG = {};
+
+export function setConfig(input: any) {
+    _CONFIG = input;
+}
+
+// readConfig().then((config: any) => {
+//     setConfig(config);
+//     console.log("Configuration chargé")
+// });

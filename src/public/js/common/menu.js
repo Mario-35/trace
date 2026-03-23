@@ -2,6 +2,7 @@
 document.getElementById("left-pane").innerHTML = ` 
 <nav role="navigation">
     <ul>
+        <li><a href="./campagnes.html">Campagnes</a></li>
         <li><a href="./echantillons.html">Echantillons</a></li>
         <li><a href="./selections.html">Séléctions</a></li>
         <li><a href="./passeports.html">Passeports</a></li>
@@ -99,14 +100,27 @@ function setRange() {
     // Création du range
     getElement("rowLines").innerHTML = `<input type="range" min="0" value="0" max="${+_STORE.datas.length}" id="row" /> `;
     // load first line
-    loadEchantillonLine(0);
+    loadRangeLine(0);
     // show number lines
     showParentClass("rowNumber",'form-group'); 
     // event of the range
     getElement('rowLines').addEventListener('change', function() {
-        loadEchantillonLine(row.value);
+        loadRangeLine(row.value);
     });    
 }
+
+// load line from importation store
+function loadRangeLine(index) {
+    if(Array.isArray(_STORE.columns)) {
+        loadValues( _STORE.datas[index]);
+    } else {
+        Object.keys(_STORE.columns).forEach(column => {
+            loadValue(column, _STORE.datas[index][_STORE.columns[column]]);
+            getElement("identification").value = createIdentification(index);
+        });
+    }
+    getElement("rowNumber").innerText = 'Ligne : ' + index + ' sur ' + _STORE.datas.length ; 
+};
 
 class TextScramble {
   constructor(el) {

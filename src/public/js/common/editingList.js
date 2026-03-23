@@ -1,10 +1,10 @@
 class editingList {	
-	constructor(element, message, placeholder, values) {
-		this.key = values.hasOwnProperty('keys');
-		console.log(`key : ${this.key}`)
+	constructor(element, message, placeholder, values, keys) {
+		this.key = keys ? true : false;
+		// console.log(`key : ${this.key}`)
 		this.name = element.id.replace('List', '');
 		this.valuesElement = document.getElementById(this.name);
-		values = values || this.valuesElement.value;
+		this.values = values || this.valuesElement.value;
 		this.placeholder = placeholder;
 		this.selected = undefined;
 		element.innerHTML = `
@@ -15,7 +15,7 @@ class editingList {
 					${this.key ? `
 					<select name="cle" id="cle">
 						<option value="">-- Choisir une clé --</option>
-						${values.keys.map(e => `<option>${e}</option>`)}
+						${keys.map(e => `<option>${e}</option>`)}
 					</select>
 					<input id="txt${this.name}" class="txtKey" placeholder="${placeholder}" />
 					`: `<input id="txt${this.name}" class="txtTodo" placeholder="${placeholder}" />`}
@@ -26,13 +26,20 @@ class editingList {
 		</div>
 		`;
 		this.ulItem = document.getElementById(`ul${this.name}`);
-		this.valuesElement.value = values;
 		this.init();
 	}
 
 	setDatas() {
-		const tmpDatas =  Array.from(this.ulItem .querySelectorAll('li')).map(option => option.textContent);
-		this.valuesElement.value = tmpDatas.filter(e => e !== "").join(',');
+		if (this.key) {
+			const vals = {};
+			Array.from(this.ulItem .querySelectorAll('li')).map(option => option.textContent).filter(e => e !== "").forEach(e => {
+				const data = e.split(' : ');
+				vals[data[0]] = data[1];
+			});
+			this.valuesElement.value = JSON.stringify(vals);		
+		} else {
+			this.valuesElement.value = Array.from(this.ulItem .querySelectorAll('li')).map(option => option.textContent).filter(e => e !== "").join(',');
+		}
 	}
 
 	init() {
@@ -65,9 +72,9 @@ class editingList {
 		}
 		if (this.key) {
 			delete this.newItem(cle.value)
-			this.ulItem.prepend(this.newItem(cle.value + " : " + this.cleanItem(elem.value)));
-		} else elem.value.split(',').filter(e => e !== "").reverse().forEach(e => {
-			this.ulItem.prepend(this.newItem(e.trim()));
+			this.ulItem.append(this.newItem(cle.value + " : " + this.cleanItem(elem.value)));
+		} else elem.value.split(',').filter(e => e !== "").forEach(e => {
+			this.ulItem.append(this.newItem(e.trim()));
 		})
 		elem.value = "";
 		this.setDatas()
@@ -85,13 +92,13 @@ class editingList {
 	}
 
 	loadDatas() {
-	head("loadDatas");
 		if (this.key) {
-			console.log(this.valuesElement)
-
-		} else this.valuesElement.value.split(',').filter(e => e.trim() != "").forEach((a) =>
+			Object.keys(this.values).forEach(key => {
+				this.ulItem.appendChild(this.newItem(key + " : " + this.cleanItem(this.values[key])));
+			});
+		} else if (this.valuesElement.value.includes(',')) this.valuesElement.value.split(',').filter(e => e.trim() != "").forEach((a) =>
 			this.ulItem.appendChild(this.newItem(a))
-		);
+		); else this.ulItem.appendChild(this.newItem(this.valuesElement.value));
 	}
 	
 	addDragDrop(item) {
@@ -129,11 +136,9 @@ class editingList {
 			e.target.classList.remove("drag-over");
 			if (window.draggedItem === e.target) return;
 
-		this.ulItem.removeChild(window.draggedItem,);
-		this.ulItem.insertBefore(window.draggedItem, e.target);
+			this.ulItem.removeChild(window.draggedItem,);
+			this.ulItem.insertBefore(window.draggedItem, e.target);
 
-		this.valuesElement.value = Array.from(this.ulItem
-		.querySelectorAll('li')).map(option => option.textContent).filter(e => e !== "").join(',');
 			this.setDatas();
 		};
 	}

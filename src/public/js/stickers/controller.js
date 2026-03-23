@@ -5,7 +5,7 @@ function selectElement(name) {
     getElement("texte").value = tmp.value || "";
     getElement("elementLabel").innerText = name;
     getElement("textAlign").value = tmp.align || "center";  
-    getElement("textSize").value = tmp.size || "10px";   
+    getElement("textSize").value = tmp.size || "12px";   
     multiRemoveDisabled(["element", "elementLabel", "texte", "textAlign", "textSize"]);
 };
 

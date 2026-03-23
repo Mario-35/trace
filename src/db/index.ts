@@ -1,3 +1,11 @@
+/**
+ * DB index
+ *
+ * @copyright 2020-present Inrae
+ * @author mario.adam@inrae.fr
+ *
+ */
+
 import postgres from "postgres";
 import { dataBase } from "./base";
 import { executeSql } from "./executeSql";
@@ -43,7 +51,7 @@ export async function isDbExists(): Promise<boolean> {
                   return true;
             })
             .catch((error: Error) => {
-                  console.log(error);
+                  console.error(error);
                   return false;
             });
 }
@@ -55,6 +63,7 @@ export {createDetaultDatas} from "./createDetaultDatas"
 export {createPgValues} from "./createPgValues"
 export {createPgUpdates} from "./createPgUpdates"
 export {createPgColumns} from "./createPgColumns"
+export {createListColumns} from "./createListColumns"
 export {createPgInsert} from "./createPgInsert"
 export {createPgUpdate} from "./createPgUpdate"
 export {writeDB} from "./writeDB"

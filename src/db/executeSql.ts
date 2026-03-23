@@ -17,7 +17,7 @@ const executeSqlOne = async (query: string): Promise<object> => {
                 resolve(res);
             })
             .catch((error: Error) => {
-                console.log(error);
+                console.error(error);
                 reject(error);
             });
     });
@@ -35,7 +35,7 @@ const executeSqlMulti = async (queries: string[]): Promise<object> => {
                 resolve(res);
             })
             .catch((error: Error) => {
-                console.log(error);
+                console.error(error);
                 reject(error);
             });
     });

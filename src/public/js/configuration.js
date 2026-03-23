@@ -3,8 +3,6 @@ _CONFIGURATION = {
   site: 'UMR Sas Rennes',
   code: 'FR',
   debug: true,
-  passeport: true,
-  autoTest: false,
   pays: 'France',
   region: 'Bretagne',
   latitude: '48.112564637819',
@@ -26,7 +24,7 @@ _CONFIGURATION = {
     'dossier',     'libre',
     'prelevement', 'peremption',
     'pays',        'region',
-    'latitude',      'longitude',
+    'latitude',    'longitude',
     'analyses'
   ],
   stickerElements: {
@@ -39,6 +37,7 @@ _CONFIGURATION = {
     'dossier-numero': '0429-0002',
     type: 'Sol',
     programme: 'Programme concerné',
+    pedagogique: 'Programme pédagogique',
     condition: 'Etanol',
     site: 'Nom du site',
     responsable: 'ADAM Mario',
@@ -47,8 +46,8 @@ _CONFIGURATION = {
     libre: 'Texte libre limité à 50 caractères',
     pays: 'France',
     region: 'Bretagne',
-    latitude: '49.9967718',
-    longitude: '2.549023',
+    latitude: '2.549023',
+    longitude: '49.9967718',
     analyses: 'Matière org, Physico-chimi ADNe 1',
     etat: 'Créer'
   }

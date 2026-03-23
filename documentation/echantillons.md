@@ -115,6 +115,12 @@ Dans le cas où nombre et sélectionné chaque échantillon se verra attribué t
 ![Ajout d'un échantillons masque 1](assets/doc-echantillon-add-3.jpg)
 
 ### Masque 4 Stockage
+
+Cet onglet permet de gérer le stockage de l'échantillon, le système fonctionne avec un système de clé valeur les clés étant paramétré dans la configuration,
+Il est possible aussi de réorganiser avec la souris grâce au glisser déposer
+
+![Ajout d'un échantillons masque 1](assets/doc-echantillon-add-4.jpg)
+
 ### Masque 5 Etiquettes
 
 Enfin la dernière étape est le paramétrage de l'étiquette les éléments modifiables sont sélectionnable avec la souris (en passant dessus la couleur change en bleu ) et le choix influe sur les éléments de saisie :

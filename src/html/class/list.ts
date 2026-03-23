@@ -69,9 +69,11 @@ export class List extends CoreHtmlView {
 					<div class="col-10">
 						<div class="input-group">
 							<span class="input-group-text">${name}</span>
-							<div id="blockAjouter">
-								<a class="btn btn-primary icon_plus" id="ajouter" href="./${name}-add.html"> Ajouter</a>								
-							</div>
+							${dataBase[plural as keyof object].create === true ? `
+								<div id="blockAjouter">
+									<a class="btn btn-primary icon_plus" id="ajouter" href="./${name}-add.html"> Ajouter</a>								
+								</div>
+								` : ''}
                             ${ excel ? `
 							<span class="input-group-text">Importer</span>
 							<div class="btn btn-success field">
@@ -85,7 +87,7 @@ export class List extends CoreHtmlView {
 					</div>
 				</div>
 				<div class="table-responsive">
-					<table id="jsonTable" class="table">
+					<table id="jsonTable" class="table table-striped table-hover">
 						<thead></thead>
 						<tbody></tbody>
 						<tfoot></tfoot>

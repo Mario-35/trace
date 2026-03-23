@@ -1,27 +1,34 @@
-import { sql } from "../db";
+/**
+ * Controllers
+ *
+ * @copyright 2020-present Inrae
+ * @author mario.adam@inrae.fr
+ *
+ */
+
+import { executeSql, sql } from "../db";
 import { dataBase } from "../db/base";
 
 
 export async function readAll(table: string) {
-      return await sql`SELECT * FROM ${ sql(table) }`
+      return await executeSql(`SELECT * FROM "${table}"`)
 };
 
 export async function readAlSearch(table: string, search: string) {
        const tableColumns = Object.keys(dataBase[table as keyof object]["columns" as keyof object]);
-      return await sql.unsafe(`SELECT * FROM ${table} WHERE ${tableColumns.map(e => `"${e}" LIKE '%${search}%'`).join(" OR ")}`);
+      return await executeSql(`SELECT * FROM "${table}" WHERE ${tableColumns.map(e => `"${e}" LIKE '%${search}%'`).join(" OR ")}`);
 };
 
-
 export async function readId(table: string, id: number) {
-      return await sql`SELECT * FROM ${ sql(table) } WHERE id = ${ id }`;
+      return await executeSql(`SELECT * FROM "${table}" WHERE id = ${ id }`);
 };
 
 export async function readIds(table: string, ids: number[]) {
-      return await sql.unsafe(`SELECT * FROM ${table} WHERE id IN (${ ids.join() })`);
-
+      return await executeSql(`SELECT * FROM "${table}" WHERE id IN (${ ids.join() })`);
 };
+
 export async function readIdentifications(table: string, ientifications: string[]) {
-      return await sql.unsafe(`SELECT * FROM ${table} WHERE id IN ('${ ientifications.join("','") }')`);
+      return await executeSql(`SELECT * FROM "${table}" WHERE id IN ('${ ientifications.join("','") }')`);
 };
 
 export function verifyBody(values: any) {
@@ -29,14 +36,14 @@ export function verifyBody(values: any) {
             if (!values) return undefined;
             if (Object.keys(values).length < 1) return undefined;
       } catch (error) {
-            console.log(error);            
+            console.error(error);            
             return undefined;            
       }
       return values
 }
 
 export async function deleteId(table: string, id: number) {
-      return await sql`DELETE FROM ${ sql(table) } WHERE id = ${ id }`
+      return await executeSql(`DELETE FROM ${ sql(table) } WHERE id = ${ id }`)
 };
 
 

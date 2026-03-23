@@ -3,7 +3,9 @@ function createSticker(name, stick, value) {
     element.className = name;
     element.id=name;
     element.innerText = value;
-    element.style =  'overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: ' + stick.align + '; font-size: ' + stick.size || '10px' + ';';
+    stick.align = stick.align || "center";
+    stick.size = stick.size || '12px';
+    element.style =  'overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: ' + stick.align + '; font-size: ' + stick.size + ';';
     return element;
 }
 

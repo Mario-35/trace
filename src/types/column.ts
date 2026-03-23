@@ -6,4 +6,5 @@ export interface Icolumn {
     list : boolean;
     excel? : boolean;
     etiquette? : String;
+    calculate? : String;
 }

@@ -1,7 +1,21 @@
+/**
+ * Rpg controller
+ *
+ * @copyright 2020-present Inrae
+ * @author mario.adam@inrae.fr
+ *
+ */
+
 import { logger } from "@infra/logger";
 
-let _geo: any | undefined = undefined;
 
+/**
+ * 
+ * @param annee year of daerc
+ * @param x ws84 lattitude position
+ * @param y ws84 longiitude position
+ * @returns JSON object with years and value code
+ */
 async function getRpgDatas(annee: number, x: string, y: string) {
     let url = 'https://apicarto.ign.fr/api/rpg/v';
     url += annee < 2015 ? '1' : '2'
@@ -22,14 +36,18 @@ async function getRpgDatas(annee: number, x: string, y: string) {
 
 	}).catch((error: Error) => {
 		logger.error(error);
-
 	});
 }
 
+/**
+ * 
+ * @param x ws84 lattitude position
+ * @param y ws84 longiitude position
+ * @returns JSON object with years and value code
+ */
 export async function getRpg(x: string, y: string) {
     const results:Record<string, unknown> = {};
 	const maxYear = new Date().getFullYear();
-	_geo = undefined;
     for (let year = maxYear - 15; year <= maxYear; year++) {
 		results[year] = await getRpgDatas(year, x, y) || "NOT";
     }

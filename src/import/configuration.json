@@ -1,7 +1,6 @@
 {
     "configuration": [
         {
-            "id": 1,
             "site": "UMR Sas Rennes",
             "code": "FR",
             "debug": false,

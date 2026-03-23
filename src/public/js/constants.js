@@ -20,7 +20,7 @@ var _NOTYET = "Not implemented yet";
 const createContext = () => {
     let mode = "new";
     if (window.location.href.includes('?')) {
-        ["id","selection","excel","after","aliquote","new"].forEach(e => {
+        ["id", "selection", "excel", "after", "aliquote", "new", "echantillon"].forEach(e => {
             if (isKeyInUrl(e)) setContext(e, +getNumberFromUrl(e), mode);            
         }); 
     } else setContext("new", 0);
@@ -58,6 +58,11 @@ isKeyInUrl= (keyName) => window.location.href.includes(`?${keyName}=`) || window
 function getNumberFromUrl(keyName) {
     const tmp = window.location.href.split('?')[1].split("&").filter(key =>  key.includes(keyName+'='))[0];
     return +tmp.split(`=`)[1] || 0;
+}
+
+function getFromUrl(keyName) {
+    const tmp = window.location.href.split('?')[1].split("&").filter(key =>  key.includes(keyName+'='))[0];
+    return tmp.split(`=`)[1] || '';
 }
 
 formatDate = (input) => input && input.includes("T") && input.includes("-") ? input.split("T")[0].split("-").reverse().join('-') : input;

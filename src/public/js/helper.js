@@ -74,7 +74,7 @@ function validateSelect(name) {
 function validateNumber(name, max) {
     const element = getElement(name);
     const elementError = getElement(name + '-error');
-    if (!element.value.trim() || element.value < 1 || element.value > max) {
+    if (!element.value.trim() || +element.value < +element.min || +element.value > +element.max) {
         elementError.style.display = 'block';
         return false;
     } else {

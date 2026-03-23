@@ -1,13 +1,14 @@
 const _DEMOS ={
     "Rien": {},
     "Basic": {
-        "type": "Sol cultivé",
-        "prelevement": "2026-03-09",
+        "type": "Boues",
+        "prelevement": "2026-05-09",
         "programme": "RMQS.Biodiv",
         "site": "PLEYBEN",
         "libre": "",
         "responsable": "G.Perès",
         "nombre": 9,
+        "numero": 100,
         "pays": "France",
         "region": "Bretagne",
         "latitude": "48.2521082",
@@ -18,7 +19,7 @@ const _DEMOS ={
     },
     "Gueno": {
         "type": "Sol cultivé",
-        "prelevement": "2026-03-12",
+        "prelevement": "2026-04-19",
         "programme": "RMQS.Biodiv",
         "site": "ARBOIS",
         "libre": "",

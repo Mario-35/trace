@@ -90,9 +90,9 @@ export class Add extends CoreHtmlView {
 			canedit?: String;
 		}) {
 		return `
-			<div class="form-group row-${options.size || 1}${options.invisible ? ' invidsible' : ''}">
+			<div class="form-group row-${options.size || 1}${options.invisible ? ' invisible' : ''}">
 				${this.inputlabel(options)}
-                <input type="number" id="${options.name}" name="${options.name}"class="form-control"  ${options.min ? `max=${options.min}"` : ''} ${options.max ? `max=${options.max}"` : ''} value="${options.value || 0}"/>
+                <input type="number" id="${options.name}" name="${options.name}"class="form-control"  ${options.min ? `min=${options.min}` : ''} ${options.max ? `max=${options.max}` : ''} value="${options.value || 0}"/>
 				${options.error ? `<div class="error-message" id="${options.name}-error">${options.placeholder} obligatoire</div>` : ''}
 			</div>`;
 	}
@@ -135,6 +135,10 @@ export class Add extends CoreHtmlView {
 				<button class="btn ${btnTypeAndClass}" id="${options.name}" title="${options.tooltip}" ${options.disabled ? 'disabled' : ''}>${btnLabel}</button>
 			</div>`;
 	}
+	inputChk(options: IHTMLOptions, checked: boolean) {
+		return `<input type="checkbox" id="${options.name}" name="${options.name}" ${checked === true ? 'checked' : ''}>
+`;
+	}
 
 	inputMap(name: string) {
 		return `<div id="${name}" style="width: 600px; height: 400px;"></div>`;
@@ -143,11 +147,20 @@ export class Add extends CoreHtmlView {
 	inputTextArea(name: string, invisible: boolean) {
 		return `<textarea id="${name}" name="${name}" class="form-control ${invisible ? 'invisible' : ''}"></textarea>`;	
 	}
-	
+
+	rangeHTML() {
+		return `<div class="form-row">                     
+					<div class="fillFull" id="rowLines" > </div>
+				</div>  
+
+				<div class="form-row">                       
+					<div class="form-group row-1 invisible">
+						<label for="row" id="rowNumber"> </label>
+					</div>
+				</div>`;
+	};
+
     createAddEvenementHtmlString(name: String) {
-
-
-
         this._HTMLResult =`
 			<!DOCTYPE html>
 			<html lang="fr">
@@ -163,18 +176,17 @@ export class Add extends CoreHtmlView {
 				<form id="actionForm" class="formData" enctype="multipart/form-data" method="POST">
 					${this.inputHidden("ctx")}
 					<main class="main-view">
-						<div class="splitter-nav-view" id="left-pane">
-						</div>
+						<div class="splitter-nav-view" id="left-pane"></div>
 						<div class="v-drag" id="separator"></div>
 						<div class="content" id="right-pane">
 							<div class="container">
 								<div class="header">
 									<h1 id="formTitle"></h1>
 								</div>
+
 								<!-- Steps Headers-->            
                     
 								<div class="form-container">
-
 
 									<div class="form-row">
 										${this.inputDate({
@@ -218,45 +230,41 @@ export class Add extends CoreHtmlView {
 
 									<div class="form-row">
 										${this.inputFormGroupText({
-											size: 2,
+											max: 30,
+											name: "personne",
+											tooltip: "Personne @ l'origine de l'événement / opération",
+											label: "Personne (Qui)",
+											canedit: "true"
+										})}                              
+										${this.inputFormGroupText({
 											max: 75,
-											name: "libre",
-											tooltip: "Infos libre sélectionnable lors de l'impression des étiquettes",
-											label: "Infos libre",
+											name: "operation",
+											tooltip: "Detail de l'événement / opération",
+											label: "Detail de l'operation",
 											canedit: "true"
 										})}                              
 									</div>              
 
-
-                            <div class="form-row container-center">
-                                <input type="hidden" id="stockage" name="stockage" class="form-control">
-                                <div id="stockageList" class="liste"></div>
-                            </div> 
-
-
-
-                            <div class="form-row">
-                                <div class="form-group row-1">
-                                    <div id="stockageTab"></div>  
-                                </div> 
-                            </div> 
+									${this.rangeHTML()}
+									
+									<div class="form-row container-center">
+										<input type="hidden" id="stockage" name="stockage" class="form-control">
+										<div id="stockageList" class="liste"></div>
+									</div> 
 							
-                            <div class="btn-group">
-                                <button class="btn btn-warning form-group float-start" id="btn-annuler">❌ Annuler</button>
-                                <button class="btn btn-primary form-group float-end" type="submit" id="btn-creer">✔️️ Créer</button>
-                            </div>
-							${this.inputHidden("saveetat")}
-							${this.inputTextArea("savestockage", true)}
-                        </div>
-
-						
-                    </div>
-                </div>
-            </div>
-        </main> 
-    </form>
-    <div id="modal"></div>  
-</body> 
+									<div class="btn-group">
+										<button class="btn btn-warning form-group float-start" id="btn-annuler">❌ Annuler</button>
+										<button class="btn btn-primary form-group float-end" type="submit" id="btn-creer">✔️️ Créer</button>
+									</div>
+									${this.inputHidden("saveetat")}
+									${this.inputTextArea("savestockage", true)}
+								</div>						
+                    		</div>
+                		</div>
+        			</main> 
+    			</form>
+    			<div id="modal"></div>  
+			</body> 
 
     <!-- awlays first -->
     <script src="./js/configuration.js"></script>
@@ -425,8 +433,6 @@ export class Add extends CoreHtmlView {
             .map((e: string) => e.trim())
             .filter((e) => e.trim() != "");     
     }
-
-
 
 	createAddEchantillonHtmlString(name: String) {
         // Split files for better search and replace
@@ -621,17 +627,8 @@ export class Add extends CoreHtmlView {
 											canedit: "true"
 										})}                              
 									</div>                            
-
-
-									<div class="form-row">                     
-										<div class="fillFull" id="rowLines" > </div>
-									</div>  
-
-									<div class="form-row">                       
-										<div class="form-group row-1 invisible">
-											<label for="row" id="rowNumber"> </label>
-										</div>
-									</div>
+									
+									${this.rangeHTML()}
 									
 									<div id="blockDemo" class="form-row">
 										<div class="form-group row-1">                                
@@ -732,30 +729,17 @@ export class Add extends CoreHtmlView {
                         </div>
                         <!-- Step 3: Stockage -->
                         <div class="form-step" id="form-step-4">                          
-                            <div class="form-row">
-                                <div class="form-group row-1">
-                                    <label for="cle" id="cleLabel">
-                                        <span tooltip="Clé ou nom spécifiant l'endroit ou le lieu">Clé</span>
-                                    </label>
-                                    <select id="cle" class="form-control"></select>
-                                </div>
-                                <div class="form-group row-1">
-                                    <label for="valeur">
-                                        <span tooltip="Valeur associé à cette clé une valeur nulle effacera la clé">Valeur</span>
-                                    </label>
-                                    <input type="text" id="valeur" class="form-control" maxlength="25" placeholder="Valeur">
-                                </div>  
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group row-1">
-                                    <div id="stockageTab"></div>  
-                                </div> 
-                            </div> 
+
+							<div class="form-row container-center">
+								${this.inputTextArea("stockage", true)}
+								<div id="stockageList" class="liste"></div>
+							</div> 
+
                             <div class="btn-group">
                                 <button class="btn btn-prev" id="prev-3">⬅ Précédent</button>
                                 <button class="btn btn-next" id="next-3">Suivant ➡</button>
                             </div>
-							${this.inputTextArea("stockage", true)}
+							
                         </div>
                         
                         <!-- Step 4: Etiquettes -->

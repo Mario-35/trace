@@ -4,7 +4,7 @@ if (window.location.href.includes('?passeport='))
 
 document.addEventListener("DOMContentLoaded", function () {
 	const table = new JsonTable({
-		jsonUrl: window.location.origin + "/echantillons" + `${id > 0 ? '/' + id : ""}`,
+		jsonUrl: window.location.origin + "/list/echantillons" + `${id > 0 ? '/' + id : ""}`,
 		editUrl: "/echantillon-add.html",
 		printUrl: "/echantillon/",
 		container: "#jsonTable",
@@ -13,13 +13,22 @@ document.addEventListener("DOMContentLoaded", function () {
 		columns: structure,
         menuOptions: [
             {
-                title : "Toute cette série",
+                title : "Evenement pour cet échantillon",
+                url: "evenement-add.html?echantillon=",
+            },
+            {
+                title : "Tous les échantillons de cette série",
                 filter: "Identification12",
             },
             {
-                title : "Ajouter a cette série",
+                title : "Ajout d'échantillon(s) cette série",
                 url: "echantillon-add.html?after=",
+            },
+            {
+                title : "Créer un évenement cette série",
+                url: "evenement-add.html?série=",
             }
+            
         ]
 	});
 });

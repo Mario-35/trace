@@ -70,12 +70,12 @@ class JsonTable {
 		jsonTable.addEventListener("click", e => {
 		  if (this.menuVisible) this.toggleMenu("hide");
 		});
-		
-		this.menu.addEventListener("click", e => {
+
+		if (this.menu) this.menu.addEventListener("click", e => {
 			const url = e.target.getAttribute("url") ;
 			if (this.menuVisible) this.toggleMenu("hide");
 			if (url && url !== "")
-				open(e.target.getAttribute("url") + this.selectedId);
+				window.location.href = `${url}${url.includes('?') ? this.selectedId : ''}`;
 			else {
 				const filter = e.target.getAttribute("filter") ;
 				if (filter && filter !== "") {
@@ -95,6 +95,11 @@ class JsonTable {
 		  this.setPosition(origin);
 		  return false;
 		});
+
+		if (isKeyInUrl("filter")) {
+			globalSearch.value = getFromUrl("filter");  
+			this.filterGlobal(globalSearch.value);
+		}
 	}
 
 	filterCall(name) {
@@ -332,7 +337,7 @@ class JsonTable {
 		let elem = getElement("editAll");
 		if (elem) elem.addEventListener("click", async (e) => {
         	const temp = await postDatas(window.location.origin + '/selection', {ids: this.filteredData.map(e => e.id)});
-			if (temp) window.location.href =this.editUrl + "?selection=" + temp[0].id;
+			if (temp) window.location.href = this.editUrl + "?selection=" + temp[0].id;
 		});		
 		elem = getElement("printAll");
 		if (elem) elem.addEventListener("click", async (e) => {

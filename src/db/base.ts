@@ -10,6 +10,8 @@ const index: Icolumn = {
 export const dataBase: Idb = {
   "configuration": {
     save: true,
+    create: true,
+    import: false,
     "columns": {
       "id": index,
       "site": {
@@ -83,6 +85,8 @@ export const dataBase: Idb = {
   },
   "passeports" : {
     save: true,
+    create: true,
+    import: false,
     "columns": {
           "id": index,
           "site": {
@@ -107,7 +111,7 @@ export const dataBase: Idb = {
             type: "text" ,
             title: "Code pays",
             create: "varchar(2) NOT NULL DEFAULT 'FR'",
-            list : true
+            list : false
           },
           "identifiant": {
             type: "text" ,
@@ -127,14 +131,97 @@ export const dataBase: Idb = {
             create: "int2 NULL",
             list : false
           },
+          "echantillons": {
+            type: "number",
+            title: "N°",
+            create: "",
+            calculate: 'SELECT COUNT(*) FROM echantilllons WHERE passeport=id',
+            list: true,
+          },
           
         }, 
         "constraints" : [
           "CONSTRAINT passeport_pkey PRIMARY KEY (id)"
         ]
   }, 
+  "campagnes" : {
+    save: false,
+    create: false,
+    import: false,
+    "columns": {
+      "id": {
+          type: "text",
+          title: "Identification",
+          create: "",
+          calculate: "src.id",
+          list: false,
+        },
+      "type": {
+          type: "text",
+          title: "Type de prélèvement",
+          create: "",
+          calculate: "src.type",
+          list : true,
+        },
+        "dossier": {
+          type: "text",
+          title: "N° dossier",
+          create: "",
+          calculate: "src.dossier",
+          list: true
+        },        
+        "programme": {
+          type: "text",
+          title: "Nom du programme",
+          create: "",
+          calculate: "src.programme",
+          list: true,
+        },
+        "site": {
+          type: "text",
+          title: "Site de prélèvement",
+          create: "",
+          calculate: "src.site",
+          list: true,
+        },
+        "responsable": {
+          type: "text",
+          title: "Résponsable",
+          create: "",
+          calculate: "src.responsable",
+          list: true,
+        },
+        "creation": {
+          type: "timestamp",
+          title: "Date de création",
+          create: "",
+          calculate: "src.creation",
+          list: false,
+        },
+        "prelevement": {
+          type: "date",
+          title: "Date de prélèvement",
+          create: "",
+          //  calculate: "src.prelevement",
+          calculate: "CONCAT(SUBSTRING (src.prelevement::text FROM 9 FOR 2), '-', SUBSTRING (src.prelevement::text FROM 6 FOR 2), '-', SUBSTRING (src.prelevement::text FROM 0 FOR 5))",
+          // calculate: "CONCAT(SUBSTRING (src.prelevement::text FROM 6 FOR 8), SUBSTRING (src.prelevement::text FROM 9 FOR 10), '-', SUBSTRING (src.prelevement::text FROM 0 FOR 3))",
+          list: true,
+        },
+        "echantillons": {
+          type: "number",
+          title: "N°",
+          create: "",
+          calculate: "(SELECT COUNT(*) FROM echantillons WHERE identification LIKE src.id || '%')",
+          list: true,
+        },
+    },
+            
+      "constraints" : ["CONSTRAINT echantillons_pkey UNIQUE NULLS NOT DISTINCT (type, identification)"]
+  },   
   "echantillons" : {
     save: true,
+    create: true,
+    import: true,
     "columns": {
       "id": {
           type: "index" ,
@@ -146,7 +233,7 @@ export const dataBase: Idb = {
           type: "text",
           title: "Type de prélèvement",
           create: "varchar(25) NOT NULL",
-          list : false,
+          list : true,
           etiquette: "Sol"
         },
         "programme": {
@@ -191,7 +278,7 @@ export const dataBase: Idb = {
         },
         "identification": {
           type: "text",
-          title: "Pdentification",
+          title: "Identification",
           create: "varchar(16) NOT NULL",
           list: true,
           etiquette: "1902202617320002"
@@ -259,7 +346,7 @@ export const dataBase: Idb = {
         "latitude": {
           type: "text",
           title: "Point X",
-          create: "varchar(15) NOT NULL",
+          create: "varchar(20) NOT NULL",
           list: false,
           excel: true,
           etiquette: "2.549023"
@@ -267,7 +354,7 @@ export const dataBase: Idb = {
         "longitude": {
           type: "text",
           title: "Point Y",
-          create: "varchar(15) NOT NULL",
+          create: "varchar(20) NOT NULL",
           list: false,
           excel: true,
           etiquette: "49.9967718"
@@ -313,11 +400,12 @@ export const dataBase: Idb = {
           etiquette: "Créer"
         },
     },
-            
-      "constraints" : ["CONSTRAINT echantillons_pkey UNIQUE NULLS NOT DISTINCT (type, identification)"]
+    "constraints" : ["CONSTRAINT echantillons_pkey UNIQUE NULLS NOT DISTINCT (type, identification)"]
   },   
   "rpg" : {
     save: true,
+    create: true,
+    import: false,
     "columns": {
       "code": {
         type: "text" ,
@@ -336,44 +424,47 @@ export const dataBase: Idb = {
   },
   "sites" : {
     save: true,
+    create: true,
+    import: false,
     "columns": {
-          "id": index,
-          "nom": {
-            type: "text" ,
-            title: "Nom du site",
-            create: "varchar(50) NOT NULL",
-            list : true
-          },
-            "pays": {
-              type: "text",
-              title: "Pays",
-              create: "varchar(25) NOT NULL",
-              list: true
-            },
-            "region": {
-              type: "text",
-              title: "Région",
-              create: "varchar(30) NOT NULL",
-              list: true
-            },
-            "latitude": {
-              type: "text",
-              title: "Position X",
-              create: "varchar(15) NOT NULL",
-              list: true
-            },
-            "longitude": {
-              type: "text",
-              title: "Position Y",
-              create: "varchar(15) NOT NULL",
-              list: true
-            },
+      "id": index,
+      "nom": {
+        type: "text" ,
+        title: "Nom du site",
+        create: "varchar(50) NOT NULL",
+        list : true
+      },
+        "pays": {
+          type: "text",
+          title: "Pays",
+          create: "varchar(25) NOT NULL",
+          list: true
         },
-            
-      "constraints" : ["CONSTRAINT sites_pkey PRIMARY KEY (id)"]
+        "region": {
+          type: "text",
+          title: "Région",
+          create: "varchar(30) NOT NULL",
+          list: true
+        },
+        "latitude": {
+          type: "text",
+          title: "Position X",
+          create: "varchar(20) NOT NULL",
+          list: true
+        },
+        "longitude": {
+          type: "text",
+          title: "Position Y",
+          create: "varchar(20) NOT NULL",
+          list: true
+        },
+    },
+    "constraints" : ["CONSTRAINT sites_pkey PRIMARY KEY (id)"]
   },    
   "excels" : {
     save: false,
+    create: true,
+    import: false,
     "columns": {
           "id": index,
           "datas": {
@@ -388,6 +479,8 @@ export const dataBase: Idb = {
   },    
   "selections" : {
     save: false,
+    create: true,
+    import: false,
     "columns": {
           "id": index,
           "ids": {
@@ -402,6 +495,8 @@ export const dataBase: Idb = {
   },    
   "fichiers" : {
     save: true,
+    create: true,
+    import: false,
     "columns": {
           "id": index,
           "nom": {
@@ -422,6 +517,8 @@ export const dataBase: Idb = {
   },
   "evenements" : {
     save: true,
+    create: true,
+    import: false,
     "columns": {
       "id": {
           type: "index" ,
@@ -431,39 +528,39 @@ export const dataBase: Idb = {
         },
         "date": {
           type: "timestamp",
-          title: "Date de création",
+          title: "Date",
           create: "timestamp without time zone",
-          list: false,
+          list: true,
           excel: false,
         },
         "identification": {
           type: "text",
-          title: "Pdentification",
+          title: "Identification",
           create: "varchar(16) NOT NULL",
           list: true,
           etiquette: "1902202617320002"
         },
-        "qui": {
+        "personne": {
           type: "text",
-          title: "Résponsable",
-          create: "varchar(25) NOT NULL",
+          title: "Personne",
+          create: "varchar(50) NOT NULL",
           list: true,
           excel: true,
           etiquette: "ADAM Mario"
         },
         "operation": {
           type: "text",
-          title: "Pdentification",
+          title: "Opération",
           create: "varchar(255) NOT NULL",
           list: true,
         },
-        "stockage": {
+        "savestockage": {
           type: "json",
           title: "Stockage initial",
           create: "jsonb NULL",
           list: false
         },
-        "etat": {
+        "saveetat": {
           type: "text",
           title: "Etat initialt",
           create: "varchar(10) NOT NULL", 

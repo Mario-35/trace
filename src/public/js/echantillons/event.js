@@ -3,7 +3,7 @@ getElement('btn-creer').addEventListener('click', async (event) => {
     event.preventDefault();    
     _DATAS = formDatas();
     const ctx = getContext();
-    if (ctx.mode ==="id") {
+    if (isContextMode(["id"])) {
         fetch(window.location.origin + `/echantillon/` + ctx.id, {
             method: "PATCH",
             headers: {
@@ -20,7 +20,7 @@ getElement('btn-creer').addEventListener('click', async (event) => {
         }).catch(err => {
             showModalError(err);
         });
-    } else if (isContextMode(["excel", "new"])) {
+    } else if (isContextMode(["excel", "new", "after"])) {
         _DATAS["etat"] = "Créer";
         fetch(window.location.origin + `/echantillon`, {
             method: "POST",
@@ -84,22 +84,9 @@ getElement('site').addEventListener('blur', async (event) => {
     event.preventDefault();
     if(site.value.trim().length > 2) {
         const datas = await getDatas(`${window.location.origin}/sites/filter/${site.value}`);
-        console.log(datas)
         addDataList(getElement('site'), datas); 
     }
 
-});
-// changement de la cle de stockage
-getElement('cle').addEventListener('change', (event) => {
-    event.preventDefault();
-    valeur.value = toJson("stockage")[this.value] || '';
-});
-
-// changement de la valeur de stockage
-getElement("valeur").addEventListener("blur", (event) => {
-    event.preventDefault();
-    addToJson ("stockage", cle.value, valeur.value);
-    refresh();
 });
 
 // modification de la date de prelevement

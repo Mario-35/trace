@@ -1,6 +1,6 @@
 // create identification with date time (without seconds) and echantillon number
 function createIdentification(nb) {
-    if (isContextMode(['new',"aliquote"])) {
+    if (isContextMode(['new',"aliquote","excel"])) {
         if(!_DATE) _DATE = new Date();
         creation.value = _DATE.toISOString();
         return `${ _DATE.toLocaleDateString()}${ _DATE.toLocaleTimeString()}`.replace(/\D/g, "").slice(0,12) + (nb || getElement("echantillon").value || getElement("numero").value).padStart(4, '0');
@@ -38,25 +38,6 @@ function refresh() {
             getElement("peremption").value = `${+dates[0] + 5}-${dates[1]}-${dates[2]}`;
         }
     }
-
-    try {
-        const tmp = toJson("stockage");
-        getElement("stockageTab").innerHTML = getElement("stockage").value  
-            ? `<table class="table table-stockage"> 
-            <thead> 
-                <tr> 
-                    <th>&nbsp;Clé&nbsp;</th> 
-                    <th>&nbsp;Valeur&nbsp;</th> 
-                </tr> 
-            </thead> 
-            <tbody> ${Object.keys(tmp).map((e,i) => `<tr><td>${e}</td><td>${tmp[e]}</td>
-                </tr>`).join("")} 
-            </tbody> 
-        </table>` 
-            : '';   
-    } catch (error) {    
-        log(error);
-    } 
     
     if(_CONFIGURATION.debug === false) {
         setInvisible("stockage");
@@ -68,18 +49,6 @@ function refresh() {
     
 }
 
-// load line from importation store
-function loadEchantillonLine(index) {
-    if(Array.isArray(_STORE.columns)) {
-        loadValues( _STORE.datas[index]);
-    } else {
-        Object.keys(_STORE.columns).forEach(column => {
-            loadValue(column, _STORE.datas[index][_STORE.columns[column]]);
-            getElement("identification").value = createIdentification(index);
-        });
-    }
-    getElement("rowNumber").innerText = 'Ligne : ' + index + ' sur ' + _STORE.datas.length ; 
-};
 
 function refreshCultures() {    
     head('refresh Cultures');
@@ -148,7 +117,7 @@ async function start() {
     // init select for sticker
     addToOption(getElement('element'), Object.keys(_CONFIGURATION.stickerElements));  
     // init select for stockage keys       
-    addToOption(getElement('cle'), _CONFIGURATION.stockages);   
+    // addToOption(getElement('cle'), _CONFIGURATION.stockages);   
     // init select for etats keys       
     addToOption(getElement('etat'), _CONFIGURATION.etats, "Créer");
     // add demos if debug
@@ -175,7 +144,9 @@ async function start() {
         hideParentClass( "btnApiRpg", "row-1");
         removeDisabled("btn-aliquote");
         getElement("btnApiRpg").innerText = "MAJ 🌍 RPG";
-        changeTitle("Modification d'un échantillon");        
+        changeTitle("Modification d'un échantillon"); 
+        new editingList(getElement("stockageList"), "Mots clés pour le stockage", "Ajouter une clé", datas.stockage, _CONFIGURATION["stockages"]);  
+              
     } else if (ctx.mode === 'selection') { // Selection Edits mode
         // get selection from API
         const temp = await getDatas(window.location.origin + "/selection/" + ctx.id);
@@ -234,7 +205,6 @@ async function start() {
         changeTitle("Ajout d'autres échantillon(s)");
     } else if (ctx.mode === 'aliquote') {  // child mode 
         const datas = await getDatas(window.location.origin + "/echantillon/" + ctx.id);
-        console.log(datas);
         parent.value = datas.identification;
         loadDatas(datas);
         identification.value = createIdentification();
@@ -250,7 +220,9 @@ async function start() {
         multiplesetInvisible(["echantillon",  "etat"]); 
         multipleremoveInvisible(["numero",  "nombre"]); 
         getElement("etat").value = 'Créer';
-        updateReadOnly(ctx);    
+        updateReadOnly(ctx);   
+        new editingList(getElement("stockageList"), "Mots clés pour le stockage", "Ajouter une clé", {}, _CONFIGURATION["stockages"]);  
+
     } else log("Error mode");
     // init list
     refresh();

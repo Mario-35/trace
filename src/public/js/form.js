@@ -79,6 +79,10 @@ const formToColumns = elements => [].reduce.call(elements, (data, element) => {
   return data;
 }, []);
 
+function getInactive(element) {
+  return element.getAttribute("readonly") === "" ? true : false;
+}
+
 const formDatas = () =>  formToJSON(document.getElementsByClassName('formData')[0].elements);
 
 /**
@@ -88,6 +92,7 @@ const formDatas = () =>  formToJSON(document.getElementsByClassName('formData')[
  */
 const formToJSON = elements => [].reduce.call(elements, (data, element) => {
   // Make sure the element has the required properties and should be added.
+  // if (isValidElement(element) && isValidValue(element) && !getInactive(element)) {
   if (isValidElement(element) && isValidValue(element)) {
 
     /*
