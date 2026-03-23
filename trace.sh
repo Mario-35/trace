@@ -72,7 +72,8 @@ check_pg() {
         fi
         sudo -i -u postgres psql -c "SELECT PostGIS_version();"    
         sudo -i -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'postgres';"    
-        sudo -i -u postgres psql -c "CREATE USER trace WITH PASSWORD 'trace';"    
+        sudo -i -u postgres psql -c "CREATE USER trace WITH PASSWORD 'trace';"
+        sudo -i -u postgres psql -c "CREATE database trace"
         update_pg_hba
         PGVER=$(psql --version)
     else
@@ -181,7 +182,7 @@ install_trace() {
 # Function to stop trace
 stop_trace() {
     echo "API Stopping ..."
-    pm2 stop start
+    pm2 stop main
     pm2 kill
 }
 
