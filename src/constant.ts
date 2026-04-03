@@ -6,8 +6,6 @@
  *
  */
 
-import { readConfig } from "@app/configuration/controller";
-
 export const HELMET = {
         crossOriginEmbedderPolicy: false,
         crossOriginResourcePolicy: false,
@@ -24,12 +22,6 @@ export const CORS = {
     methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }
-
-// Content-Security-Policy:
-//   script-src 'nonce-ieoeWczDHkReVBsRBqaal5AFMlBtNjMzgwKvLqi'
-
-// }
-
 
 export const EConstant = Object.freeze({
     appName: "Trace",

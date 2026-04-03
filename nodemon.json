@@ -10,5 +10,5 @@
     "env": {
         "NODE_ENV": "development"
     },
-     "exec": "tsx watch --clear-screen=false -r tsconfig-paths/register -r dotenv/config src/main.ts"
+     "exec": "tsx watch --clear-screen=true -r tsconfig-paths/register src/main.ts"
 }

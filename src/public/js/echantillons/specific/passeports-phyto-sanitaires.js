@@ -1,20 +1,3 @@
-
-// async function refreshPasseportPhytosanitaire() {
-//     head('refresh Passeport Phytosanitaire');
-//     // get passeport id
-//     const id = Number(getElement("passeport").value);
-//     if (getElement("passeport") && id > 0) {
-//         const temp = await getDatas(window.location.origin + '/passeport/' + id);
-//         if (temp && temp.id) {            
-//             createHTMLviewPasseport(temp);
-//             return
-//         }
-//     }     
-//     if (isContextMode(["id", "selection", "after", "aliquote"])) return;
-//     // createHTMLbtnCreatePasseport();
-//     // await getRpgInfos(getElement("rpgTab"), true);
-// }
-
 // get passeport information from API
 async function setPasseport() {
     head("setPasseport");

@@ -21,7 +21,7 @@ const _DEMOS ={
         "type": "Sol cultivé",
         "prelevement": "2026-04-19",
         "programme": "RMQS.Biodiv",
-        "site": "ARBOIS",
+        "site": "Chateau-garnier",
         "libre": "",
         "responsable": "G.Perès",
         "nombre": 9,

@@ -12,13 +12,13 @@ import { CoreHtmlView } from "./core";
 
 export class List extends CoreHtmlView {
     constructor(name: String, excel?: boolean) {
-        super();
+        super();		
         this.createIndexHtmlString(name, excel);
     }
     
     createIndexHtmlString(name: String, excel?: boolean) {
         // Split files for better search and replace
-		const plural = name.toLocaleLowerCase() + 's'
+		const plural = name.toLocaleLowerCase() + 's';
 		const listCols:any = [];
 		const src = dataBase[plural as keyof object].columns;
 		Object.keys(src).filter((e: any) => src[e].list === true).forEach(e => {
@@ -34,7 +34,7 @@ export class List extends CoreHtmlView {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des ${plural}s</title>
+    <title>Gestion ljlkjdlkjsdl des ${plural}s</title>
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/icons.css">
     <link rel="stylesheet" href="./css/context-menu.css">

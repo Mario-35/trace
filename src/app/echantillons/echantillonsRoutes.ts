@@ -59,7 +59,7 @@ echantillonsRoutes.get("/echantillon/:id", async (req, res) => {
         if (echantillon.length === 1) {
             echantillon = echantillon[0];
             if (Object.keys(echantillon.cultures).length > 0) {
-                echantillon.codes = await executeSqlValues(`SELECT CONCAT('"', code, '" : "',valeur, '"') FROM rpg WHERE code IN ('${Array.from(new Set(Object.values(echantillon.cultures).map(item => item))).join("','")}')`);
+                echantillon.codes = await executeSqlValues(`SELECT CONCAT('"', UPPER(code), '" : "',valeur, '"') FROM rpg WHERE UPPER(code) IN ('${Array.from(new Set(Object.values(echantillon.cultures).map(item => item))).join("','")}')`);
             }
             return res.status(200).json(echantillon);
         } else return res.status(404).json({"error": "Not found"});

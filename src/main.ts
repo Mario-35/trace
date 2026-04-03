@@ -4,6 +4,7 @@ import fs from "fs";
 import path from "path";
 import { writeConfig } from "@app/configuration/controller";
 import { isDbExists } from "./db";
+import { log } from "console";
 
 enum ExitStatus {
   Failure = 1,

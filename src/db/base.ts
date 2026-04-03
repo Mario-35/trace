@@ -32,6 +32,12 @@ export const dataBase: Idb = {
         create: "boolean NOT NULL default false",
         list : true                
       },
+      "passeport": {
+        type: "boolean",
+        title: "Gestion Passeport",
+        create: "boolean NOT NULL default true",
+        list : true                
+      },
       "pays": {
         type: "text",
         title: "Pays",
@@ -62,13 +68,25 @@ export const dataBase: Idb = {
         create: "varchar(10) NOT NULL",
         list : true                
       },
-      "stockages": {
+      "etats": {
         type: "text[]",
-        title: "Région",
+        title: "Etats",
         create: "text[] NOT NULL",
         list : true                
       },
-      "etats": {
+      "types": {
+        type: "text[]",
+        title: "Types",
+        create: "text[] NOT NULL",
+        list : true                
+      },
+      "sizes": {
+        type: "text[]",
+        title: "Text sizes",
+        create: "text[] NOT NULL",
+        list : true                
+      },
+      "stockages": {
         type: "text[]",
         title: "Région",
         create: "text[] NOT NULL",
@@ -290,6 +308,14 @@ export const dataBase: Idb = {
           list: false,
           etiquette: "1902202617320001"
         },
+        "alicotage": {
+          type: "boolean",
+          searchType: "boolean",
+          title: "Alicotage",
+          create: "",
+          list : true,
+          calculate: "(parent IS NOT NULL)::BOOLEAN",
+        },
         "dossier": {
           type: "text",
           title: "Numéro de dossier",
@@ -388,7 +414,7 @@ export const dataBase: Idb = {
             type: "text[]",
             title: "Analyses",
             create: "text[] NULL",
-            list: false,
+            list: true,
             excel: true,
             etiquette: "Matière org, Physico-chimi ADNe 1"               
         },

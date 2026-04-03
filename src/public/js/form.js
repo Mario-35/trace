@@ -1,4 +1,6 @@
 function loadDatas(values) {
+  console.log(values);
+  
     _COLUMNS.forEach(e => {
         const elem = document.getElementById(e);
         if (elem && values[e]) {

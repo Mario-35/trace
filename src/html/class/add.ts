@@ -7,7 +7,7 @@
  */
 
 import { createConfig } from "@app/configuration/controller";
-import { _TYPES, EConstant } from "../../constant";
+import { EConstant } from "../../constant";
 import { dataBase } from "../../db/base";
 import { IHTMLOptions } from "../../types";
 import { CoreHtmlView } from "./core";
@@ -38,7 +38,14 @@ export class Add extends CoreHtmlView {
 	}
     
 	progressHeaders(hrefs: string[]) {
-		return hrefs.map((name, index) => ` <div class="step" id="step-${index + 1}"> <span>${index + 1}</span> <span class="step-label">${name}</span> </div> `)	
+		return hrefs.map((name, index) => `<div class="step" id="step-${index + 1}">
+												<span>
+													${index + 1}
+												</span> 
+												<span class="step-label">
+													${name}
+												</span>
+											</div> `)	
 	}
 
 	inputlabel(options: {
@@ -48,7 +55,10 @@ export class Add extends CoreHtmlView {
 			tooltipFlow?: String;
 		}) {
 		return `<label for="${options.name}">
-					${options.tooltip ? `<span tooltip="${options.tooltip}" ${options.tooltipFlow  ? `flow="${options.tooltipFlow}"` : ''} >${options.label}</span>` : options.label}					
+					${options.tooltip 	? `<span tooltip="${options.tooltip}" ${options.tooltipFlow  ? `flow="${options.tooltipFlow}"` : ''} >
+												${options.label}
+											</span>` 
+										: options.label}					
 				</label>`;
 	}
 	inputError(options: {
@@ -97,13 +107,12 @@ export class Add extends CoreHtmlView {
 			</div>`;
 	}
 
-	inputSelect(options: IHTMLOptions, values?: string[], aucun?: boolean) {
+	inputSelect(options: IHTMLOptions, parDef: string) {
 		return `
 			<div class="form-group row-${options.size || 1}${options.invisible ? ' invisible' : ''}">
 				${this.inputlabel(options)}
 				<select class="form-control" id="${options.name}" name="${options.name}" ${options.max ? `maxlength=${options.max}"` : ''} ${options.canedit ? `canedit="${options.canedit}"` : '' } ${options.readonly ? 'readonly' : ''}> 
-				${aucun ? `<option selected="selected">---- Aucun ----</option>` : ''}
-				${values ? values.map(e => `<option>${e}</option>`) : ''}
+				<option selected="selected">${parDef}</option>
 				</select>
 				${options.error ? this.inputError(options) : ''}
 			</div>`;
@@ -132,8 +141,10 @@ export class Add extends CoreHtmlView {
 
 	inputBtn(options: IHTMLOptions, btnTypeAndClass: string, btnLabel: string) {
 		return `<div class="form-group row-${options.size || 1}${options.invisible ? ' invisible' : ''}">
-				<button class="btn ${btnTypeAndClass}" id="${options.name}" title="${options.tooltip}" ${options.disabled ? 'disabled' : ''}>${btnLabel}</button>
-			</div>`;
+					<button class="btn ${btnTypeAndClass}" id="${options.name}" title="${options.tooltip}" ${options.disabled ? 'disabled' : ''}>
+						${btnLabel}
+					</button>
+				</div>`;
 	}
 	inputChk(options: IHTMLOptions, checked: boolean) {
 		return `<input type="checkbox" id="${options.name}" name="${options.name}" ${checked === true ? 'checked' : ''}>
@@ -141,21 +152,25 @@ export class Add extends CoreHtmlView {
 	}
 
 	inputMap(name: string) {
-		return `<div id="${name}" style="width: 600px; height: 400px;"></div>`;
+		return `<div id="${name}" style="width: 600px; height: 400px;">
+				</div>`;
 	}
 
 	inputTextArea(name: string, invisible: boolean) {
-		return `<textarea id="${name}" name="${name}" class="form-control ${invisible ? 'invisible' : ''}"></textarea>`;	
+		return `<textarea id="${name}" name="${name}" class="form-control ${invisible ? 'invisible' : ''}">
+				</textarea>`;	
 	}
 
 	rangeHTML() {
 		return `<div class="form-row">                     
-					<div class="fillFull" id="rowLines" > </div>
+					<div class="fillFull" id="rowLines" >
+					</div>
 				</div>  
 
 				<div class="form-row">                       
 					<div class="form-group row-1 invisible">
-						<label for="row" id="rowNumber"> </label>
+						<label for="row" id="rowNumber">
+						</label>
 					</div>
 				</div>`;
 	};
@@ -167,7 +182,9 @@ export class Add extends CoreHtmlView {
 			<head>
 				<meta charset="UTF-8">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<title>Ajout d'échantillon(s)</title>
+				<title>
+					Ajout d'échantillon(s)
+				</title>
 				${this.addCss([ "./css/print.css", "./css/echantillon.css", "./css/passeport.css", "./css/form/main.css", "./css/main.css", "./css/modal.css", "./css/editingList.css", "./css/splitter.css"])}				
 			</head>
 
@@ -224,7 +241,7 @@ export class Add extends CoreHtmlView {
 											label: "Etat du prélévement",
 											placeholder: "label",
 											canedit: "true",
-										})}
+										}, 'Créer')}
 
 									</div>
 
@@ -488,7 +505,7 @@ export class Add extends CoreHtmlView {
 												placeholder: "label",
 												canedit: "notNull",
 												error: true
-											}, _TYPES, true)}
+											},'---- Aucun ----')}
                                 
 										<div class="form-group row-2">
 												<input type="checkbox" id="pedagogique" name="pedagogique">
@@ -524,7 +541,7 @@ export class Add extends CoreHtmlView {
 											max: 16,
 											name: "parent",
 											tooltip: "Identification de l'échantillon parent",
-											label: "",
+											label: "Echantillon Parent",
 											error: true,
 											readonly: true,
 											invisible: true,
@@ -557,7 +574,7 @@ export class Add extends CoreHtmlView {
 											label: "Etat du prélévement",
 											placeholder: "label",
 											canedit: "true",
-										})}
+										},'Créer')}
 
 										${this.inputNumber({
 											min: 1,
@@ -766,7 +783,7 @@ export class Add extends CoreHtmlView {
 									tooltip: "Taille de texte à imprimer",
 									label: "Taille",
 									placeholder: "Taille",
-								},  ["8px", "10px", "12px", "14px", "16px"], false)}
+								},  '10px')}
 
                                 <div class="form-group row-1">                                    
                                     <label>Alignement

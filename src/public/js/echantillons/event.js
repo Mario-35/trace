@@ -20,7 +20,7 @@ getElement('btn-creer').addEventListener('click', async (event) => {
         }).catch(err => {
             showModalError(err);
         });
-    } else if (isContextMode(["excel", "new", "after"])) {
+    } else if (isContextMode(["excel", "new", "after", "aliquote"])) {
         _DATAS["etat"] = "Créer";
         fetch(window.location.origin + `/echantillon`, {
             method: "POST",

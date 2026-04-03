@@ -3,7 +3,13 @@ function createIdentification(nb) {
     if (isContextMode(['new',"aliquote","excel"])) {
         if(!_DATE) _DATE = new Date();
         creation.value = _DATE.toISOString();
-        return `${ _DATE.toLocaleDateString()}${ _DATE.toLocaleTimeString()}`.replace(/\D/g, "").slice(0,12) + (nb || getElement("echantillon").value || getElement("numero").value).padStart(4, '0');
+console.log("#######################################################################");
+console.log(`echantillon : ${getElement("echantillon").value}`);
+console.log(`numero : ${getElement("numero").value}`);
+
+console.log("#######################################################################");
+
+        return `${ _DATE.toLocaleDateString()}${ _DATE.toLocaleTimeString()}`.replace(/\D/g, "").slice(0,12) + (nb || getElement("numero").value ||  getElement("echantillon").value).padStart(4, '0');
     }
 }
 
@@ -99,7 +105,7 @@ async function setSite() {
     } else {
         // Create site
         nomSite.value = site.value;
-        removeReadOnly(["nomSite", "pays", "region", "latitude","longitude"]);
+        removeReadOnly(["nomSite", "pays", "region", "latitude", "longitude"]);
         hideParentClass("btnApiRpg",'form-group'); 
         showParentClass("btnAddSite",'form-group');
         setDisabled("next-2");
@@ -120,6 +126,8 @@ async function start() {
     // addToOption(getElement('cle'), _CONFIGURATION.stockages);   
     // init select for etats keys       
     addToOption(getElement('etat'), _CONFIGURATION.etats, "Créer");
+    addToOption(getElement('type'), _CONFIGURATION.types, "---- Aucun ----");
+    addToOption(getElement('textSize'), _CONFIGURATION.sizes, "10px");
     // add demos if debug
     if(_CONFIGURATION.debug) addToOption(getElement('demos'), Object.keys(_DEMOS));   
     // set and get context
@@ -144,7 +152,9 @@ async function start() {
         hideParentClass( "btnApiRpg", "row-1");
         removeDisabled("btn-aliquote");
         getElement("btnApiRpg").innerText = "MAJ 🌍 RPG";
-        changeTitle("Modification d'un échantillon"); 
+        changeTitle("Modification d'un échantillon");         
+        parentClass( "parent", "form-group", datas.parent !== null) ;
+
         new editingList(getElement("stockageList"), "Mots clés pour le stockage", "Ajouter une clé", datas.stockage, _CONFIGURATION["stockages"]);  
               
     } else if (ctx.mode === 'selection') { // Selection Edits mode
@@ -205,16 +215,19 @@ async function start() {
         changeTitle("Ajout d'autres échantillon(s)");
     } else if (ctx.mode === 'aliquote') {  // child mode 
         const datas = await getDatas(window.location.origin + "/echantillon/" + ctx.id);
-        parent.value = datas.identification;
+        console.log(datas);
+        
         loadDatas(datas);
-        identification.value = createIdentification();
+        getElement("parent").value = datas.identification;
         updateReadOnly(ctx);
         hideParentClass( "btnApiRpg", "form-group row-1 visible");
         showParentClass( "parent", "form-group");
-        // getElement("numero").value = temp;
-        // getElement("numero").min = temp;
+        
+        const temp = await getDatas(window.location.origin + "/echantillon/after/" + datas.id);
+        setMin(getElement("numero"), temp);
         multipleremoveInvisible(["numero",  "nombre"]); 
         removeReadOnly(["numero",  "nombre"]); 
+        identification.value = createIdentification();
         changeTitle("Création d'autres échantillon(s)");
     } else if (ctx.mode === 'new') { //  Default add mode
         multiplesetInvisible(["echantillon",  "etat"]); 
@@ -227,6 +240,13 @@ async function start() {
     // init list
     refresh();
     refreshType();   
+}
+
+function setMin(element, min) {
+        element.min = min;
+        
+        if (element.value < min)
+            element.value = min;
 }
 
 // start without await

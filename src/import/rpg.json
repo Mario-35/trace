@@ -1,8 +1,8 @@
 {
     "rpg": [
         {
-            "code": "NOT",
-            "valeur": "Information non présente au sein du RPG"
+            "code": "Not",
+            "valeur": "Information Non Présente Au Sein Du Rpg"
         },
         {
             "code": "01",
@@ -54,7 +54,7 @@
         },
         {
             "code": "13",
-            "valeur": "AutresGels"
+            "valeur": "Autresgels"
         },
         {
             "code": "14",
@@ -117,1295 +117,1295 @@
             "valeur": "Divers"
         },
         {
-            "code": "ACA",
-            "valeur": "Autre culture non précisée dans la liste (admissible)"
+            "code": "Aca",
+            "valeur": "Autre Culture Non Précisée Dans La Liste (admissible)"
         },
         {
-            "code": "AGR",
+            "code": "Agr",
             "valeur": "Agrume"
         },
         {
-            "code": "AIL",
+            "code": "Ail",
             "valeur": "Ail"
         },
         {
-            "code": "ANA",
+            "code": "Ana",
             "valeur": "Ananas"
         },
         {
-            "code": "ANE",
+            "code": "Ane",
             "valeur": "Aneth"
         },
         {
-            "code": "ANG",
+            "code": "Ang",
             "valeur": "Angélique"
         },
         {
-            "code": "ANI",
+            "code": "Ani",
             "valeur": "Anis"
         },
         {
-            "code": "ARA",
+            "code": "Ara",
             "valeur": "Arachide"
         },
         {
-            "code": "ART",
+            "code": "Art",
             "valeur": "Artichaut"
         },
         {
-            "code": "AUB",
+            "code": "Aub",
             "valeur": "Aubergine"
         },
         {
-            "code": "AVH",
-            "valeur": "Avoine d'hiver"
+            "code": "Avh",
+            "valeur": "Avoine D'hiver"
         },
         {
-            "code": "AVO",
+            "code": "Avo",
             "valeur": "Avocat"
         },
         {
-            "code": "AVP",
-            "valeur": "Avoine de printemps"
+            "code": "Avp",
+            "valeur": "Avoine De Printemps"
         },
         {
-            "code": "BAR",
+            "code": "Bar",
             "valeur": "Bardane"
         },
         {
-            "code": "BAS",
+            "code": "Bas",
             "valeur": "Basilic"
         },
         {
-            "code": "BCA",
-            "valeur": "Banane créole (fruit et légume) - autre"
+            "code": "Bca",
+            "valeur": "Banane Créole (fruit Et Légume) - Autre"
         },
         {
-            "code": "BCF",
-            "valeur": "Banane créole (fruit et légume) - fermage"
+            "code": "Bcf",
+            "valeur": "Banane Créole (fruit Et Légume) - Fermage"
         },
         {
-            "code": "BCI",
-            "valeur": "Banane créole (fruit et légume) - indivision"
+            "code": "Bci",
+            "valeur": "Banane Créole (fruit Et Légume) - Indivision"
         },
         {
-            "code": "BCP",
-            "valeur": "Banane créole (fruit et légume) - propriété ou faire valoir direct"
+            "code": "Bcp",
+            "valeur": "Banane Créole (fruit Et Légume) - Propriété Ou Faire Valoir Direct"
         },
         {
-            "code": "BCR",
-            "valeur": "Banane créole (fruit et légume) - réforme foncière"
+            "code": "Bcr",
+            "valeur": "Banane Créole (fruit Et Légume) - Réforme Foncière"
         },
         {
-            "code": "BDH",
-            "valeur": "Blé dur d'hiver"
+            "code": "Bdh",
+            "valeur": "Blé Dur D'hiver"
         },
         {
-            "code": "BDP",
-            "valeur": "Blé dur de printemps"
+            "code": "Bdp",
+            "valeur": "Blé Dur De Printemps"
         },
         {
-            "code": "BEA",
-            "valeur": "Banane export - autre"
+            "code": "Bea",
+            "valeur": "Banane Export - Autre"
         },
         {
-            "code": "BEF",
-            "valeur": "Banane export - fermage"
+            "code": "Bef",
+            "valeur": "Banane Export - Fermage"
         },
         {
-            "code": "BEI",
-            "valeur": "Banane export - indivision"
+            "code": "Bei",
+            "valeur": "Banane Export - Indivision"
         },
         {
-            "code": "BEP",
-            "valeur": "Banane export - propriété ou faire valoir direct"
+            "code": "Bep",
+            "valeur": "Banane Export - Propriété Ou Faire Valoir Direct"
         },
         {
-            "code": "BER",
-            "valeur": "Banane export - réforme foncière"
+            "code": "Ber",
+            "valeur": "Banane Export - Réforme Foncière"
         },
         {
-            "code": "BFP",
-            "valeur": "Bande admissible le long d'une forêt avec production"
+            "code": "Bfp",
+            "valeur": "Bande Admissible Le Long D'une Forêt Avec Production"
         },
         {
-            "code": "BFS",
-            "valeur": "Bande admissible le long d'une forêt sans production"
+            "code": "Bfs",
+            "valeur": "Bande Admissible Le Long D'une Forêt Sans Production"
         },
         {
-            "code": "BLT",
+            "code": "Blt",
             "valeur": "Bleuet"
         },
         {
-            "code": "BOP",
-            "valeur": "Bois pâturé (prairie herbacée sous couvert d'arbres)"
+            "code": "Bop",
+            "valeur": "Bois Pâturé (prairie Herbacée Sous Couvert D'arbres)"
         },
         {
-            "code": "BOR",
-            "valeur": "Bordure de champ"
+            "code": "Bor",
+            "valeur": "Bordure De Champ"
         },
         {
-            "code": "BRH",
-            "valeur": "Bourrache de 5 ans ou moins"
+            "code": "Brh",
+            "valeur": "Bourrache De 5 Ans Ou Moins"
         },
         {
-            "code": "BRO",
-            "valeur": "Brôme de 5 ans ou moins"
+            "code": "Bro",
+            "valeur": "Brôme De 5 Ans Ou Moins"
         },
         {
-            "code": "BTA",
-            "valeur": "Bande tampon"
+            "code": "Bta",
+            "valeur": "Bande Tampon"
         },
         {
-            "code": "BTH",
-            "valeur": "Blé tendre d'hiver"
+            "code": "Bth",
+            "valeur": "Blé Tendre D'hiver"
         },
         {
-            "code": "BTN",
-            "valeur": "Betterave non fourragère / Bette"
+            "code": "Btn",
+            "valeur": "Betterave Non Fourragère / Bette"
         },
         {
-            "code": "BTP",
-            "valeur": "Blé tendre de printemps"
+            "code": "Btp",
+            "valeur": "Blé Tendre De Printemps"
         },
         {
-            "code": "BUR",
-            "valeur": "Bugle rampant"
+            "code": "Bur",
+            "valeur": "Bugle Rampant"
         },
         {
-            "code": "BVF",
-            "valeur": "Betterave fourragère"
+            "code": "Bvf",
+            "valeur": "Betterave Fourragère"
         },
         {
-            "code": "CAB",
+            "code": "Cab",
             "valeur": "Caroube"
         },
         {
-            "code": "CAC",
+            "code": "Cac",
             "valeur": "Café / Cacao"
         },
         {
-            "code": "CAE",
-            "valeur": "Châtaigneraie entretenue par des porcins ou des petits ruminants (Corse et Petite région des causses cévenols et méridionaux)"
+            "code": "Cae",
+            "valeur": "Châtaigneraie Entretenue Par Des Porcins Ou Des Petits Ruminants (corse Et Petite Région Des Causses Cévenols Et Méridionaux)"
         },
         {
-            "code": "CAF",
-            "valeur": "Carotte fourragère"
+            "code": "Caf",
+            "valeur": "Carotte Fourragère"
         },
         {
-            "code": "CAG",
-            "valeur": "Autre céréale ou pseudo céréale d’un autre genre"
+            "code": "Cag",
+            "valeur": "Autre Céréale Ou Pseudo Céréale D’un Autre Genre"
         },
         {
-            "code": "CAR",
+            "code": "Car",
             "valeur": "Carotte"
         },
         {
-            "code": "CAV",
+            "code": "Cav",
             "valeur": "Carvi"
         },
         {
-            "code": "CBT",
-            "valeur": "Cerise bigarreau pour transformation"
+            "code": "Cbt",
+            "valeur": "Cerise Bigarreau Pour Transformation"
         },
         {
-            "code": "CCN",
+            "code": "Ccn",
             "valeur": "Concombre / Cornichon"
         },
         {
-            "code": "CCT",
+            "code": "Cct",
             "valeur": "Courgette / Citrouille"
         },
         {
-            "code": "CEE",
-            "valeur": "Chênaie entretenue par des porcins ou des petits ruminants (Corse et Petite région des causses cévenols et méridionaux)"
+            "code": "Cee",
+            "valeur": "Chênaie Entretenue Par Des Porcins Ou Des Petits Ruminants (corse Et Petite Région Des Causses Cévenols Et Méridionaux)"
         },
         {
-            "code": "CEL",
+            "code": "Cel",
             "valeur": "Céleri"
         },
         {
-            "code": "CES",
+            "code": "Ces",
             "valeur": "Chicorée / Endive / Scarole"
         },
         {
-            "code": "CGF",
-            "valeur": "Autre céréale de genre Fagopyrum"
+            "code": "Cgf",
+            "valeur": "Autre Céréale De Genre Fagopyrum"
         },
         {
-            "code": "CGH",
-            "valeur": "Autre céréale de genre Phalaris"
+            "code": "Cgh",
+            "valeur": "Autre Céréale De Genre Phalaris"
         },
         {
-            "code": "CGO",
-            "valeur": "Autre céréale de genre Sorghum"
+            "code": "Cgo",
+            "valeur": "Autre Céréale De Genre Sorghum"
         },
         {
-            "code": "CGP",
-            "valeur": "Autre céréale de genre Panicum"
+            "code": "Cgp",
+            "valeur": "Autre Céréale De Genre Panicum"
         },
         {
-            "code": "CGS",
-            "valeur": "Autre céréale de genre Setaria"
+            "code": "Cgs",
+            "valeur": "Autre Céréale De Genre Setaria"
         },
         {
-            "code": "CHA",
-            "valeur": "Autre céréale d’hiver de genre Avena"
+            "code": "Cha",
+            "valeur": "Autre Céréale D’hiver De Genre Avena"
         },
         {
-            "code": "CHF",
-            "valeur": "Chou fourrager"
+            "code": "Chf",
+            "valeur": "Chou Fourrager"
         },
         {
-            "code": "CHH",
-            "valeur": "Autre céréale d’hiver de genre Hordeum"
+            "code": "Chh",
+            "valeur": "Autre Céréale D’hiver De Genre Hordeum"
         },
         {
-            "code": "CHR",
+            "code": "Chr",
             "valeur": "Chardon Marie"
         },
         {
-            "code": "CHS",
-            "valeur": "Autre céréale d’hiver de genre Secale"
+            "code": "Chs",
+            "valeur": "Autre Céréale D’hiver De Genre Secale"
         },
         {
-            "code": "CHT",
-            "valeur": "Autre céréale d’hiver de genre Triticum"
+            "code": "Cht",
+            "valeur": "Autre Céréale D’hiver De Genre Triticum"
         },
         {
-            "code": "CHU",
+            "code": "Chu",
             "valeur": "Chou"
         },
         {
-            "code": "CHV",
+            "code": "Chv",
             "valeur": "Chanvre"
         },
         {
-            "code": "CIB",
+            "code": "Cib",
             "valeur": "Ciboulette"
         },
         {
-            "code": "CID",
-            "valeur": "Cultures conduites en interrangs , 2 cultures représentant chacune plus de 25%"
+            "code": "Cid",
+            "valeur": "Cultures Conduites En Interrangs , 2 Cultures Représentant Chacune Plus De 25%"
         },
         {
-            "code": "CIT",
-            "valeur": "Cultures conduites en interrangs , 3 cultures représentant chacune plus de 25%"
+            "code": "Cit",
+            "valeur": "Cultures Conduites En Interrangs , 3 Cultures Représentant Chacune Plus De 25%"
         },
         {
-            "code": "CMB",
-            "valeur": "Courge musquée / Butternut"
+            "code": "Cmb",
+            "valeur": "Courge Musquée / Butternut"
         },
         {
-            "code": "CML",
+            "code": "Cml",
             "valeur": "Cameline"
         },
         {
-            "code": "CMM",
+            "code": "Cmm",
             "valeur": "Camomille"
         },
         {
-            "code": "CPA",
-            "valeur": "Autre céréale de printemps de genre Avena"
+            "code": "Cpa",
+            "valeur": "Autre Céréale De Printemps De Genre Avena"
         },
         {
-            "code": "CPH",
-            "valeur": "Autre céréale de printemps de genre Hordeum"
+            "code": "Cph",
+            "valeur": "Autre Céréale De Printemps De Genre Hordeum"
         },
         {
-            "code": "CPL",
-            "valeur": "Fourrage composé de céréales et/ou de protéagineux (en proportion < 50%) et/ou de légumineuses fourragères (en proportion < 50%)"
+            "code": "Cpl",
+            "valeur": "Fourrage Composé De Céréales Et/ou De Protéagineux (en Proportion < 50%) Et/ou De Légumineuses Fourragères (en Proportion < 50%)"
         },
         {
-            "code": "CPS",
-            "valeur": "Autre céréale de printemps de genre Secale"
+            "code": "Cps",
+            "valeur": "Autre Céréale De Printemps De Genre Secale"
         },
         {
-            "code": "CPT",
-            "valeur": "Autre céréale de printemps de genre Triticum"
+            "code": "Cpt",
+            "valeur": "Autre Céréale De Printemps De Genre Triticum"
         },
         {
-            "code": "CPZ",
-            "valeur": "Autre céréale de printemps de genre Zea"
+            "code": "Cpz",
+            "valeur": "Autre Céréale De Printemps De Genre Zea"
         },
         {
-            "code": "CRA",
-            "valeur": "Cresson alénois de 5 ans ou moins"
+            "code": "Cra",
+            "valeur": "Cresson Alénois De 5 Ans Ou Moins"
         },
         {
-            "code": "CRD",
+            "code": "Crd",
             "valeur": "Coriandre"
         },
         {
-            "code": "CRF",
+            "code": "Crf",
             "valeur": "Cerfeuil"
         },
         {
-            "code": "CRN",
+            "code": "Crn",
             "valeur": "Cornille"
         },
         {
-            "code": "CRS",
+            "code": "Crs",
             "valeur": "Cresson"
         },
         {
-            "code": "CSA",
-            "valeur": "Canne à sucre - autre"
+            "code": "Csa",
+            "valeur": "Canne À Sucre - Autre"
         },
         {
-            "code": "CSE",
-            "valeur": "Chanvre sans étiquette conforme"
+            "code": "Cse",
+            "valeur": "Chanvre Sans Étiquette Conforme"
         },
         {
-            "code": "CSF",
-            "valeur": "Canne à sucre - fermage"
+            "code": "Csf",
+            "valeur": "Canne À Sucre - Fermage"
         },
         {
-            "code": "CSI",
-            "valeur": "Canne à sucre - indivision"
+            "code": "Csi",
+            "valeur": "Canne À Sucre - Indivision"
         },
         {
-            "code": "CSP",
-            "valeur": "Canne à sucre - propriété ou faire valoir direct"
+            "code": "Csp",
+            "valeur": "Canne À Sucre - Propriété Ou Faire Valoir Direct"
         },
         {
-            "code": "CSR",
-            "valeur": "Canne à sucre - réforme foncière"
+            "code": "Csr",
+            "valeur": "Canne À Sucre - Réforme Foncière"
         },
         {
-            "code": "CSS",
-            "valeur": "Culture sous serre hors sol"
+            "code": "Css",
+            "valeur": "Culture Sous Serre Hors Sol"
         },
         {
-            "code": "CTG",
+            "code": "Ctg",
             "valeur": "Châtaigne"
         },
         {
-            "code": "CUA",
-            "valeur": "Culture sous abattis"
+            "code": "Cua",
+            "valeur": "Culture Sous Abattis"
         },
         {
-            "code": "CUM",
+            "code": "Cum",
             "valeur": "Cumin"
         },
         {
-            "code": "CUR",
+            "code": "Cur",
             "valeur": "Curcuma"
         },
         {
-            "code": "CZH",
-            "valeur": "Colza d'hiver"
+            "code": "Czh",
+            "valeur": "Colza D'hiver"
         },
         {
-            "code": "CZP",
-            "valeur": "Colza de printemps"
+            "code": "Czp",
+            "valeur": "Colza De Printemps"
         },
         {
-            "code": "DOL",
+            "code": "Dol",
             "valeur": "Dolique"
         },
         {
-            "code": "DTY",
-            "valeur": "Dactyle de 5 ans ou moins"
+            "code": "Dty",
+            "valeur": "Dactyle De 5 Ans Ou Moins"
         },
         {
-            "code": "EPE",
+            "code": "Epe",
             "valeur": "Epeautre"
         },
         {
-            "code": "EPI",
+            "code": "Epi",
             "valeur": "Epinard"
         },
         {
-            "code": "EST",
+            "code": "Est",
             "valeur": "Estragon"
         },
         {
-            "code": "FAG",
-            "valeur": "Autre fourrage annuel d’un autre genre"
+            "code": "Fag",
+            "valeur": "Autre Fourrage Annuel D’un Autre Genre"
         },
         {
-            "code": "FET",
-            "valeur": "Fétuque de 5 ans ou moins"
+            "code": "Fet",
+            "valeur": "Fétuque De 5 Ans Ou Moins"
         },
         {
-            "code": "FEV",
+            "code": "Fev",
             "valeur": "Fève"
         },
         {
-            "code": "FF6",
-            "valeur": "Féverole fourragère implantée pour la récolte 2016"
+            "code": "Ff6",
+            "valeur": "Féverole Fourragère Implantée Pour La Récolte 2016"
         },
         {
-            "code": "FF7",
-            "valeur": "Féverole fourragère implantée pour la récolte 2017"
+            "code": "Ff7",
+            "valeur": "Féverole Fourragère Implantée Pour La Récolte 2017"
         },
         {
-            "code": "FF8",
-            "valeur": "Féverole fourragère implantée pour la récolte 2018"
+            "code": "Ff8",
+            "valeur": "Féverole Fourragère Implantée Pour La Récolte 2018"
         },
         {
-            "code": "FFO",
-            "valeur": "Autre féverole fourragère"
+            "code": "Ffo",
+            "valeur": "Autre Féverole Fourragère"
         },
         {
-            "code": "FLA",
-            "valeur": "Autre légume ou fruit annuel"
+            "code": "Fla",
+            "valeur": "Autre Légume Ou Fruit Annuel"
         },
         {
-            "code": "FLO",
-            "valeur": "Fléole de 5 ans ou moins"
+            "code": "Flo",
+            "valeur": "Fléole De 5 Ans Ou Moins"
         },
         {
-            "code": "FLP",
-            "valeur": "Autre légume ou fruit pérenne"
+            "code": "Flp",
+            "valeur": "Autre Légume Ou Fruit Pérenne"
         },
         {
-            "code": "FNO",
+            "code": "Fno",
             "valeur": "Fenouil"
         },
         {
-            "code": "FNU",
+            "code": "Fnu",
             "valeur": "Fenugrec"
         },
         {
-            "code": "FRA",
+            "code": "Fra",
             "valeur": "Fraise"
         },
         {
-            "code": "FSG",
-            "valeur": "Autre plante fourragère sarclée d’un autre genre"
+            "code": "Fsg",
+            "valeur": "Autre Plante Fourragère Sarclée D’un Autre Genre"
         },
         {
-            "code": "FVL",
+            "code": "Fvl",
             "valeur": "Féverole"
         },
         {
-            "code": "GAI",
+            "code": "Gai",
             "valeur": "Gaillet"
         },
         {
-            "code": "GER",
+            "code": "Ger",
             "valeur": "Géranium"
         },
         {
-            "code": "GES",
+            "code": "Ges",
             "valeur": "Gesse"
         },
         {
-            "code": "GFP",
-            "valeur": "Autre graminée fourragère pure de 5 ans ou moins"
+            "code": "Gfp",
+            "valeur": "Autre Graminée Fourragère Pure De 5 Ans Ou Moins"
         },
         {
-            "code": "HAR",
+            "code": "Har",
             "valeur": "Haricot / Flageolet"
         },
         {
-            "code": "HBL",
+            "code": "Hbl",
             "valeur": "Houblon"
         },
         {
-            "code": "HPC",
-            "valeur": "Horticulture ornementale de plein champ"
+            "code": "Hpc",
+            "valeur": "Horticulture Ornementale De Plein Champ"
         },
         {
-            "code": "HSA",
-            "valeur": "Horticulture ornementale sous abri"
+            "code": "Hsa",
+            "valeur": "Horticulture Ornementale Sous Abri"
         },
         {
-            "code": "J5M",
-            "valeur": "Jachère de 5 ans ou moins"
+            "code": "J5m",
+            "valeur": "Jachère De 5 Ans Ou Moins"
         },
         {
-            "code": "J6P",
-            "valeur": "Jachère de 6 ans ou plus"
+            "code": "J6p",
+            "valeur": "Jachère De 6 Ans Ou Plus"
         },
         {
-            "code": "J6S",
-            "valeur": "Jachère de 6 ans ou plus déclarée comme SIE"
+            "code": "J6s",
+            "valeur": "Jachère De 6 Ans Ou Plus Déclarée Comme Sie"
         },
         {
-            "code": "JNO",
-            "valeur": "Jachère noire"
+            "code": "Jno",
+            "valeur": "Jachère Noire"
         },
         {
-            "code": "JO6",
-            "valeur": "Jarosse implantée pour la récolte 2016"
+            "code": "Jo6",
+            "valeur": "Jarosse Implantée Pour La Récolte 2016"
         },
         {
-            "code": "JO7",
-            "valeur": "Jarosse implantée pour la récolte 2017"
+            "code": "Jo7",
+            "valeur": "Jarosse Implantée Pour La Récolte 2017"
         },
         {
-            "code": "JO8",
-            "valeur": "Jarosse implantée pour la récolte 2018"
+            "code": "Jo8",
+            "valeur": "Jarosse Implantée Pour La Récolte 2018"
         },
         {
-            "code": "JOD",
-            "valeur": "Jarosse déshydratée"
+            "code": "Jod",
+            "valeur": "Jarosse Déshydratée"
         },
         {
-            "code": "JOS",
-            "valeur": "Autre jarosse"
+            "code": "Jos",
+            "valeur": "Autre Jarosse"
         },
         {
-            "code": "LAV",
+            "code": "Lav",
             "valeur": "Lavande / Lavandin"
         },
         {
-            "code": "LBF",
-            "valeur": "Laitue / Batavia / Feuille de chêne"
+            "code": "Lbf",
+            "valeur": "Laitue / Batavia / Feuille De Chêne"
         },
         {
-            "code": "LDH",
-            "valeur": "Lupin doux d'hiver"
+            "code": "Ldh",
+            "valeur": "Lupin Doux D'hiver"
         },
         {
-            "code": "LDP",
-            "valeur": "Lupin doux de printemps"
+            "code": "Ldp",
+            "valeur": "Lupin Doux De Printemps"
         },
         {
-            "code": "LEC",
-            "valeur": "Lentille cultivée (non fourragère)"
+            "code": "Lec",
+            "valeur": "Lentille Cultivée (non Fourragère)"
         },
         {
-            "code": "LEF",
-            "valeur": "Lentille fourragère"
+            "code": "Lef",
+            "valeur": "Lentille Fourragère"
         },
         {
-            "code": "LFH",
-            "valeur": "Autre lupin fourrager d’hiver"
+            "code": "Lfh",
+            "valeur": "Autre Lupin Fourrager D’hiver"
         },
         {
-            "code": "LFP",
-            "valeur": "Autre lupin fourrager de printemps"
+            "code": "Lfp",
+            "valeur": "Autre Lupin Fourrager De Printemps"
         },
         {
-            "code": "LH6",
-            "valeur": "Lupin fourrager d'hiver implanté pour la récolte 2016"
+            "code": "Lh6",
+            "valeur": "Lupin Fourrager D'hiver Implanté Pour La Récolte 2016"
         },
         {
-            "code": "LH7",
-            "valeur": "Lupin fourrager d'hiver implanté pour la récolte 2017"
+            "code": "Lh7",
+            "valeur": "Lupin Fourrager D'hiver Implanté Pour La Récolte 2017"
         },
         {
-            "code": "LH8",
-            "valeur": "Lupin fourrager d'hiver implanté pour la récolte 2018"
+            "code": "Lh8",
+            "valeur": "Lupin Fourrager D'hiver Implanté Pour La Récolte 2018"
         },
         {
-            "code": "LIF",
-            "valeur": "Lin fibres"
+            "code": "Lif",
+            "valeur": "Lin Fibres"
         },
         {
-            "code": "LIH",
-            "valeur": "Lin non textile d'hiver"
+            "code": "Lih",
+            "valeur": "Lin Non Textile D'hiver"
         },
         {
-            "code": "LIP",
-            "valeur": "Lin non textile de printemps"
+            "code": "Lip",
+            "valeur": "Lin Non Textile De Printemps"
         },
         {
-            "code": "LO7",
-            "valeur": "Lotier implanté pour la récolte 2017"
+            "code": "Lo7",
+            "valeur": "Lotier Implanté Pour La Récolte 2017"
         },
         {
-            "code": "LO8",
-            "valeur": "Lotier implanté pour la récolte 2018"
+            "code": "Lo8",
+            "valeur": "Lotier Implanté Pour La Récolte 2018"
         },
         {
-            "code": "LOT",
-            "valeur": "Autre lotier"
+            "code": "Lot",
+            "valeur": "Autre Lotier"
         },
         {
-            "code": "LP6",
-            "valeur": "Lupin fourrager de printemps implanté pour la récolte 2016"
+            "code": "Lp6",
+            "valeur": "Lupin Fourrager De Printemps Implanté Pour La Récolte 2016"
         },
         {
-            "code": "LP7",
-            "valeur": "Lupin fourrager de printemps implanté pour la récolte 2017"
+            "code": "Lp7",
+            "valeur": "Lupin Fourrager De Printemps Implanté Pour La Récolte 2017"
         },
         {
-            "code": "LP8",
-            "valeur": "Lupin fourrager de printemps implanté pour la récolte 2018"
+            "code": "Lp8",
+            "valeur": "Lupin Fourrager De Printemps Implanté Pour La Récolte 2018"
         },
         {
-            "code": "LSA",
-            "valeur": "Légume sous abri"
+            "code": "Lsa",
+            "valeur": "Légume Sous Abri"
         },
         {
-            "code": "LU6",
-            "valeur": "Luzerne implantée pour la récolte 2016"
+            "code": "Lu6",
+            "valeur": "Luzerne Implantée Pour La Récolte 2016"
         },
         {
-            "code": "LU7",
-            "valeur": "Luzerne implantée pour la récolte 2017"
+            "code": "Lu7",
+            "valeur": "Luzerne Implantée Pour La Récolte 2017"
         },
         {
-            "code": "LU8",
-            "valeur": "Luzerne implantée pour la récolte 2018"
+            "code": "Lu8",
+            "valeur": "Luzerne Implantée Pour La Récolte 2018"
         },
         {
-            "code": "LUD",
-            "valeur": "Luzerne déshydratée"
+            "code": "Lud",
+            "valeur": "Luzerne Déshydratée"
         },
         {
-            "code": "LUZ",
-            "valeur": "Autre luzerne"
+            "code": "Luz",
+            "valeur": "Autre Luzerne"
         },
         {
-            "code": "MAC",
+            "code": "Mac",
             "valeur": "Mâche"
         },
         {
-            "code": "MAV",
+            "code": "Mav",
             "valeur": "Mauve"
         },
         {
-            "code": "MC6",
-            "valeur": "Mélange de légumineuses fourragères prépondérantes implantées pour la récolte 2016 et de céréales"
+            "code": "Mc6",
+            "valeur": "Mélange De Légumineuses Fourragères Prépondérantes Implantées Pour La Récolte 2016 Et De Céréales"
         },
         {
-            "code": "MC7",
-            "valeur": "Mélange de légumineuses fourragères prépondérantes implantées pour la récolte 2017 et de céréales et d'oléagineux"
+            "code": "Mc7",
+            "valeur": "Mélange De Légumineuses Fourragères Prépondérantes Implantées Pour La Récolte 2017 Et De Céréales Et D'oléagineux"
         },
         {
-            "code": "MC8",
-            "valeur": "Mélange de légumineuses fourragères prépondérantes implantées pour la récolte 2018 et de céréales et d'oléagineux"
+            "code": "Mc8",
+            "valeur": "Mélange De Légumineuses Fourragères Prépondérantes Implantées Pour La Récolte 2018 Et De Céréales Et D'oléagineux"
         },
         {
-            "code": "MCR",
-            "valeur": "Mélange de céréales ou pseudo céréales pures ou mélange avec des protéagineux non prépondérants"
+            "code": "Mcr",
+            "valeur": "Mélange De Céréales Ou Pseudo Céréales Pures Ou Mélange Avec Des Protéagineux Non Prépondérants"
         },
         {
-            "code": "MCT",
+            "code": "Mct",
             "valeur": "Miscanthus"
         },
         {
-            "code": "ME6",
-            "valeur": "Mélilot implanté pour la récolte 2016"
+            "code": "Me6",
+            "valeur": "Mélilot Implanté Pour La Récolte 2016"
         },
         {
-            "code": "ME7",
-            "valeur": "Mélilot implanté pour la récolte 2017"
+            "code": "Me7",
+            "valeur": "Mélilot Implanté Pour La Récolte 2017"
         },
         {
-            "code": "ME8",
-            "valeur": "Mélilot implanté pour la récolte 2018"
+            "code": "Me8",
+            "valeur": "Mélilot Implanté Pour La Récolte 2018"
         },
         {
-            "code": "MED",
-            "valeur": "Mélilot déshydraté"
+            "code": "Med",
+            "valeur": "Mélilot Déshydraté"
         },
         {
-            "code": "MEL",
-            "valeur": "Autre mélilot"
+            "code": "Mel",
+            "valeur": "Autre Mélilot"
         },
         {
-            "code": "MI7",
-            "valeur": "Minette implanté pour la récolte 2017"
+            "code": "Mi7",
+            "valeur": "Minette Implanté Pour La Récolte 2017"
         },
         {
-            "code": "MI8",
-            "valeur": "Minette implanté pour la récolte 2018"
+            "code": "Mi8",
+            "valeur": "Minette Implanté Pour La Récolte 2018"
         },
         {
-            "code": "MID",
-            "valeur": "Maïs doux"
+            "code": "Mid",
+            "valeur": "Maïs Doux"
         },
         {
-            "code": "MIE",
-            "valeur": "Maïs ensilage"
+            "code": "Mie",
+            "valeur": "Maïs Ensilage"
         },
         {
-            "code": "MIN",
-            "valeur": "Autre minette"
+            "code": "Min",
+            "valeur": "Autre Minette"
         },
         {
-            "code": "MIS",
+            "code": "Mis",
             "valeur": "Maïs"
         },
         {
-            "code": "ML6",
-            "valeur": "Mélange de légumineuses fourragères implantées pour la récolte 2016 (entre elles)"
+            "code": "Ml6",
+            "valeur": "Mélange De Légumineuses Fourragères Implantées Pour La Récolte 2016 (entre Elles)"
         },
         {
-            "code": "ML7",
-            "valeur": "Mélange de légumineuses fourragères implantées pour la récolte 2017 (entre elles)"
+            "code": "Ml7",
+            "valeur": "Mélange De Légumineuses Fourragères Implantées Pour La Récolte 2017 (entre Elles)"
         },
         {
-            "code": "ML8",
-            "valeur": "Mélange de légumineuses fourragères implantées pour la récolte 2018 (entre elles)"
+            "code": "Ml8",
+            "valeur": "Mélange De Légumineuses Fourragères Implantées Pour La Récolte 2018 (entre Elles)"
         },
         {
-            "code": "MLD",
-            "valeur": "Mélange de légumineuses déshydratées (entre elles)"
+            "code": "Mld",
+            "valeur": "Mélange De Légumineuses Déshydratées (entre Elles)"
         },
         {
-            "code": "MLG",
-            "valeur": "Mélange de légumineuses prépondérantes et de graminées fourragères de 5 ans ou moins"
+            "code": "Mlg",
+            "valeur": "Mélange De Légumineuses Prépondérantes Et De Graminées Fourragères De 5 Ans Ou Moins"
         },
         {
-            "code": "MLI",
+            "code": "Mli",
             "valeur": "Mélisse"
         },
         {
-            "code": "MLO",
+            "code": "Mlo",
             "valeur": "Melon"
         },
         {
-            "code": "MLP",
+            "code": "Mlp",
             "valeur": "Millepertuis"
         },
         {
-            "code": "MLT",
+            "code": "Mlt",
             "valeur": "Millet"
         },
         {
-            "code": "MOH",
+            "code": "Moh",
             "valeur": "Moha"
         },
         {
-            "code": "MOL",
-            "valeur": "Mélange d'oléagineux"
+            "code": "Mol",
+            "valeur": "Mélange D'oléagineux"
         },
         {
-            "code": "MOT",
+            "code": "Mot",
             "valeur": "Moutarde"
         },
         {
-            "code": "MPA",
-            "valeur": "Autre mélange de plantes fixant l'azote"
+            "code": "Mpa",
+            "valeur": "Autre Mélange De Plantes Fixant L'azote"
         },
         {
-            "code": "MPC",
-            "valeur": "Mélange de protéagineux prépondérants (pois et/ou lupin et/ou féverole) et de céréales"
+            "code": "Mpc",
+            "valeur": "Mélange De Protéagineux Prépondérants (pois Et/ou Lupin Et/ou Féverole) Et De Céréales"
         },
         {
-            "code": "MPP",
-            "valeur": "Mélange de protéagineux (pois et/ou lupin et/ou féverole)"
+            "code": "Mpp",
+            "valeur": "Mélange De Protéagineux (pois Et/ou Lupin Et/ou Féverole)"
         },
         {
-            "code": "MRG",
+            "code": "Mrg",
             "valeur": "Marguerite"
         },
         {
-            "code": "MRJ",
+            "code": "Mrj",
             "valeur": "Marjolaine / Origan"
         },
         {
-            "code": "MRS",
-            "valeur": "Marais salant"
+            "code": "Mrs",
+            "valeur": "Marais Salant"
         },
         {
-            "code": "MTH",
+            "code": "Mth",
             "valeur": "Menthe"
         },
         {
-            "code": "NOS",
+            "code": "Nos",
             "valeur": "Noisette"
         },
         {
-            "code": "NOX",
+            "code": "Nox",
             "valeur": "Noix"
         },
         {
-            "code": "NVE",
-            "valeur": "Navette d’été"
+            "code": "Nve",
+            "valeur": "Navette D’été"
         },
         {
-            "code": "NVF",
-            "valeur": "Navet fourrager"
+            "code": "Nvf",
+            "valeur": "Navet Fourrager"
         },
         {
-            "code": "NVH",
-            "valeur": "Navette d’hiver"
+            "code": "Nvh",
+            "valeur": "Navette D’hiver"
         },
         {
-            "code": "NVT",
+            "code": "Nvt",
             "valeur": "Navet"
         },
         {
-            "code": "NYG",
+            "code": "Nyg",
             "valeur": "Nyger"
         },
         {
-            "code": "OAG",
-            "valeur": "Autre oléagineux d’un autre genre"
+            "code": "Oag",
+            "valeur": "Autre Oléagineux D’un Autre Genre"
         },
         {
-            "code": "OEH",
-            "valeur": "Autre oléagineux d’espèce Helianthus"
+            "code": "Oeh",
+            "valeur": "Autre Oléagineux D’espèce Helianthus"
         },
         {
-            "code": "OEI",
-            "valeur": "Oeillette (Pavot)"
+            "code": "Oei",
+            "valeur": "Oeillette (pavot)"
         },
         {
-            "code": "OHN",
-            "valeur": "Autre oléagineux d’hiver d’espèce Brassica napus"
+            "code": "Ohn",
+            "valeur": "Autre Oléagineux D’hiver D’espèce Brassica Napus"
         },
         {
-            "code": "OHR",
-            "valeur": "Autre oléagineux d’hiver d’espèce Brassica rapa"
+            "code": "Ohr",
+            "valeur": "Autre Oléagineux D’hiver D’espèce Brassica Rapa"
         },
         {
-            "code": "OIG",
+            "code": "Oig",
             "valeur": "Oignon / Echalotte"
         },
         {
-            "code": "OLI",
+            "code": "Oli",
             "valeur": "Oliveraie"
         },
         {
-            "code": "OPN",
-            "valeur": "Autre oléagineux de printemps d’espèce Brassica napus"
+            "code": "Opn",
+            "valeur": "Autre Oléagineux De Printemps D’espèce Brassica Napus"
         },
         {
-            "code": "OPR",
-            "valeur": "Autre oléagineux de printemps d’espèce Brassica rapa"
+            "code": "Opr",
+            "valeur": "Autre Oléagineux De Printemps D’espèce Brassica Rapa"
         },
         {
-            "code": "ORH",
-            "valeur": "Orge d'hiver"
+            "code": "Orh",
+            "valeur": "Orge D'hiver"
         },
         {
-            "code": "ORP",
-            "valeur": "Orge de printemps"
+            "code": "Orp",
+            "valeur": "Orge De Printemps"
         },
         {
-            "code": "ORT",
+            "code": "Ort",
             "valeur": "Ortie"
         },
         {
-            "code": "OSE",
+            "code": "Ose",
             "valeur": "Oseille"
         },
         {
-            "code": "PAG",
-            "valeur": "Autre protéagineux d’un autre genre"
+            "code": "Pag",
+            "valeur": "Autre Protéagineux D’un Autre Genre"
         },
         {
-            "code": "PAN",
+            "code": "Pan",
             "valeur": "Panais"
         },
         {
-            "code": "PAQ",
+            "code": "Paq",
             "valeur": "Pâquerette"
         },
         {
-            "code": "PAR",
-            "valeur": "Plante aromatique (autre que vanille)"
+            "code": "Par",
+            "valeur": "Plante Aromatique (autre Que Vanille)"
         },
         {
-            "code": "PAS",
+            "code": "Pas",
             "valeur": "Pastèque"
         },
         {
-            "code": "PAT",
-            "valeur": "Paturin commun de 5 ans ou moins"
+            "code": "Pat",
+            "valeur": "Paturin Commun De 5 Ans Ou Moins"
         },
         {
-            "code": "PCH",
-            "valeur": "Pois chiche"
+            "code": "Pch",
+            "valeur": "Pois Chiche"
         },
         {
-            "code": "PCL",
-            "valeur": "Phacélie de 5 ans ou moins"
+            "code": "Pcl",
+            "valeur": "Phacélie De 5 Ans Ou Moins"
         },
         {
-            "code": "PEP",
+            "code": "Pep",
             "valeur": "Pépinière"
         },
         {
-            "code": "PFH",
-            "valeur": "Autre pois fourrager d’hiver"
+            "code": "Pfh",
+            "valeur": "Autre Pois Fourrager D’hiver"
         },
         {
-            "code": "PFP",
-            "valeur": "Autre pois fourrager de printemps"
+            "code": "Pfp",
+            "valeur": "Autre Pois Fourrager De Printemps"
         },
         {
-            "code": "PFR",
-            "valeur": "Petit fruit rouge"
+            "code": "Pfr",
+            "valeur": "Petit Fruit Rouge"
         },
         {
-            "code": "PH6",
-            "valeur": "Pois fourrager d'hiver implanté pour la récolte 2016"
+            "code": "Ph6",
+            "valeur": "Pois Fourrager D'hiver Implanté Pour La Récolte 2016"
         },
         {
-            "code": "PH7",
-            "valeur": "Pois fourrager d'hiver implanté pour la récolte 2017"
+            "code": "Ph7",
+            "valeur": "Pois Fourrager D'hiver Implanté Pour La Récolte 2017"
         },
         {
-            "code": "PH8",
-            "valeur": "Pois fourrager d'hiver implanté pour la récolte 2018"
+            "code": "Ph8",
+            "valeur": "Pois Fourrager D'hiver Implanté Pour La Récolte 2018"
         },
         {
-            "code": "PHI",
-            "valeur": "Pois d'hiver"
+            "code": "Phi",
+            "valeur": "Pois D'hiver"
         },
         {
-            "code": "PIS",
+            "code": "Pis",
             "valeur": "Pistache"
         },
         {
-            "code": "PMD",
-            "valeur": "Plante médicinale"
+            "code": "Pmd",
+            "valeur": "Plante Médicinale"
         },
         {
-            "code": "PMV",
+            "code": "Pmv",
             "valeur": "Primevère"
         },
         {
-            "code": "POR",
+            "code": "Por",
             "valeur": "Poireau"
         },
         {
-            "code": "POT",
+            "code": "Pot",
             "valeur": "Potiron / Potimarron"
         },
         {
-            "code": "PP6",
-            "valeur": "Pois fourrager de printemps implanté pour la récolte 2016"
+            "code": "Pp6",
+            "valeur": "Pois Fourrager De Printemps Implanté Pour La Récolte 2016"
         },
         {
-            "code": "PP7",
-            "valeur": "Pois fourrager de printemps implanté pour la récolte 2017"
+            "code": "Pp7",
+            "valeur": "Pois Fourrager De Printemps Implanté Pour La Récolte 2017"
         },
         {
-            "code": "PP8",
-            "valeur": "Pois fourrager de printemps implanté pour la récolte 2018"
+            "code": "Pp8",
+            "valeur": "Pois Fourrager De Printemps Implanté Pour La Récolte 2018"
         },
         {
-            "code": "PPA",
-            "valeur": "Autres plantes ornementales et PPAM annuelles"
+            "code": "Ppa",
+            "valeur": "Autres Plantes Ornementales Et Ppam Annuelles"
         },
         {
-            "code": "PPF",
-            "valeur": "Plante à parfum (autre que géranium et vétiver)"
+            "code": "Ppf",
+            "valeur": "Plante À Parfum (autre Que Géranium Et Vétiver)"
         },
         {
-            "code": "PPH",
-            "valeur": "Prairie permanente - herbe (ressources fourragères ligneuses absentes ou peu présentes)"
+            "code": "Pph",
+            "valeur": "Prairie Permanente - Herbe (ressources Fourragères Ligneuses Absentes Ou Peu Présentes)"
         },
         {
-            "code": "PPO",
-            "valeur": "Pois (petits pois, pois cassés, pois gourmands)"
+            "code": "Ppo",
+            "valeur": "Pois (petits Pois, Pois Cassés, Pois Gourmands)"
         },
         {
-            "code": "PPP",
-            "valeur": "Autres plantes ornementales et PPAM pérennes"
+            "code": "Ppp",
+            "valeur": "Autres Plantes Ornementales Et Ppam Pérennes"
         },
         {
-            "code": "PPR",
-            "valeur": "Pois de printemps"
+            "code": "Ppr",
+            "valeur": "Pois De Printemps"
         },
         {
-            "code": "PRL",
-            "valeur": "Prairie en rotation longue (6 ans ou plus)"
+            "code": "Prl",
+            "valeur": "Prairie En Rotation Longue (6 Ans Ou Plus)"
         },
         {
-            "code": "PRU",
-            "valeur": "Prune d'Ente pour transformation"
+            "code": "Pru",
+            "valeur": "Prune D'ente Pour Transformation"
         },
         {
-            "code": "PSE",
+            "code": "Pse",
             "valeur": "Pensée"
         },
         {
-            "code": "PSL",
+            "code": "Psl",
             "valeur": "Persil"
         },
         {
-            "code": "PSN",
-            "valeur": "Psyllium noir de Provence"
+            "code": "Psn",
+            "valeur": "Psyllium Noir De Provence"
         },
         {
-            "code": "PSY",
-            "valeur": "Plantain psyllium"
+            "code": "Psy",
+            "valeur": "Plantain Psyllium"
         },
         {
-            "code": "PTC",
-            "valeur": "Pomme de terre de consommation"
+            "code": "Ptc",
+            "valeur": "Pomme De Terre De Consommation"
         },
         {
-            "code": "PTF",
-            "valeur": "Pomme de terre féculière"
+            "code": "Ptf",
+            "valeur": "Pomme De Terre Féculière"
         },
         {
-            "code": "PTR",
-            "valeur": "Autre prairie temporaire de 5 ans ou moins"
+            "code": "Ptr",
+            "valeur": "Autre Prairie Temporaire De 5 Ans Ou Moins"
         },
         {
-            "code": "PVP",
+            "code": "Pvp",
             "valeur": "Poivron / Piment"
         },
         {
-            "code": "PVT",
-            "valeur": "Pêche Pavie pour transformation"
+            "code": "Pvt",
+            "valeur": "Pêche Pavie Pour Transformation"
         },
         {
-            "code": "PWT",
-            "valeur": "Poire Williams pour transformation"
+            "code": "Pwt",
+            "valeur": "Poire Williams Pour Transformation"
         },
         {
-            "code": "RDF",
-            "valeur": "Radis fourrager"
+            "code": "Rdf",
+            "valeur": "Radis Fourrager"
         },
         {
-            "code": "RDI",
+            "code": "Rdi",
             "valeur": "Radis"
         },
         {
-            "code": "RGA",
-            "valeur": "Ray-grass de 5 ans ou moins"
+            "code": "Rga",
+            "valeur": "Ray-grass De 5 Ans Ou Moins"
         },
         {
-            "code": "RIZ",
+            "code": "Riz",
             "valeur": "Riz"
         },
         {
-            "code": "ROM",
+            "code": "Rom",
             "valeur": "Romarin"
         },
         {
-            "code": "ROQ",
+            "code": "Roq",
             "valeur": "Roquette"
         },
         {
-            "code": "ROS",
+            "code": "Ros",
             "valeur": "Roselière"
         },
         {
-            "code": "RUT",
+            "code": "Rut",
             "valeur": "Rutabaga"
         },
         {
-            "code": "RVI",
-            "valeur": "Restructuration du vignoble"
+            "code": "Rvi",
+            "valeur": "Restructuration Du Vignoble"
         },
         {
-            "code": "SA6",
-            "valeur": "Sainfoin implanté pour la récolte 2016"
+            "code": "Sa6",
+            "valeur": "Sainfoin Implanté Pour La Récolte 2016"
         },
         {
-            "code": "SA7",
-            "valeur": "Sainfoin implanté pour la récolte 2017"
+            "code": "Sa7",
+            "valeur": "Sainfoin Implanté Pour La Récolte 2017"
         },
         {
-            "code": "SA8",
-            "valeur": "Sainfoin implanté pour la récolte 2018"
+            "code": "Sa8",
+            "valeur": "Sainfoin Implanté Pour La Récolte 2018"
         },
         {
-            "code": "SAD",
-            "valeur": "Sainfoin déshydraté"
+            "code": "Sad",
+            "valeur": "Sainfoin Déshydraté"
         },
         {
-            "code": "SAI",
-            "valeur": "Autre sainfoin"
+            "code": "Sai",
+            "valeur": "Autre Sainfoin"
         },
         {
-            "code": "SBO",
-            "valeur": "Surface boisée sur une ancienne terre agricole"
+            "code": "Sbo",
+            "valeur": "Surface Boisée Sur Une Ancienne Terre Agricole"
         },
         {
-            "code": "SE6",
-            "valeur": "Serradelle implantée pour la récolte 2016"
+            "code": "Se6",
+            "valeur": "Serradelle Implantée Pour La Récolte 2016"
         },
         {
-            "code": "SE7",
-            "valeur": "Serradelle implantée pour la récolte 2017"
+            "code": "Se7",
+            "valeur": "Serradelle Implantée Pour La Récolte 2017"
         },
         {
-            "code": "SE8",
-            "valeur": "Serradelle implantée pour la récolte 2018"
+            "code": "Se8",
+            "valeur": "Serradelle Implantée Pour La Récolte 2018"
         },
         {
-            "code": "SED",
-            "valeur": "Serradelle déshydratée"
+            "code": "Sed",
+            "valeur": "Serradelle Déshydratée"
         },
         {
-            "code": "SER",
-            "valeur": "Autre seradelle"
+            "code": "Ser",
+            "valeur": "Autre Seradelle"
         },
         {
-            "code": "SFI",
+            "code": "Sfi",
             "valeur": "Salsifi"
         },
         {
-            "code": "SGE",
+            "code": "Sge",
             "valeur": "Sauge"
         },
         {
-            "code": "SGH",
-            "valeur": "Seigle d'hiver"
+            "code": "Sgh",
+            "valeur": "Seigle D'hiver"
         },
         {
-            "code": "SGP",
-            "valeur": "Seigle de printemps"
+            "code": "Sgp",
+            "valeur": "Seigle De Printemps"
         },
         {
-            "code": "SNE",
-            "valeur": "Surface agricole temporairement non exploitée"
+            "code": "Sne",
+            "valeur": "Surface Agricole Temporairement Non Exploitée"
         },
         {
-            "code": "SOG",
+            "code": "Sog",
             "valeur": "Sorgho"
         },
         {
-            "code": "SOJ",
+            "code": "Soj",
             "valeur": "Soja"
         },
         {
-            "code": "SPH",
-            "valeur": "Surface pastorale - herbe prédominante et ressources fourragères ligneuses présentes"
+            "code": "Sph",
+            "valeur": "Surface Pastorale - Herbe Prédominante Et Ressources Fourragères Ligneuses Présentes"
         },
         {
-            "code": "SPL",
-            "valeur": "Surface pastorale - ressources fourragères ligneuses prédominantes"
+            "code": "Spl",
+            "valeur": "Surface Pastorale - Ressources Fourragères Ligneuses Prédominantes"
         },
         {
-            "code": "SRI",
+            "code": "Sri",
             "valeur": "Sariette"
         },
         {
-            "code": "SRS",
+            "code": "Srs",
             "valeur": "Sarrasin"
         },
         {
-            "code": "TAB",
+            "code": "Tab",
             "valeur": "Tabac"
         },
         {
-            "code": "TBT",
-            "valeur": "Tubercule tropical"
+            "code": "Tbt",
+            "valeur": "Tubercule Tropical"
         },
         {
-            "code": "TCR",
-            "valeur": "Taillis à courte rotation"
+            "code": "Tcr",
+            "valeur": "Taillis À Courte Rotation"
         },
         {
-            "code": "THY",
+            "code": "Thy",
             "valeur": "Thym"
         },
         {
-            "code": "TOM",
+            "code": "Tom",
             "valeur": "Tomate"
         },
         {
-            "code": "TOP",
+            "code": "Top",
             "valeur": "Topinambour"
         },
         {
-            "code": "TOT",
-            "valeur": "Tomate pour transformation"
+            "code": "Tot",
+            "valeur": "Tomate Pour Transformation"
         },
         {
-            "code": "TR6",
-            "valeur": "Trèfle implanté pour la récolte 2016"
+            "code": "Tr6",
+            "valeur": "Trèfle Implanté Pour La Récolte 2016"
         },
         {
-            "code": "TR7",
-            "valeur": "Trèfle implanté pour la récolte 2017"
+            "code": "Tr7",
+            "valeur": "Trèfle Implanté Pour La Récolte 2017"
         },
         {
-            "code": "TR8",
-            "valeur": "Trèfle implanté pour la récolte 2018"
+            "code": "Tr8",
+            "valeur": "Trèfle Implanté Pour La Récolte 2018"
         },
         {
-            "code": "TRD",
-            "valeur": "Trèfle déshydraté"
+            "code": "Trd",
+            "valeur": "Trèfle Déshydraté"
         },
         {
-            "code": "TRE",
-            "valeur": "Autre trèfle"
+            "code": "Tre",
+            "valeur": "Autre Trèfle"
         },
         {
-            "code": "TRN",
+            "code": "Trn",
             "valeur": "Tournesol"
         },
         {
-            "code": "TRU",
-            "valeur": "Truffière (plants mycorhizés)"
+            "code": "Tru",
+            "valeur": "Truffière (plants Mycorhizés)"
         },
         {
-            "code": "TTH",
-            "valeur": "Triticale d'hiver"
+            "code": "Tth",
+            "valeur": "Triticale D'hiver"
         },
         {
-            "code": "TTP",
-            "valeur": "Triticale de printemps"
+            "code": "Ttp",
+            "valeur": "Triticale De Printemps"
         },
         {
-            "code": "VAL",
+            "code": "Val",
             "valeur": "Valériane"
         },
         {
-            "code": "VE6",
-            "valeur": "Vesce implantée pour la récolte 2016"
+            "code": "Ve6",
+            "valeur": "Vesce Implantée Pour La Récolte 2016"
         },
         {
-            "code": "VE7",
-            "valeur": "Vesce implantée pour la récolte 2017"
+            "code": "Ve7",
+            "valeur": "Vesce Implantée Pour La Récolte 2017"
         },
         {
-            "code": "VE8",
-            "valeur": "Vesce implantée pour la récolte 2018"
+            "code": "Ve8",
+            "valeur": "Vesce Implantée Pour La Récolte 2018"
         },
         {
-            "code": "VED",
-            "valeur": "Vesce déshydratée"
+            "code": "Ved",
+            "valeur": "Vesce Déshydratée"
         },
         {
-            "code": "VER",
+            "code": "Ver",
             "valeur": "Véronique"
         },
         {
-            "code": "VES",
-            "valeur": "Autre vesce"
+            "code": "Ves",
+            "valeur": "Autre Vesce"
         },
         {
-            "code": "VET",
+            "code": "Vet",
             "valeur": "Vétiver"
         },
         {
-            "code": "VGD",
-            "valeur": "Verger (DOM)"
+            "code": "Vgd",
+            "valeur": "Verger (dom)"
         },
         {
-            "code": "VNB",
-            "valeur": "Vanille sous bois"
+            "code": "Vnb",
+            "valeur": "Vanille Sous Bois"
         },
         {
-            "code": "VNL",
+            "code": "Vnl",
             "valeur": "Vanille"
         },
         {
-            "code": "VNV",
-            "valeur": "Vanille verte"
+            "code": "Vnv",
+            "valeur": "Vanille Verte"
         },
         {
-            "code": "VRC",
-            "valeur": "Vigne , raisins de cuve en production"
+            "code": "Vrc",
+            "valeur": "Vigne , Raisins De Cuve En Production"
         },
         {
-            "code": "VRG",
-            "valeur": "Autres vergers"
+            "code": "Vrg",
+            "valeur": "Autres Vergers"
         },
         {
-            "code": "VRN",
-            "valeur": "Vigne , raisins de cuve non en production"
+            "code": "Vrn",
+            "valeur": "Vigne , Raisins De Cuve Non En Production"
         },
         {
-            "code": "VRT",
-            "valeur": "Vigne , raisins de table"
+            "code": "Vrt",
+            "valeur": "Vigne , Raisins De Table"
         },
         {
-            "code": "XFE",
-            "valeur": "X-Festulolium de 5 ans ou moins"
+            "code": "Xfe",
+            "valeur": "X-festulolium De 5 Ans Ou Moins"
         },
         {
-            "code": "YLA",
+            "code": "Yla",
             "valeur": "Ylang-ylang"
         }
     ]

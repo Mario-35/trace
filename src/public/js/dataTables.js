@@ -612,9 +612,9 @@ class JsonTable {
 					return row[key].toLowerCase() === lowerCaseValue;
 				} else if ( this.columns.find((col) => col.key === key && col.searchType === "boolean") ) {
 					return row[key] === (value === 'true') ? true : false;
-				} else {
+				} else {					
 					// For text input filtering
-					return row[key].toLowerCase().includes(lowerCaseValue);
+					return row[key] ? typeof row[key] === 'string' ? row[key].toLowerCase().includes(lowerCaseValue) : row[key].join("").toLowerCase().includes(lowerCaseValue) : "";
 				}
 			});
 		}
@@ -642,12 +642,6 @@ class JsonTable {
 		}
 		this.renderRows();
 	}
-
-
-
-
-
-
 }
 
 

@@ -3,6 +3,7 @@ _CONFIGURATION = {
   site: 'UMR Sas Rennes',
   code: 'FR',
   debug: true,
+  passeport: true,
   pays: 'France',
   region: 'Bretagne',
   latitude: '48.112564637819',
@@ -10,6 +11,8 @@ _CONFIGURATION = {
   identifiant: 'BR13551',
   stockages: [ 'Batiment', 'Etage', 'Piece', 'Meuble', 'Etagere', 'Caisse' ],
   etats: [ 'Créer', 'Prélevé', 'Stocké', 'Perdu', 'Detruit', 'Importé' ],
+  types: ["Boues", "Eau", "Invertébrés", "Sol Cultivé", "Sol Forestier", "Prairie", "Sol"],
+  sizes: ["8px", "10px", "12px", "14px", "16px"], 
   etiquette: {
     sticker0: { key: 'identification', size: '12px', align: 'center' },
     sticker1: { key: 'programme', size: '12px', align: 'center' },
