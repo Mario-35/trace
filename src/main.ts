@@ -51,6 +51,17 @@ async function mainHttps() {
     const httpServer = new HttpServer();
     const port = 3000;
     const exitSignals: NodeJS.Signals[] = ["SIGINT", "SIGTERM", "SIGQUIT"];
+
+
+const options = {
+  key: fs.readFileSync(path.join(__dirname, 'keys/server.key')),
+  cert: fs.readFileSync(path.join(__dirname, 'keys/server.cert'))
+};
+
+
+
+
+
     if (!fs.existsSync(path.resolve(__dirname, "./public/js", "configuration.js")) && await isDbExists() === true) writeConfig(); 
     exitSignals.map((sig) =>
       process.on(sig, async () => {
@@ -66,22 +77,12 @@ async function mainHttps() {
     );
 
 
-
-
-    pem.createCertificate({ days: 1, selfSigned: true }, async function (err, keys) {
-      if (err) {
-        throw err
-      }
-      // const app = httpServer.createApp();
-      const app = await httpServer.createApp();
-      // var app = express()
-
-      https.createServer({ key: keys.clientKey, cert: keys.certificate }, await app).listen(443)
-    });
-
+    
     const app = await httpServer.createApp();
 
-    app.listen(port, () => logger.info(`Serveur HTTPS actif sur le port ${port}`));
+    https.createServer(options, app).listen(443, () => {
+      logger.info(`Serveur HTTPS actif sur le port ${port}`);
+    });
   } catch (error) {
     logger.error(`Arret du serveur avec l'erreur : ${error}`);
     process.exit(ExitStatus.Failure);
@@ -89,8 +90,8 @@ async function mainHttps() {
 
 };
 
-if (process.env.NODE_ENV === 'production') 
-   mainHttps();
+if (process.env.NODE_ENV !== 'production') 
+  mainHttps();
 else 
   mainHttp();
   

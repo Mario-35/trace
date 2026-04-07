@@ -66,6 +66,7 @@ function copyFolderRecursiveSync( source, target ) {
 
 copyFolderRecursiveSync("./src/import", FINAL);
 copyFolderRecursiveSync("./src/public", FINAL);
+copyFolderRecursiveSync("./src/keys", FINAL);
 copyFileSync( "./package.json", FINAL );
 
 zipDirectory(FINAL, `./dist.zip`).then(function (e) {
