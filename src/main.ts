@@ -55,7 +55,7 @@ async function mainHttps() {
 
 const options = {
   key: fs.readFileSync(path.join(__dirname, 'keys/server.key')),
-  cert: fs.readFileSync(path.join(__dirname, 'keys/server.cert'))
+  cert: fs.readFileSync(path.join(__dirname, 'keys/server.crt'))
 };
 
 
@@ -90,7 +90,7 @@ const options = {
 
 };
 
-if (process.env.NODE_ENV !== 'production') 
+if (process.env.NODE_ENV === 'production') 
   mainHttps();
 else 
   mainHttp();
