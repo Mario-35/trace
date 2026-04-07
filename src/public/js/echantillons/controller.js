@@ -11,7 +11,7 @@ console.log("###################################################################
 
         return `${ _DATE.toLocaleDateString()}${ _DATE.toLocaleTimeString()}`.replace(/\D/g, "").slice(0,12) + (nb || getElement("numero").value ||  getElement("echantillon").value).padStart(4, '0');
     }
-}
+};
 
 // refresh type that fixe mask
 function refreshType() {
@@ -22,11 +22,11 @@ function refreshType() {
     }
     const key = getElement("type").value.replace(/\s/g, '').toUpperCase();
     setVisible(names, key);
-}
+};
 
 function valueIfChecked(element, elementTest, text, textChecked) {
     element.innerText = `${text}${elementTest.checked ? ` ${textChecked}` : ""}`
-}
+};
 
 // Refresh screen information
 function refresh() {
@@ -53,7 +53,7 @@ function refresh() {
     
     valueIfChecked(pedagogique.nextSibling.nextSibling, pedagogique, "Programme", " pédagogique")
     
-}
+};
 
 
 function refreshCultures() {    
@@ -62,7 +62,7 @@ function refreshCultures() {
         cultures : toJson("cultures"),
         rpgReferences: rpgReferences           
     },  getElement("rpgTab"));
-}
+};
 
 // Create new site from location tab
 async function createSite() {
@@ -79,7 +79,7 @@ async function createSite() {
             removeDisabled("next-2");
         }
 
-}
+};
 
 // get information site
 async function setSite() {
@@ -112,7 +112,7 @@ async function setSite() {
      }
 
     
-}
+};
 
 // start of echantillon
 async function start() {
@@ -150,7 +150,7 @@ async function start() {
         // change somes
         showParentClass('etat', 'form-group'); 
         hideParentClass( "btnApiRpg", "row-1");
-        removeDisabled("btn-aliquote");
+        if (!["Créer", "Importer"].includes(datas.etat)) removeDisabled("btn-aliquote");
         getElement("btnApiRpg").innerText = "MAJ 🌍 RPG";
         changeTitle("Modification d'un échantillon");         
         parentClass( "parent", "form-group", datas.parent !== null) ;
@@ -240,14 +240,14 @@ async function start() {
     // init list
     refresh();
     refreshType();   
-}
+};
 
 function setMin(element, min) {
         element.min = min;
         
         if (element.value < min)
             element.value = min;
-}
+};
 
 // start without await
 start();

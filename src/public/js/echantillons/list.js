@@ -65,7 +65,7 @@ class ExcelToJSON {
         reader.onerror = (ex) => console.log(ex);
         reader.readAsBinaryString(file);
     }
-}
+};
 
 if (document.getElementById("fileone")) {
     fileone.addEventListener("change", function(e) {
@@ -87,7 +87,7 @@ if (document.getElementById("fileone")) {
         }
     });
     fileone.addEventListener('change', handleFileSelect, false);
-}
+};
 
 function handleFileSelect(evt) {
     var files = evt.target.files;
@@ -99,4 +99,4 @@ function handleFileSelect(evt) {
     }); 
     fileonelabel.remove();
     fileone.remove();
-}
+};

@@ -32,7 +32,7 @@ function writeConfigurationFile(configuration: any) {
 
       fs.writeFile(
             path.resolve(__dirname, "../../public/js/", "configuration.js"),
-            `_CONFIGURATION = ${util.inspect(configuration, { showHidden: false, depth: null, colors: false }) }`,
+            `_CONFIGURATION = ${util.inspect(configuration, { showHidden: false, depth: null, colors: false }) };`,
             (error) => {
                   console.log(`Ecriture de la configuration : ${error || "Ok"}`);                
             }

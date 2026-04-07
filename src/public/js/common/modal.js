@@ -5,7 +5,7 @@ const handleCloseModal = event => {
     //  modal.setAttribute("style", "display:none;");
     // Delete content
     modal.innerHTML = '';
-}
+};
 
 function showModalOk( message, redirectOk) {
     getElement("modal").innerHTML =` 
@@ -29,7 +29,7 @@ function showModalOk( message, redirectOk) {
         modal.setAttribute("style", "display:none;");
         if (redirectOk) window.location.href = redirectOk;
     });
-}
+};
 
 function showModalError( message) {
     getElement("modal").innerHTML =` 
@@ -49,7 +49,7 @@ function showModalError( message) {
         getElement("close").addEventListener('click',  handleCloseModal);
         
         getElement("ok").addEventListener('click',  handleCloseModal);
-}
+};
     
 function showModalPrint(options) {
     // option {
@@ -90,28 +90,24 @@ function showModalPrint(options) {
         event.preventDefault();
         modal.setAttribute("style", "display:none;");
         let redirect = `${window.location.origin}//index.html`;
-        // if (getElement("printPasseports") && getElement("printPasseports").checked && getElement("printPasseports").checked) {
-        //    redirect = `${window.location.origin}/print/echantillonPasseport/${options.echantillon}`; 
-        // }
         if (getElement("printEtiquettes").checked) {
-            redirect = options.echantillon
-                ? `${window.location.origin}/print/echantillon/${options.echantillon}`
-                : options.selection 
-                    ? `${window.location.origin}/print/selection/${options.selection}`
-                    : `${window.location.origin}/print/identification/${options.identification}`;
+            redirect = (options.echantillon) ? window.location.origin + "/print/echantillon/" + options.echantillon
+                : (options.selection )
+                    ? window.location.origin + "/print/selection/" + options.selection
+                    : window.location.origin + "/print/identification/" + options.identification;
         }
         if (getElement("printPasseports") && getElement("printPasseports").checked) {
-            redirect = `${window.location.origin}/print/passeport/${options.passeport}`;
+            redirect = window.location.origin + "/print/passeport/" + options.passeport;
         }
         open(redirect, "Imprimer", _PARAMPRINT);
     });
-}
+};
 
 function showModalList(titleKey, titleValue, values, errorString) {
     if (values) {
         getElement('modal').innerHTML =  `
         <article class="modal">
-        <div id="scrollable-modal" class="scrollable-modal hide">
+            <div id="scrollable-modal" class="scrollable-modal hide">
                 <div class="list-header">
                     <span>${titleKey}</span>
                     <span>${titleValue}</span>
@@ -131,11 +127,11 @@ function showModalList(titleKey, titleValue, values, errorString) {
 
         modal.addEventListener("click", handleCloseModal);
     }
-}
+};
 
 
 const handleCloseModalEdit = event => {
-}
+};
 
 
 const handleCloseModalMario = event => {
@@ -145,7 +141,7 @@ const handleCloseModalMario = event => {
      modal.setAttribute("style", "display:none;");
     // Delete content
     modal.innerHTML = '';
-}
+};
 
 
 function showModalEditingList(titleKey, titleValue, element, callback) {
@@ -176,5 +172,5 @@ function showModalEditingList(titleKey, titleValue, element, callback) {
              modal.innerHTML = '';
         });
     }
-}
+};
 

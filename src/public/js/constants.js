@@ -25,16 +25,16 @@ const createContext = () => {
         }); 
     } else setContext("new", 0);
     return getContext();
-}
+};
 
 const getContext = () => {
     const elem = getElement("ctx");
     if (elem)  return {
         id: elem.value,
         mode: elem.getAttribute("name"),
-    }
-    return undefined
-}
+    };
+    return undefined;
+};
 
 const setContext = (name, id)  => {
     const elem = getElement("ctx");
@@ -45,9 +45,9 @@ const setContext = (name, id)  => {
         elem.value = +id;
         elem.setAttribute("name", name);
         return getContext();
-    }
-    return undefined
-}
+    };
+    return undefined;
+};
 
 const isContextMode = (input) => (typeof input === 'string') ? [input].includes(getElement("ctx").getAttribute("name")) :  Boolean(input.includes(getElement("ctx").getAttribute("name")));
 
@@ -58,12 +58,12 @@ isKeyInUrl= (keyName) => window.location.href.includes(`?${keyName}=`) || window
 function getNumberFromUrl(keyName) {
     const tmp = window.location.href.split('?')[1].split("&").filter(key =>  key.includes(keyName+'='))[0];
     return +tmp.split(`=`)[1] || 0;
-}
+};
 
 function getFromUrl(keyName) {
     const tmp = window.location.href.split('?')[1].split("&").filter(key =>  key.includes(keyName+'='))[0];
     return tmp.split(`=`)[1] || '';
-}
+};
 
 formatDate = (input) => input && input.includes("T") && input.includes("-") ? input.split("T")[0].split("-").reverse().join('-') : input;
 
@@ -74,14 +74,14 @@ function createBlankKeySticker(name, value) {
         "align": "center",
         "size": "12px"
     }
-}
+};
 
 function getTemplateSticker(values) {
     return {
         etiquette : getElement("etiquette").value ? JSON.parse(getElement("etiquette").value) : _CONFIGURATION.etiquette,
         ... values
     }
-}
+};
 
 function changeValueInJson(name, key, value) {
     const tmp = toJson(name);
@@ -95,20 +95,6 @@ function changeValueInJson(name, key, value) {
 
 
 
-// function setDatas() {
-// 	localStorage.setItem('trace', _DATAS);
-// }
-
-// function getDatas(themeName) {
-//     localStorage.setItem('trace', _DATAS);
-//     if (localStorage.getItem('trace')) {
-//         looadDatas(localStorage.getItem('trace'))
-//     }
-// }
-
-// function clearDatas() {
-//     localStorage.clear();
-// }
 
 
 

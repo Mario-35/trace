@@ -1,0 +1,8 @@
+
+ip : 147.99.164.188
+login : admpcsas
+mdp : 31oct55:
+ssh admpcsas@147.99.164.188
+mdp : 31oct55:
+
+root : !S2S-tr2c3!

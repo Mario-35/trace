@@ -31,7 +31,7 @@ function loadDatas(values) {
         }
 
     });
-}
+};
 /**
  * Checks that an element has a non-empty `name` and `value` property.
  * @param  {Element} element  the element to check
@@ -83,7 +83,7 @@ const formToColumns = elements => [].reduce.call(elements, (data, element) => {
 
 function getInactive(element) {
   return element.getAttribute("readonly") === "" ? true : false;
-}
+};
 
 const formDatas = () =>  formToJSON(document.getElementsByClassName('formData')[0].elements);
 
@@ -152,7 +152,7 @@ const handleFormSubmit = event => {
   console.log(_DATAS);
   if (getElement("ctx")) console.log(getElement("ctx"));
 
-}
+};
 
 /*
  * This is where things actually get started. We find the form element using

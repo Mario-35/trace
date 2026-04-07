@@ -7,6 +7,7 @@ import { EConstant } from "../../constant";
 import { removeAllQuotes } from "../../helpers/removeAllQuotes";
 import fs from "fs";
 import path from "path";
+import { removeComments } from "../../helpers/removeComments";
 
 export class CoreHtmlView {
     _HTMLResult: string[];
@@ -19,6 +20,13 @@ export class CoreHtmlView {
       addFileMario(name: string): string {
       return fs.existsSync(name) ? fs.readFileSync(name, "utf-8") : fs.readFileSync(name.replace(".js", ".min.js"), "utf-8");
     }
+
+    loadFile(name: string): string {
+      return removeComments(fs.readFileSync(path.join(__dirname, "../../public/", name), "utf-8"));
+      // return fs.existsSync(path.join("./public/", name)) 
+        // : fs.readFileSync(path.join(__dirname, "/", name.replace(".css", ".min.css")), "utf-8");
+    }
+
 
     mario() {
 const operations: any = [];

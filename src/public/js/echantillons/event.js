@@ -53,16 +53,16 @@ async function getMaxNombre() {
         const temp = await getDatas(window.location.origin + '/echantillon/next/' + createIdentification());
         numero.min = temp;
         if (temp) numero.value = temp;
-}
+};
 
 function updateIdentification() {
    getElement("identification").value = createIdentification();
-}
+};
 
 function cleanCulture() {
    getElement("cultures").value= JSON.stringify({});
    
-}
+};
 
 
 //  button d'interrogation du rpg

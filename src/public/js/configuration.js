@@ -54,4 +54,4 @@ _CONFIGURATION = {
     analyses: 'Matière org, Physico-chimi ADNe 1',
     etat: 'Créer'
   }
-}
+};

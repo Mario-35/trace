@@ -100,7 +100,7 @@ class JsonTable {
 			globalSearch.value = getFromUrl("filter");  
 			this.filterGlobal(globalSearch.value);
 		}
-	}
+	};
 
 	filterCall(name) {
         if (name) {
@@ -111,13 +111,13 @@ class JsonTable {
                 Log( `Filter Error error filter${name}`);
             }
         }
-    }
+    };
 
 	filterIdentification12() {
 		const filtered = this.filterById(Number(this.selectedId));
 		globalSearch.value = filtered[0].identification.slice(0,12);
 		this.filterGlobal(globalSearch.value);
-	}
+	};
 
 	async postStore() {
 		const corespondance = {};
@@ -144,7 +144,7 @@ class JsonTable {
             body: JSON.stringify(datas),
         });		
 		return await response.text();
-	}
+	};
 
 	async addData(element) {
 		try {
@@ -157,7 +157,7 @@ class JsonTable {
 		} catch (error) {
 			console.error("Error fetching JSON data:", error);
 		}
-	}
+	};
 
 	async fetchData() {
 		if (this.jsonUrl.trim() === "") {
@@ -181,7 +181,7 @@ class JsonTable {
 		} catch (error) {
 			console.error("Error fetching JSON data:", error);
 		}
-	}
+	};
 
 	// async post_Datas(url, datas) {
 	// 	try {
@@ -220,7 +220,7 @@ class JsonTable {
 				this.rowsPerPage = e.target.value;
 				this.renderTable();
 			});
-}
+};
 
 	renderTable(which = "all") {
 		if (which == "all") {
@@ -234,18 +234,18 @@ class JsonTable {
 			this.createPerPageSelect();
 		}
 		// infos.innerHTML = `${this.filteredData.length} sur ${this.data.length} total`
-	}
+	};
 
 	headerAttribute() {
 		return 'white-space: nowrap; width: 1%; font-weight: lighter;font-size: 14px;';
-	}
+	};
 
 	async site(element) {
 		const colName = element.value.split('|')[0];
 		const uniqueValues = [...new Set(this.data.map((row) => row[colName]))];
 		const temp = await postDatas(`${window.location.origin}/site/rapprochement`, {unique: uniqueValues});
 		if (temp) showModalList("Fichier Excel", "Base de données", temp, 'Trouvé');
-	}
+	};
 	renderHeader() {
 		const tableHeader = this.container.querySelector("thead");
 		tableHeader.innerHTML = "<tr></tr>";
@@ -438,7 +438,7 @@ class JsonTable {
 			.forEach((btn) =>
 				btn.addEventListener("click", (e) => open(window.location.origin + '/print' + this.printUrl + e.target.parentNode.closest('tr').id, "Imprimer", _PARAMPRINT))
 			);
-		}
+		};
 
 	filterSelected(value) {
 		value = String(value);
@@ -449,7 +449,7 @@ class JsonTable {
 		}
 		this.currentPage = 1; // Reset to first page
 		this.renderTable("rows");		
-	}
+	};
 
 	renderPagination() {
 		this.paginationContainer.innerHTML = "";
@@ -493,7 +493,7 @@ class JsonTable {
 				this.renderPageLink(pageNumber, currentPage);
 			}
 		}
-	}
+	};
 
 	renderPageLink(pageNumber, currentPage) {
 		const li = document.createElement("li");
@@ -516,7 +516,7 @@ class JsonTable {
 
 		li.appendChild(a);
 		this.paginationContainer.appendChild(li);
-	}
+	};
 
 	renderPaginationGap() {
 		const li = document.createElement("li");
@@ -526,7 +526,7 @@ class JsonTable {
 		span.textContent = "...";
 		li.appendChild(span);
 		this.paginationContainer.appendChild(li);
-	}
+	};
 
 	updateActivePage(page) {
 		const paginationItems = this.paginationContainer.querySelectorAll(
@@ -539,7 +539,7 @@ class JsonTable {
 				item.classList.add("active");
 			}
 		});
-	}
+	};
 
 	addGlobalSearchListener() {
 		if (this.globalSearchInput) {
@@ -547,7 +547,7 @@ class JsonTable {
 				this.filterGlobal(e.target.value)
 			);
 		}
-	}
+	};
 
 	getRow(id) {
 		this.filteredData = this.data.filter((row) =>
@@ -555,12 +555,12 @@ class JsonTable {
 		);
 		this.currentPage = 1;
 		this.renderTable();
-	}
+	};
 
 	filterById(id) {
 		id = Number(id);
 		return this.data.filter((row) => row.id == id);
-	}
+	};
 
 	filterGlobal(value) {
 		const lowerValue = value.toLowerCase();
@@ -571,7 +571,7 @@ class JsonTable {
 		);
 		this.currentPage = 1;
 		this.renderTable();
-	}
+	};
 
 	// remove all blank or non present column from seleted excel
 	filterBlankColumn() {		
@@ -594,7 +594,7 @@ class JsonTable {
 		})
 		this.currentPage = 1; // Reset to first page
 		this.renderTable("rows");
-	}
+	};
 
 	filterColumn(key, value) {
 		// Filter data based on specific column key and input value
@@ -622,7 +622,7 @@ class JsonTable {
 		// Re-render table rows and pagination after filtering
 		this.currentPage = 1; // Reset to first page
 		this.renderTable("rows");
-	}
+	};
 
 	adjustTfootSearchFields() {
 		// Adjust tfoot search fields
@@ -631,7 +631,7 @@ class JsonTable {
 		const th = document.createElement("th");
 		th.textContent = ""; // Adjust as needed based on your table structure
 		tfoot.insertBefore(th, tfoot.firstElementChild); // Adjust based on your specific structure
-	}
+	};
 
 	toggleSort(column) {
 		if (this.sortColumn === column) {
@@ -641,7 +641,7 @@ class JsonTable {
 			this.sortOrder = "asc";
 		}
 		this.renderRows();
-	}
+	};
 }
 
 

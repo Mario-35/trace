@@ -12,7 +12,7 @@ getDatas = async (url, text) => {
 		log(error);
 		return undefined
 	}
-}
+};
 
 postDatas = async (url, datas) => {
 	try {
@@ -28,4 +28,4 @@ postDatas = async (url, datas) => {
 		log(error);
 		return undefined
 	}
-}
+};

@@ -655,7 +655,7 @@ export class Add extends CoreHtmlView {
 									</div>  
 									
 									<div class="btn-group">                   
-										<button class="btn btn-aliquote" id="btn-aliquote" disabled>⬅ Créer une aliquote</button>
+										<button tooltip="L'état ne peut être créer ou importer" class="btn btn-aliquote" id="btn-aliquote" disabled>⬅ Créer une aliquote</button>
 										<button class="btn btn-next" id="next-1">Suivant ➡</button>
 									</div>
 								</div>
