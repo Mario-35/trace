@@ -110,7 +110,7 @@ export class List extends CoreHtmlView {
     </main>
 </body> 
 <script nonce="${_NONCE}" src="./js/api.js"></script>
-<script>const structure = ${JSON.stringify(listCols)}</script>
+<script nonce="${_NONCE}">const structure = ${JSON.stringify(listCols)}</script>
 <script nonce="${_NONCE}" src="./js/configuration.js"></script>
 <script nonce="${_NONCE}" src="./js/constants.js"></script>
 <script nonce="${_NONCE}" src="./js/all.js"></script>

@@ -38,12 +38,12 @@ export class Echantillon extends CoreHtmlView {
                             '<body>',
                             '<div class="content" id="passeportsContent"></div>',
                             '</body> ',
-                            '<script>',
+                            `<script nonce="${_NONCE}">`,
                             `_DATAPI = ${JSON.stringify(this.datas)}`,
                             '</script>',
                             `<script nonce="${_NONCE}" src="./js/constants.js"></script>`,
                             `<script nonce="${_NONCE}" src="./js/api/print.js"></script>`,
-                            '<script>start()</script>',
+                            `<script nonce="${_NONCE}">start()</script>`,
                             '</html>'].map((e: string) => e.trim());
     }
 

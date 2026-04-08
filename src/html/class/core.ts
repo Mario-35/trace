@@ -68,19 +68,19 @@ operations.forEach((operation: any) => {
     getFile(name: string) {
         return name.includes('css/')
             ? `<style>${this.addFile(`../../public/${name}`)}</style>`
-            : `<script>${this.addFile(`../../public/${name}`)}</script>`;
+            : `<script nonce="${_NONCE}">${this.addFile(`../../public/${name}`)}</script>`;
     }
 
     replaceFile(name: string) {
         if(name.includes('css/'))
             this.replaceInReturnResult(`<link rel="stylesheet" href="./${name}">`, `<style>${this.addFile(`../../public/${name}`)}</style>`);
-            else this.replaceInReturnResult(`<script nonce="${_NONCE}" src="./${name}"></script>`, `<script>${this.addFile(`../../public/${name}`)}</script>`);
+            else this.replaceInReturnResult(`<script nonce="${_NONCE}" src="./${name}"></script>`, `<script nonce="${_NONCE}">${this.addFile(`../../public/${name}`)}</script>`);
     }
 
     replaceText(name: string, content: string) {
         if(name.includes('css/'))
             this.replaceInReturnResult(`<link rel="stylesheet" href="./${name}">`, `<style>${content}</style>`);
-            else this.replaceInReturnResult(`<script nonce="${_NONCE}" src="./${name}"></script>`, `<script>${content}</script>`);
+            else this.replaceInReturnResult(`<script nonce="${_NONCE}" src="./${name}"></script>`, `<script nonce="${_NONCE}">${content}</script>`);
 
     }
 
