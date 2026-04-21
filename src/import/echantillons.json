@@ -56083,75 +56083,6 @@
             "condition": null,
             "site": "Parcelle F008",
             "responsable": "S. Menasseri",
-            "identification": "1504202609240295",
-            "parent": "1903202611440051",
-            "dossier": "440",
-            "libre": null,
-            "creation": "2026-04-15T07:24:01.729",
-            "prelevement": "2026-04-07",
-            "peremption": "2031-04-07",
-            "pays": "France",
-            "region": "Bretagne",
-            "latitude": "48.12944",
-            "longitude": "-1.72301",
-            "passeport": null,
-            "cultures": {},
-            "stockage": {},
-            "etiquette": {
-                "sticker0": {
-                    "key": "identification",
-                    "size": "12px",
-                    "align": "center"
-                },
-                "sticker1": {
-                    "key": "programme",
-                    "size": "12px",
-                    "align": "center"
-                },
-                "sticker2": {
-                    "key": "dossier-numero",
-                    "size": "14px",
-                    "align": "center"
-                },
-                "sticker3": {
-                    "key": "responsable",
-                    "size": "12px",
-                    "align": "center"
-                },
-                "sticker4": {
-                    "key": "site",
-                    "size": "12px",
-                    "align": "center"
-                },
-                "sticker5": {
-                    "key": "analyses",
-                    "size": "12px",
-                    "align": "center"
-                }
-            },
-            "analyses": [
-                "Humidité pondérale (Respiration ABM)",
-                "Biomasse microbienne - fumigé",
-                "Biomasse microbienne - non fumigé",
-                "Sol séché 5 mm",
-                "Analyse de base",
-                "Respiration",
-                "ABM T0",
-                "ABM T7",
-                "POM",
-                "MAOM",
-                "Stabilite agregat 1-2 mm",
-                "Stabilite agregat 3-5 mm"
-            ],
-            "etat": "Créer"
-        },
-        {
-            "type": "Sol",
-            "programme": "Thése Michael Briere",
-            "pedagogique": false,
-            "condition": null,
-            "site": "Parcelle F008",
-            "responsable": "S. Menasseri",
             "identification": "1504202609240296",
             "parent": "1903202611440051",
             "dossier": "440",
@@ -56199,18 +56130,7 @@
                 }
             },
             "analyses": [
-                "Humidité pondérale (Respiration ABM)",
-                "Biomasse microbienne - fumigé",
-                "Biomasse microbienne - non fumigé",
-                "Sol séché 5 mm",
-                "Analyse de base",
-                "Respiration",
-                "ABM T0",
-                "ABM T7",
-                "POM",
-                "MAOM",
-                "Stabilite agregat 1-2 mm",
-                "Stabilite agregat 3-5 mm"
+                "Biomasse microbienne - fumigé"
             ],
             "etat": "Créer"
         },
@@ -56268,18 +56188,7 @@
                 }
             },
             "analyses": [
-                "Humidité pondérale (Respiration ABM)",
-                "Biomasse microbienne - fumigé",
-                "Biomasse microbienne - non fumigé",
-                "Sol séché 5 mm",
-                "Analyse de base",
-                "Respiration",
-                "ABM T0",
-                "ABM T7",
-                "POM",
-                "MAOM",
-                "Stabilite agregat 1-2 mm",
-                "Stabilite agregat 3-5 mm"
+                "Biomasse microbienne - non fumigé"
             ],
             "etat": "Créer"
         },
@@ -56337,18 +56246,7 @@
                 }
             },
             "analyses": [
-                "Humidité pondérale (Respiration ABM)",
-                "Biomasse microbienne - fumigé",
-                "Biomasse microbienne - non fumigé",
-                "Sol séché 5 mm",
-                "Analyse de base",
-                "Respiration",
-                "ABM T0",
-                "ABM T7",
-                "POM",
-                "MAOM",
-                "Stabilite agregat 1-2 mm",
-                "Stabilite agregat 3-5 mm"
+                "Sol séché 5 mm"
             ],
             "etat": "Créer"
         },
@@ -56406,87 +56304,7 @@
                 }
             },
             "analyses": [
-                "Humidité pondérale (Respiration ABM)",
-                "Biomasse microbienne - fumigé",
-                "Biomasse microbienne - non fumigé",
-                "Sol séché 5 mm",
-                "Analyse de base",
-                "Respiration",
-                "ABM T0",
-                "ABM T7",
-                "POM",
-                "MAOM",
-                "Stabilite agregat 1-2 mm",
-                "Stabilite agregat 3-5 mm"
-            ],
-            "etat": "Créer"
-        },
-        {
-            "type": "Sol",
-            "programme": "Thése Michael Briere",
-            "pedagogique": false,
-            "condition": null,
-            "site": "Parcelle F008",
-            "responsable": "S. Menasseri",
-            "identification": "1504202609240300",
-            "parent": "1903202611440051",
-            "dossier": "440",
-            "libre": null,
-            "creation": "2026-04-15T07:24:01.729",
-            "prelevement": "2026-04-07",
-            "peremption": "2031-04-07",
-            "pays": "France",
-            "region": "Bretagne",
-            "latitude": "48.12944",
-            "longitude": "-1.72301",
-            "passeport": null,
-            "cultures": {},
-            "stockage": {},
-            "etiquette": {
-                "sticker0": {
-                    "key": "identification",
-                    "size": "12px",
-                    "align": "center"
-                },
-                "sticker1": {
-                    "key": "programme",
-                    "size": "12px",
-                    "align": "center"
-                },
-                "sticker2": {
-                    "key": "dossier-numero",
-                    "size": "14px",
-                    "align": "center"
-                },
-                "sticker3": {
-                    "key": "responsable",
-                    "size": "12px",
-                    "align": "center"
-                },
-                "sticker4": {
-                    "key": "site",
-                    "size": "12px",
-                    "align": "center"
-                },
-                "sticker5": {
-                    "key": "analyses",
-                    "size": "12px",
-                    "align": "center"
-                }
-            },
-            "analyses": [
-                "Humidité pondérale (Respiration ABM)",
-                "Biomasse microbienne - fumigé",
-                "Biomasse microbienne - non fumigé",
-                "Sol séché 5 mm",
-                "Analyse de base",
-                "Respiration",
-                "ABM T0",
-                "ABM T7",
-                "POM",
-                "MAOM",
-                "Stabilite agregat 1-2 mm",
-                "Stabilite agregat 3-5 mm"
+                "Analyse de base"
             ],
             "etat": "Créer"
         },
@@ -56544,18 +56362,7 @@
                 }
             },
             "analyses": [
-                "Humidité pondérale (Respiration ABM)",
-                "Biomasse microbienne - fumigé",
-                "Biomasse microbienne - non fumigé",
-                "Sol séché 5 mm",
-                "Analyse de base",
-                "Respiration",
-                "ABM T0",
-                "ABM T7",
-                "POM",
-                "MAOM",
-                "Stabilite agregat 1-2 mm",
-                "Stabilite agregat 3-5 mm"
+                "ABM T0"
             ],
             "etat": "Créer"
         },
@@ -56613,18 +56420,7 @@
                 }
             },
             "analyses": [
-                "Humidité pondérale (Respiration ABM)",
-                "Biomasse microbienne - fumigé",
-                "Biomasse microbienne - non fumigé",
-                "Sol séché 5 mm",
-                "Analyse de base",
-                "Respiration",
-                "ABM T0",
-                "ABM T7",
-                "POM",
-                "MAOM",
-                "Stabilite agregat 1-2 mm",
-                "Stabilite agregat 3-5 mm"
+                "ABM T7"
             ],
             "etat": "Créer"
         },
@@ -56682,18 +56478,7 @@
                 }
             },
             "analyses": [
-                "Humidité pondérale (Respiration ABM)",
-                "Biomasse microbienne - fumigé",
-                "Biomasse microbienne - non fumigé",
-                "Sol séché 5 mm",
-                "Analyse de base",
-                "Respiration",
-                "ABM T0",
-                "ABM T7",
-                "POM",
-                "MAOM",
-                "Stabilite agregat 1-2 mm",
-                "Stabilite agregat 3-5 mm"
+                "POM"
             ],
             "etat": "Créer"
         },
@@ -56751,18 +56536,7 @@
                 }
             },
             "analyses": [
-                "Humidité pondérale (Respiration ABM)",
-                "Biomasse microbienne - fumigé",
-                "Biomasse microbienne - non fumigé",
-                "Sol séché 5 mm",
-                "Analyse de base",
-                "Respiration",
-                "ABM T0",
-                "ABM T7",
-                "POM",
-                "MAOM",
-                "Stabilite agregat 1-2 mm",
-                "Stabilite agregat 3-5 mm"
+                "MAOM"
             ],
             "etat": "Créer"
         },
@@ -56820,18 +56594,7 @@
                 }
             },
             "analyses": [
-                "Humidité pondérale (Respiration ABM)",
-                "Biomasse microbienne - fumigé",
-                "Biomasse microbienne - non fumigé",
-                "Sol séché 5 mm",
-                "Analyse de base",
-                "Respiration",
-                "ABM T0",
-                "ABM T7",
-                "POM",
-                "MAOM",
-                "Stabilite agregat 1-2 mm",
-                "Stabilite agregat 3-5 mm"
+                "Stabilite agregat 1-2 mm"
             ],
             "etat": "Créer"
         },
@@ -56889,17 +56652,6 @@
                 }
             },
             "analyses": [
-                "Humidité pondérale (Respiration ABM)",
-                "Biomasse microbienne - fumigé",
-                "Biomasse microbienne - non fumigé",
-                "Sol séché 5 mm",
-                "Analyse de base",
-                "Respiration",
-                "ABM T0",
-                "ABM T7",
-                "POM",
-                "MAOM",
-                "Stabilite agregat 1-2 mm",
                 "Stabilite agregat 3-5 mm"
             ],
             "etat": "Créer"
@@ -80565,6 +80317,122 @@
             },
             "analyses": [
                 "Stabilite agregat 3-5 mm"
+            ],
+            "etat": "Créer"
+        },
+        {
+            "type": "Sol",
+            "programme": "Thése Michael Briere",
+            "pedagogique": false,
+            "condition": null,
+            "site": "Parcelle F008",
+            "responsable": "S. Menasseri",
+            "identification": "1504202609240295",
+            "parent": "1903202611440051",
+            "dossier": "440",
+            "libre": null,
+            "creation": "2026-04-15T07:24:01.729",
+            "prelevement": "2026-04-07",
+            "peremption": "2031-04-07",
+            "pays": "France",
+            "region": "Bretagne",
+            "latitude": "48.12944",
+            "longitude": "-1.72301",
+            "passeport": null,
+            "cultures": {},
+            "stockage": {},
+            "etiquette": {
+                "sticker0": {
+                    "key": "identification",
+                    "size": "12px",
+                    "align": "center"
+                },
+                "sticker1": {
+                    "key": "programme",
+                    "size": "12px",
+                    "align": "center"
+                },
+                "sticker2": {
+                    "key": "dossier-numero",
+                    "size": "14px",
+                    "align": "center"
+                },
+                "sticker3": {
+                    "key": "responsable",
+                    "size": "12px",
+                    "align": "center"
+                },
+                "sticker4": {
+                    "key": "site",
+                    "size": "12px",
+                    "align": "center"
+                },
+                "sticker5": {
+                    "key": "analyses",
+                    "size": "12px",
+                    "align": "center"
+                }
+            },
+            "analyses": [
+                "Humiditépondérale(RespirationABM)"
+            ],
+            "etat": "Créer"
+        },
+        {
+            "type": "Sol",
+            "programme": "Thése Michael Briere",
+            "pedagogique": false,
+            "condition": null,
+            "site": "Parcelle F008",
+            "responsable": "S. Menasseri",
+            "identification": "1504202609240300",
+            "parent": "1903202611440051",
+            "dossier": "440",
+            "libre": null,
+            "creation": "2026-04-15T05:24:01.729",
+            "prelevement": "2026-04-07",
+            "peremption": "2031-04-07",
+            "pays": "France",
+            "region": "Bretagne",
+            "latitude": "48.12944",
+            "longitude": "-1.72301",
+            "passeport": null,
+            "cultures": {},
+            "stockage": {},
+            "etiquette": {
+                "sticker0": {
+                    "key": "identification",
+                    "size": "12px",
+                    "align": "center"
+                },
+                "sticker1": {
+                    "key": "programme",
+                    "size": "12px",
+                    "align": "center"
+                },
+                "sticker2": {
+                    "key": "dossier-numero",
+                    "size": "14px",
+                    "align": "center"
+                },
+                "sticker3": {
+                    "key": "responsable",
+                    "size": "12px",
+                    "align": "center"
+                },
+                "sticker4": {
+                    "key": "site",
+                    "size": "12px",
+                    "align": "center"
+                },
+                "sticker5": {
+                    "key": "analyses",
+                    "size": "12px",
+                    "align": "center"
+                }
+            },
+            "analyses": [
+                "Respiration"
             ],
             "etat": "Créer"
         },

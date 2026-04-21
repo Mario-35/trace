@@ -164,7 +164,7 @@ création d’un passeport par parcelle peut se faire à travers
 de l’UMR SAS.](## "L’outil Trace développé par M. Adam est accessible via l’intranet de l’UMR : l’essentiel de l’intranet =>
 traçabilité des échantillons.")**
 
-Cet outil a été développé en premier lieu pour assurer la traçabilité de tout échantillon de sol
+Cet outil a été développé en premier lieu pour assurer la traçabilité de tout échantillon
 entrant dans les locaux de l’UMR SAS et ce, quelle que soit son origine géographique : cela
 se traduit par la création d’une étiquette d’identification de chaque échantillon (Figure 2a) où
 figure un numéro unique d’échantillon permettant son identification tout au long de son
