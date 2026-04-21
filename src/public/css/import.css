@@ -58,14 +58,13 @@
 
 
 .something {
-  background: rgb(184, 179, 179) !important;
-    color: #fff;
-
+	background: rgb(184, 179, 179) !important;
+	color: #fff;
 }
 
 .excel-control option {
-  margin: 80px;
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+	margin: 80px;
+	background: rgba(0, 0, 0, 0.3);
+	color: #fff;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }

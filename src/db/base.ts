@@ -92,6 +92,12 @@ export const dataBase: Idb = {
         create: "text[] NOT NULL",
         list : true                
       },
+      "print": {
+        type: "json",
+        title: "Paramètres Imprimante",
+        create: "jsonb NULL",
+        list: false               
+      },
       "etiquette": {
         type: "json",
         title: "Paramètres étiquettes",
@@ -101,6 +107,7 @@ export const dataBase: Idb = {
     },
     "constraints" : []
   },
+  
   "passeports" : {
     save: true,
     create: true,
@@ -161,7 +168,8 @@ export const dataBase: Idb = {
         "constraints" : [
           "CONSTRAINT passeport_pkey PRIMARY KEY (id)"
         ]
-  }, 
+  },
+  
   "campagnes" : {
     save: false,
     create: false,
@@ -235,7 +243,8 @@ export const dataBase: Idb = {
     },
             
       "constraints" : ["CONSTRAINT echantillons_pkey UNIQUE NULLS NOT DISTINCT (type, identification)"]
-  },   
+  },
+  
   "echantillons" : {
     save: true,
     create: true,
@@ -320,7 +329,7 @@ export const dataBase: Idb = {
           type: "text",
           title: "Numéro de dossier",
           create: "varchar(4) NOT NULL DEFAULT ''",
-          list: false,
+          list: true,
           excel: true,
           etiquette: "0029"
         },
@@ -427,7 +436,8 @@ export const dataBase: Idb = {
         },
     },
     "constraints" : ["CONSTRAINT echantillons_pkey UNIQUE NULLS NOT DISTINCT (type, identification)"]
-  },   
+  },
+  
   "rpg" : {
     save: true,
     create: true,
@@ -448,6 +458,7 @@ export const dataBase: Idb = {
     },              
     "constraints" : []
   },
+
   "sites" : {
     save: true,
     create: true,
@@ -486,7 +497,8 @@ export const dataBase: Idb = {
         },
     },
     "constraints" : ["CONSTRAINT sites_pkey PRIMARY KEY (id)"]
-  },    
+  },
+  
   "excels" : {
     save: false,
     create: true,
@@ -502,7 +514,8 @@ export const dataBase: Idb = {
         },
             
       "constraints" : []
-  },    
+  },  
+
   "selections" : {
     save: false,
     create: true,
@@ -518,7 +531,8 @@ export const dataBase: Idb = {
         },
             
       "constraints" : []
-  },    
+  },  
+
   "fichiers" : {
     save: true,
     create: true,
@@ -541,6 +555,7 @@ export const dataBase: Idb = {
             
       "constraints" : []
   },
+
   "evenements" : {
     save: true,
     create: true,

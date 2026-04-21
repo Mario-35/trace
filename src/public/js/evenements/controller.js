@@ -14,7 +14,7 @@ async function start() {
         date.value = now.split('T')[0];
         time.value = now.split('T')[1].split('.')[0];
 
-        addToOption(getElement('etat'), _CONFIGURATION.etats, datas.etat);
+        addToOption(getElement('etat'), _CONFIGURATION.etats.split(","), datas.etat);
         loadValues(datas);
         
         saveetat.value = String(datas.etat);

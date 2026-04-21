@@ -73,6 +73,8 @@ function createPasseport(element, values) {
 function start() {
     const printAble =  document.createElement('div');
     printAble.id = "printAble";
+    // printAble.style = `margin: 1px; width: ${_CONFIGURATION.print.width}; height: ${_CONFIGURATION.print.height}`;
+
     if (document.getElementById("passeportsContent")) {
         document.getElementById("passeportsContent").appendChild(printAble);
         Object.values(_DATAPI).forEach(e => createPasseport(printAble, e));
@@ -83,6 +85,5 @@ function start() {
     window.addEventListener("afterprint", (event) => {
         window.close();
     });
-    // if (_CONFIGURATION.debug === false) window.print();
-    window.print();
+    if (_CONFIGURATION.debug === false) window.print();
 }

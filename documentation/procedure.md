@@ -1,14 +1,17 @@
 # Procédures à respecter pour « Importer dans les locaux de l’UMR SAS des échantillons de sols prélevés hors de Bretagne »
 
 
-Version 2 du 15 avril 2026
+***Version 2 du 15 avril 2026***
 
 validée par P. Prigent, inspecteur phytosanitaire du SRAL
 
 ## 1.1. Introduction
 
 Par un règlement de la Commission Européenne en date du 28 novembre 2019 (règlement
-UE 2019/2072), la région Bretagne est reconnue comme une zone ^[1]protégé 
+UE 2019/2072), la région Bretagne est reconnue comme une zone 
+**[protégé](## "Quatre autres régions européennes ont ce statut de zone protégée contre la rhizomanie : l’Irlande, Les Açores
+(Portugal), la Finlande et l’Irlande du Nord (Royaume-Uni). Des échantillons qui proviendraient directement de
+ces zones protégées n’auraient pas besoin de passeport phytosanitaires.")** 
 
 (ZP) vis-à-vis du
 virus de la rhizomanie : c’est la seule région de France à avoir ce statut de zone protégée^1 et
@@ -18,7 +21,7 @@ des obligations réglementaires spécifiques que l’UMR SAS se doit de respecte
 Le statut de zone protégée implique que la mise en circulation de sol vers la Bretagne
 nécessite un _passeport phytosanitaire zone protégée_ (PPZP) attestant de la conformité à la
 réglementation : il faut ainsi pouvoir prouver que la parcelle naturelle ou cultivée qui est
-échantillonnée n’a pas connu une culture de betterave, plante hôte du virus, depuis au moins
+échantillonnée n’a pas connu une culture de betterave, git plante hôte du virus, depuis au moins
 15 ans.
 
 Cette fiche synthétique a pour objectif de récapituler l’ensemble des procédures qu’il faut
@@ -46,10 +49,6 @@ Trois cas de figure se présentent :
 3. Si l’échantillon provient d’un pays hors Communauté Européenne, il ne peut être
     réceptionné dans les locaux de l’UMR SAS.
 
-^[1]: Quatre autres régions européennes ont ce statut de zone protégée contre la rhizomanie : l’Irlande, Les Açores
-(Portugal), la Finlande et l’Irlande du Nord (Royaume-Uni). Des échantillons qui proviendraient directement de
-ces zones protégées n’auraient pas besoin de passeport phytosanitaires.
-
 
 _Figure 1 : Logigramme pour la réception d’échantillons de sols dans les locaux de l’UMR SAS en Bretagne_
 
@@ -70,21 +69,16 @@ parcelle au cours des 15 dernières années. Les étapes pour le faire sont les 
     (RPG) sur les 15 dernières années et compléter les informations en interrogeant
     l’exploitant de la parcelle.
 
-```
-L’API RPG disponible sur le serveur GEOSAS de l’UMR^2 permet d’interroger le
+L’API RPG disponible sur le serveur GEOSAS de l'**[UMR](## "Accessible dans la rubrique « Portails thématiques » : https://geosas.fr/rhizomanie. Vous pouvez aussi
+directement utiliser l’outil Trace développé par M. Adam.")**  permet d’interroger le
 Référentiel Parcellaire Graphique et d’identifier un groupe de cultures par îlot de
 parcelles pour les années avant 2015 et une culture par parcelle après 2015. Les
 cultures des deux dernières années ne sont par contre pas renseignées du fait des délais
 de mise en ligne des informations.
-```
-(^2) Accessible dans la rubrique « Portails thématiques » : https://geosas.fr/rhizomanie. Vous pouvez aussi
-directement utiliser l’outil _Trace_ développé par M. Adam (Cf. § page 4)
 
-
-```
 Plusieurs situations peuvent se rencontrer :
-```
-```
+
+
 a) Une culture de betterave est présente après 2015 : en l’état, la parcelle ne
 peut recevoir de passeport phytosanitaire et aucun échantillon de sol
 provenant de cette parcelle ne peut être réceptionné en Bretagne : se rendre
@@ -99,7 +93,7 @@ inclure des betteraves est identifié avant 2015 : il faut alors interroger
 l’exploitant de la parcelle sur les cultures en place pour les années avant 2015
 et les années récentes non renseignées dans le RPG, pour qu’il certifie de
 l’absence de betteraves au cours des 15 dernières années.
-```
+
 3. Dans le cas d’une parcelle non cultivée : interroger une couche donnant l’occupation
     du sol, par exemple sur le site cartes.gouv.fr pour une parcelle située en France
 
@@ -108,7 +102,8 @@ l’absence de betteraves au cours des 15 dernières années.
 #### parcelle et ce test est-il négatif?
 
 Philippe Prigent, inspecteur phytosanitaire du Service Régional de l’Alimentation (SRAL) de la
-DRAAF-Bretagne^3 , a confirmé le 3 mars 2026 la possibilité de réaliser un test homologué de
+**[DRAAF-Bretagne](## "Il s’agit du correspondant du SRAL pour l’UMR SAS sur ces questions (philippe.prigent@agriculture.gouv.fr ; 02
+99 28 21 32).")** , a confirmé le 3 mars 2026 la possibilité de réaliser un test homologué de
 rhizomanie, pour permettre si le résultat est négatif, l’attribution d’un passeport phytosanitaire
 sur une parcelle avec un passé de betteraves.
 
@@ -119,27 +114,20 @@ opérateur professionnel "sous supervision de l'autorité compétente"). Le SRAL
 l’UMR SAS à délivrer des passeports phytosanitaires et à ce titre nous autorise également à
 effectuer nous-mêmes les prélèvements de sol permettant de faire ce test. Pour cela :
 
-- Le prélèvement doit respecter les consignes d’échantillonnage 4 délivrées par
+- Le prélèvement doit respecter les consignes **[d’échantillonnage](## "Le protocole de l’ANSES est accessible à l’adresse :
+https://www.anses.fr/system/files/ANSES_LSV_MA061_V1.pdf.")** délivrées par
     l’ANSES pour prélever des échantillons permettant de faire un test biologique
     permettant la détection du virus de la rhizomanie (Beet necrotic yellow vein virus,
     BNYVV).
-- Les échantillons doivent être transmis au laboratoire Eurofins^5 , seul laboratoire agréé
+- Les échantillons doivent être transmis au laboratoire **[Eurofins](## "Laboratoire de Pathologie Végétale, 81 rue Bernard Palissy 62750 Loos e-en-Gohélie. Contact :
+Christophe Wattier, responsable Qualité et R&D, Christopher.Wattier@ftfr.eurofins.com, 03 32 42 62 15.")**, seul laboratoire agréé
     en France pour réaliser le test de détection du virus BNYVV selon la méthode
-    ANSES/LSV/MA061^6
+    **[ANSES/LSV/MA061](## "En février 2026, le prix d’un test facturé par Eurofins est de 293 euros HT par échantillon, à quoi il faut ajouter
+le coût du transport.")**
 
 Aucun passeport phytosanitaire ne peut être délivré sans confirmation d’un résultat négatif
 du test biologique et les échantillons de sol de la parcelle d’intérêt ne peuvent donc entrer en
 Bretagne avant réception des résultats transmis par le laboratoire Eurofins.
-
-(^3) Il s’agit du correspondant du SRAL pour l’UMR SAS sur ces questions (philippe.prigent@agriculture.gouv.fr ; 02
-99 28 21 32)
-(^4) Le protocole de l’ANSES est accessible à l’adresse :
-https://www.anses.fr/system/files/ANSES_LSV_MA061_V1.pdf
-(^5) Eurofins, Laboratoire de Pathologie Végétale, 81 rue Bernard Palissy 62750 Loos e-en-Gohélie. Contact :
-Christophe Wattier, responsable Qualité et R&D, Christopher.Wattier@ftfr.eurofins.com, 03 32 42 62 15
-(^6) En février 2026, le prix d’un test facturé par Eurofins est de 293 euros HT par échantillon, à quoi il faut ajouter
-le coût du transport.
-
 
 ## II. La création d’un passeport phytosanitaire
 
@@ -170,8 +158,11 @@ Pour cela, l’UMR s’engage à respecter cinq conditions :
 ### phytosanitaire?
 
 Quand les conditions permettant de délivrer un passeport phytosanitaire sont remplies, la
-création d’un passeport par parcelle peut se faire à travers l’outil développé par Mario Adam
-de l’UMR SAS.^7
+création d’un passeport par parcelle peut se faire à travers
+
+**[l’outil développé par Mario Adam
+de l’UMR SAS.](## "L’outil Trace développé par M. Adam est accessible via l’intranet de l’UMR : l’essentiel de l’intranet =>
+traçabilité des échantillons.")**
 
 Cet outil a été développé en premier lieu pour assurer la traçabilité de tout échantillon de sol
 entrant dans les locaux de l’UMR SAS et ce, quelle que soit son origine géographique : cela
@@ -188,10 +179,6 @@ matérialise par l’impression d’une seconde étiquette (Figure 2b) répondan
 réglementaires et devant être accolée sur tous les contenants de cet échantillon au cours de
 son cycle d’analyse. Plusieurs échantillons prélevés dans une même parcelle auront donc la
 même étiquette de passeport phytosanitaire.
-
-(^7) L’outil Trace développé par M. Adam est accessible via l’intranet de l’UMR : l’essentiel de l’intranet =>
-traçabilité des échantillons
-
 
 ##### A B
 

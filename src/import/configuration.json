@@ -22,6 +22,10 @@
             "stockages": [
                 "Batiment,Etage,Piece,Meuble,Etagere,Caisse"
             ],
+            "print": {
+                "width": "50mm",
+                "height": "25mm"
+            },
             "etiquette": {
                 "sticker0": {
                     "key": "identification",

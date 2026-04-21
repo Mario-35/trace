@@ -23,9 +23,25 @@ document.getElementById("splitter-nav-site").innerHTML = `
     <img src="./assets/logo.png">
 </nav>`;
 
+function toTitleCase(str) {
+    try {
+        return str.toLowerCase().split(' ').map((word) => {
+            return (word.charAt(0).toUpperCase() + word.slice(1));
+        }).join(' ');
+        
+    } catch (error) {
+        return str        
+    }
+}
+
 function addToOption(name, listElements, selected) {
+    console.log(listElements);
+    
     var select = getElement(name);
+    
     if (select) listElements.forEach(e => {
+        e = toTitleCase(e);
+        console.log(e);
         var opt = document.createElement('option');
         opt.value = e;
         opt.innerHTML = e;
