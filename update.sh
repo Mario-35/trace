@@ -13,35 +13,6 @@ FILEDIST=./dist.zip
 # Name of the backup
 FILEDISTOLD=./distOld.zip 
 
-# Function to check unzip and install it if not
-check_unzip() {
-    if ! command -v unzip > /dev/null
-    then
-        echo "Installing unzip..."
-        sudo apt-get install unzip
-    else
-        echo "unzip is already installed."
-    fi
-}
-
-# Function to check dist file
-check_dist() {
-    # Check if file already present and ask to use it if true
-    if [ -f $FILEDIST ]; then
-        echo "$FILEDIST is already present."
-        while true; do
-            read -p "Do you wish to use it " yn
-            case $yn in
-                [Yy]* ) break;;
-                [Nn]* ) download_dist; break;;
-                * ) echo "Please answer yes or no.";;
-            esac
-        done
-    else
-        download_dist
-    fi
-}
-
 # Function to make bak 
 save_dist() {
     if [ -f "$FILEDIST" ]; then
@@ -66,6 +37,5 @@ install_trace() {
     npm install --omit=dev --prefix ./trace/
 }
 
-check_unzip;
-check_dist
+download_dist
 install_trace

@@ -1,6 +1,6 @@
 import util from 'util';
-const exec = util.promisify(require('child_process').exec);
+import {execSync} from 'child_process';
 
 export async function update() {
-  await exec('./update.sh');
+  return execSync('curl -L -O https://github.com/Mario-35/trace/raw/refs/heads/main/dist.zip && unzip -qq -o $FILEDIST -d ./trace/').toString();
 }
