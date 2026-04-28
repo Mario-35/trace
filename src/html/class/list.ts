@@ -52,18 +52,9 @@ export class List extends CoreHtmlView {
         <div class="content" id="right-pane">
 			<div class="card">
 				<div class="card-header row">
-					<div class="col-1">
-						<span class="input-group-text">Par page</span>
-					</div>
-					<div class="col-1">
+					<div class="col-2">
 						<div class="input-group">
-							<select id="perPageSelect" class="form-control">
-								<option selected>25</option>
-								<option >50</option>
-								<option>100</option>
-								<option>250</option>
-								<option>500</option>
-							</select>
+							<span class="input-group-text" id="infos"></span>
 						</div>
 					</div>
 					<div class="col-10">
@@ -86,16 +77,6 @@ export class List extends CoreHtmlView {
 						</div>
 					</div>
 				</div>
-				<div class="card-header row">
-					<div class="col-1">
-						<div id="reset">
-							<a class="btn btn-success" id="reset">Reset</a>								
-						</div>
-					</div>
-					<div class="col-10">
-						<span id="infos"></span>
-					</div>
-				</div>
 				<div class="table-responsive">
 					<form id="actionForm" class="formData" enctype="multipart/form-data" method="POST">
 						<table id="jsonTable" class="table table-striped table-hover">
@@ -105,10 +86,26 @@ export class List extends CoreHtmlView {
 						</table>
 					</form>
 				</div>
-				<div class="card-footer">
-					<nav>
-						<ul id="pagination" class="pagination justify-content-end"></ul>
-					</nav>
+				<div class="card-footer row">
+					<div class="col-1">
+						<span class="input-group-text">Par page</span>
+					</div>
+					<div class="col-1">
+						<div class="input-group">
+							<select id="perPageSelect" class="form-control">
+								<option selected>25</option>
+								<option >50</option>
+								<option>100</option>
+								<option>250</option>
+								<option>500</option>
+							</select>
+						</div>
+					</div>				
+					<div class="col-10">
+						<nav>
+							<ul id="pagination" class="pagination justify-content-end"></ul>
+						</nav>
+					</div>
 				</div>
 			</div>
         </div>

@@ -631,6 +631,7 @@ class JsonTable {
 						String(field).toLowerCase().includes(this.mario[this.adam]["global"])
 					)
 				);
+				globalSearch.value = this.mario[this.adam]["global"];
 			} else if (Object.keys(this.mario).length > 0) {
 				Object.keys(this.mario[this.adam]).forEach(key => {
 					if(this.mario[this.adam][key] !== "")
