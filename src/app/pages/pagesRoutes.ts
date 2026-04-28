@@ -86,7 +86,8 @@ pagesRoutes.get("/" + dataBase.echantillons.name + ".html", async (req, res) => 
 
 // print sample sticker
 pagesRoutes.get("/update", async (req, res) => {
-    res.status(201).send(await update());   
+    await update(); 
+    res.redirect('/');
 });
 
 // print sample sticker
