@@ -87,7 +87,7 @@ pagesRoutes.get("/update", async (req, res) => {
 
 // print sample sticker
 pagesRoutes.get("/new", async (req, res) => {
-    res.status(201).send({"new": "ok"});   
+    res.status(201).send({"new": "ok ca marche"});   
 });
 
 // print sample sticker
