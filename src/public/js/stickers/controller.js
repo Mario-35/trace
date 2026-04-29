@@ -26,7 +26,7 @@ function sticker_start(values) {
         if (document.title === "Configuration") 
             getElement(getElement("elementLabel").innerText).innerText = _CONFIGURATION.stickerElements[getElement("element").value];
         else 
-            getElement(getElement("elementLabel").innerText).innerText = getElement(getElement("element").value).value;
+            getElement(getElement("elementLabel").innerText).innerText = getElement(getElement("element").value.toLowerCase()).value;
         modifiedValue("etiquette");
     });
 

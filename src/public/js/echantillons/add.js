@@ -148,7 +148,7 @@ prevButtons.forEach((button, index) => {
 });
 
 function refreshSteps() {
-    disabled ("btn-creer", (isContextMode(["id", "selection"]) && Object.keys(filterModified(_DATAS)).length > 0) === false);
+    disabled ("btn-creer", (isContextMode(["id", "selection" , "selectionaliquote"]) && Object.keys(filterModified(_DATAS)).length > 0) === false);
 }
 
 updateProgressBar();

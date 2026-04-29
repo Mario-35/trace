@@ -39,7 +39,7 @@ function addToOption(name, listElements, selected) {
     for (i = 0; i < select.length; i++) 
         options.push(select.options[i].value);
     if (select) listElements.filter(e => !options.includes(e)).forEach(e => {
-        e = toTitleCase(e);
+        // e = toTitleCase(e);
         var opt = document.createElement('option');
         opt.value = e;
         opt.innerHTML = e;

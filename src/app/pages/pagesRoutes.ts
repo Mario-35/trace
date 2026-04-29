@@ -20,10 +20,6 @@ import { update } from "../../helpers/update";
 
 export const pagesRoutes = Router();
 
-pagesRoutes.get("/new", async (req, res) => {
-    res.status(201).send({"new": "ok ca marche"});   
-});
-
 // Get all echantillons
 pagesRoutes.get("/index", async (req, res) => {
     const html = new Index();
@@ -88,6 +84,8 @@ pagesRoutes.get("/" + dataBase.echantillons.name + ".html", async (req, res) => 
 pagesRoutes.get("/update", async (req, res) => {
     await update(); 
     res.redirect('/');
+    process.exit(0);
+
 });
 
 // print sample sticker
