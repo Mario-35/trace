@@ -38,22 +38,26 @@ export async function addEchantillon(values: any) {
       
       // alicotage insert
       if (values["parent"]) {
-            values["etat" as keyof object] = "Prélevé";
-            start = 0;
+            start = values["numero"] ? +values["numero"] : 0;
             // get all ids of the selection
             await readId(dataBase.selections.name, +values["selectionaliquote" as keyof object])
             .then(async (ids: any) => {
                   // loop ano all ids
                   await asyncForEach(ids[0].ids, async (id: string) => {
                         await readId(dataBase.echantillons.name, +id).then((echantillon: any) => {
+                              echantillon = echantillon[0 as keyof object];
+                              echantillon["parent" as keyof object] = echantillon["identification" as keyof object];
+                              echantillon["creation"] = values["creation"];
+                              // echantillon["prelevement"] = echantillon["prelevement"];
+                              // echantillon["peremption"] = echantillon["peremption"];
+                              echantillon["etiquette"] = values["etiquette"];
                               for (let loop = 0; loop < nb; loop++) {
                                     start = start + 1;
                                     const identification = tmpCode + String(start).padStart(4, '0');
                                     codesIdentification.push(identification);
-                                    values["identification" as keyof object] = identification
-                                    values["parent" as keyof object] = echantillon[0 as keyof object]["identification" as keyof object];
-                                    values["analyses"] = analyzes[loop];
-                                    queries.push(`INSERT INTO ${dataBase.echantillons.name} (${insertInto.join()}) VALUES (${createPgValues(dataBase.echantillons.name, values)})`);
+                                    echantillon["identification" as keyof object] = identification;
+                                    echantillon["analyses"] = analyzes[loop];
+                                    queries.push(`INSERT INTO ${dataBase.echantillons.name} (${insertInto.join()}) VALUES (${createPgValues(dataBase.echantillons.name, echantillon)})`);
                               }                
                         });
                   }); 

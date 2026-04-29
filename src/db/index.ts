@@ -21,7 +21,14 @@ export const sql = postgres('postgres://postgres:' + pwd + '@localhost:5432/trac
     max: 2000,
     connection: {
         application_name: `Echantillons`
-    }
+    }, types: {
+      date: {
+        to: 1184,
+        from: [1082, 1083, 1114, 1184],
+        serialize: (x: string) => x, // TypeScript to PostgreSQL
+        parse: (x: string) => x, // PostgreSQL to TypeScript
+      },
+    },
 });
 
 export function admin(password: string) {    

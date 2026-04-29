@@ -117,8 +117,8 @@ async function showAliquote(input) {
     
     // const temp = await getDatas(window.location.origin + "/echantillon/after/" + input.id);
     // setMin(getElement("numero"), temp);
-    multipleremoveInvisible(["nombre"]); 
-    removeReadOnly(["nombre"]); 
+    multipleremoveInvisible(["nombre","numero"]); 
+    removeReadOnly(["nombre","numero"]); 
     identification.value = createIdentification();
 }
 
