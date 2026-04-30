@@ -18,7 +18,7 @@ function changeTitle(title) {
   document.title = title;
 };
 
-// =======================> Vidible
+// =======================> Visible
 function setInvisible(element) {
   element = getElement(element);
   if(element) {

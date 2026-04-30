@@ -52,14 +52,10 @@ export class List extends CoreHtmlView {
         <div class="content" id="right-pane">
 			<div class="card">
 				<div class="card-header row">
-					<div class="col-2">
+					<div class="col-12">
 						<div class="input-group">
 							<span class="input-group-text" id="infos"></span>
 							<a class="btn btn-success" id="raz">RAZ</a>
-						</div>
-					</div>
-					<div class="col-10">
-						<div class="input-group">
 							<span class="input-group-text" id="nameType">${name}</span>
 							${src.create === true ? `
 								<div id="blockAjouter">

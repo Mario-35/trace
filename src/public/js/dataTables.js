@@ -3,8 +3,8 @@ document.querySelector("html").setAttribute("data-bs-theme", "dark");
 class JsonTable {
 	mariol = [];
 	constructor(options) {
-		this.adam = getElement("nameType").innerText;
-		this.mario = options.mario || JSON.parse(localStorage.getItem('filters')) || {};
+		this.nameOfType = getElement("nameType").innerText;
+		this.localSave = options.mario || JSON.parse(localStorage.getItem('filters')) || {};
 		this.jsonUrl = options.jsonUrl || "";
 		this.addUrl = options.addUrl || "";
 		this.seeUrl  = options.seeUrl || "";
@@ -42,20 +42,23 @@ class JsonTable {
 	}
 
 	removeToFilter(key) {
-		if(this.mario[this.adam])
-			delete this.mario[this.adam][key];
+		if(this.localSave[this.nameOfType])
+			delete this.localSave[this.nameOfType][key];
 	}
 
 	addToFilter(key, value) {
-		if(!this.mario[this.adam])
-			this.mario[this.adam] = {};
-		this.mario[this.adam][key] = value;
-		localStorage.setItem('filters', JSON.stringify(this.mario));
+		if(!this.localSave[this.nameOfType])
+			this.localSave[this.nameOfType] = {};
+		if (value.trim() === "")
+			delete this.localSave[this.nameOfType][key];
+		else this.localSave[this.nameOfType][key] = value;
+		localStorage.setItem('filters', JSON.stringify(this.localSave));
 
 	}
 	razFilter() {
-		delete this.mario[this.adam];
-		localStorage.setItem('filters', JSON.stringify(this.mario));
+		delete this.localSave[this.nameOfType];
+		localStorage.setItem('filters', JSON.stringify(this.localSave));
+		  this.filteredData = [...this.data];	
 		this.filterDatas();
 	}
 
@@ -68,6 +71,11 @@ class JsonTable {
 	  this.menu.style.left = `${left}px`;
 	  this.menu.style.top = `${top}px`;
 	  this.toggleMenu("show");
+	};
+
+	async exportExcel() {
+		const temp = await postDatas(window.location.origin + '/selection', {ids: this.filteredData.map(e => e.id)});
+		if (temp) window.location.href = window.location.origin + "/export.html?selection=" +  temp[0].id;
 	};
 
 
@@ -92,6 +100,11 @@ class JsonTable {
 
 		raz.addEventListener("click", e => {
 		  this.razFilter();
+		  this.renderTable("all");
+		});
+
+		if (getElement("exportExcel")) exportExcel.addEventListener("click", async e => {
+		  await this.exportExcel();
 		});
 
 		if (this.menu) this.menu.addEventListener("click", e => {
@@ -183,7 +196,7 @@ class JsonTable {
 			this.filteredData = [...this.data];			
 			if (!this.addUrl ||this.addUrl.trim() == "") return;
 
-						// change region value
+			// change region value
 			if (getElement('addSample'))
 				getElement('addSample').addEventListener('keydown', async (event) => {
 					// if return and france
@@ -265,14 +278,17 @@ class JsonTable {
 		const temp = await postDatas(`${window.location.origin}/site/rapprochement`, {unique: uniqueValues});
 		if (temp) showModalList("Fichier Excel", "Base de données", temp, 'Trouvé');
 	};
+
 	renderHeader() {
 		const tableHeader = this.container.querySelector("thead");
 		tableHeader.innerHTML = "<tr></tr>";
 		const headerRow = tableHeader.querySelector("tr");
 		if (this.editUrl)
 			headerRow.insertAdjacentHTML("afterbegin", `<th><button class="btn btn-success icon_edit btn-sm" id="editAll"></button></th>`);
+
 		if (this.select === true) 
 			headerRow.insertAdjacentHTML("afterbegin", `<th style="${this.headerAttribute()}"><label>Filter</label><select id="id-select" class="form-control excel-control"> <option value="">tout</option> <option value="true">✔️️</option> <option value="false">❌</option> </select></th>`);
+
 		this.columns.filter(e => e.key.toUpperCase() !== 'ID').forEach((column) => {
 			if(column.searchType !== "hidden") {
 				const th = document.createElement("th");
@@ -336,8 +352,8 @@ class JsonTable {
 						const selectBoolean = document.createElement("select");
 						selectBoolean.className = "form-control";
 						selectBoolean.innerHTML = `<option value="">Etat</option><option value="true">✔️️</option> <option value="false">❌</option>`;
-						if (this.mario[this.adam] && this.mario[this.adam][column.key])
-							selectBoolean.value = this.mario[this.adam][column.key];
+						if (this.localSave[this.nameOfType] && this.localSave[this.nameOfType][column.key])
+							selectBoolean.value = this.localSave[this.nameOfType][column.key];
 						selectBoolean.addEventListener("change", (e) => {
 							const tmp = e.target.value === "true" ? true : e.target.value === "false" ? false : '';
 							if (typeof tmp === "boolean") this.addToFilter(column.key, tmp); else this.removeToFilter(column.key);
@@ -349,8 +365,8 @@ class JsonTable {
 					default:
 						const input = document.createElement("input");
 						input.type = "text";
-						if (this.mario[this.adam] && this.mario[this.adam][column.key])
-							input.value = this.mario[this.adam][column.key];
+						if (this.localSave[this.nameOfType] && this.localSave[this.nameOfType][column.key])
+							input.value = this.localSave[this.nameOfType][column.key];
 						input.className = "form-control";
 						input.placeholder = `${column.key}`;
 						input.addEventListener("input", (e) => {
@@ -360,8 +376,8 @@ class JsonTable {
 						);
 						// input.addEventListener("change", (e) => {
 						// 	console.log(e.target)
-						// 	// this.mario[e.target.placeholder] = e.target.value;
-						// 	console.log(this.mario)
+						// 	// this.localSave[e.target.placeholder] = e.target.value;
+						// 	console.log(this.localSave)
 							
 						// }
 						// );
@@ -371,8 +387,10 @@ class JsonTable {
 				headerRow.appendChild(th);
 			}
 		});
+
 		if (this.printUrl) 
-			headerRow.insertAdjacentHTML("beforeend", `<th><button class="btn btn-success icon_print btn-sm" id="printAll"></button></th>`);
+			headerRow.insertAdjacentHTML("beforeend", `<th> <button class="btn btn-success" id="exportExcel">X</button>  <button class="btn btn-success icon_print btn-sm" id="printAll"></button></th>`);
+
 		let elem = getElement("editAll");
 		if (elem) elem.addEventListener("click", async (e) => {
         	const temp = await postDatas(window.location.origin + '/selection', {ids: this.filteredData.map(e => e.id)});
@@ -626,24 +644,25 @@ class JsonTable {
 	
 
 	filterDatas(value) {
-		console.log(this.mario);
-		if(value && value.trim() !== "")
+		if (value && value.trim() !== "")
 			this.addToFilter("global", value.toLowerCase());
 
-		if (this.adam) {			
-			if (this.mario[this.adam] && this.mario[this.adam]["global"] ) {
+		if (this.nameOfType) {			
+			if (this.localSave[this.nameOfType] && this.localSave[this.nameOfType]["global"]) {
 				this.filteredData = this.data.filter((row) =>
 					Object.values(row).some((field) =>
-						String(field).toLowerCase().includes(this.mario[this.adam]["global"])
+						String(field).toLowerCase().includes(this.localSave[this.nameOfType]["global"])
 					)
 				);
-				globalSearch.value = this.mario[this.adam]["global"];
-			} else if (this.mario && Object.keys(this.mario).length > 0) {
-				if (this.mario[this.adam]) 
-				Object.keys(this.mario[this.adam]).forEach(key => {
-					if(this.mario[this.adam][key] !== "")
-						this.filteredData = this.filteredData.filter((row) =>  typeof this.mario[this.adam][key] === 'string' ? row[key].toLowerCase().includes(this.mario[this.adam][key].toLowerCase()) : row[key] === this.mario[this.adam][key]);
-				});
+				globalSearch.value = this.localSave[this.nameOfType]["global"];
+			} else if (this.localSave && Object.keys(this.localSave).length > 0) {
+				if (this.localSave[this.nameOfType]) 
+					Object.keys(this.localSave[this.nameOfType]).forEach(key => {						
+						if(this.localSave[this.nameOfType][key] !== "")
+							this.filteredData = this.filteredData.filter((row) => typeof this.localSave[this.nameOfType][key] === 'string' 
+								? row[key].toLowerCase().includes(this.localSave[this.nameOfType][key].toLowerCase()) 
+								: row[key] === this.localSave[this.nameOfType][key]);
+					});
 			}
 			// Re-render table rows and pagination after filtering
 			this.currentPage = 1; // Reset to first page

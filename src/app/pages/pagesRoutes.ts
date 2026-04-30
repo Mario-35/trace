@@ -17,6 +17,7 @@ import { Add } from "../../html/class/add";
 import { _CONFIG, setConfig } from "../../constant";
 import { dataBase } from "../../db/base";
 import { update } from "../../helpers/update";
+import { Export } from "../../html/class/export";
 
 export const pagesRoutes = Router();
 
@@ -76,8 +77,24 @@ pagesRoutes.get("/" + dataBase.campagnes.name + ".html", async (req, res) => {
 
 // echantillons page
 pagesRoutes.get("/" + dataBase.echantillons.name + ".html", async (req, res) => {
-    const html = new List(dataBase.echantillons.name);
+    const html = new List(dataBase.echantillons.name, true);
     res.send(html.toString())
+});
+
+// echantillons page
+pagesRoutes.get("/export.html", async (req, res) => {
+    const id = req.url.split("?selection=")[1];
+    await executeSql(`SELECT ids FROM selections WHERE id=${id}`)
+    .then(async (ids: any) => {
+        await executeSql(`SELECT 
+            ${Object.keys(dataBase.echantillons.columns).filter(e => dataBase.echantillons.columns[e].type !== "json" && !dataBase.echantillons.columns[e].calculate)}, 
+            unnest(analyses) AS analyses 
+            FROM ${dataBase.echantillons.name} WHERE id IN (${ ids[0].ids })`)
+        .then((datas) => {
+            const html = new Export(datas);            
+            res.send(html.toString())
+        });                                                                                                                                                                                                                                                                                                     
+    });
 });
 
 // print sample sticker
@@ -88,13 +105,12 @@ pagesRoutes.get("/update", async (req, res) => {
 
 });
 
-// print sample sticker
-pagesRoutes.get("/print/:type", async (req, res) => {
-    switch (req.params.type ) {
-        case 'echantillon':
-            const html = new Print("echantillon", [_CONFIG] );
-            return res.set('Content-Type', 'text/html').send(html.toString());
-    }
+// export Excel
+pagesRoutes.get("/update", async (req, res) => {
+    await update(); 
+    res.redirect('/');
+    process.exit(0);
+
 });
 
 // prints

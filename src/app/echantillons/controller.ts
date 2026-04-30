@@ -7,7 +7,7 @@
  */
 
 import { readId } from "../../controller";
-import { createPgUpdates, createPgValues, executeSql, executeSqlValues, sql } from "../../db";
+import { createPgUpdates, createPgValues, executeSql, sql } from "../../db";
 import { dataBase } from "../../db/base";
 import { asyncForEach } from "../../helpers/asyncForEach";
 
@@ -48,8 +48,6 @@ export async function addEchantillon(values: any) {
                               echantillon = echantillon[0 as keyof object];
                               echantillon["parent" as keyof object] = echantillon["identification" as keyof object];
                               echantillon["creation"] = values["creation"];
-                              // echantillon["prelevement"] = echantillon["prelevement"];
-                              // echantillon["peremption"] = echantillon["peremption"];
                               echantillon["etiquette"] = values["etiquette"];
                               for (let loop = 0; loop < nb; loop++) {
                                     start = start + 1;
