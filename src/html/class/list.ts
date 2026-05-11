@@ -17,10 +17,9 @@ export class List extends CoreHtmlView {
     }
     
     createIndexHtmlString(name: String, excel?: boolean) {
-        // Split files for better search and replace
-		// const plural = name.toLocaleLowerCase() + 's';
 		const listCols:any = [];
 		const src = dataBase[name as keyof object];
+		
 		Object.keys(src.columns).filter((e: any) => src.columns[e].list === true).forEach(e => {
 			listCols.push({
 				key: e,
@@ -58,10 +57,7 @@ export class List extends CoreHtmlView {
 							<span class="input-group-text" id="infos"></span>
 							<a class="btn btn-warning" id="raz">RAZ</a>
 							<span class="input-group-text" id="nameType">${name}</span>
-							${src.create === true ? `
-									<button class="btn btn-primary icon_plus btn-sm" id="ajouter" href="./${src.singular}-add.html"></button>  
-
-								` : ''}
+							${src.create === true ? ` <button class="btn btn-primary icon_plus btn-sm" id="ajouter" href="./${src.singular}-add.html"></button> ` : ''}
                             ${ excel ? `
 							<span class="input-group-text"></span>
 							<div class="btn btn-success field" id="blockImporter">
