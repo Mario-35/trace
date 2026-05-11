@@ -1,18 +1,3 @@
-// Menu gauche
-// document.getElementById("left-pane").innerHTML = ` 
-// <nav role="navigation">
-//     <ul>
-//         <li><a href="./campagnes.html">Campagnes</a></li>
-//         <li><a href="./echantillons.html">Echantillons</a></li>
-//         <li><a href="./passeports.html">Passeports</a></li>
-//         <li><a href="./sites.html">Sites</a></li>
-//         <li><a href="./evenements.html">Evenements</a></li>
-//         <li><a href="./api.html">Api</a></li>
-//         <li><a href="./configuration.html">Configuration</a></li>
-//         <li><a href="./documentation/echantillons.html">doc</a></li>
-//     </ul>
-// </nav>`;
-
 document.getElementById("left-pane").innerHTML = ` 
 		<nav role='navigation'>
   <ul class="menu">
@@ -25,8 +10,6 @@ document.getElementById("left-pane").innerHTML = `
         <li class="item"><a href="/documentation/echantillons" class="link">Documentation</a></li>
       </ul>
     </li>
-    <li class="item"><a href="/sdfs/" class="link">Menu item</a></li>
-    <li class="item"><a href="/sdfs/" class="link">Menu item</a></li>
     <li class="item item--parent${testWhere('passeport') ?' item--opened' : ''}" aria-expanded="false" aria-controls="collapsible-1">
       <a class="menu__span">Passeports</a>
       <ul class="menu" aria-hidden="true" id="collapsible-1">
