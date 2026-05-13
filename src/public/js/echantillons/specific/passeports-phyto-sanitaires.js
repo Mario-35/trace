@@ -53,7 +53,7 @@ function createHTMLviewPasseport(values) {
     `;
     //  button d'interrogation du rpg
     getElement('printPasseport').addEventListener('click', async function() {
-        open(`http://localhost:3000/print/passeport/${passeport.value}`, "Imprimer", _PARAMPRINT);
+        open(`${window.location.origin}/print/passeport/${passeport.value}`, "Imprimer", _PARAMPRINT);
     });
 
 }
